@@ -1,0 +1,117 @@
+[21-Feb-2018 11:06:55 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'files' in 'field list' in C:\Users\sly\Desktop\UwAmp310\www\dts\db.php:134
+Stack trace:
+#0 C:\Users\sly\Desktop\UwAmp310\www\dts\db.php(134): PDO->prepare('INSERT INTO doc...')
+#1 C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\add-documents.php(47): pdo_db->insertData(Array)
+#2 {main}
+  thrown in C:\Users\sly\Desktop\UwAmp310\www\dts\db.php on line 134
+[21-Feb-2018 11:10:27 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'attachments' in 'field list' in C:\Users\sly\Desktop\UwAmp310\www\dts\db.php:134
+Stack trace:
+#0 C:\Users\sly\Desktop\UwAmp310\www\dts\db.php(134): PDO->prepare('INSERT INTO doc...')
+#1 C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\add-documents.php(50): pdo_db->insertData(Array)
+#2 {main}
+  thrown in C:\Users\sly\Desktop\UwAmp310\www\dts\db.php on line 134
+[21-Feb-2018 11:11:24 Asia/Manila] PHP Notice:  Undefined variable: barcode_ in C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\add-documents.php on line 79
+[21-Feb-2018 11:11:24 Asia/Manila] PHP Stack trace:
+[21-Feb-2018 11:11:24 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\add-documents.php:0
+[21-Feb-2018 11:11:24 Asia/Manila] PHP Notice:  Undefined variable: barcode_ in C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\add-documents.php on line 79
+[21-Feb-2018 11:11:24 Asia/Manila] PHP Stack trace:
+[21-Feb-2018 11:11:24 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\add-documents.php:0
+[21-Feb-2018 11:14:54 Asia/Manila] PHP Notice:  Undefined variable: types in C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\add-documents.php on line 83
+[21-Feb-2018 11:14:54 Asia/Manila] PHP Stack trace:
+[21-Feb-2018 11:14:54 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\add-documents.php:0
+[21-Feb-2018 11:14:54 Asia/Manila] PHP   2. uploadFiles() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\add-documents.php:58
+[21-Feb-2018 11:14:54 Asia/Manila] PHP Notice:  Undefined variable: types in C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\add-documents.php on line 83
+[21-Feb-2018 11:14:54 Asia/Manila] PHP Stack trace:
+[21-Feb-2018 11:14:54 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\add-documents.php:0
+[21-Feb-2018 11:14:54 Asia/Manila] PHP   2. uploadFiles() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\add-documents.php:58
+[21-Feb-2018 11:30:00 Asia/Manila] PHP Warning:  Missing argument 3 for uploadFiles(), called in C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\add-documents.php on line 58 and defined in C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\add-documents.php on line 64
+[21-Feb-2018 11:30:00 Asia/Manila] PHP Stack trace:
+[21-Feb-2018 11:30:00 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\add-documents.php:0
+[21-Feb-2018 11:30:00 Asia/Manila] PHP   2. uploadFiles() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\add-documents.php:58
+[22-Feb-2018 09:23:23 Asia/Manila] PHP Notice:  Undefined index: file in C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\add-documents.php on line 81
+[22-Feb-2018 09:23:23 Asia/Manila] PHP Stack trace:
+[22-Feb-2018 09:23:23 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\add-documents.php:0
+[22-Feb-2018 09:23:23 Asia/Manila] PHP   2. uploadFiles() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\add-documents.php:58
+[22-Feb-2018 09:23:23 Asia/Manila] PHP Notice:  Undefined index: file in C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\add-documents.php on line 105
+[22-Feb-2018 09:23:23 Asia/Manila] PHP Stack trace:
+[22-Feb-2018 09:23:23 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\add-documents.php:0
+[22-Feb-2018 09:23:23 Asia/Manila] PHP   2. uploadFiles() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\add-documents.php:58
+[22-Feb-2018 09:23:23 Asia/Manila] PHP Notice:  Undefined index: files in C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\add-documents.php on line 75
+[22-Feb-2018 09:23:23 Asia/Manila] PHP Stack trace:
+[22-Feb-2018 09:23:23 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\add-documents.php:0
+[22-Feb-2018 09:23:23 Asia/Manila] PHP   2. uploadFiles() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\add-documents.php:59
+[22-Feb-2018 09:23:23 Asia/Manila] PHP Notice:  Undefined index: files in C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\add-documents.php on line 99
+[22-Feb-2018 09:23:23 Asia/Manila] PHP Stack trace:
+[22-Feb-2018 09:23:23 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\add-documents.php:0
+[22-Feb-2018 09:23:23 Asia/Manila] PHP   2. uploadFiles() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\add-documents.php:59
+[22-Feb-2018 09:27:50 Asia/Manila] PHP Notice:  Undefined variable: files in C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\add-documents.php on line 71
+[22-Feb-2018 09:27:50 Asia/Manila] PHP Stack trace:
+[22-Feb-2018 09:27:50 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\add-documents.php:0
+[22-Feb-2018 09:27:50 Asia/Manila] PHP   2. uploadFiles() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\add-documents.php:57
+[22-Feb-2018 09:27:50 Asia/Manila] PHP Notice:  Undefined variable: files in C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\add-documents.php on line 99
+[22-Feb-2018 09:27:50 Asia/Manila] PHP Stack trace:
+[22-Feb-2018 09:27:50 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\add-documents.php:0
+[22-Feb-2018 09:27:50 Asia/Manila] PHP   2. uploadFiles() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\add-documents.php:57
+[22-Feb-2018 09:29:22 Asia/Manila] PHP Fatal error:  Uncaught Error: Call to undefined function folder_exist() in C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\add-documents.php:77
+Stack trace:
+#0 C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\add-documents.php(57): uploadFiles(Object(pdo_db), Array, 'SSD-02-2018-000...', '1')
+#1 {main}
+  thrown in C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\add-documents.php on line 77
+[22-Feb-2018 09:31:07 Asia/Manila] PHP Notice:  Undefined variable: files in C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\add-documents.php on line 80
+[22-Feb-2018 09:31:07 Asia/Manila] PHP Stack trace:
+[22-Feb-2018 09:31:07 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\add-documents.php:0
+[22-Feb-2018 09:31:07 Asia/Manila] PHP   2. uploadFiles() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\add-documents.php:58
+[22-Feb-2018 09:31:07 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\add-documents.php on line 80
+[22-Feb-2018 09:31:07 Asia/Manila] PHP Stack trace:
+[22-Feb-2018 09:31:07 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\add-documents.php:0
+[22-Feb-2018 09:31:07 Asia/Manila] PHP   2. uploadFiles() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\add-documents.php:58
+[22-Feb-2018 09:31:07 Asia/Manila] PHP Notice:  Undefined variable: files in C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\add-documents.php on line 108
+[22-Feb-2018 09:31:07 Asia/Manila] PHP Stack trace:
+[22-Feb-2018 09:31:07 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\add-documents.php:0
+[22-Feb-2018 09:31:07 Asia/Manila] PHP   2. uploadFiles() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\add-documents.php:58
+[22-Feb-2018 09:31:07 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\add-documents.php on line 108
+[22-Feb-2018 09:31:07 Asia/Manila] PHP Stack trace:
+[22-Feb-2018 09:31:07 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\add-documents.php:0
+[22-Feb-2018 09:31:07 Asia/Manila] PHP   2. uploadFiles() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\add-documents.php:58
+[22-Feb-2018 11:04:51 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in C:\UwAmp310\www\dts\db.php:42
+Stack trace:
+#0 C:\UwAmp310\www\dts\db.php(42): PDO->query('SELECT id, dept...')
+#1 C:\UwAmp310\www\dts\handlers\office-view.php(10): pdo_db->getData('SELECT id, dept...')
+#2 {main}
+  thrown in C:\UwAmp310\www\dts\db.php on line 42
+[22-Feb-2018 11:05:26 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in C:\UwAmp310\www\dts\db.php:42
+Stack trace:
+#0 C:\UwAmp310\www\dts\db.php(42): PDO->query('SELECT id, dept...')
+#1 C:\UwAmp310\www\dts\handlers\office-view.php(10): pdo_db->getData('SELECT id, dept...')
+#2 {main}
+  thrown in C:\UwAmp310\www\dts\db.php on line 42
+[22-Feb-2018 11:05:40 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in C:\UwAmp310\www\dts\db.php:42
+Stack trace:
+#0 C:\UwAmp310\www\dts\db.php(42): PDO->query('SELECT id, dept...')
+#1 C:\UwAmp310\www\dts\handlers\office-view.php(10): pdo_db->getData('SELECT id, dept...')
+#2 {main}
+  thrown in C:\UwAmp310\www\dts\db.php on line 42
+[22-Feb-2018 11:07:57 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in C:\UwAmp310\www\dts\db.php:42
+Stack trace:
+#0 C:\UwAmp310\www\dts\db.php(42): PDO->query('SELECT id, dept...')
+#1 C:\UwAmp310\www\dts\handlers\office-view.php(10): pdo_db->getData('SELECT id, dept...')
+#2 {main}
+  thrown in C:\UwAmp310\www\dts\db.php on line 42
+[22-Feb-2018 11:12:37 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in C:\UwAmp310\www\dts\db.php:42
+Stack trace:
+#0 C:\UwAmp310\www\dts\db.php(42): PDO->query('SELECT id, dept...')
+#1 C:\UwAmp310\www\dts\handlers\office-view.php(10): pdo_db->getData('SELECT id, dept...')
+#2 {main}
+  thrown in C:\UwAmp310\www\dts\db.php on line 42
+[22-Feb-2018 11:12:44 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in C:\UwAmp310\www\dts\db.php:42
+Stack trace:
+#0 C:\UwAmp310\www\dts\db.php(42): PDO->query('SELECT id, dept...')
+#1 C:\UwAmp310\www\dts\handlers\office-view.php(10): pdo_db->getData('SELECT id, dept...')
+#2 {main}
+  thrown in C:\UwAmp310\www\dts\db.php on line 42
+[22-Feb-2018 11:13:48 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in C:\UwAmp310\www\dts\db.php:42
+Stack trace:
+#0 C:\UwAmp310\www\dts\db.php(42): PDO->query('SELECT id, dept...')
+#1 C:\UwAmp310\www\dts\handlers\office-view.php(10): pdo_db->getData('SELECT id, dept...')
+#2 {main}
+  thrown in C:\UwAmp310\www\dts\db.php on line 42

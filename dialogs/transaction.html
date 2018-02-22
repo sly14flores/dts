@@ -1,0 +1,38 @@
+<form name="formHolder.trans">
+<div class="row">
+	<div class="col-md-12">
+		<label>Transaction</label>
+		<div class="input-group mb-3">
+			<div class="input-group-prepend">
+				<i class="icon icon-organization input-group-text"></i>
+			</div>
+			<input type="text" class="form-control" placeholder="Transaction" name="transaction" ng-class="{'is-invalid': formHolder.trans.transaction.$touched && formHolder.trans.transaction.$invalid}" ng-model="trans.transaction" required>
+			<div class="invalid-feedback">Document Type is required</div>
+		</div>                
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<label>Days</label>
+		<div class="input-group mb-3">
+			<div class="input-group-prepend">
+				<i class="icon icon-calendar input-group-text"></i>
+			</div>
+			<input type="text" class="form-control" placeholder="Days" name="days" ng-class="{'is-invalid': formHolder.trans.days.$touched && formHolder.trans.days.$invalid}" ng-model="trans.days" required>
+			<div class="invalid-feedback">Days is required</div>
+		</div>                
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<label>Shortname</label>
+		<div class="input-group mb-3">
+			<div class="input-group-prepend">
+				<i class="icon icon-social-reddit input-group-text"></i>
+			</div>
+			<input type="text" class="form-control" placeholder="Shortname" name="shortname" ng-class="{'is-invalid': formHolder.trans.shortname.$touched && formHolder.trans.shortname.$invalid}" ng-model="trans.shortname" required>
+			<div class="invalid-feedback">Shortname is required</div>
+		</div>                
+	</div>
+</div>
+</form>

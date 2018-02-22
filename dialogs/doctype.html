@@ -1,0 +1,26 @@
+<form name="formHolder.doc_type">
+<div class="row">
+	<div class="col-md-12">
+		<label>Office</label>
+		<div class="input-group mb-3">
+			<div class="input-group-prepend">
+				<i class="icon icon-organization input-group-text"></i>
+			</div>
+			<input type="text" class="form-control" placeholder="Document Type" name="document_type" ng-class="{'is-invalid': formHolder.doc_type.document_type.$touched && formHolder.doc_type.document_type.$invalid}" ng-model="doc_type.document_type" required>
+			<div class="invalid-feedback">Document Type is required</div>
+		</div>                
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<label>Shortname</label>
+		<div class="input-group mb-3">
+			<div class="input-group-prepend">
+				<i class="icon icon-social-reddit input-group-text"></i>
+			</div>
+			<input type="text" class="form-control" placeholder="Shortname" name="shortname" ng-class="{'is-invalid': formHolder.doc_type.shortname.$touched && formHolder.doc_type.shortname.$invalid}" ng-model="doc_type.shortname" required>
+			<div class="invalid-feedback">Shortname is required</div>
+		</div>                
+	</div>
+</div>
+</form>
