@@ -168,30 +168,21 @@ require_once 'authentication.php';
 											</tr>
 										</thead>
 										<tbody>
-											<tr ng-repeat="m in filterData = (offices | filter:search) | pagination: currentPage:pageSize">
-											<td style="width: 200px;">{{m.dept}}</td>
-											<td>{{m.office}}</td>
-											<td>{{m.shortname}}</td>
-											<td><button class="btn btn-primary" ng-click="app.add(this,m)"><i class="icon icon-pencil"></i></button>
-											<button class="btn btn-secondary" ng-click="app.delete(this,m)"><i class="icon icon-trash"></i></button>
-											</td>
-											</tr>
-										</tbody>
-										<tfoot>
-											<tr>
-												<td colspan="4" style="text-align: center;">
-													<ul uib-pagination boundary-links="true" total-items="filterData.length" max-size="maxSize" items-per-page="pageSize" ng-model="currentPage" class="pagination" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
-				<ul class="pagination">
-                  <li class="page-item disabled"><a class="page-link" href="#">«</a></li>
-                  <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                  <li class="page-item"><a class="page-link" href="#">2</a></li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                  <li class="page-item"><a class="page-link" href="#">4</a></li>
-                  <li class="page-item"><a class="page-link" href="#">5</a></li>
-                  <li class="page-item"><a class="page-link" href="#">»</a></li>
-                </ul>												
+											<tr ng-repeat="m in filterData = (offices | filter:search) | pagination: currentPage:pageSize"><!-- added pagination feature -->
+												<td style="width: 200px;">{{m.dept}}</td>
+												<td>{{m.office}}</td>
+												<td>{{m.shortname}}</td>
+												<td><button class="btn btn-primary" ng-click="app.add(this,m)"><i class="icon icon-pencil"></i></button>
+												<button class="btn btn-secondary" ng-click="app.delete(this,m)"><i class="icon icon-trash"></i></button>
 												</td>
 											</tr>
+										</tbody>
+										<tfoot><!-- added pagination feature -->
+											<tr>
+												<td colspan="4" style="text-align: center;">
+													<div class="float-right"><ul uib-pagination direction-links="false" boundary-links="true" total-items="filterData.length" ng-model="currentPage" max-size="maxSize"></ul></div>
+ 											    </td>
+											</tr>											
 										</tfoot>										
 									</table>
 								</div>
@@ -217,13 +208,14 @@ require_once 'authentication.php';
 
 <script src="angular/angular.min.js"></script>
 <script src="angular/angular-route.min.js"></script>
-<script src="angular/ui-bootstrap-tpls-3.0.0.min.js"></script>
+<script src="angular/ui-bootstrap-tpls-3.0.2.min.js"></script><!-- added for pagination -->
 
 <!-- modules -->
 <script src="modules/bootstrap-modal.js"></script>
 <script src="modules/account.js"></script>
 <script src="modules/validate.js"></script>
 <script src="modules/maintenance-offices-view.js"></script>
+
 <!-- controller -->
 <script src="controllers/maintenance-offices-view.js"></script>
 </body>

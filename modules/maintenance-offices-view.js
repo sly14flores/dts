@@ -27,7 +27,7 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap']).factory('app', 
 
 			scope.offices = []; // list/table
 
-			scope.views.currentPage = 1;
+			scope.views.currentPage = 1; // for pagination
 
 		};
 		
@@ -55,7 +55,7 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap']).factory('app', 
 		
 		self.delete = function(scope, row) {
 			
-			scope.views.currentPage = scope.currentPage;			
+			scope.views.currentPage = scope.currentPage; // for pagination		
 			
 			var onOk = function() {
 				
@@ -84,10 +84,14 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap']).factory('app', 
 		self.list = function(scope) {
 
 			if (scope.$id > 2) scope = scope.$parent;
-
-			scope.currentPage = scope.views.currentPage;
-			scope.pageSize = 15;
-			scope.maxSize = 5;
+			
+			scope.currentPage = scope.views.currentPage; // for pagination
+			scope.pageSize = 10; // for pagination
+			scope.maxSize = 3; // for pagination
+			
+			/*
+			** REFERENCE: https://morgul.github.io/ui-bootstrap4/#!#pagination
+			*/
 
 			$http({
 			  method: 'GET',
@@ -96,8 +100,8 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap']).factory('app', 
 				
 				scope.offices = angular.copy(response.data);
 				
-				scope.filterData = scope.offices;
-				scope.currentPage = scope.views.currentPage;				
+				scope.filterData = scope.offices; // for pagination
+				scope.currentPage = scope.views.currentPage; // for pagination 			
 				
 			}, function myError(response) {
 				
