@@ -167,14 +167,21 @@ require_once 'authentication.php';
 											</tr>
 										</thead>
 										<tbody>
-											<tr ng-repeat="dt in doc_type | filter:search">
-											<td>{{dt.document_type}}</td>
-											<td>{{dt.shortname}}</td>
-											<td><button class="btn btn-primary" ng-click="app.add(this,dt)"><i class="icon icon-pencil"></i></button>
-											<button class="btn btn-secondary" ng-click="app.delete(this,dt)"><i class="icon icon-trash"></i></button>
-											</td>
+											<tr ng-repeat="dt in filterData = (doc_type | filter:search) | pagination: currentPage:pageSize"><!-- added pagination feature -->
+												<td>{{dt.document_type}}</td>
+												<td>{{dt.shortname}}</td>
+												<td><button class="btn btn-primary" ng-click="app.add(this,dt)"><i class="icon icon-pencil"></i></button>
+												<button class="btn btn-secondary" ng-click="app.delete(this,dt)"><i class="icon icon-trash"></i></button>
+												</td>
 											</tr>
 										</tbody>
+										<tfoot><!-- added pagination feature -->
+											<tr>
+												<td colspan="4" style="text-align: center;">
+													<div class="float-right"><ul uib-pagination direction-links="false" boundary-links="true" total-items="filterData.length" ng-model="currentPage" max-size="maxSize"></ul></div>
+ 											    </td>
+											</tr>											
+										</tfoot>										
 									</table>
 								</div>
 							</div>
@@ -199,6 +206,7 @@ require_once 'authentication.php';
 
 <script src="angular/angular.min.js"></script>
 <script src="angular/angular-route.min.js"></script>
+<script src="angular/ui-bootstrap-tpls-3.0.2.min.js"></script>
 <!-- modules -->
 <script src="modules/bootstrap-modal.js"></script>
 <script src="modules/account.js"></script>

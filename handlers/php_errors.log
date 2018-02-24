@@ -129,3 +129,423 @@ Stack trace:
 #1 C:\Users\SLY One\Desktop\UwAmp310\www\dts\handlers\login.php(7): pdo_db->__construct()
 #2 {main}
   thrown in C:\Users\SLY One\Desktop\UwAmp310\www\dts\db.php on line 35
+[23-Feb-2018 22:16:04 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: YES) in C:\UwAmp310\www\dts\db.php:35
+Stack trace:
+#0 C:\UwAmp310\www\dts\db.php(35): PDO->__construct('mysql:host=loca...', 'root', 'dtsict', Array)
+#1 C:\UwAmp310\www\dts\handlers\login.php(7): pdo_db->__construct()
+#2 {main}
+  thrown in C:\UwAmp310\www\dts\db.php on line 35
+[23-Feb-2018 22:23:35 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[23-Feb-2018 22:23:35 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 22:23:35 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 22:23:35 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[23-Feb-2018 22:23:35 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 22:23:35 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 22:23:44 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[23-Feb-2018 22:23:44 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 22:23:44 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 22:23:44 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[23-Feb-2018 22:23:45 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 22:23:45 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 22:34:53 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[23-Feb-2018 22:34:53 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 22:34:53 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 22:34:53 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[23-Feb-2018 22:34:53 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 22:34:53 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 22:34:57 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[23-Feb-2018 22:34:57 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 22:34:57 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 22:34:57 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[23-Feb-2018 22:34:57 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 22:34:57 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 22:34:59 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[23-Feb-2018 22:34:59 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 22:34:59 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 22:34:59 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[23-Feb-2018 22:34:59 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 22:34:59 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 22:35:27 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[23-Feb-2018 22:35:27 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 22:35:27 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 22:35:27 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[23-Feb-2018 22:35:27 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 22:35:27 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 22:35:30 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[23-Feb-2018 22:35:30 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 22:35:30 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 22:35:30 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[23-Feb-2018 22:35:30 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 22:35:30 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 22:35:32 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[23-Feb-2018 22:35:32 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 22:35:32 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 22:35:32 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[23-Feb-2018 22:35:32 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 22:35:32 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 22:35:36 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[23-Feb-2018 22:35:36 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 22:35:36 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 22:35:36 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[23-Feb-2018 22:35:36 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 22:35:36 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 22:38:13 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[23-Feb-2018 22:38:13 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 22:38:13 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 22:38:13 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[23-Feb-2018 22:38:13 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 22:38:13 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 22:38:17 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[23-Feb-2018 22:38:17 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 22:38:17 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 22:38:17 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[23-Feb-2018 22:38:17 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 22:38:17 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 22:38:19 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[23-Feb-2018 22:38:19 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 22:38:19 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 22:38:19 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[23-Feb-2018 22:38:19 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 22:38:19 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 22:38:26 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[23-Feb-2018 22:38:26 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 22:38:26 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 22:38:26 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[23-Feb-2018 22:38:26 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 22:38:26 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 22:49:39 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[23-Feb-2018 22:49:39 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 22:49:39 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 22:49:39 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[23-Feb-2018 22:49:39 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 22:49:39 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 22:50:33 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[23-Feb-2018 22:50:33 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 22:50:33 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 22:50:33 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[23-Feb-2018 22:50:33 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 22:50:33 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 22:50:35 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[23-Feb-2018 22:50:35 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 22:50:35 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 22:50:35 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[23-Feb-2018 22:50:35 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 22:50:35 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 22:50:38 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[23-Feb-2018 22:50:38 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 22:50:38 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 22:50:38 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[23-Feb-2018 22:50:38 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 22:50:38 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 22:50:41 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[23-Feb-2018 22:50:41 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 22:50:41 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 22:50:41 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[23-Feb-2018 22:50:41 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 22:50:41 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 22:50:46 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[23-Feb-2018 22:50:46 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 22:50:46 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 22:50:46 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[23-Feb-2018 22:50:46 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 22:50:46 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 22:53:14 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[23-Feb-2018 22:53:14 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 22:53:14 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 22:53:14 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[23-Feb-2018 22:53:14 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 22:53:14 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 22:53:15 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[23-Feb-2018 22:53:15 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 22:53:16 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 22:53:16 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[23-Feb-2018 22:53:16 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 22:53:16 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:01:22 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[23-Feb-2018 23:01:22 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:01:22 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:01:22 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[23-Feb-2018 23:01:22 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:01:22 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:01:24 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[23-Feb-2018 23:01:24 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:01:24 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:01:24 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[23-Feb-2018 23:01:24 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:01:24 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:01:48 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[23-Feb-2018 23:01:48 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:01:48 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:01:48 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[23-Feb-2018 23:01:48 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:01:48 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:02:02 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[23-Feb-2018 23:02:02 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:02:02 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:02:02 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[23-Feb-2018 23:02:02 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:02:03 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:08:46 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[23-Feb-2018 23:08:46 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:08:47 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:08:47 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[23-Feb-2018 23:08:47 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:08:47 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:26:37 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[23-Feb-2018 23:26:38 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:26:38 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:26:38 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[23-Feb-2018 23:26:38 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:26:38 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:26:40 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[23-Feb-2018 23:26:40 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:26:40 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:26:40 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[23-Feb-2018 23:26:41 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:26:41 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:26:46 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[23-Feb-2018 23:26:46 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:26:46 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:26:46 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[23-Feb-2018 23:26:46 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:26:46 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:26:53 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[23-Feb-2018 23:26:53 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:26:53 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:26:53 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[23-Feb-2018 23:26:53 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:26:53 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:27:01 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[23-Feb-2018 23:27:01 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:27:01 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:27:01 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[23-Feb-2018 23:27:01 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:27:01 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:27:04 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[23-Feb-2018 23:27:04 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:27:04 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:27:04 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[23-Feb-2018 23:27:04 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:27:04 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:28:41 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[23-Feb-2018 23:28:41 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:28:41 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:28:41 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[23-Feb-2018 23:28:41 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:28:41 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:28:44 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[23-Feb-2018 23:28:44 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:28:45 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:28:45 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[23-Feb-2018 23:28:45 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:28:45 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:29:37 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[23-Feb-2018 23:29:37 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:29:37 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:29:37 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[23-Feb-2018 23:29:37 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:29:37 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:31:04 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[23-Feb-2018 23:31:04 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:31:04 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:31:04 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[23-Feb-2018 23:31:04 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:31:04 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:31:32 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[23-Feb-2018 23:31:32 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:31:32 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:31:32 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[23-Feb-2018 23:31:32 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:31:32 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:33:03 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[23-Feb-2018 23:33:03 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:33:03 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:33:03 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[23-Feb-2018 23:33:03 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:33:03 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:33:25 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[23-Feb-2018 23:33:25 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:33:25 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:33:25 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[23-Feb-2018 23:33:25 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:33:25 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:33:42 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[23-Feb-2018 23:33:42 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:33:42 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:33:42 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[23-Feb-2018 23:33:42 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:33:42 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:34:03 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[23-Feb-2018 23:34:03 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:34:03 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:34:03 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[23-Feb-2018 23:34:03 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:34:03 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:34:28 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[23-Feb-2018 23:34:28 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:34:28 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:34:28 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[23-Feb-2018 23:34:28 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:34:28 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:34:32 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[23-Feb-2018 23:34:32 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:34:32 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:34:32 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[23-Feb-2018 23:34:32 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:34:32 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:35:02 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[23-Feb-2018 23:35:02 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:35:02 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:35:02 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[23-Feb-2018 23:35:02 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:35:03 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:35:08 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[23-Feb-2018 23:35:08 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:35:08 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:35:08 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[23-Feb-2018 23:35:08 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:35:08 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:35:11 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[23-Feb-2018 23:35:11 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:35:12 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:35:12 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[23-Feb-2018 23:35:12 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:35:12 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:35:13 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[23-Feb-2018 23:35:13 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:35:14 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:35:14 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[23-Feb-2018 23:35:14 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:35:14 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:35:15 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[23-Feb-2018 23:35:15 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:35:15 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:35:15 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[23-Feb-2018 23:35:16 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:35:16 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:35:18 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[23-Feb-2018 23:35:18 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:35:18 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:35:18 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[23-Feb-2018 23:35:18 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:35:18 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:35:19 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[23-Feb-2018 23:35:20 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:35:20 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:35:20 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[23-Feb-2018 23:35:20 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:35:20 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:40:13 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[23-Feb-2018 23:40:13 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:40:13 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:40:13 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[23-Feb-2018 23:40:13 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:40:13 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:40:17 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[23-Feb-2018 23:40:17 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:40:17 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:40:17 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[23-Feb-2018 23:40:17 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:40:17 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:40:21 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[23-Feb-2018 23:40:21 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:40:21 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:40:21 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[23-Feb-2018 23:40:21 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:40:21 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:40:31 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[23-Feb-2018 23:40:31 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:40:31 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:40:31 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[23-Feb-2018 23:40:31 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:40:31 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:48:26 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[23-Feb-2018 23:48:26 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:48:26 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:48:26 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[23-Feb-2018 23:48:26 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:48:26 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:48:30 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[23-Feb-2018 23:48:30 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:48:30 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:48:30 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[23-Feb-2018 23:48:30 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:48:30 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:48:32 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[23-Feb-2018 23:48:32 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:48:32 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:48:32 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[23-Feb-2018 23:48:32 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:48:32 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:49:10 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[23-Feb-2018 23:49:10 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:49:11 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:49:11 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[23-Feb-2018 23:49:11 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:49:11 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:49:14 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[23-Feb-2018 23:49:14 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:49:14 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:49:14 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[23-Feb-2018 23:49:14 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:49:14 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:56:00 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[23-Feb-2018 23:56:00 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:56:00 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:56:00 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[23-Feb-2018 23:56:00 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:56:00 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:56:13 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[23-Feb-2018 23:56:13 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:56:13 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:56:13 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[23-Feb-2018 23:56:13 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:56:13 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:56:18 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[23-Feb-2018 23:56:18 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:56:18 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:56:18 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[23-Feb-2018 23:56:18 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:56:18 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:56:20 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[23-Feb-2018 23:56:20 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:56:20 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:56:20 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[23-Feb-2018 23:56:20 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:56:20 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:56:22 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[23-Feb-2018 23:56:22 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:56:22 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:56:22 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[23-Feb-2018 23:56:22 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:56:22 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:59:09 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[23-Feb-2018 23:59:09 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:59:09 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[23-Feb-2018 23:59:09 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[23-Feb-2018 23:59:09 Asia/Manila] PHP Stack trace:
+[23-Feb-2018 23:59:09 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[24-Feb-2018 00:05:48 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[24-Feb-2018 00:05:49 Asia/Manila] PHP Stack trace:
+[24-Feb-2018 00:05:49 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[24-Feb-2018 00:05:49 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[24-Feb-2018 00:05:49 Asia/Manila] PHP Stack trace:
+[24-Feb-2018 00:05:49 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[24-Feb-2018 00:05:54 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[24-Feb-2018 00:05:54 Asia/Manila] PHP Stack trace:
+[24-Feb-2018 00:05:54 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[24-Feb-2018 00:05:54 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[24-Feb-2018 00:05:54 Asia/Manila] PHP Stack trace:
+[24-Feb-2018 00:05:54 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[24-Feb-2018 00:05:59 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[24-Feb-2018 00:05:59 Asia/Manila] PHP Stack trace:
+[24-Feb-2018 00:05:59 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[24-Feb-2018 00:05:59 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[24-Feb-2018 00:05:59 Asia/Manila] PHP Stack trace:
+[24-Feb-2018 00:05:59 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[24-Feb-2018 00:06:02 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[24-Feb-2018 00:06:02 Asia/Manila] PHP Stack trace:
+[24-Feb-2018 00:06:02 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[24-Feb-2018 00:06:02 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[24-Feb-2018 00:06:02 Asia/Manila] PHP Stack trace:
+[24-Feb-2018 00:06:02 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
