@@ -11,6 +11,8 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap']).factory('app', 
 			
 			scope.departments = [];
 			
+			scope.views.currentPage = 1; // for pagination
+			
 			$http({
 				method: 'GET',
 				url: 'handlers/departments.php'
@@ -27,7 +29,7 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap']).factory('app', 
 
 			scope.offices = []; // list/table
 
-			scope.views.currentPage = 1; // for pagination
+			
 
 		};
 		
