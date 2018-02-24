@@ -263,12 +263,22 @@ require_once 'authentication.php';
 									</div>
 								</div>
 								<div class="row mt-4">
+								<div class="col-md-6">
+										<div class="form-group">
+                                            <label for="single-select">Destination</label>
+                                            <select id="single-select" class="form-control" name="destination" ng-class="{'is-invalid': formHolder.doc.destination.$touched && formHolder.doc.destination.$invalid}" ng-model="doc.destination" ng-options="o.office for o in offices track by o.id" ng-disabled="controls.btns.ok" required></select>
+											<div class="invalid-feedback">Office is required</div>											
+                                        </div>
+									</div>
+								</div>
+								<div class="row mt-4">
 									<div class="col-md-12">
 									<hr>
 										<button class="btn btn-primary" ng-click="app.save(this)" ng-disabled="controls.btns.ok" ng-show="controls.ok">Save</button>
 										<button class="btn btn-secondary" ng-disabled="controls.btns.cancel" ng-click="app.cancel(this)" ng-show="controls.cancel">Cancel</button>
 									</div>
 								</div>
+								
 							</form>
                             </div>
                         </div>
