@@ -1,4 +1,4 @@
-angular.module('app-module', ['bootstrap-modal']).factory('app', function($http,$timeout,$window,bootstrapModal) {
+angular.module('app-module', ['bootstrap-modal','ui.bootstrap']).factory('app', function($http,$timeout,$window,bootstrapModal) {
 	
 	function app() {
 
@@ -9,8 +9,9 @@ angular.module('app-module', ['bootstrap-modal']).factory('app', function($http,
 			scope.formHolder = {};
 			scope.views = {};			
 			
-			scope.departments = [];		
+			scope.departments = [];
 			
+			scope.views.currentPage = 1; // for pagination
 			
 			$http({
 				method: 'GET',
@@ -22,11 +23,13 @@ angular.module('app-module', ['bootstrap-modal']).factory('app', function($http,
 			}, function myError(response) {
 		
 			});
-			
+
 			scope.office = {};
 			scope.office.id = 0;
+
+			scope.offices = []; // list/table
+
 			
-			scope.offices = []; // list/table	
 
 		};
 		
@@ -54,6 +57,8 @@ angular.module('app-module', ['bootstrap-modal']).factory('app', function($http,
 		
 		self.delete = function(scope, row) {
 			
+			scope.views.currentPage = scope.currentPage; // for pagination		
+			
 			var onOk = function() {
 				
 				$http({
@@ -62,7 +67,7 @@ angular.module('app-module', ['bootstrap-modal']).factory('app', function($http,
 					data: {id: row.id}
 				}).then(function mySuccess(response) {
 					
-						self.list(scope);
+						self.list(scope);						
 						
 				}, function myError(response) {
 			
@@ -79,15 +84,26 @@ angular.module('app-module', ['bootstrap-modal']).factory('app', function($http,
 		};
 
 		self.list = function(scope) {
-			
+
 			if (scope.$id > 2) scope = scope.$parent;
 			
+			scope.currentPage = scope.views.currentPage; // for pagination
+			scope.pageSize = 10; // for pagination
+			scope.maxSize = 3; // for pagination
+			
+			/*
+			** REFERENCE: https://morgul.github.io/ui-bootstrap4/#!#pagination
+			*/
+
 			$http({
 			  method: 'GET',
 			  url: 'handlers/offices-list.php'
 			}).then(function mySuccess(response) {
 				
 				scope.offices = angular.copy(response.data);
+				
+				scope.filterData = scope.offices; // for pagination
+				scope.currentPage = scope.views.currentPage; // for pagination 			
 				
 			}, function myError(response) {
 				
