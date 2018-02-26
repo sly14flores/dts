@@ -111,6 +111,24 @@ require_once 'authentication.php';
                     </li>
 					<li class="nav-item nav-dropdown">
                         <a href="#" class="nav-link nav-dropdown-toggle">
+                            <i class="icon icon-list"></i> Groups <i class="fa fa-caret-left"></i>
+                        </a>
+
+                        <ul class="nav-dropdown-items">
+                            <li class="nav-item">
+                                <a href="groups-add.html" class="nav-link">
+                                    <i class="icon icon-plus"></i> Add Group
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="groups-list.html" class="nav-link">
+                                    <i class="icon icon-people"></i> List
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+					<li class="nav-item nav-dropdown">
+                        <a href="#" class="nav-link nav-dropdown-toggle">
                             <i class="icon icon-support"></i> Maintenance <i class="fa fa-caret-left"></i>
                         </a>
                         <ul class="nav-dropdown-items">
@@ -159,7 +177,7 @@ require_once 'authentication.php';
 										<thead>
 											<tr>
 												<th>ID</th>
-												<th>Username</th>
+												<th>Group</th>
 												<th>First Name</th>
 												<th>Last Name</th>
 												<th>Position</th>
@@ -172,7 +190,7 @@ require_once 'authentication.php';
 										<tbody>
 											<tr ng-repeat="u in filterData = (users | filter:search) | pagination: currentPage:pageSize">
 											<td>{{u.employee_id}}</td>
-											<td>{{u.uname}}</td>
+											<td>{{u.group_name}}</td>
 											<td>{{u.fname}}</td>
 											<td>{{u.lname}}</td>
 											<td>{{u.position}}</td>
@@ -180,14 +198,15 @@ require_once 'authentication.php';
 											<td>{{u.email_address}}</td>
 											<td>{{u.phone_number}}</td>
 											
-											<td><button class="btn btn-primary" ng-click="app.view(this,u)"><i class="icon icon-magnifier"></i></button>
+											<td>
+											<button class="btn btn-primary" ng-click="app.view(this,u)"><i class="icon icon-magnifier"></i></button>
 											<button class="btn btn-secondary" ng-click="app.delete(this,u)"><i class="icon icon-trash"></i></button>
 											</td>
 											</tr>
 										</tbody>
-										<hr>
+
 										<tfoot><!-- added pagination feature -->
-										
+
 											<tr>
 												<td colspan="9" style="text-align: center;">
 													<div class="float-right"><ul uib-pagination direction-links="false" boundary-links="true" total-items="filterData.length" ng-model="currentPage" max-size="maxSize"></ul></div>
@@ -196,9 +215,9 @@ require_once 'authentication.php';
 										</tfoot>
 									</table>
 								</div>
-							</div>	
-                            
-                            </div>
+
+							</div>
+
                         </div>
                     </div>
                 </div>

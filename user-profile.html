@@ -111,6 +111,24 @@ require_once 'authentication.php';
                     </li>
 					<li class="nav-item nav-dropdown">
                         <a href="#" class="nav-link nav-dropdown-toggle">
+                            <i class="icon icon-list"></i> Groups <i class="fa fa-caret-left"></i>
+                        </a>
+
+                        <ul class="nav-dropdown-items">
+                            <li class="nav-item">
+                                <a href="groups-add.html" class="nav-link">
+                                    <i class="icon icon-plus"></i> Add Group
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="groups-list.html" class="nav-link">
+                                    <i class="icon icon-people"></i> List
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+					<li class="nav-item nav-dropdown">
+                        <a href="#" class="nav-link nav-dropdown-toggle">
                             <i class="icon icon-support"></i> Maintenance <i class="fa fa-caret-left"></i>
                         </a>
                         <ul class="nav-dropdown-items">
@@ -166,6 +184,13 @@ require_once 'authentication.php';
                                             <label for="single-select">Offices</label>
                                             <select id="single-select" class="form-control" name="div_id" ng-class="{'is-invalid': formHolder.user.div_id.$touched && formHolder.user.div_id.$invalid}" ng-model="user.div_id" ng-options="o.office for o in offices track by o.id" ng-disabled="controls.btns.ok" required></select>
 											<div class="invalid-feedback">Office is required</div>											
+                                        </div>
+									</div>
+									<div class="col-md-4">
+										<div class="form-group">
+                                            <label for="single-select">Groups</label>
+                                            <select id="single-select" class="form-control" name="group_id" ng-class="{'is-invalid': formHolder.user.group_id.$touched && formHolder.user.group_id.$invalid}" ng-model="user.group_id" ng-options="g.group_name for g in groups track by g.id" ng-disabled="controls.btns.ok" required></select>
+											<div class="invalid-feedback">Group is required</div>											
                                         </div>
 									</div>
 								</div>
