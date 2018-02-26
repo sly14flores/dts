@@ -170,7 +170,7 @@ require_once 'authentication.php';
 											</tr>
 										</thead>
 										<tbody>
-											<tr ng-repeat="u in users | filter:search">
+											<tr ng-repeat="u in filterData = (users | filter:search) | pagination: currentPage:pageSize">
 											<td>{{u.employee_id}}</td>
 											<td>{{u.uname}}</td>
 											<td>{{u.fname}}</td>
@@ -185,10 +185,18 @@ require_once 'authentication.php';
 											</td>
 											</tr>
 										</tbody>
+										<hr>
+										<tfoot><!-- added pagination feature -->
+										
+											<tr>
+												<td colspan="9" style="text-align: center;">
+													<div class="float-right"><ul uib-pagination direction-links="false" boundary-links="true" total-items="filterData.length" ng-model="currentPage" max-size="maxSize"></ul></div>
+ 											    </td>
+											</tr>											
+										</tfoot>
 									</table>
 								</div>
-							</div>
-
+							</div>	
                             
                             </div>
                         </div>
@@ -207,9 +215,9 @@ require_once 'authentication.php';
 
 <!-- dependencies -->
 <script src="vendor/bootbox/bootbox.min.js"></script>
-
 <script src="angular/angular.min.js"></script>
 <script src="angular/angular-route.min.js"></script>
+<script src="angular/ui-bootstrap-tpls-3.0.2.min.js"></script>
 <!-- modules -->
 <script src="modules/bootstrap-modal.js"></script>
 <script src="modules/account.js"></script>

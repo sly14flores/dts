@@ -1,4 +1,4 @@
-angular.module('app-module', ['form-validator','bootstrap-modal','ngRoute']).config(function($routeProvider) {
+angular.module('app-module', ['form-validator','bootstrap-modal','ngRoute','ui.bootstrap']).config(function($routeProvider) {
     $routeProvider
         .when('/:option/:id', {
             templateUrl: 'user-profile.html'
@@ -53,7 +53,10 @@ angular.module('app-module', ['form-validator','bootstrap-modal','ngRoute']).con
 		self.data = function(scope) {
 
 			scope.formHolder = {};
+			
 			scope.views = {};
+			
+			scope.views.currentPage = 1;
 			
 			scope.controls = {
 				btns: {
@@ -67,11 +70,13 @@ angular.module('app-module', ['form-validator','bootstrap-modal','ngRoute']).con
 			};
 			
 			scope.user = {};
+			
 			scope.user.id = 0;	
 			
 			scope.users = [];
 			
 			scope.offices = [];
+			
 			
 			$http({
 				method: 'GET',
@@ -114,6 +119,8 @@ angular.module('app-module', ['form-validator','bootstrap-modal','ngRoute']).con
 			
 		};
 		self.delete = function(scope,row){
+			
+			scope.views.currentPage = scope.currentPage;
 			
 			$window.location.href = "user-profile.html#!/delete/"+row.id;
 			
@@ -201,13 +208,20 @@ angular.module('app-module', ['form-validator','bootstrap-modal','ngRoute']).con
 		};
 		
 		self.list = function(scope) {
+			
+			scope.currentPage = scope.views.currentPage; // for pagination
+			scope.pageSize = 10; // for pagination
+			scope.maxSize = 3; // for pagination
 
 			$http({
 			  method: 'GET',
 			  url: 'handlers/users-list.php'
 			}).then(function mySuccess(response) {
 				
-				scope.users = angular.copy(response.data);			
+				scope.users = angular.copy(response.data);		
+
+				scope.filterData = scope.users; 
+				scope.currentPage = scope.views.currentPage; 
 				
 			}, function myError(response) {
 				
