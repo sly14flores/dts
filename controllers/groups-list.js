@@ -1,6 +1,6 @@
-var app = angular.module('profileList',['account-module','app-module']);
+var app = angular.module('groupsList',['account-module','app-module']);
 
-app.controller('profileListCtrl',function($scope,app) {
+app.controller('groupsListCtrl',function($scope,app) {
 	
 	$scope.app = app;
 	

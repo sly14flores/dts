@@ -98,12 +98,30 @@ require_once 'authentication.php';
 
                         <ul class="nav-dropdown-items">
                             <li class="nav-item">
-                                <a href="user-profile.html" class="nav-link active">
+                                <a href="user-profile.html" class="nav-link">
                                     <i class="icon icon-user"></i> User Profile
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="users-list.html" class="nav-link">
+                                    <i class="icon icon-people"></i> List
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+					<li class="nav-item nav-dropdown">
+                        <a href="#" class="nav-link nav-dropdown-toggle  active">
+                            <i class="icon icon-list"></i> Groups <i class="fa fa-caret-left"></i>
+                        </a>
+
+                        <ul class="nav-dropdown-items">
+                            <li class="nav-item">
+                                <a href="groups-add.html" class="nav-link">
+                                    <i class="icon icon-plus"></i> Add Group
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="groups-list.html" class="nav-link">
                                     <i class="icon icon-people"></i> List
                                 </a>
                             </li>
@@ -261,6 +279,7 @@ require_once 'authentication.php';
 
 <script src="angular/angular.min.js"></script>
 <script src="angular/angular-route.min.js"></script>
+<script src="angular/ui-bootstrap-tpls-3.0.2.min.js"></script>
 <!-- modules -->
 <script src="modules/bootstrap-modal.js"></script>
 <script src="modules/account.js"></script>
