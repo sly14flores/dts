@@ -68,15 +68,15 @@ require_once 'authentication.php';
                                 </a>
                             </li><li class="nav-item">
                                 <a href="add-documents.html" class="nav-link">
-                                    <i class="icon icon-login"></i>Incoming Document
+                                    <i class="icon icon-login"></i>Incoming Documents
                                 </a>
                             </li><li class="nav-item">
                                 <a href="add-documents.html" class="nav-link">
-                                    <i class="icon icon-book-open"></i>Review Document
+                                    <i class="icon icon-book-open"></i>Transactions
                                 </a>
                             </li><li class="nav-item">
                                 <a href="add-documents.html" class="nav-link">
-                                    <i class="icon icon-logout"></i>Outgoing Document
+                                    <i class="icon icon-logout"></i>For Pick-Up Documents
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -177,7 +177,7 @@ require_once 'authentication.php';
 										<thead>
 											<tr>
 												<th>ID</th>
-												<th>Username</th>
+												<th>Group</th>
 												<th>First Name</th>
 												<th>Last Name</th>
 												<th>Position</th>
@@ -190,7 +190,7 @@ require_once 'authentication.php';
 										<tbody>
 											<tr ng-repeat="u in filterData = (users | filter:search) | pagination: currentPage:pageSize">
 											<td>{{u.employee_id}}</td>
-											<td>{{u.uname}}</td>
+											<td>{{u.group_name}}</td>
 											<td>{{u.fname}}</td>
 											<td>{{u.lname}}</td>
 											<td>{{u.position}}</td>
@@ -204,7 +204,9 @@ require_once 'authentication.php';
 											</td>
 											</tr>
 										</tbody>
+
 										<tfoot><!-- added pagination feature -->
+
 											<tr>
 												<td colspan="9" style="text-align: center;">
 													<div class="float-right"><ul uib-pagination direction-links="false" boundary-links="true" total-items="filterData.length" ng-model="currentPage" max-size="maxSize"></ul></div>
@@ -213,7 +215,9 @@ require_once 'authentication.php';
 										</tfoot>
 									</table>
 								</div>
+
 							</div>
+
                         </div>
                     </div>
                 </div>
@@ -230,7 +234,6 @@ require_once 'authentication.php';
 
 <!-- dependencies -->
 <script src="vendor/bootbox/bootbox.min.js"></script>
-
 <script src="angular/angular.min.js"></script>
 <script src="angular/angular-route.min.js"></script>
 <script src="angular/ui-bootstrap-tpls-3.0.2.min.js"></script>

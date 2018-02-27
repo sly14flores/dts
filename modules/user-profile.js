@@ -54,7 +54,10 @@ angular.module('app-module', ['form-validator','bootstrap-modal','ui.bootstrap',
 		self.data = function(scope) {
 
 			scope.formHolder = {};
+			
 			scope.views = {};
+			
+			scope.views.currentPage = 1;
 			
 			scope.controls = {
 				btns: {
@@ -68,13 +71,18 @@ angular.module('app-module', ['form-validator','bootstrap-modal','ui.bootstrap',
 			};
 			
 			scope.user = {};
+			
 			scope.user.id = 0;	
 			
 			scope.users = [];
 			
 			scope.offices = [];
 			
+			scope.groups = [];
+			
+
 			scope.views.currentPage = 1;
+
 			
 			$http({
 				method: 'GET',
@@ -82,6 +90,18 @@ angular.module('app-module', ['form-validator','bootstrap-modal','ui.bootstrap',
 			}).then(function mySuccess(response) {
 				
 				scope.offices = angular.copy(response.data);
+					
+			}, function myError(response) {
+		
+		
+		
+			});			
+			$http({
+				method: 'GET',
+				url: 'handlers/groups.php'
+			}).then(function mySuccess(response) {
+				
+				scope.groups = angular.copy(response.data);
 					
 			}, function myError(response) {
 		
@@ -216,10 +236,12 @@ angular.module('app-module', ['form-validator','bootstrap-modal','ui.bootstrap',
 			  url: 'handlers/users-list.php'
 			}).then(function mySuccess(response) {
 				
+
 				scope.users = angular.copy(response.data);	
 
 				scope.filterData = scope.users; // for pagination
 				scope.currentPage = scope.views.currentPage; // for pagination 							
+
 				
 			}, function myError(response) {
 				

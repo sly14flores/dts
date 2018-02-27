@@ -115,652 +115,218 @@ Stack trace:
 #1 C:\UwAmp310\www\dts\handlers\office-view.php(10): pdo_db->getData('SELECT id, dept...')
 #2 {main}
   thrown in C:\UwAmp310\www\dts\db.php on line 42
-[23-Feb-2018 07:30:24 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2002] A socket operation was attempted to an unreachable host.
- in C:\Users\SLY One\Desktop\UwAmp310\www\dts\db.php:35
+[22-Feb-2018 13:40:46 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'destination' in 'field list' in C:\UwAmp310\www\dts\db.php:134
 Stack trace:
-#0 C:\Users\SLY One\Desktop\UwAmp310\www\dts\db.php(35): PDO->__construct('mysql:host=10.1...', 'dts', 'dtsict', Array)
-#1 C:\Users\SLY One\Desktop\UwAmp310\www\dts\handlers\login.php(7): pdo_db->__construct()
+#0 C:\UwAmp310\www\dts\db.php(134): PDO->prepare('INSERT INTO doc...')
+#1 C:\UwAmp310\www\dts\handlers\add-documents.php(52): pdo_db->insertData(Array)
 #2 {main}
-  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\dts\db.php on line 35
-[23-Feb-2018 07:30:28 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2002] A socket operation was attempted to an unreachable host.
- in C:\Users\SLY One\Desktop\UwAmp310\www\dts\db.php:35
+  thrown in C:\UwAmp310\www\dts\db.php on line 134
+[22-Feb-2018 13:42:27 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'destination' in 'field list' in C:\UwAmp310\www\dts\db.php:134
 Stack trace:
-#0 C:\Users\SLY One\Desktop\UwAmp310\www\dts\db.php(35): PDO->__construct('mysql:host=10.1...', 'dts', 'dtsict', Array)
-#1 C:\Users\SLY One\Desktop\UwAmp310\www\dts\handlers\login.php(7): pdo_db->__construct()
+#0 C:\UwAmp310\www\dts\db.php(134): PDO->prepare('INSERT INTO doc...')
+#1 C:\UwAmp310\www\dts\handlers\add-documents.php(52): pdo_db->insertData(Array)
 #2 {main}
-  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\dts\db.php on line 35
-[23-Feb-2018 22:16:04 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: YES) in C:\UwAmp310\www\dts\db.php:35
+  thrown in C:\UwAmp310\www\dts\db.php on line 134
+[22-Feb-2018 13:54:33 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'destination' in 'field list' in C:\UwAmp310\www\dts\db.php:134
 Stack trace:
-#0 C:\UwAmp310\www\dts\db.php(35): PDO->__construct('mysql:host=loca...', 'root', 'dtsict', Array)
-#1 C:\UwAmp310\www\dts\handlers\login.php(7): pdo_db->__construct()
+#0 C:\UwAmp310\www\dts\db.php(134): PDO->prepare('INSERT INTO doc...')
+#1 C:\UwAmp310\www\dts\handlers\add-documents.php(52): pdo_db->insertData(Array)
+#2 {main}
+  thrown in C:\UwAmp310\www\dts\db.php on line 134
+[22-Feb-2018 13:55:14 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'destination' in 'field list' in C:\UwAmp310\www\dts\db.php:134
+Stack trace:
+#0 C:\UwAmp310\www\dts\db.php(134): PDO->prepare('INSERT INTO doc...')
+#1 C:\UwAmp310\www\dts\handlers\add-documents.php(52): pdo_db->insertData(Array)
+#2 {main}
+  thrown in C:\UwAmp310\www\dts\db.php on line 134
+[22-Feb-2018 14:53:09 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2002] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
+ in C:\UwAmp310\www\dts\db.php:35
+Stack trace:
+#0 C:\UwAmp310\www\dts\db.php(35): PDO->__construct('mysql:host=10.1...', 'dts', 'dtsict', Array)
+#1 C:\UwAmp310\www\dts\handlers\offices.php(5): pdo_db->__construct('offices')
 #2 {main}
   thrown in C:\UwAmp310\www\dts\db.php on line 35
-[23-Feb-2018 22:23:35 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
-[23-Feb-2018 22:23:35 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 22:23:35 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 22:23:35 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
-[23-Feb-2018 22:23:35 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 22:23:35 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 22:23:44 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
-[23-Feb-2018 22:23:44 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 22:23:44 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 22:23:44 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
-[23-Feb-2018 22:23:45 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 22:23:45 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 22:34:53 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
-[23-Feb-2018 22:34:53 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 22:34:53 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 22:34:53 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
-[23-Feb-2018 22:34:53 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 22:34:53 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 22:34:57 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
-[23-Feb-2018 22:34:57 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 22:34:57 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 22:34:57 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
-[23-Feb-2018 22:34:57 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 22:34:57 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 22:34:59 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
-[23-Feb-2018 22:34:59 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 22:34:59 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 22:34:59 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
-[23-Feb-2018 22:34:59 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 22:34:59 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 22:35:27 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
-[23-Feb-2018 22:35:27 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 22:35:27 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 22:35:27 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
-[23-Feb-2018 22:35:27 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 22:35:27 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 22:35:30 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
-[23-Feb-2018 22:35:30 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 22:35:30 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 22:35:30 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
-[23-Feb-2018 22:35:30 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 22:35:30 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 22:35:32 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
-[23-Feb-2018 22:35:32 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 22:35:32 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 22:35:32 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
-[23-Feb-2018 22:35:32 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 22:35:32 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 22:35:36 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
-[23-Feb-2018 22:35:36 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 22:35:36 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 22:35:36 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
-[23-Feb-2018 22:35:36 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 22:35:36 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 22:38:13 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
-[23-Feb-2018 22:38:13 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 22:38:13 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 22:38:13 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
-[23-Feb-2018 22:38:13 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 22:38:13 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 22:38:17 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
-[23-Feb-2018 22:38:17 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 22:38:17 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 22:38:17 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
-[23-Feb-2018 22:38:17 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 22:38:17 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 22:38:19 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
-[23-Feb-2018 22:38:19 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 22:38:19 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 22:38:19 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
-[23-Feb-2018 22:38:19 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 22:38:19 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 22:38:26 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
-[23-Feb-2018 22:38:26 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 22:38:26 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 22:38:26 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
-[23-Feb-2018 22:38:26 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 22:38:26 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 22:49:39 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
-[23-Feb-2018 22:49:39 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 22:49:39 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 22:49:39 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
-[23-Feb-2018 22:49:39 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 22:49:39 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 22:50:33 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
-[23-Feb-2018 22:50:33 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 22:50:33 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 22:50:33 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
-[23-Feb-2018 22:50:33 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 22:50:33 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 22:50:35 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
-[23-Feb-2018 22:50:35 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 22:50:35 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 22:50:35 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
-[23-Feb-2018 22:50:35 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 22:50:35 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 22:50:38 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
-[23-Feb-2018 22:50:38 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 22:50:38 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 22:50:38 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
-[23-Feb-2018 22:50:38 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 22:50:38 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 22:50:41 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
-[23-Feb-2018 22:50:41 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 22:50:41 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 22:50:41 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
-[23-Feb-2018 22:50:41 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 22:50:41 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 22:50:46 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
-[23-Feb-2018 22:50:46 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 22:50:46 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 22:50:46 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
-[23-Feb-2018 22:50:46 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 22:50:46 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 22:53:14 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
-[23-Feb-2018 22:53:14 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 22:53:14 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 22:53:14 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
-[23-Feb-2018 22:53:14 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 22:53:14 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 22:53:15 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
-[23-Feb-2018 22:53:15 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 22:53:16 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 22:53:16 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
-[23-Feb-2018 22:53:16 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 22:53:16 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:01:22 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
-[23-Feb-2018 23:01:22 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:01:22 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:01:22 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
-[23-Feb-2018 23:01:22 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:01:22 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:01:24 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
-[23-Feb-2018 23:01:24 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:01:24 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:01:24 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
-[23-Feb-2018 23:01:24 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:01:24 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:01:48 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
-[23-Feb-2018 23:01:48 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:01:48 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:01:48 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
-[23-Feb-2018 23:01:48 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:01:48 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:02:02 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
-[23-Feb-2018 23:02:02 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:02:02 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:02:02 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
-[23-Feb-2018 23:02:02 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:02:03 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:08:46 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
-[23-Feb-2018 23:08:46 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:08:47 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:08:47 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
-[23-Feb-2018 23:08:47 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:08:47 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:26:37 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
-[23-Feb-2018 23:26:38 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:26:38 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:26:38 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
-[23-Feb-2018 23:26:38 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:26:38 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:26:40 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
-[23-Feb-2018 23:26:40 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:26:40 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:26:40 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
-[23-Feb-2018 23:26:41 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:26:41 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:26:46 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
-[23-Feb-2018 23:26:46 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:26:46 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:26:46 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
-[23-Feb-2018 23:26:46 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:26:46 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:26:53 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
-[23-Feb-2018 23:26:53 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:26:53 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:26:53 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
-[23-Feb-2018 23:26:53 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:26:53 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:27:01 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
-[23-Feb-2018 23:27:01 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:27:01 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:27:01 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
-[23-Feb-2018 23:27:01 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:27:01 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:27:04 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
-[23-Feb-2018 23:27:04 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:27:04 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:27:04 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
-[23-Feb-2018 23:27:04 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:27:04 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:28:41 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
-[23-Feb-2018 23:28:41 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:28:41 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:28:41 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
-[23-Feb-2018 23:28:41 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:28:41 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:28:44 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
-[23-Feb-2018 23:28:44 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:28:45 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:28:45 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
-[23-Feb-2018 23:28:45 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:28:45 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:29:37 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
-[23-Feb-2018 23:29:37 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:29:37 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:29:37 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
-[23-Feb-2018 23:29:37 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:29:37 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:31:04 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
-[23-Feb-2018 23:31:04 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:31:04 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:31:04 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
-[23-Feb-2018 23:31:04 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:31:04 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:31:32 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
-[23-Feb-2018 23:31:32 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:31:32 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:31:32 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
-[23-Feb-2018 23:31:32 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:31:32 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:33:03 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
-[23-Feb-2018 23:33:03 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:33:03 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:33:03 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
-[23-Feb-2018 23:33:03 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:33:03 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:33:25 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
-[23-Feb-2018 23:33:25 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:33:25 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:33:25 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
-[23-Feb-2018 23:33:25 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:33:25 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:33:42 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
-[23-Feb-2018 23:33:42 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:33:42 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:33:42 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
-[23-Feb-2018 23:33:42 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:33:42 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:34:03 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
-[23-Feb-2018 23:34:03 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:34:03 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:34:03 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
-[23-Feb-2018 23:34:03 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:34:03 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:34:28 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
-[23-Feb-2018 23:34:28 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:34:28 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:34:28 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
-[23-Feb-2018 23:34:28 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:34:28 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:34:32 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
-[23-Feb-2018 23:34:32 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:34:32 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:34:32 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
-[23-Feb-2018 23:34:32 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:34:32 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:35:02 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
-[23-Feb-2018 23:35:02 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:35:02 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:35:02 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
-[23-Feb-2018 23:35:02 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:35:03 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:35:08 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
-[23-Feb-2018 23:35:08 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:35:08 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:35:08 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
-[23-Feb-2018 23:35:08 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:35:08 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:35:11 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
-[23-Feb-2018 23:35:11 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:35:12 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:35:12 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
-[23-Feb-2018 23:35:12 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:35:12 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:35:13 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
-[23-Feb-2018 23:35:13 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:35:14 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:35:14 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
-[23-Feb-2018 23:35:14 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:35:14 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:35:15 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
-[23-Feb-2018 23:35:15 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:35:15 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:35:15 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
-[23-Feb-2018 23:35:16 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:35:16 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:35:18 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
-[23-Feb-2018 23:35:18 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:35:18 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:35:18 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
-[23-Feb-2018 23:35:18 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:35:18 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:35:19 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
-[23-Feb-2018 23:35:20 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:35:20 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:35:20 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
-[23-Feb-2018 23:35:20 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:35:20 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:40:13 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
-[23-Feb-2018 23:40:13 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:40:13 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:40:13 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
-[23-Feb-2018 23:40:13 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:40:13 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:40:17 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
-[23-Feb-2018 23:40:17 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:40:17 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:40:17 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
-[23-Feb-2018 23:40:17 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:40:17 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:40:21 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
-[23-Feb-2018 23:40:21 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:40:21 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:40:21 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
-[23-Feb-2018 23:40:21 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:40:21 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:40:31 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
-[23-Feb-2018 23:40:31 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:40:31 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:40:31 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
-[23-Feb-2018 23:40:31 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:40:31 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:48:26 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
-[23-Feb-2018 23:48:26 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:48:26 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:48:26 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
-[23-Feb-2018 23:48:26 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:48:26 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:48:30 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
-[23-Feb-2018 23:48:30 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:48:30 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:48:30 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
-[23-Feb-2018 23:48:30 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:48:30 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:48:32 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
-[23-Feb-2018 23:48:32 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:48:32 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:48:32 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
-[23-Feb-2018 23:48:32 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:48:32 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:49:10 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
-[23-Feb-2018 23:49:10 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:49:11 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:49:11 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
-[23-Feb-2018 23:49:11 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:49:11 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:49:14 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
-[23-Feb-2018 23:49:14 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:49:14 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:49:14 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
-[23-Feb-2018 23:49:14 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:49:14 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:56:00 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
-[23-Feb-2018 23:56:00 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:56:00 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:56:00 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
-[23-Feb-2018 23:56:00 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:56:00 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:56:13 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
-[23-Feb-2018 23:56:13 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:56:13 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:56:13 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
-[23-Feb-2018 23:56:13 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:56:13 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:56:18 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
-[23-Feb-2018 23:56:18 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:56:18 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:56:18 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
-[23-Feb-2018 23:56:18 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:56:18 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:56:20 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
-[23-Feb-2018 23:56:20 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:56:20 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:56:20 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
-[23-Feb-2018 23:56:20 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:56:20 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:56:22 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
-[23-Feb-2018 23:56:22 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:56:22 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:56:22 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
-[23-Feb-2018 23:56:22 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:56:22 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:59:09 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
-[23-Feb-2018 23:59:09 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:59:09 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[23-Feb-2018 23:59:09 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
-[23-Feb-2018 23:59:09 Asia/Manila] PHP Stack trace:
-[23-Feb-2018 23:59:09 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[24-Feb-2018 00:05:48 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
-[24-Feb-2018 00:05:49 Asia/Manila] PHP Stack trace:
-[24-Feb-2018 00:05:49 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[24-Feb-2018 00:05:49 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
-[24-Feb-2018 00:05:49 Asia/Manila] PHP Stack trace:
-[24-Feb-2018 00:05:49 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[24-Feb-2018 00:05:54 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
-[24-Feb-2018 00:05:54 Asia/Manila] PHP Stack trace:
-[24-Feb-2018 00:05:54 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[24-Feb-2018 00:05:54 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
-[24-Feb-2018 00:05:54 Asia/Manila] PHP Stack trace:
-[24-Feb-2018 00:05:54 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[24-Feb-2018 00:05:59 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
-[24-Feb-2018 00:05:59 Asia/Manila] PHP Stack trace:
-[24-Feb-2018 00:05:59 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[24-Feb-2018 00:05:59 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
-[24-Feb-2018 00:05:59 Asia/Manila] PHP Stack trace:
-[24-Feb-2018 00:05:59 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[24-Feb-2018 00:06:02 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
-[24-Feb-2018 00:06:02 Asia/Manila] PHP Stack trace:
-[24-Feb-2018 00:06:02 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[24-Feb-2018 00:06:02 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
-[24-Feb-2018 00:06:02 Asia/Manila] PHP Stack trace:
-[24-Feb-2018 00:06:02 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
-[25-Feb-2018 18:25:06 Asia/Manila] PHP Parse error:  syntax error, unexpected end of file in C:\UwAmp310\www\dts\handlers\groups-list.php on line 12
-[25-Feb-2018 18:25:12 Asia/Manila] PHP Parse error:  syntax error, unexpected end of file in C:\UwAmp310\www\dts\handlers\groups-list.php on line 12
-[25-Feb-2018 18:26:35 Asia/Manila] PHP Parse error:  syntax error, unexpected end of file in C:\UwAmp310\www\dts\handlers\groups-list.php on line 12
-[25-Feb-2018 18:27:48 Asia/Manila] PHP Parse error:  syntax error, unexpected end of file in C:\UwAmp310\www\dts\handlers\groups-list.php on line 12
-[25-Feb-2018 18:27:51 Asia/Manila] PHP Parse error:  syntax error, unexpected end of file in C:\UwAmp310\www\dts\handlers\groups-list.php on line 12
-[26-Feb-2018 08:44:19 Asia/Manila] PHP Notice:  Undefined index: div_id in C:\UwAmp310\www\dts\handlers\profile-save.php on line 9
-[26-Feb-2018 08:44:19 Asia/Manila] PHP Notice:  Undefined index: div_id in C:\UwAmp310\www\dts\handlers\profile-save.php on line 9
-[26-Feb-2018 08:44:19 Asia/Manila] PHP Stack trace:
-[26-Feb-2018 08:44:19 Asia/Manila] PHP Stack trace:
-[26-Feb-2018 08:44:19 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\profile-save.php:0
-[26-Feb-2018 08:44:19 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\profile-save.php:0
-[26-Feb-2018 08:44:20 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'group_name' in 'field list' in C:\UwAmp310\www\dts\db.php:227
+[22-Feb-2018 14:53:09 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2002] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
+ in C:\UwAmp310\www\dts\db.php:35
 Stack trace:
-#0 C:\UwAmp310\www\dts\db.php(227): PDO->prepare('UPDATE users SE...')
-#1 C:\UwAmp310\www\dts\handlers\profile-save.php(12): pdo_db->updateData(Array, 'id')
+#0 C:\UwAmp310\www\dts\db.php(35): PDO->__construct('mysql:host=10.1...', 'dts', 'dtsict', Array)
+#1 C:\UwAmp310\www\dts\handlers\account-profile.php(7): pdo_db->__construct('users')
 #2 {main}
-  thrown in C:\UwAmp310\www\dts\db.php on line 227
-[26-Feb-2018 08:44:20 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'group_name' in 'field list' in C:\UwAmp310\www\dts\db.php:227
+  thrown in C:\UwAmp310\www\dts\db.php on line 35
+[22-Feb-2018 14:53:09 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2002] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
+ in C:\UwAmp310\www\dts\db.php:35
 Stack trace:
-#0 C:\UwAmp310\www\dts\db.php(227): PDO->prepare('UPDATE users SE...')
-#1 C:\UwAmp310\www\dts\handlers\profile-save.php(12): pdo_db->updateData(Array, 'id')
+#0 C:\UwAmp310\www\dts\db.php(35): PDO->__construct('mysql:host=10.1...', 'dts', 'dtsict', Array)
+#1 C:\UwAmp310\www\dts\handlers\documents-list.php(6): pdo_db->__construct('documents')
 #2 {main}
-  thrown in C:\UwAmp310\www\dts\db.php on line 227
-[26-Feb-2018 08:54:04 Asia/Manila] PHP Notice:  Undefined index: div_id in C:\UwAmp310\www\dts\handlers\profile-save.php on line 9
-[26-Feb-2018 08:54:05 Asia/Manila] PHP Stack trace:
-[26-Feb-2018 08:54:05 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\profile-save.php:0
-[26-Feb-2018 08:54:05 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'group_name' in 'field list' in C:\UwAmp310\www\dts\db.php:227
+  thrown in C:\UwAmp310\www\dts\db.php on line 35
+[24-Feb-2018 14:47:28 Asia/Manila] PHP Parse error:  syntax error, unexpected 'localhost' (T_STRING) in C:\UwAmp310\www\dts\db.php on line 26
+[24-Feb-2018 14:47:34 Asia/Manila] PHP Parse error:  syntax error, unexpected 'localhost' (T_STRING) in C:\UwAmp310\www\dts\db.php on line 26
+[24-Feb-2018 14:47:42 Asia/Manila] PHP Parse error:  syntax error, unexpected 'localhost' (T_STRING) in C:\UwAmp310\www\dts\db.php on line 26
+[24-Feb-2018 14:49:30 Asia/Manila] PHP Parse error:  syntax error, unexpected 'localhost' (T_STRING) in C:\UwAmp310\www\dts\db.php on line 26
+[24-Feb-2018 14:49:34 Asia/Manila] PHP Parse error:  syntax error, unexpected 'localhost' (T_STRING) in C:\UwAmp310\www\dts\db.php on line 26
+[26-Feb-2018 14:00:10 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'dts.groups' doesn't exist in C:\UwAmp310\www\dts\db.php:42
 Stack trace:
-#0 C:\UwAmp310\www\dts\db.php(227): PDO->prepare('UPDATE users SE...')
-#1 C:\UwAmp310\www\dts\handlers\profile-save.php(12): pdo_db->updateData(Array, 'id')
+#0 C:\UwAmp310\www\dts\db.php(42): PDO->query('SELECT * FROM `...')
+#1 C:\UwAmp310\www\dts\handlers\groups-list.php(9): pdo_db->getData('SELECT * FROM `...')
 #2 {main}
-  thrown in C:\UwAmp310\www\dts\db.php on line 227
-[26-Feb-2018 08:55:58 Asia/Manila] PHP Notice:  Undefined index: div_id in C:\UwAmp310\www\dts\handlers\profile-save.php on line 9
-[26-Feb-2018 08:55:58 Asia/Manila] PHP Stack trace:
-[26-Feb-2018 08:55:58 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\profile-save.php:0
-[26-Feb-2018 08:55:58 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'group_name' in 'field list' in C:\UwAmp310\www\dts\db.php:227
+  thrown in C:\UwAmp310\www\dts\db.php on line 42
+[26-Feb-2018 14:03:27 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'dts.groups' doesn't exist in C:\UwAmp310\www\dts\db.php:42
 Stack trace:
-#0 C:\UwAmp310\www\dts\db.php(227): PDO->prepare('UPDATE users SE...')
-#1 C:\UwAmp310\www\dts\handlers\profile-save.php(12): pdo_db->updateData(Array, 'id')
+#0 C:\UwAmp310\www\dts\db.php(42): PDO->query('SELECT * FROM `...')
+#1 C:\UwAmp310\www\dts\handlers\groups-list.php(9): pdo_db->getData('SELECT * FROM `...')
 #2 {main}
-  thrown in C:\UwAmp310\www\dts\db.php on line 227
-[26-Feb-2018 08:58:28 Asia/Manila] PHP Notice:  Undefined index: id in C:\UwAmp310\www\dts\handlers\groups-save.php on line 9
-[26-Feb-2018 08:58:28 Asia/Manila] PHP Stack trace:
-[26-Feb-2018 08:58:28 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\groups-save.php:0
-[26-Feb-2018 08:58:28 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') VALUES )' at line 1 in C:\UwAmp310\www\dts\db.php:134
+  thrown in C:\UwAmp310\www\dts\db.php on line 42
+[26-Feb-2018 14:03:44 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'dts.groups' doesn't exist in C:\UwAmp310\www\dts\db.php:42
 Stack trace:
-#0 C:\UwAmp310\www\dts\db.php(134): PDO->prepare('INSERT INTO gro...')
-#1 C:\UwAmp310\www\dts\handlers\groups-save.php(15): pdo_db->insertData(Array)
+#0 C:\UwAmp310\www\dts\db.php(42): PDO->query('SELECT * FROM `...')
+#1 C:\UwAmp310\www\dts\handlers\groups-list.php(9): pdo_db->getData('SELECT * FROM `...')
 #2 {main}
-  thrown in C:\UwAmp310\www\dts\db.php on line 134
-[26-Feb-2018 09:00:00 Asia/Manila] PHP Notice:  Undefined index: id in C:\UwAmp310\www\dts\handlers\groups-save.php on line 9
-[26-Feb-2018 09:00:00 Asia/Manila] PHP Stack trace:
-[26-Feb-2018 09:00:00 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\groups-save.php:0
-[26-Feb-2018 09:00:00 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') VALUES )' at line 1 in C:\UwAmp310\www\dts\db.php:134
+  thrown in C:\UwAmp310\www\dts\db.php on line 42
+[26-Feb-2018 14:19:31 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'dts.groups' doesn't exist in C:\UwAmp310\www\dts\db.php:42
 Stack trace:
-#0 C:\UwAmp310\www\dts\db.php(134): PDO->prepare('INSERT INTO gro...')
-#1 C:\UwAmp310\www\dts\handlers\groups-save.php(15): pdo_db->insertData(Array)
-#2 {main}
-  thrown in C:\UwAmp310\www\dts\db.php on line 134
-[26-Feb-2018 09:01:12 Asia/Manila] PHP Notice:  Undefined index: id in C:\UwAmp310\www\dts\handlers\groups-save.php on line 9
-[26-Feb-2018 09:01:12 Asia/Manila] PHP Stack trace:
-[26-Feb-2018 09:01:12 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\groups-save.php:0
-[26-Feb-2018 09:01:12 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') VALUES )' at line 1 in C:\UwAmp310\www\dts\db.php:134
+#0 C:\UwAmp310\www\dts\db.php(42): PDO->query('SELECT id, grou...')
+#1 C:\UwAmp310\www\dts\db.php(92): pdo_db->getData('SELECT id, grou...')
+#2 C:\UwAmp310\www\dts\handlers\groups.php(7): pdo_db->all(Array)
+#3 {main}
+  thrown in C:\UwAmp310\www\dts\db.php on line 42
+[26-Feb-2018 14:19:41 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'dts.groups' doesn't exist in C:\UwAmp310\www\dts\db.php:42
 Stack trace:
-#0 C:\UwAmp310\www\dts\db.php(134): PDO->prepare('INSERT INTO gro...')
-#1 C:\UwAmp310\www\dts\handlers\groups-save.php(15): pdo_db->insertData(Array)
-#2 {main}
-  thrown in C:\UwAmp310\www\dts\db.php on line 134
-[26-Feb-2018 09:09:43 Asia/Manila] PHP Notice:  Undefined index: id in C:\UwAmp310\www\dts\handlers\groups-save.php on line 9
-[26-Feb-2018 09:09:43 Asia/Manila] PHP Stack trace:
-[26-Feb-2018 09:09:43 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\groups-save.php:0
-[26-Feb-2018 09:09:43 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') VALUES )' at line 1 in C:\UwAmp310\www\dts\db.php:134
+#0 C:\UwAmp310\www\dts\db.php(42): PDO->query('SELECT id, grou...')
+#1 C:\UwAmp310\www\dts\db.php(92): pdo_db->getData('SELECT id, grou...')
+#2 C:\UwAmp310\www\dts\handlers\groups.php(7): pdo_db->all(Array)
+#3 {main}
+  thrown in C:\UwAmp310\www\dts\db.php on line 42
+[26-Feb-2018 14:21:35 Asia/Manila] PHP Notice:  Undefined variable: office in C:\UwAmp310\www\dts\handlers\user-view.php on line 14
+[26-Feb-2018 14:21:35 Asia/Manila] PHP Stack trace:
+[26-Feb-2018 14:21:35 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\user-view.php:0
+[26-Feb-2018 16:53:16 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2002] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
+ in C:\UwAmp310\www\dts\db.php:35
 Stack trace:
-#0 C:\UwAmp310\www\dts\db.php(134): PDO->prepare('INSERT INTO gro...')
-#1 C:\UwAmp310\www\dts\handlers\groups-save.php(15): pdo_db->insertData(Array)
+#0 C:\UwAmp310\www\dts\db.php(35): PDO->__construct('mysql:host=10.1...', 'dts', 'dtsict', Array)
+#1 C:\UwAmp310\www\dts\handlers\users-list.php(6): pdo_db->__construct('users')
 #2 {main}
-  thrown in C:\UwAmp310\www\dts\db.php on line 134
-[26-Feb-2018 09:12:36 Asia/Manila] PHP Notice:  Undefined index: id in C:\UwAmp310\www\dts\handlers\groups-save.php on line 9
-[26-Feb-2018 09:12:36 Asia/Manila] PHP Stack trace:
-[26-Feb-2018 09:12:36 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\groups-save.php:0
-[26-Feb-2018 09:12:36 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') VALUES )' at line 1 in C:\UwAmp310\www\dts\db.php:134
+  thrown in C:\UwAmp310\www\dts\db.php on line 35
+[26-Feb-2018 16:53:16 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2002] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
+ in C:\UwAmp310\www\dts\db.php:35
 Stack trace:
-#0 C:\UwAmp310\www\dts\db.php(134): PDO->prepare('INSERT INTO gro...')
-#1 C:\UwAmp310\www\dts\handlers\groups-save.php(15): pdo_db->insertData(Array)
+#0 C:\UwAmp310\www\dts\db.php(35): PDO->__construct('mysql:host=10.1...', 'dts', 'dtsict', Array)
+#1 C:\UwAmp310\www\dts\handlers\offices.php(5): pdo_db->__construct('offices')
 #2 {main}
-  thrown in C:\UwAmp310\www\dts\db.php on line 134
-[26-Feb-2018 09:18:11 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\groups-save.php on line 9
-[26-Feb-2018 09:18:11 Asia/Manila] PHP Stack trace:
-[26-Feb-2018 09:18:11 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\groups-save.php:0
-[26-Feb-2018 09:18:11 Asia/Manila] PHP Notice:  Undefined index: id in C:\UwAmp310\www\dts\handlers\groups-save.php on line 11
-[26-Feb-2018 09:18:11 Asia/Manila] PHP Stack trace:
-[26-Feb-2018 09:18:11 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\groups-save.php:0
-[26-Feb-2018 09:18:12 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '0) VALUES (?)' at line 1 in C:\UwAmp310\www\dts\db.php:134
+  thrown in C:\UwAmp310\www\dts\db.php on line 35
+[26-Feb-2018 16:53:16 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2002] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
+ in C:\UwAmp310\www\dts\db.php:35
 Stack trace:
-#0 C:\UwAmp310\www\dts\db.php(134): PDO->prepare('INSERT INTO gro...')
-#1 C:\UwAmp310\www\dts\handlers\groups-save.php(15): pdo_db->insertData(Array)
+#0 C:\UwAmp310\www\dts\db.php(35): PDO->__construct('mysql:host=10.1...', 'dts', 'dtsict', Array)
+#1 C:\UwAmp310\www\dts\handlers\groups.php(5): pdo_db->__construct('groups')
 #2 {main}
-  thrown in C:\UwAmp310\www\dts\db.php on line 134
-[26-Feb-2018 09:21:01 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\groups-save.php on line 9
-[26-Feb-2018 09:21:01 Asia/Manila] PHP Stack trace:
-[26-Feb-2018 09:21:01 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\groups-save.php:0
-[26-Feb-2018 09:21:02 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') VALUES )' at line 1 in C:\UwAmp310\www\dts\db.php:134
+  thrown in C:\UwAmp310\www\dts\db.php on line 35
+[26-Feb-2018 16:53:16 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2002] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
+ in C:\UwAmp310\www\dts\db.php:35
 Stack trace:
-#0 C:\UwAmp310\www\dts\db.php(134): PDO->prepare('INSERT INTO gro...')
-#1 C:\UwAmp310\www\dts\handlers\groups-save.php(15): pdo_db->insertData(Array)
+#0 C:\UwAmp310\www\dts\db.php(35): PDO->__construct('mysql:host=10.1...', 'dts', 'dtsict', Array)
+#1 C:\UwAmp310\www\dts\handlers\account-profile.php(7): pdo_db->__construct('users')
 #2 {main}
-  thrown in C:\UwAmp310\www\dts\db.php on line 134
-[26-Feb-2018 09:23:14 Asia/Manila] PHP Notice:  Undefined index: id in C:\UwAmp310\www\dts\handlers\groups-save.php on line 9
-[26-Feb-2018 09:23:14 Asia/Manila] PHP Stack trace:
-[26-Feb-2018 09:23:14 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\groups-save.php:0
-[26-Feb-2018 09:23:14 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') VALUES )' at line 1 in C:\UwAmp310\www\dts\db.php:134
+  thrown in C:\UwAmp310\www\dts\db.php on line 35
+[26-Feb-2018 17:18:12 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[01000]: Warning: 1265 Data truncated for column 'phone_number' at row 1 in C:\UwAmp310\www\dts\db.php:135
 Stack trace:
-#0 C:\UwAmp310\www\dts\db.php(134): PDO->prepare('INSERT INTO gro...')
-#1 C:\UwAmp310\www\dts\handlers\groups-save.php(18): pdo_db->insertData(Array)
+#0 C:\UwAmp310\www\dts\db.php(135): PDOStatement->execute(Array)
+#1 C:\UwAmp310\www\dts\handlers\profile-save.php(17): pdo_db->insertData(Array)
 #2 {main}
-  thrown in C:\UwAmp310\www\dts\db.php on line 134
-[26-Feb-2018 11:00:44 Asia/Manila] PHP Notice:  Undefined index: id in C:\UwAmp310\www\dts\handlers\groups-save.php on line 9
-[26-Feb-2018 11:00:44 Asia/Manila] PHP Stack trace:
-[26-Feb-2018 11:00:44 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\groups-save.php:0
-[26-Feb-2018 11:00:44 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') VALUES )' at line 1 in C:\UwAmp310\www\dts\db.php:134
-Stack trace:
-#0 C:\UwAmp310\www\dts\db.php(134): PDO->prepare('INSERT INTO gro...')
-#1 C:\UwAmp310\www\dts\handlers\groups-save.php(18): pdo_db->insertData(Array)
-#2 {main}
-  thrown in C:\UwAmp310\www\dts\db.php on line 134
-[26-Feb-2018 11:02:32 Asia/Manila] PHP Notice:  Undefined index: id in C:\UwAmp310\www\dts\handlers\groups-save.php on line 9
-[26-Feb-2018 11:02:32 Asia/Manila] PHP Stack trace:
-[26-Feb-2018 11:02:32 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\groups-save.php:0
-[26-Feb-2018 11:02:32 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') VALUES )' at line 1 in C:\UwAmp310\www\dts\db.php:134
-Stack trace:
-#0 C:\UwAmp310\www\dts\db.php(134): PDO->prepare('INSERT INTO gro...')
-#1 C:\UwAmp310\www\dts\handlers\groups-save.php(18): pdo_db->insertData(Array)
-#2 {main}
-  thrown in C:\UwAmp310\www\dts\db.php on line 134
-[26-Feb-2018 11:06:53 Asia/Manila] PHP Notice:  Undefined index: id in C:\UwAmp310\www\dts\handlers\groups-save.php on line 9
-[26-Feb-2018 11:06:53 Asia/Manila] PHP Stack trace:
-[26-Feb-2018 11:06:53 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\groups-save.php:0
-[26-Feb-2018 11:06:53 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') VALUES )' at line 1 in C:\UwAmp310\www\dts\db.php:134
-Stack trace:
-#0 C:\UwAmp310\www\dts\db.php(134): PDO->prepare('INSERT INTO gro...')
-#1 C:\UwAmp310\www\dts\handlers\groups-save.php(18): pdo_db->insertData(Array)
-#2 {main}
-  thrown in C:\UwAmp310\www\dts\db.php on line 134
-[26-Feb-2018 11:09:26 Asia/Manila] PHP Notice:  Undefined index: id in C:\UwAmp310\www\dts\handlers\groups-save.php on line 9
-[26-Feb-2018 11:09:27 Asia/Manila] PHP Stack trace:
-[26-Feb-2018 11:09:27 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\groups-save.php:0
-[26-Feb-2018 11:09:27 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') VALUES )' at line 1 in C:\UwAmp310\www\dts\db.php:134
-Stack trace:
-#0 C:\UwAmp310\www\dts\db.php(134): PDO->prepare('INSERT INTO gro...')
-#1 C:\UwAmp310\www\dts\handlers\groups-save.php(18): pdo_db->insertData(Array)
-#2 {main}
-  thrown in C:\UwAmp310\www\dts\db.php on line 134
-[26-Feb-2018 11:10:42 Asia/Manila] PHP Notice:  Undefined index: id in C:\UwAmp310\www\dts\handlers\groups-save.php on line 9
-[26-Feb-2018 11:10:42 Asia/Manila] PHP Stack trace:
-[26-Feb-2018 11:10:42 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\groups-save.php:0
-[26-Feb-2018 11:10:43 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') VALUES )' at line 1 in C:\UwAmp310\www\dts\db.php:134
-Stack trace:
-#0 C:\UwAmp310\www\dts\db.php(134): PDO->prepare('INSERT INTO gro...')
-#1 C:\UwAmp310\www\dts\handlers\groups-save.php(18): pdo_db->insertData(Array)
-#2 {main}
-  thrown in C:\UwAmp310\www\dts\db.php on line 134
-[26-Feb-2018 11:12:14 Asia/Manila] PHP Notice:  Undefined index: id in C:\UwAmp310\www\dts\handlers\groups-save.php on line 11
-[26-Feb-2018 11:12:15 Asia/Manila] PHP Stack trace:
-[26-Feb-2018 11:12:15 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\groups-save.php:0
-[26-Feb-2018 11:12:15 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') VALUES )' at line 1 in C:\UwAmp310\www\dts\db.php:134
-Stack trace:
-#0 C:\UwAmp310\www\dts\db.php(134): PDO->prepare('INSERT INTO gro...')
-#1 C:\UwAmp310\www\dts\handlers\groups-save.php(18): pdo_db->insertData(Array)
-#2 {main}
-  thrown in C:\UwAmp310\www\dts\db.php on line 134
-[26-Feb-2018 11:21:25 Asia/Manila] PHP Notice:  Undefined index: id in C:\UwAmp310\www\dts\handlers\groups-save.php on line 9
-[26-Feb-2018 11:21:25 Asia/Manila] PHP Stack trace:
-[26-Feb-2018 11:21:25 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\groups-save.php:0
-[26-Feb-2018 11:21:25 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') VALUES )' at line 1 in C:\UwAmp310\www\dts\db.php:134
-Stack trace:
-#0 C:\UwAmp310\www\dts\db.php(134): PDO->prepare('INSERT INTO gro...')
-#1 C:\UwAmp310\www\dts\handlers\groups-save.php(18): pdo_db->insertData(Array)
-#2 {main}
-  thrown in C:\UwAmp310\www\dts\db.php on line 134
-[26-Feb-2018 11:25:08 Asia/Manila] PHP Notice:  Undefined index: id in C:\UwAmp310\www\dts\handlers\groups-save.php on line 9
-[26-Feb-2018 11:25:08 Asia/Manila] PHP Stack trace:
-[26-Feb-2018 11:25:08 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\groups-save.php:0
-[26-Feb-2018 11:25:08 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') VALUES )' at line 1 in C:\UwAmp310\www\dts\db.php:134
-Stack trace:
-#0 C:\UwAmp310\www\dts\db.php(134): PDO->prepare('INSERT INTO gro...')
-#1 C:\UwAmp310\www\dts\handlers\groups-save.php(18): pdo_db->insertData(Array)
-#2 {main}
-  thrown in C:\UwAmp310\www\dts\db.php on line 134
-[26-Feb-2018 11:25:31 Asia/Manila] PHP Notice:  Undefined index: id in C:\UwAmp310\www\dts\handlers\groups-save.php on line 9
-[26-Feb-2018 11:25:31 Asia/Manila] PHP Stack trace:
-[26-Feb-2018 11:25:31 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\groups-save.php:0
-[26-Feb-2018 11:25:31 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') VALUES )' at line 1 in C:\UwAmp310\www\dts\db.php:134
-Stack trace:
-#0 C:\UwAmp310\www\dts\db.php(134): PDO->prepare('INSERT INTO gro...')
-#1 C:\UwAmp310\www\dts\handlers\groups-save.php(18): pdo_db->insertData(Array)
-#2 {main}
-  thrown in C:\UwAmp310\www\dts\db.php on line 134
-[26-Feb-2018 11:26:06 Asia/Manila] PHP Notice:  Undefined index: id in C:\UwAmp310\www\dts\handlers\groups-save.php on line 9
-[26-Feb-2018 11:26:06 Asia/Manila] PHP Stack trace:
-[26-Feb-2018 11:26:06 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\groups-save.php:0
-[26-Feb-2018 11:26:06 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') VALUES )' at line 1 in C:\UwAmp310\www\dts\db.php:134
-Stack trace:
-#0 C:\UwAmp310\www\dts\db.php(134): PDO->prepare('INSERT INTO gro...')
-#1 C:\UwAmp310\www\dts\handlers\groups-save.php(16): pdo_db->insertData(Array)
-#2 {main}
-  thrown in C:\UwAmp310\www\dts\db.php on line 134
-[26-Feb-2018 11:26:27 Asia/Manila] PHP Notice:  Undefined index: id in C:\UwAmp310\www\dts\handlers\groups-save.php on line 9
-[26-Feb-2018 11:26:28 Asia/Manila] PHP Stack trace:
-[26-Feb-2018 11:26:28 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\groups-save.php:0
-[26-Feb-2018 11:26:28 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') VALUES )' at line 1 in C:\UwAmp310\www\dts\db.php:134
-Stack trace:
-#0 C:\UwAmp310\www\dts\db.php(134): PDO->prepare('INSERT INTO gro...')
-#1 C:\UwAmp310\www\dts\handlers\groups-save.php(16): pdo_db->insertData(Array)
-#2 {main}
-  thrown in C:\UwAmp310\www\dts\db.php on line 134
+  thrown in C:\UwAmp310\www\dts\db.php on line 135
+[27-Feb-2018 08:31:42 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[27-Feb-2018 08:31:42 Asia/Manila] PHP Stack trace:
+[27-Feb-2018 08:31:42 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[27-Feb-2018 08:31:42 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[27-Feb-2018 08:31:42 Asia/Manila] PHP Stack trace:
+[27-Feb-2018 08:31:42 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[27-Feb-2018 08:31:47 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[27-Feb-2018 08:31:47 Asia/Manila] PHP Stack trace:
+[27-Feb-2018 08:31:47 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[27-Feb-2018 08:31:47 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[27-Feb-2018 08:31:47 Asia/Manila] PHP Stack trace:
+[27-Feb-2018 08:31:47 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[27-Feb-2018 08:31:50 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[27-Feb-2018 08:31:50 Asia/Manila] PHP Stack trace:
+[27-Feb-2018 08:31:50 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[27-Feb-2018 08:31:50 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[27-Feb-2018 08:31:50 Asia/Manila] PHP Stack trace:
+[27-Feb-2018 08:31:50 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[27-Feb-2018 08:31:53 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[27-Feb-2018 08:31:53 Asia/Manila] PHP Stack trace:
+[27-Feb-2018 08:31:53 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[27-Feb-2018 08:31:53 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[27-Feb-2018 08:31:53 Asia/Manila] PHP Stack trace:
+[27-Feb-2018 08:31:53 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[27-Feb-2018 08:31:55 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[27-Feb-2018 08:31:55 Asia/Manila] PHP Stack trace:
+[27-Feb-2018 08:31:55 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[27-Feb-2018 08:31:55 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[27-Feb-2018 08:31:55 Asia/Manila] PHP Stack trace:
+[27-Feb-2018 08:31:55 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[27-Feb-2018 08:32:02 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[27-Feb-2018 08:32:02 Asia/Manila] PHP Stack trace:
+[27-Feb-2018 08:32:02 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[27-Feb-2018 08:32:02 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[27-Feb-2018 08:32:02 Asia/Manila] PHP Stack trace:
+[27-Feb-2018 08:32:02 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[27-Feb-2018 08:32:06 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[27-Feb-2018 08:32:06 Asia/Manila] PHP Stack trace:
+[27-Feb-2018 08:32:06 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[27-Feb-2018 08:32:06 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[27-Feb-2018 08:32:06 Asia/Manila] PHP Stack trace:
+[27-Feb-2018 08:32:06 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[27-Feb-2018 08:32:18 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[27-Feb-2018 08:32:18 Asia/Manila] PHP Stack trace:
+[27-Feb-2018 08:32:18 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[27-Feb-2018 08:32:18 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[27-Feb-2018 08:32:18 Asia/Manila] PHP Stack trace:
+[27-Feb-2018 08:32:18 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[27-Feb-2018 08:32:21 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[27-Feb-2018 08:32:21 Asia/Manila] PHP Stack trace:
+[27-Feb-2018 08:32:21 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[27-Feb-2018 08:32:21 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[27-Feb-2018 08:32:21 Asia/Manila] PHP Stack trace:
+[27-Feb-2018 08:32:21 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[27-Feb-2018 08:32:29 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[27-Feb-2018 08:32:29 Asia/Manila] PHP Stack trace:
+[27-Feb-2018 08:32:29 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[27-Feb-2018 08:32:29 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[27-Feb-2018 08:32:29 Asia/Manila] PHP Stack trace:
+[27-Feb-2018 08:32:29 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[27-Feb-2018 08:33:02 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[27-Feb-2018 08:33:02 Asia/Manila] PHP Stack trace:
+[27-Feb-2018 08:33:02 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[27-Feb-2018 08:33:02 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[27-Feb-2018 08:33:02 Asia/Manila] PHP Stack trace:
+[27-Feb-2018 08:33:02 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[27-Feb-2018 08:44:37 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[27-Feb-2018 08:44:37 Asia/Manila] PHP Stack trace:
+[27-Feb-2018 08:44:37 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[27-Feb-2018 08:44:37 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[27-Feb-2018 08:44:37 Asia/Manila] PHP Stack trace:
+[27-Feb-2018 08:44:37 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[27-Feb-2018 08:44:39 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[27-Feb-2018 08:44:39 Asia/Manila] PHP Stack trace:
+[27-Feb-2018 08:44:39 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[27-Feb-2018 08:44:39 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[27-Feb-2018 08:44:39 Asia/Manila] PHP Stack trace:
+[27-Feb-2018 08:44:39 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[27-Feb-2018 08:46:56 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[27-Feb-2018 08:46:56 Asia/Manila] PHP Stack trace:
+[27-Feb-2018 08:46:56 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[27-Feb-2018 08:46:56 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[27-Feb-2018 08:46:56 Asia/Manila] PHP Stack trace:
+[27-Feb-2018 08:46:56 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[27-Feb-2018 08:48:38 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[27-Feb-2018 08:48:38 Asia/Manila] PHP Stack trace:
+[27-Feb-2018 08:48:38 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[27-Feb-2018 08:48:38 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[27-Feb-2018 08:48:38 Asia/Manila] PHP Stack trace:
+[27-Feb-2018 08:48:38 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[27-Feb-2018 08:48:39 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 14
+[27-Feb-2018 08:48:39 Asia/Manila] PHP Stack trace:
+[27-Feb-2018 08:48:39 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[27-Feb-2018 08:48:39 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
+[27-Feb-2018 08:48:39 Asia/Manila] PHP Stack trace:
+[27-Feb-2018 08:48:39 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0

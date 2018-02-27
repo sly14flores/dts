@@ -68,15 +68,15 @@ require_once 'authentication.php';
                                 </a>
                             </li><li class="nav-item">
                                 <a href="add-documents.html" class="nav-link">
-                                    <i class="icon icon-login"></i>Incoming Document
+                                    <i class="icon icon-login"></i>Incoming Documents
                                 </a>
                             </li><li class="nav-item">
                                 <a href="add-documents.html" class="nav-link">
-                                    <i class="icon icon-book-open"></i>Review Document
+                                    <i class="icon icon-book-open"></i>Transactions
                                 </a>
                             </li><li class="nav-item">
                                 <a href="add-documents.html" class="nav-link">
-                                    <i class="icon icon-logout"></i>Outgoing Document
+                                    <i class="icon icon-logout"></i>For Pick-Up Documents
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -98,7 +98,7 @@ require_once 'authentication.php';
 
                         <ul class="nav-dropdown-items">
                             <li class="nav-item">
-                                <a href="user-profile.html" class="nav-link">
+                                <a href="user-profile.html" class="nav-link active">
                                     <i class="icon icon-user"></i> User Profile
                                 </a>
                             </li>
@@ -110,7 +110,7 @@ require_once 'authentication.php';
                         </ul>
                     </li>
 					<li class="nav-item nav-dropdown">
-                        <a href="#" class="nav-link nav-dropdown-toggle  active">
+                        <a href="#" class="nav-link nav-dropdown-toggle">
                             <i class="icon icon-list"></i> Groups <i class="fa fa-caret-left"></i>
                         </a>
 
@@ -184,6 +184,13 @@ require_once 'authentication.php';
                                             <label for="single-select">Offices</label>
                                             <select id="single-select" class="form-control" name="div_id" ng-class="{'is-invalid': formHolder.user.div_id.$touched && formHolder.user.div_id.$invalid}" ng-model="user.div_id" ng-options="o.office for o in offices track by o.id" ng-disabled="controls.btns.ok" required></select>
 											<div class="invalid-feedback">Office is required</div>											
+                                        </div>
+									</div>
+									<div class="col-md-4">
+										<div class="form-group">
+                                            <label for="single-select">Groups</label>
+                                            <select id="single-select" class="form-control" name="group_id" ng-class="{'is-invalid': formHolder.user.group_id.$touched && formHolder.user.group_id.$invalid}" ng-model="user.group_id" ng-options="g.group_name for g in groups track by g.id" ng-disabled="controls.btns.ok" required></select>
+											<div class="invalid-feedback">Group is required</div>											
                                         </div>
 									</div>
 								</div>
@@ -276,7 +283,6 @@ require_once 'authentication.php';
 
 <!-- dependencies -->
 <script src="vendor/bootbox/bootbox.min.js"></script>
-
 <script src="angular/angular.min.js"></script>
 <script src="angular/angular-route.min.js"></script>
 <script src="angular/ui-bootstrap-tpls-3.0.2.min.js"></script>
