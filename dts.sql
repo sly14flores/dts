@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.4.1
+-- version 4.5.4.1deb2ubuntu2
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Feb 21, 2018 at 08:46 AM
--- Server version: 5.7.11
--- PHP Version: 7.0.3
+-- Generation Time: Mar 01, 2018 at 03:51 PM
+-- Server version: 5.7.20-0ubuntu0.16.04.1
+-- PHP Version: 7.0.22-0ubuntu0.16.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -92,7 +92,7 @@ INSERT INTO `departments` (`id`, `dept`, `shortname`) VALUES
 (21, 'CABA DISTRICT HOSPITAL', 'CDH'),
 (22, 'NAGUILIAN DISTRICT HOSPITAL', 'NDH'),
 (23, 'ROSARIO DISTRICT HOSPITAL', 'RDH'),
-(24, 'RANDOM', 'RND');
+(24, 'OTHERS', 'OTH');
 
 -- --------------------------------------------------------
 
@@ -179,6 +179,13 @@ CREATE TABLE `documents` (
   `remarks` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `documents`
+--
+
+INSERT INTO `documents` (`id`, `user_id`, `doc_name`, `barcode`, `origin`, `other_origin`, `date_enrolled`, `transaction`, `doc_type`, `communication`, `remarks`) VALUES
+(1, 15, 'DTS - City of San Fernando', 'ICT-03-2018-00001', '5', NULL, '2018-03-01 07:50:05', '1', '5', '2', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -225,6 +232,27 @@ CREATE TABLE `files` (
   `document_id` int(11) DEFAULT NULL,
   `file_name` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `groups`
+--
+
+CREATE TABLE `groups` (
+  `id` int(11) NOT NULL,
+  `group_name` varchar(50) DEFAULT NULL,
+  `group_description` varchar(50) DEFAULT NULL,
+  `priveleges` longtext
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `groups`
+--
+
+INSERT INTO `groups` (`id`, `group_name`, `group_description`, `priveleges`) VALUES
+(1, 'Administrator', 'Admin', NULL),
+(2, 'User', 'Employee Level', NULL);
 
 -- --------------------------------------------------------
 
@@ -288,7 +316,7 @@ INSERT INTO `offices` (`id`, `office`, `shortname`, `dept_id`) VALUES
 (43, 'CONTRACT OF SERVICE', 'COS', 1),
 (44, 'BID AND AWARDS COMMITTEE', 'BAC', 1),
 (45, 'ENVIRONMENT AND NATURAL RESOURCES OFFICE', 'ENRO', 1),
-(47, 'Others', 'OTH', NULL);
+(47, 'Others', 'OTH', 24);
 
 -- --------------------------------------------------------
 
@@ -319,7 +347,26 @@ INSERT INTO `options` (`id`, `choice`) VALUES
 (11, 'PLEASE ATTEND'),
 (12, 'FOR APPROPRIATE ACTION'),
 (13, 'PLEASE PREPARE SPEECH/MESSAGE'),
-(14, 'PLEASE CONFIRM');
+(14, 'PLEASE CONFIRM'),
+(15, 'FORWARDED');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tracks`
+--
+
+CREATE TABLE `tracks` (
+  `id` int(255) NOT NULL,
+  `document_id` int(255) DEFAULT NULL,
+  `user` int(11) NOT NULL,
+  `barcode` varchar(500) DEFAULT NULL,
+  `options` int(255) DEFAULT NULL,
+  `document_status` varchar(500) DEFAULT NULL,
+  `former_office` int(11) NOT NULL,
+  `destination` int(11) DEFAULT NULL,
+  `system_log` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -359,19 +406,20 @@ CREATE TABLE `users` (
   `employee_id` varchar(10) DEFAULT NULL,
   `div_id` int(11) DEFAULT NULL,
   `email_address` varchar(50) DEFAULT NULL,
-  `phone_number` bigint(200) DEFAULT NULL
+  `phone_number` bigint(200) DEFAULT NULL,
+  `group_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `fname`, `mname`, `lname`, `position`, `uname`, `pw`, `employee_id`, `div_id`, `email_address`, `phone_number`) VALUES
-(1, 'Sylvester', 'B', 'Flores', 'Sly', 'sly', 'legend', '003', 5, 'sly@christian.com.ph', 9198745632),
-(8, 'Karl Aaron', 'Masancay', 'Castaneda', 'OJT', 'aaron', '54321', '21331', 5, 'aaron.casty02@yahoo.com', 9298902184),
-(11, 'Mc Glenn', 'Gundran', 'Tangalin', 'Junior Software Developer', 'admin', 'admin', '1002413', 5, 'mcglenn.tangalin@lorma.edu', 9301598842),
-(13, 'Renwil', 'Gatchallan', 'Flores', 'OJT', 'renn', 'renn', '201231', 5, 'ren@wil.com', 909090909),
-(14, 'Alain', 'M.', 'Dayao II', 'OJT', 'alain', '123456789', '21322', 5, 'al@al.com', 9123456789);
+INSERT INTO `users` (`id`, `fname`, `mname`, `lname`, `position`, `uname`, `pw`, `employee_id`, `div_id`, `email_address`, `phone_number`, `group_id`) VALUES
+(1, 'Sylvester', 'B', 'Flores', 'Sly', 'sly', 'legend', '003', 5, 'sly@christian.com.ph', 9198745632, 1),
+(8, 'Karl Aaron', 'Masancay', 'Castaneda', 'OJT', 'aaron', '54321', '21331', 5, 'aaron.casty02@yahoo.com', 9298902184, 2),
+(13, 'Renwil', 'Gatchallan', 'Flores', 'OJT', 'renn', 'renn', '201231', 5, 'ren@wil.com', 909090909, 2),
+(14, 'Alain', 'M.', 'Dayao II', 'OJT', 'alain', '123456789', '21322', 5, 'al@al.com', 9123456789, 2),
+(15, 'Mc Glenn', 'Gundran', 'Tangalin', 'Junior Web Developer', 'glenn', 'glenn', '1002413', 5, 'mcglenn.tangalin@lorma.edu', 9301598842, 1);
 
 --
 -- Indexes for dumped tables
@@ -424,6 +472,12 @@ ALTER TABLE `files`
   ADD KEY `document_id` (`document_id`);
 
 --
+-- Indexes for table `groups`
+--
+ALTER TABLE `groups`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `offices`
 --
 ALTER TABLE `offices`
@@ -436,6 +490,16 @@ ALTER TABLE `options`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `tracks`
+--
+ALTER TABLE `tracks`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `document_id` (`document_id`),
+  ADD KEY `destination` (`destination`),
+  ADD KEY `user` (`user`),
+  ADD KEY `former_office` (`former_office`);
+
+--
 -- Indexes for table `transactions`
 --
 ALTER TABLE `transactions`
@@ -446,7 +510,8 @@ ALTER TABLE `transactions`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `div_id` (`div_id`);
+  ADD KEY `div_id` (`div_id`),
+  ADD KEY `group_id` (`group_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -461,7 +526,7 @@ ALTER TABLE `attachments`
 -- AUTO_INCREMENT for table `departments`
 --
 ALTER TABLE `departments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT for table `divisions`
 --
@@ -471,37 +536,47 @@ ALTER TABLE `divisions`
 -- AUTO_INCREMENT for table `documents`
 --
 ALTER TABLE `documents`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `document_types`
 --
 ALTER TABLE `document_types`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT for table `files`
 --
 ALTER TABLE `files`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `groups`
+--
+ALTER TABLE `groups`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `offices`
 --
 ALTER TABLE `offices`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 --
 -- AUTO_INCREMENT for table `options`
 --
 ALTER TABLE `options`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+--
+-- AUTO_INCREMENT for table `tracks`
+--
+ALTER TABLE `tracks`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- Constraints for dumped tables
 --
@@ -523,6 +598,12 @@ ALTER TABLE `divisions`
 --
 ALTER TABLE `files`
   ADD CONSTRAINT `files_ibfk_1` FOREIGN KEY (`document_id`) REFERENCES `documents` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `tracks`
+--
+ALTER TABLE `tracks`
+  ADD CONSTRAINT `tracks_ibfk_1` FOREIGN KEY (`document_id`) REFERENCES `documents` (`id`) ON DELETE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
