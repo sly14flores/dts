@@ -330,3 +330,53 @@ Stack trace:
 [27-Feb-2018 08:48:39 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\account-profile.php on line 18
 [27-Feb-2018 08:48:39 Asia/Manila] PHP Stack trace:
 [27-Feb-2018 08:48:39 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\account-profile.php:0
+[27-Feb-2018 11:00:05 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2002] An established connection was aborted by the software in your host machine.
+ in C:\UwAmp310\www\dts\db.php:35
+Stack trace:
+#0 C:\UwAmp310\www\dts\db.php(35): PDO->__construct('mysql:host=10.1...', 'dts', 'dtsict', Array)
+#1 C:\UwAmp310\www\dts\handlers\account-profile.php(7): pdo_db->__construct('users')
+#2 {main}
+  thrown in C:\UwAmp310\www\dts\db.php on line 35
+[27-Feb-2018 11:00:05 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2002] An established connection was aborted by the software in your host machine.
+ in C:\UwAmp310\www\dts\db.php:35
+Stack trace:
+#0 C:\UwAmp310\www\dts\db.php(35): PDO->__construct('mysql:host=10.1...', 'dts', 'dtsict', Array)
+#1 C:\UwAmp310\www\dts\handlers\doctype-list.php(5): pdo_db->__construct('document_types')
+#2 {main}
+  thrown in C:\UwAmp310\www\dts\db.php on line 35
+[01-Mar-2018 08:49:05 Asia/Manila] PHP Fatal error:  Uncaught PDOException: PDO::__construct(): MySQL server has gone away in C:\UwAmp310\www\dts\db.php:35
+Stack trace:
+#0 C:\UwAmp310\www\dts\db.php(35): PDO->__construct('mysql:host=10.1...', 'dts', 'dtsict', Array)
+#1 C:\UwAmp310\www\dts\handlers\doctype-view.php(6): pdo_db->__construct('document_types')
+#2 {main}
+
+Next PDOException: SQLSTATE[HY000] [2006] MySQL server has gone away in C:\UwAmp310\www\dts\db.php:35
+Stack trace:
+#0 C:\UwAmp310\www\dts\db.php(35): PDO->__construct('mysql:host=10.1...', 'dts', 'dtsict', Array)
+#1 C:\UwAmp310\www\dts\handlers\doctype-view.php(6): pdo_db->__construct('document_types')
+#2 {main}
+  thrown in C:\UwAmp310\www\dts\db.php on line 35
+[01-Mar-2018 09:34:42 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2002] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
+ in C:\UwAmp310\www\dts\db.php:35
+Stack trace:
+#0 C:\UwAmp310\www\dts\db.php(35): PDO->__construct('mysql:host=10.1...', 'dts', 'dtsict', Array)
+#1 C:\UwAmp310\www\dts\handlers\incoming.php(6): pdo_db->__construct('documents')
+#2 {main}
+  thrown in C:\UwAmp310\www\dts\db.php on line 35
+[01-Mar-2018 09:34:42 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2002] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
+ in C:\UwAmp310\www\dts\db.php:35
+Stack trace:
+#0 C:\UwAmp310\www\dts\db.php(35): PDO->__construct('mysql:host=10.1...', 'dts', 'dtsict', Array)
+#1 C:\UwAmp310\www\dts\handlers\options.php(5): pdo_db->__construct('options')
+#2 {main}
+  thrown in C:\UwAmp310\www\dts\db.php on line 35
+[01-Mar-2018 09:34:42 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2002] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
+ in C:\UwAmp310\www\dts\db.php:35
+Stack trace:
+#0 C:\UwAmp310\www\dts\db.php(35): PDO->__construct('mysql:host=10.1...', 'dts', 'dtsict', Array)
+#1 C:\UwAmp310\www\dts\handlers\account-profile.php(7): pdo_db->__construct('users')
+#2 {main}
+  thrown in C:\UwAmp310\www\dts\db.php on line 35
+[01-Mar-2018 10:25:18 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\UwAmp310\www\dts\handlers\doctype-view.php on line 10
+[01-Mar-2018 10:25:18 Asia/Manila] PHP Stack trace:
+[01-Mar-2018 10:25:18 Asia/Manila] PHP   1. {main}() C:\UwAmp310\www\dts\handlers\doctype-view.php:0

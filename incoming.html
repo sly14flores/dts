@@ -14,7 +14,7 @@ require_once 'authentication.php';
     <link rel="stylesheet" href="./vendor/font-awesome/css/fontawesome-all.min.css">
     <link rel="stylesheet" href="./css/styles.css">
 </head>
-<body class="sidebar-fixed header-fixed" ng-app="documentList" ng-controller="documentListCtrl">
+<body class="sidebar-fixed header-fixed" ng-app="incoming" ng-controller="incomingCtrl">
 <div class="page-wrapper">
     <nav class="navbar page-header">
         <a href="#" class="btn btn-link sidebar-mobile-toggle d-md-none mr-auto">
@@ -67,7 +67,7 @@ require_once 'authentication.php';
                                     <i class="icon icon-plus"></i>Receive Document
                                 </a>
                             </li><li class="nav-item">
-                                <a href="incoming.html" class="nav-link">
+                                <a href="incoming.html" class="nav-link active">
                                     <i class="icon icon-login"></i>Incoming Documents
                                 </a>
                             </li><li class="nav-item">
@@ -80,7 +80,7 @@ require_once 'authentication.php';
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="documents-list.html" class="nav-link active">
+                                <a href="documents-list.html" class="nav-link">
                                     <i class="icon icon-doc"></i> List of Documents
                                 </a>
                             </li>
@@ -169,7 +169,7 @@ require_once 'authentication.php';
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header bg-light">
-                                List of Documents
+                                Incoming Documents
                             </div>
 							<div class="card-body">
 								<div class = "row">
@@ -177,34 +177,34 @@ require_once 'authentication.php';
 										<thead>
 											<tr>
 												<th>Subject</th>
-												<th>Barcode</th>
 												<th>Office</th>
-												<th>Date</th>
-												<th>Transaction</th>
 												<th>Type</th>
-												<th>Communication</th>
-												<th>Remarks</th>
+												<th>Date</th>
+												<th>Option</th>
 											</tr>
 										</thead>
 										<tbody>
-											<tr ng-repeat="dl in documents | filter:search">
-											<td>{{dl.doc_name}}</td>
-											<td>{{dl.barcode}}</td>
-											<td>{{dl.origin}}</td>
-											<td>{{dl.date_enrolled}}</td>
-											<td>{{dl.transaction}}</td>
-											<td>{{dl.doc_type}}</td>
-											<td>{{dl.communication}}</td>
-											<td>{{dl.remarks}}</td>
-											
-											
+											<tr ng-repeat="i in filterData = (incoming | filter:search) | pagination: currentPage:pageSize"><!-- added pagination feature -->
+											<td>{{i.doc_name}}</td>
+											<td>{{i.origin}}</td>
+											<td>{{i.doc_type}}</td>
+											<td>{{i.date_enrolled}}</td>
+											<td>
+												<button class="btn btn-primary" ng-click="app.add(this,i)"><i class="fas fa-edit"></i></button>
+												<!-- <button class="btn btn-secondary" ng-click="app.delete(this,dl)"><i class="icon icon-trash"></i></button> -->
+											</td>
 											</tr>
 										</tbody>
+										<tfoot><!-- added pagination feature -->
+											<tr>
+												<td colspan="5" style="text-align: center;">
+													<div class="float-right"><ul uib-pagination direction-links="false" boundary-links="true" total-items="filterData.length" ng-model="currentPage" max-size="maxSize"></ul></div>
+ 											    </td>
+											</tr>											
+										</tfoot>
 									</table>
 								</div>
 							</div>
-
-                            
                             </div>
                         </div>
                     </div>
@@ -222,16 +222,16 @@ require_once 'authentication.php';
 
 <!-- dependencies -->
 <script src="vendor/bootbox/bootbox.min.js"></script>
-
 <script src="angular/angular.min.js"></script>
 <script src="angular/angular-route.min.js"></script>
+<script src="angular/ui-bootstrap-tpls-3.0.2.min.js"></script><!-- added for pagination -->
 <!-- modules -->
 <script src="modules/bootstrap-modal.js"></script>
 <script src="modules/account.js"></script>
 <script src="modules/validate.js"></script>
-<script src="modules/documents-list.js"></script>
+<script src="modules/incoming.js"></script>
 <!-- controller -->
-<script src="controllers/documents-list.js"></script>
+<script src="controllers/incoming.js"></script>
 
 </body>
 </html>
