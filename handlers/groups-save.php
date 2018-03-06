@@ -6,14 +6,22 @@ require_once '../db.php';
 
 $con = new pdo_db("groups");
 
-if ($_POST['id']) { # update
+$privileges = [];
+if (isset($_POST['privileges'])) {
+	
+	$privileges = json_encode($_POST['privileges']);
+	$_POST['group']['privileges'] = $privileges;
+	
+};
 
-	$con->updateData($_POST,'id');	
+if ($_POST['group']['id']) { # update
+
+	$con->updateData($_POST['group'],'id');	
 
 } else { # insert
 
-	unset($_POST['id']);
-	$con->insertData($_POST);
+	unset($_POST['group']['id']);
+	$con->insertData($_POST['group']);
 
 }
 
