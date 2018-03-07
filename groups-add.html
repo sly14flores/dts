@@ -200,7 +200,7 @@ require_once 'authentication.php';
 													<div class="col-md-3" ng-repeat="pp in p.privileges">
 														<div class="toggle-switch" data-ts-color="primary">
 															<label for="{{p.id}}{{$index}}" class="ts-label">{{pp.description}}</label>
-															<input id="{{p.id}}{{$index}}" type="checkbox" hidden="hidden" ng-model="pp.value" ng-check="pp.value">
+															<input id="{{p.id}}{{$index}}" type="checkbox" hidden="hidden" ng-model="pp.value" ng-check="pp.value" ng-disabled="controls.btns.ok">
 															<label for="{{p.id}}{{$index}}" class="ts-helper"></label>
 														</div>														
 													</div>													

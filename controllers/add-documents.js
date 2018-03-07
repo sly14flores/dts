@@ -8,4 +8,6 @@ app.controller('documentCtrl',function($scope,app) {
 	
 	$scope.app.startup($scope);	
 	
+	$scope.module = 2;
+	
 });

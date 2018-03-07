@@ -6,6 +6,7 @@ define('system_privileges', array(
 		"description"=>"Dashboard",
 		"privileges"=>array( # id=1 must be always page access
 			array("id"=>1,"description"=>"Show Dashboard","value"=>false),
+			array("id"=>2,"description"=>"Show Widgets","value"=>false),
 		),
 	),
 	array(
