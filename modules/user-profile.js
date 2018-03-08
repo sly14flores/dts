@@ -1,4 +1,4 @@
-angular.module('app-module', ['form-validator','bootstrap-modal','ui.bootstrap','ngRoute']).config(function($routeProvider) {
+angular.module('app-module', ['form-validator','bootstrap-modal','ui.bootstrap','ngRoute','module-access']).config(function($routeProvider) {
     $routeProvider
         .when('/:option/:id', {
             templateUrl: 'user-profile.html'
@@ -6,7 +6,7 @@ angular.module('app-module', ['form-validator','bootstrap-modal','ui.bootstrap',
         .when('/:option/:id', {
             templateUrl: 'user-profile.html'
         });		
-}).factory('app', function($http,$timeout,$window,$routeParams,$location,validate,bootstrapModal) {
+}).factory('app', function($http,$timeout,$window,$routeParams,$location,validate,bootstrapModal,access) {
 	
 	function app() {
 
@@ -113,6 +113,8 @@ angular.module('app-module', ['form-validator','bootstrap-modal','ui.bootstrap',
 		
 		self.add = function(scope) {
 			
+			if (!access.has(scope,scope.profile.group,scope.module.id,scope.module.privileges.add)) return;
+			
 			scope.controls.btns.ok = false;
 			scope.controls.btns.cancel = false;
 			
@@ -137,6 +139,8 @@ angular.module('app-module', ['form-validator','bootstrap-modal','ui.bootstrap',
 			
 		};
 		self.delete = function(scope,row){
+			
+			if (!access.has(scope,scope.profile.group,scope.module.id,scope.module.privileges.delete)) return;
 			
 			scope.views.currentPage = scope.currentPage;
 			
@@ -175,6 +179,8 @@ angular.module('app-module', ['form-validator','bootstrap-modal','ui.bootstrap',
 		};
 		
 		self.edit = function(scope) {
+			
+			if (!access.has(scope,scope.profile.group,scope.module.id,scope.module.privileges.edit)) return;
 			
 			scope.controls.btns.ok = false;
 			scope.controls.btns.cancel = false;			

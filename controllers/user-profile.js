@@ -8,4 +8,13 @@ app.controller('profileCtrl',function($scope,app) {
 	
 	$scope.app.startup($scope);	
 	
+	$scope.module = {
+		id: 8,
+		privileges: {
+			show: 1,
+			add: 2,
+			edit: 3,
+			delete: 4,
+		}
+	};	
 });
