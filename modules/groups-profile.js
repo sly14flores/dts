@@ -65,8 +65,8 @@ angular.module('app-module', ['form-validator','bootstrap-modal','ui.bootstrap',
 				cancel:true
 			};
 			
-			scope.groups = {};
-			scope.groups.id = 0;	
+			scope.group = {};
+			scope.group.id = 0;	
 			
 			scope.groups = [];
 			
@@ -76,7 +76,10 @@ angular.module('app-module', ['form-validator','bootstrap-modal','ui.bootstrap',
 		
 		self.add = function(scope) {
 			
-			scope.groups.id = 0;
+			scope.group = {};		
+			scope.group.id = 0;
+			
+			privileges(scope);	
 			
 			scope.controls.btns.ok = false;
 			scope.controls.btns.cancel = false;
@@ -154,7 +157,8 @@ angular.module('app-module', ['form-validator','bootstrap-modal','ui.bootstrap',
 			  data: {id: id}
 			}).then(function mySuccess(response) {
 				
-				scope.groups = angular.copy(response.data);			
+				scope.group = angular.copy(response.data);
+				privileges(scope);
 				
 			}, function myError(response) {
 				
@@ -167,16 +171,16 @@ angular.module('app-module', ['form-validator','bootstrap-modal','ui.bootstrap',
 		self.save = function(scope) {
 
 			// validation
-			if (validate.form(scope,'groups')) return;
+			if (validate.form(scope,'group')) return;
 			
 			$http({
 			  method: 'POST',
 			  url: 'handlers/groups-save.php',
-			  data: scope.groups
+			  data: {group: scope.group, privileges: scope.privileges}
 			}).then(function mySuccess(response) {
 				
-				if (scope.groups.id == 0) {
-					scope.groups = {};
+				if (scope.group.id == 0) {
+					scope.group = {};
 					scope.groups.id = 0;
 				};
 				scope.controls.btns.ok = true;
@@ -205,6 +209,24 @@ angular.module('app-module', ['form-validator','bootstrap-modal','ui.bootstrap',
 
 				scope.filterData = scope.groups; 
 				scope.currentPage = scope.views.currentPage; 							
+				
+			}, function myError(response) {
+				
+				//
+				
+			});				
+			
+		};
+		
+		function privileges(scope) {
+			
+			$http({
+			  method: 'POST',
+			  url: 'handlers/privileges.php',
+			  data: {id: scope.group.id}
+			}).then(function mySuccess(response) {
+				
+				scope.privileges = angular.copy(response.data);
 				
 			}, function myError(response) {
 				
