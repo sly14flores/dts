@@ -56,6 +56,9 @@ define('system_privileges', array(
 		"description"=>"Accounts",
 		"privileges"=>array(
 			array("id"=>1,"description"=>"Show User Accounts","value"=>false),
+			array("id"=>2,"description"=>"Add User Account","value"=>false),
+			array("id"=>3,"description"=>"Edit User Account","value"=>false),
+			array("id"=>4,"description"=>"Delete User Account","value"=>false),
 		),
 	),
 	array(
