@@ -1,4 +1,4 @@
-angular.module('app-module', ['form-validator','bootstrap-modal','ngRoute','jspdf-module','upload-files','block-ui']).config(function($routeProvider) {
+angular.module('app-module', ['form-validator','bootstrap-modal','ngRoute','jspdf-module','upload-files','block-ui','module-access']).config(function($routeProvider) {
     $routeProvider
         .when('/:option/:id', {
             templateUrl: 'add-documents.html'
@@ -6,7 +6,7 @@ angular.module('app-module', ['form-validator','bootstrap-modal','ngRoute','jspd
         .when('/:option/:id', {
             templateUrl: 'add-documents.html'
         });		
-}).factory('app', function($http,$timeout,$window,$routeParams,$location,validate,bootstrapModal,jspdf,uploadFiles,bui) {
+}).factory('app', function($http,$timeout,$window,$routeParams,$location,validate,bootstrapModal,jspdf,uploadFiles,bui,access) {
 	
 	function app() {		
 
@@ -136,6 +136,8 @@ angular.module('app-module', ['form-validator','bootstrap-modal','ngRoute','jspd
 		};
 		
 		self.add = function(scope) {
+			
+			if (!access.has(scope,scope.profile.group,scope.module.id,scope.module.privileges.add)) return;
 			
 			scope.controls.btns.ok = false;
 			scope.controls.btns.cancel = false;

@@ -5,3 +5,107 @@ Stack trace:
 #2 C:\UwAmp310\www\dts\handlers\account-profile.php(24): pdo_db->get(Array, Array)
 #3 {main}
   thrown in C:\UwAmp310\www\dts\db.php on line 42
+[08-Mar-2018 11:45:09 Asia/Manila] PHP Notice:  Undefined index: id in C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\access.php on line 11
+[08-Mar-2018 11:45:09 Asia/Manila] PHP Stack trace:
+[08-Mar-2018 11:45:09 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\access.php:0
+[08-Mar-2018 11:45:09 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in C:\Users\sly\Desktop\UwAmp310\www\dts\db.php:42
+Stack trace:
+#0 C:\Users\sly\Desktop\UwAmp310\www\dts\db.php(42): PDO->query('SELECT privileg...')
+#1 C:\Users\sly\Desktop\UwAmp310\www\dts\db.php(72): pdo_db->getData('SELECT privileg...')
+#2 C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\access.php(11): pdo_db->get(Array, Array)
+#3 {main}
+  thrown in C:\Users\sly\Desktop\UwAmp310\www\dts\db.php on line 42
+[08-Mar-2018 13:23:29 Asia/Manila] PHP Parse error:  syntax error, unexpected '=', expecting ')' in C:\Users\sly\Desktop\UwAmp310\www\dts\classes.php on line 139
+[08-Mar-2018 13:23:31 Asia/Manila] PHP Parse error:  syntax error, unexpected '=', expecting ')' in C:\Users\sly\Desktop\UwAmp310\www\dts\classes.php on line 139
+[08-Mar-2018 13:23:31 Asia/Manila] PHP Parse error:  syntax error, unexpected '=', expecting ')' in C:\Users\sly\Desktop\UwAmp310\www\dts\classes.php on line 139
+[08-Mar-2018 13:24:21 Asia/Manila] PHP Warning:  Illegal string offset 'id' in C:\Users\sly\Desktop\UwAmp310\www\dts\classes.php on line 147
+[08-Mar-2018 13:24:21 Asia/Manila] PHP Stack trace:
+[08-Mar-2018 13:24:21 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\access.php:0
+[08-Mar-2018 13:24:21 Asia/Manila] PHP   2. privileges->hasAccess() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\access.php:19
+[08-Mar-2018 13:24:21 Asia/Manila] PHP Notice:  Undefined index: id in C:\Users\sly\Desktop\UwAmp310\www\dts\classes.php on line 147
+[08-Mar-2018 13:24:21 Asia/Manila] PHP Stack trace:
+[08-Mar-2018 13:24:21 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\access.php:0
+[08-Mar-2018 13:24:21 Asia/Manila] PHP   2. privileges->hasAccess() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\access.php:19
+[08-Mar-2018 13:25:39 Asia/Manila] PHP Notice:  Undefined index: id in C:\Users\sly\Desktop\UwAmp310\www\dts\classes.php on line 147
+[08-Mar-2018 13:25:39 Asia/Manila] PHP Stack trace:
+[08-Mar-2018 13:25:39 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\access.php:0
+[08-Mar-2018 13:25:39 Asia/Manila] PHP   2. privileges->hasAccess() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\access.php:19
+[08-Mar-2018 13:25:39 Asia/Manila] PHP Notice:  Undefined index: id in C:\Users\sly\Desktop\UwAmp310\www\dts\classes.php on line 147
+[08-Mar-2018 13:25:39 Asia/Manila] PHP Stack trace:
+[08-Mar-2018 13:25:39 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\access.php:0
+[08-Mar-2018 13:25:39 Asia/Manila] PHP   2. privileges->hasAccess() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\access.php:19
+[08-Mar-2018 13:25:39 Asia/Manila] PHP Notice:  Undefined index: id in C:\Users\sly\Desktop\UwAmp310\www\dts\classes.php on line 147
+[08-Mar-2018 13:25:39 Asia/Manila] PHP Stack trace:
+[08-Mar-2018 13:25:39 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\access.php:0
+[08-Mar-2018 13:25:39 Asia/Manila] PHP   2. privileges->hasAccess() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\access.php:19
+[08-Mar-2018 13:26:44 Asia/Manila] PHP Parse error:  syntax error, unexpected 'foreach' (T_FOREACH) in C:\Users\sly\Desktop\UwAmp310\www\dts\classes.php on line 141
+[08-Mar-2018 13:26:55 Asia/Manila] PHP Parse error:  syntax error, unexpected '}', expecting ';' in C:\Users\sly\Desktop\UwAmp310\www\dts\classes.php on line 157
+[08-Mar-2018 13:31:31 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in C:\Users\sly\Desktop\UwAmp310\www\dts\classes.php on line 30
+[08-Mar-2018 13:31:31 Asia/Manila] PHP Stack trace:
+[08-Mar-2018 13:31:31 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\privileges.php:0
+[08-Mar-2018 13:31:31 Asia/Manila] PHP   2. privileges->__construct() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\privileges.php:16
+[08-Mar-2018 13:31:31 Asia/Manila] PHP   3. privileges->hasModule() C:\Users\sly\Desktop\UwAmp310\www\dts\classes.php:16
+[08-Mar-2018 13:31:31 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in C:\Users\sly\Desktop\UwAmp310\www\dts\classes.php on line 30
+[08-Mar-2018 13:31:31 Asia/Manila] PHP Stack trace:
+[08-Mar-2018 13:31:31 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\privileges.php:0
+[08-Mar-2018 13:31:31 Asia/Manila] PHP   2. privileges->__construct() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\privileges.php:16
+[08-Mar-2018 13:31:31 Asia/Manila] PHP   3. privileges->hasModule() C:\Users\sly\Desktop\UwAmp310\www\dts\classes.php:16
+[08-Mar-2018 13:31:31 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in C:\Users\sly\Desktop\UwAmp310\www\dts\classes.php on line 30
+[08-Mar-2018 13:31:31 Asia/Manila] PHP Stack trace:
+[08-Mar-2018 13:31:31 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\privileges.php:0
+[08-Mar-2018 13:31:31 Asia/Manila] PHP   2. privileges->__construct() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\privileges.php:16
+[08-Mar-2018 13:31:31 Asia/Manila] PHP   3. privileges->hasModule() C:\Users\sly\Desktop\UwAmp310\www\dts\classes.php:16
+[08-Mar-2018 13:31:31 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in C:\Users\sly\Desktop\UwAmp310\www\dts\classes.php on line 30
+[08-Mar-2018 13:31:31 Asia/Manila] PHP Stack trace:
+[08-Mar-2018 13:31:31 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\privileges.php:0
+[08-Mar-2018 13:31:31 Asia/Manila] PHP   2. privileges->__construct() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\privileges.php:16
+[08-Mar-2018 13:31:31 Asia/Manila] PHP   3. privileges->hasModule() C:\Users\sly\Desktop\UwAmp310\www\dts\classes.php:16
+[08-Mar-2018 13:31:31 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in C:\Users\sly\Desktop\UwAmp310\www\dts\classes.php on line 30
+[08-Mar-2018 13:31:31 Asia/Manila] PHP Stack trace:
+[08-Mar-2018 13:31:31 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\privileges.php:0
+[08-Mar-2018 13:31:31 Asia/Manila] PHP   2. privileges->__construct() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\privileges.php:16
+[08-Mar-2018 13:31:31 Asia/Manila] PHP   3. privileges->hasModule() C:\Users\sly\Desktop\UwAmp310\www\dts\classes.php:16
+[08-Mar-2018 13:31:31 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in C:\Users\sly\Desktop\UwAmp310\www\dts\classes.php on line 30
+[08-Mar-2018 13:31:31 Asia/Manila] PHP Stack trace:
+[08-Mar-2018 13:31:31 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\privileges.php:0
+[08-Mar-2018 13:31:31 Asia/Manila] PHP   2. privileges->__construct() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\privileges.php:16
+[08-Mar-2018 13:31:31 Asia/Manila] PHP   3. privileges->hasModule() C:\Users\sly\Desktop\UwAmp310\www\dts\classes.php:16
+[08-Mar-2018 13:31:31 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in C:\Users\sly\Desktop\UwAmp310\www\dts\classes.php on line 30
+[08-Mar-2018 13:31:31 Asia/Manila] PHP Stack trace:
+[08-Mar-2018 13:31:31 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\privileges.php:0
+[08-Mar-2018 13:31:31 Asia/Manila] PHP   2. privileges->__construct() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\privileges.php:16
+[08-Mar-2018 13:31:31 Asia/Manila] PHP   3. privileges->hasModule() C:\Users\sly\Desktop\UwAmp310\www\dts\classes.php:16
+[08-Mar-2018 13:31:31 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in C:\Users\sly\Desktop\UwAmp310\www\dts\classes.php on line 30
+[08-Mar-2018 13:31:31 Asia/Manila] PHP Stack trace:
+[08-Mar-2018 13:31:31 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\privileges.php:0
+[08-Mar-2018 13:31:31 Asia/Manila] PHP   2. privileges->__construct() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\privileges.php:16
+[08-Mar-2018 13:31:31 Asia/Manila] PHP   3. privileges->hasModule() C:\Users\sly\Desktop\UwAmp310\www\dts\classes.php:16
+[08-Mar-2018 13:31:31 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in C:\Users\sly\Desktop\UwAmp310\www\dts\classes.php on line 30
+[08-Mar-2018 13:31:31 Asia/Manila] PHP Stack trace:
+[08-Mar-2018 13:31:31 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\privileges.php:0
+[08-Mar-2018 13:31:31 Asia/Manila] PHP   2. privileges->__construct() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\privileges.php:16
+[08-Mar-2018 13:31:31 Asia/Manila] PHP   3. privileges->hasModule() C:\Users\sly\Desktop\UwAmp310\www\dts\classes.php:16
+[08-Mar-2018 13:31:31 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in C:\Users\sly\Desktop\UwAmp310\www\dts\classes.php on line 30
+[08-Mar-2018 13:31:31 Asia/Manila] PHP Stack trace:
+[08-Mar-2018 13:31:31 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\privileges.php:0
+[08-Mar-2018 13:31:31 Asia/Manila] PHP   2. privileges->__construct() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\privileges.php:16
+[08-Mar-2018 13:31:31 Asia/Manila] PHP   3. privileges->hasModule() C:\Users\sly\Desktop\UwAmp310\www\dts\classes.php:16
+[08-Mar-2018 13:43:03 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\groups-view.php on line 10
+[08-Mar-2018 13:43:03 Asia/Manila] PHP Stack trace:
+[08-Mar-2018 13:43:03 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\groups-view.php:0
+[08-Mar-2018 13:43:03 Asia/Manila] PHP Notice:  Undefined index: id in C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\privileges.php on line 11
+[08-Mar-2018 13:43:03 Asia/Manila] PHP Stack trace:
+[08-Mar-2018 13:43:03 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\privileges.php:0
+[08-Mar-2018 13:43:03 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in C:\Users\sly\Desktop\UwAmp310\www\dts\db.php:42
+Stack trace:
+#0 C:\Users\sly\Desktop\UwAmp310\www\dts\db.php(42): PDO->query('SELECT privileg...')
+#1 C:\Users\sly\Desktop\UwAmp310\www\dts\db.php(72): pdo_db->getData('SELECT privileg...')
+#2 C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\privileges.php(11): pdo_db->get(Array, Array)
+#3 {main}
+  thrown in C:\Users\sly\Desktop\UwAmp310\www\dts\db.php on line 42
+[08-Mar-2018 13:43:17 Asia/Manila] PHP Notice:  Undefined variable: privileges in C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\privileges.php on line 22
+[08-Mar-2018 13:43:17 Asia/Manila] PHP Stack trace:
+[08-Mar-2018 13:43:17 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\privileges.php:0
+[08-Mar-2018 13:45:56 Asia/Manila] PHP Notice:  Undefined variable: privileges in C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\privileges.php on line 26
+[08-Mar-2018 13:45:56 Asia/Manila] PHP Stack trace:
+[08-Mar-2018 13:45:56 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\privileges.php:0

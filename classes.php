@@ -133,6 +133,28 @@ class privileges {
 		return $this->page_privileges;
 		
 	}
+	
+	public function hasAccess($mod,$prop) {
+		
+		$access = false;
+		
+		foreach ($this->system_privileges as $sp) {
+
+			if ($sp['id'] == $mod) {
+
+				foreach ($sp['privileges'] as $p) {
+
+					if ($p['id'] == $prop) $access = $p['value'];
+
+				};
+
+			};
+
+		};
+		
+		return $access;
+	
+	}
 
 };
 
