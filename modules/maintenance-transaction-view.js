@@ -1,4 +1,4 @@
-angular.module('app-module', ['bootstrap-modal']).factory('app', function($http,$timeout,$window,bootstrapModal) {
+angular.module('app-module', ['bootstrap-modal','module-access']).factory('app', function($http,$timeout,$window,bootstrapModal,access) {
 	
 	function app() {
 
@@ -39,6 +39,8 @@ angular.module('app-module', ['bootstrap-modal']).factory('app', function($http,
 		};
 		
 		self.delete = function(scope, row) {
+			
+			if (!access.has(scope,scope.profile.group,scope.module.id,scope.module.privileges.delete)) return;
 			
 			var onOk = function() {
 				
@@ -82,6 +84,8 @@ angular.module('app-module', ['bootstrap-modal']).factory('app', function($http,
 		};
 		
 		self.add = function(scope,trans) {
+			
+			if (!access.has(scope,scope.profile.group,scope.module.id,scope.module.privileges.add)) return;
 			
 			var title = 'Add Transaction Types';
 			

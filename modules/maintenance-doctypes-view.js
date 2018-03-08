@@ -1,4 +1,4 @@
-angular.module('app-module', ['bootstrap-modal','ui.bootstrap']).factory('app', function($http,$timeout,$window,bootstrapModal) {
+angular.module('app-module', ['bootstrap-modal','ui.bootstrap','module-access']).factory('app', function($http,$timeout,$window,bootstrapModal,access) {
 	
 	function app() {
 
@@ -41,6 +41,8 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap']).factory('app', 
 		};
 		
 		self.delete = function(scope, row) {
+			
+			if (!access.has(scope,scope.profile.group,scope.module.id,scope.module.privileges.delete)) return;
 			
 			scope.views.currentPage = scope.currentPage;
 			
@@ -94,6 +96,8 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap']).factory('app', 
 		
 		self.add = function(scope,doc_type) {
 			
+			if (!access.has(scope,scope.profile.group,scope.module.id,scope.module.privileges.add)) return;
+			
 			var title = 'Add Document Types';
 			
 			if (doc_type == null) {				
@@ -102,6 +106,7 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap']).factory('app', 
 				scope.doc_type.id = 0;
 				
 			} else {
+				
 				
 				title = 'Edit Document Type Info';
 				
