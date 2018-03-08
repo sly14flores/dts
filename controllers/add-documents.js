@@ -11,7 +11,8 @@ app.controller('documentCtrl',function($scope,app) {
 	$scope.module = {
 		id: 2,
 		privileges: {
-			add: 1,
+			show: 1,
+			add: 2,
 		}
 	};
 	

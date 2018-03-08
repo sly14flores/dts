@@ -13,6 +13,7 @@ define('system_privileges', array(
 		"description"=>"Receive Document",
 		"privileges"=>array(
 			array("id"=>1,"description"=>"Show Receive Document","value"=>false),
+			array("id"=>2,"description"=>"Add Document","value"=>false),			
 		),
 	),
 	array(
@@ -62,6 +63,9 @@ define('system_privileges', array(
 		"description"=>"Groups",
 		"privileges"=>array(
 			array("id"=>1,"description"=>"Show User Groups","value"=>false),
+			array("id"=>2,"description"=>"Add User Groups","value"=>false),
+			array("id"=>3,"description"=>"Edit User Groups","value"=>false),
+			array("id"=>4,"description"=>"Delete User Groups","value"=>false),
 		),
 	),
 	array(
