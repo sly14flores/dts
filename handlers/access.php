@@ -8,25 +8,19 @@ require_once '../classes.php';
 
 $con = new pdo_db("groups");
 
-$group_privileges = $con->get(array("id"=>$_POST['id']),["privileges"]);
+$group_privileges = $con->get(array("id"=>$_POST['group']),["privileges"]);
+
+$access = array("value"=>false);
 
 if (count($group_privileges)) {
 	if ($group_privileges[0]['privileges']!=NULL) {
 
 		$privileges_obj = new privileges(system_privileges,$group_privileges[0]['privileges']);
-		$privileges = $privileges_obj->getPrivileges();
+		$access = array("value"=>$privileges_obj->hasAccess($_POST['mod'],$_POST['prop']));
 
-	} else {
-		
-		$privileges = system_privileges;		
-		
-	}
-} else {
-	
-	$privileges = system_privileges;	
-	
-}
+	};
+};
 
-echo json_encode($privileges);
+echo json_encode($access);
 
 ?>

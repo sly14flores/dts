@@ -1,17 +1,16 @@
-angular.module('app-module', ['form-validator','bootstrap-modal','ui.bootstrap','ngRoute']).config(function($routeProvider) {
+angular.module('app-module', ['form-validator','bootstrap-modal','ui.bootstrap','ngRoute','module-access']).config(function($routeProvider) {
     $routeProvider
         .when('/:option/:id', {
             templateUrl: 'groups-add.html'
         })
 		
-}).factory('app', function($http,$timeout,$window,$routeParams,$location,validate,bootstrapModal) {
+}).factory('app', function($http,$timeout,$window,$routeParams,$location,validate,bootstrapModal,access) {
 	
 	function app() {
 
 		var self = this;
 
-		self.startup = function(scope) {
-			
+		self.startup = function(scope) {			
 			
 			scope.controls.add = true;
 			scope.controls.edit = false;	
@@ -76,6 +75,8 @@ angular.module('app-module', ['form-validator','bootstrap-modal','ui.bootstrap',
 		
 		self.add = function(scope) {
 			
+			if (!access.has(scope,scope.profile.group,scope.module.id,scope.module.privileges.add)) return;			
+			
 			scope.group = {};		
 			scope.group.id = 0;
 			
@@ -104,7 +105,10 @@ angular.module('app-module', ['form-validator','bootstrap-modal','ui.bootstrap',
 			$window.location.href = "groups-add.html#!/view/"+row.id;
 			
 		};
+		
 		self.delete = function(scope,row){
+			
+			if (!access.has(scope,scope.profile.group,scope.module.id,scope.module.privileges.delete)) return;				
 			
 			scope.views.currentPage = scope.currentPage;
 			
@@ -112,7 +116,7 @@ angular.module('app-module', ['form-validator','bootstrap-modal','ui.bootstrap',
 			
 		};
 		
-		self.deleteConfirm = function(scope,id) {
+		self.deleteConfirm = function(scope,id) {			
 			
 			var onOk = function() {
 				
@@ -143,6 +147,8 @@ angular.module('app-module', ['form-validator','bootstrap-modal','ui.bootstrap',
 		};
 		
 		self.edit = function(scope) {
+			
+			if (!access.has(scope,scope.profile.group,scope.module.id,scope.module.privileges.edit)) return;				
 			
 			scope.controls.btns.ok = false;
 			scope.controls.btns.cancel = false;			

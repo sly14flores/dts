@@ -8,6 +8,12 @@ app.controller('documentCtrl',function($scope,app) {
 	
 	$scope.app.startup($scope);	
 	
-	$scope.module = 2;
+	$scope.module = {
+		id: 2,
+		privileges: {
+			show: 1,
+			add: 2,
+		}
+	};
 	
 });
