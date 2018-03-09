@@ -177,20 +177,20 @@ require_once 'authentication.php';
 										<thead>
 											<tr>
 												<th>Subject</th>
-												<th>Office</th>
+												<th>Originating Office</th>
 												<th>Type</th>
 												<th>Date</th>
 												<th>Option</th>
 											</tr>
 										</thead>
 										<tbody>
-											<tr ng-repeat="i in filterData = (incoming | filter:search) | pagination: currentPage:pageSize"><!-- added pagination feature -->
+											<tr ng-repeat="i in filterData = (incomings | filter:search) | pagination: currentPage:pageSize"><!-- added pagination feature -->
 											<td>{{i.doc_name}}</td>
 											<td>{{i.origin}}</td>
 											<td>{{i.doc_type}}</td>
 											<td>{{i.date_enrolled}}</td>
 											<td>
-												<button class="btn btn-primary" ng-click="app.add(this,i)"><i class="fas fa-edit"></i></button>
+												<button class="btn btn-primary" ng-click="app.receive(this,i)"><i class="icon icon-login"></i></button>
 												<!-- <button class="btn btn-secondary" ng-click="app.delete(this,dl)"><i class="icon icon-trash"></i></button> -->
 											</td>
 											</tr>
