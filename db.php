@@ -23,9 +23,9 @@ class pdo_db {
 	
 	function __construct($table = "") {
 		
-		$server = "localhost";
-		$username = "root";
-		$password = "root";
+		$server = "10.10.2.18";
+		$username = "dts";
+		$password = "dtsict";
 		// $server = "localhost";
 		// $username = "root";
 		// $password = "root";		

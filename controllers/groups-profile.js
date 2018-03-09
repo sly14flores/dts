@@ -1,6 +1,6 @@
-var app = angular.module('profile',['account-module','app-module','ngRoute']);
+var app = angular.module('groups',['account-module','app-module','ngRoute']);
 
-app.controller('profileCtrl',function($scope,app) {
+app.controller('groupsCtrl',function($scope,app) {
 	
 	$scope.app = app;
 	
@@ -9,7 +9,7 @@ app.controller('profileCtrl',function($scope,app) {
 	$scope.app.startup($scope);	
 	
 	$scope.module = {
-		id: 8,
+		id: 9,
 		privileges: {
 			show: 1,
 			add: 2,
@@ -17,4 +17,6 @@ app.controller('profileCtrl',function($scope,app) {
 			delete: 4,
 		}
 	};	
+
+	
 });

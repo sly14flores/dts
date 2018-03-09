@@ -1,6 +1,6 @@
-var app = angular.module('maintenanceDoctypeList',['account-module','app-module']);
+var app = angular.module('groupsList',['account-module','app-module']);
 
-app.controller('maintenanceDoctypeCtrl',function($scope,app) {
+app.controller('groupsListCtrl',function($scope,app) {
 	
 	$scope.app = app;
 	
@@ -9,14 +9,15 @@ app.controller('maintenanceDoctypeCtrl',function($scope,app) {
 	$scope.app.list($scope);
 	
 	$scope.module = {
-		id: 10,
+		id: 9,
 		privileges: {
 			show: 1,
 			add: 2,
-			delete: 3,
+			edit: 3,
+			delete: 4,
 		}
 	};	
-
+	
 });
 
 app.filter('pagination', function() {
@@ -27,4 +28,6 @@ app.filter('pagination', function() {
 	      return input.slice(start, end);
 	    }
 	  };
+	  
+
 });

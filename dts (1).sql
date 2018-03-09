@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 01, 2018 at 03:51 PM
+-- Generation Time: Mar 08, 2018 at 04:18 PM
 -- Server version: 5.7.20-0ubuntu0.16.04.1
 -- PHP Version: 7.0.22-0ubuntu0.16.04.1
 
@@ -184,7 +184,14 @@ CREATE TABLE `documents` (
 --
 
 INSERT INTO `documents` (`id`, `user_id`, `doc_name`, `barcode`, `origin`, `other_origin`, `date_enrolled`, `transaction`, `doc_type`, `communication`, `remarks`) VALUES
-(1, 15, 'DTS - City of San Fernando', 'ICT-03-2018-00001', '5', NULL, '2018-03-01 07:50:05', '1', '5', '2', NULL);
+(1, 15, 'DTS - City of San Fernando', 'ICT-03-2018-00001', '5', NULL, '2018-03-01 07:50:05', '1', '5', '2', NULL),
+(2, 15, 'OJT DTR', 'ICT-03-2018-00002', '5', NULL, '2018-03-05 02:21:41', '1', '11', '2', NULL),
+(3, 15, 'Barcode Scanners', 'ICT-03-2018-00003', '5', NULL, '2018-03-05 02:30:27', '1', '2', '1', NULL),
+(4, 15, 'sddfsdf', 'ARM-03-2018-00001', '12', NULL, '2018-03-05 02:31:22', '1', '9', '2', NULL),
+(5, 15, 'sdsd', 'ADT-03-2018-00001', '13', NULL, '2018-03-05 02:31:41', '1', '3', '1', NULL),
+(6, 15, 'fsddfsdf', 'ROD-03-2018-00001', '15', NULL, '2018-03-05 02:32:21', '1', '5', '2', NULL),
+(7, 15, 'dfgdsfssd', 'SSD-03-2018-00001', '6', NULL, '2018-03-05 02:33:10', '1', '4', '1', NULL),
+(8, 15, 'ljljlj', 'LTO-03-2018-00001', '14', NULL, '2018-03-06 02:08:09', '1', '6', '1', NULL);
 
 -- --------------------------------------------------------
 
@@ -243,16 +250,16 @@ CREATE TABLE `groups` (
   `id` int(11) NOT NULL,
   `group_name` varchar(50) DEFAULT NULL,
   `group_description` varchar(50) DEFAULT NULL,
-  `priveleges` longtext
+  `privileges` longtext
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `groups`
 --
 
-INSERT INTO `groups` (`id`, `group_name`, `group_description`, `priveleges`) VALUES
-(1, 'Administrator', 'Admin', NULL),
-(2, 'User', 'Employee Level', NULL);
+INSERT INTO `groups` (`id`, `group_name`, `group_description`, `privileges`) VALUES
+(1, 'Admin', 'Administrator', '[{"id":1,"description":"Dashboard","privileges":[{"id":1,"description":"Show Dashboard","value":true}]},{"id":2,"description":"Receive Document","privileges":[{"id":1,"description":"Show Receive Document","value":true},{"id":2,"description":"Add Document","value":true}]},{"id":3,"description":"Incoming Document","privileges":[{"id":1,"description":"Show Incoming Document","value":true}]},{"id":4,"description":"Transactions","privileges":[{"id":1,"description":"Show Transactions","value":true}]},{"id":5,"description":"Pick-Up Documents","privileges":[{"id":1,"description":"Show For Pick-Up Documents","value":true}]},{"id":6,"description":"List of Documents","privileges":[{"id":1,"description":"Show List of Documents","value":true}]},{"id":7,"description":"Tracks","privileges":[{"id":1,"description":"Show Tracks of Documents","value":true}]},{"id":8,"description":"Accounts","privileges":[{"id":1,"description":"Show User Accounts","value":true},{"id":2,"description":"Add User Account","value":true},{"id":3,"description":"Edit User Account","value":true},{"id":4,"description":"Delete User Account","value":true}]},{"id":9,"description":"Groups","privileges":[{"id":1,"description":"Show User Groups","value":true},{"id":2,"description":"Add User Groups","value":true},{"id":3,"description":"Edit User Groups","value":true},{"id":4,"description":"Delete User Groups","value":true}]},{"id":10,"description":"Maintenance","privileges":[{"id":1,"description":"Show Maintenance","value":true},{"id":2,"description":"Add\\/Edit Item","value":true},{"id":3,"description":"Delete Item","value":true}]}]'),
+(2, 'User', 'Employee Level', '[{"id":1,"description":"Dashboard","privileges":[{"id":1,"description":"Show Dashboard","value":true}]},{"id":2,"description":"Receive Document","privileges":[{"id":1,"description":"Show Receive Document","value":true},{"id":2,"description":"Add Document","value":false}]},{"id":3,"description":"Incoming Document","privileges":[{"id":1,"description":"Show Incoming Document","value":false}]},{"id":4,"description":"Transactions","privileges":[{"id":1,"description":"Show Transactions","value":false}]},{"id":5,"description":"Pick-Up Documents","privileges":[{"id":1,"description":"Show For Pick-Up Documents","value":true}]},{"id":6,"description":"List of Documents","privileges":[{"id":1,"description":"Show List of Documents","value":false}]},{"id":7,"description":"Tracks","privileges":[{"id":1,"description":"Show Tracks of Documents","value":true}]},{"id":8,"description":"Accounts","privileges":[{"id":1,"description":"Show User Accounts","value":true},{"id":2,"description":"Add User Account","value":false},{"id":3,"description":"Edit User Account","value":false},{"id":4,"description":"Delete User Account","value":false}]},{"id":9,"description":"Groups","privileges":[{"id":1,"description":"Show User Groups","value":false},{"id":2,"description":"Add User Groups","value":true},{"id":3,"description":"Edit User Groups","value":true},{"id":4,"description":"Delete User Groups","value":true}]},{"id":10,"description":"Maintenance","privileges":[{"id":1,"description":"Show Maintenance","value":false},{"id":2,"description":"Add\\/Edit Item","value":true},{"id":3,"description":"Delete Item","value":true}]}]');
 
 -- --------------------------------------------------------
 
@@ -415,7 +422,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `fname`, `mname`, `lname`, `position`, `uname`, `pw`, `employee_id`, `div_id`, `email_address`, `phone_number`, `group_id`) VALUES
-(1, 'Sylvester', 'B', 'Flores', 'Sly', 'sly', 'legend', '003', 5, 'sly@christian.com.ph', 9198745632, 1),
+(1, 'Sylvester', 'B', 'Flores', 'President of the Philippines', 'sly', 'legend', '003', 5, 'sly@christian.com.ph', 9198745632, 1),
 (8, 'Karl Aaron', 'Masancay', 'Castaneda', 'OJT', 'aaron', '54321', '21331', 5, 'aaron.casty02@yahoo.com', 9298902184, 2),
 (13, 'Renwil', 'Gatchallan', 'Flores', 'OJT', 'renn', 'renn', '201231', 5, 'ren@wil.com', 909090909, 2),
 (14, 'Alain', 'M.', 'Dayao II', 'OJT', 'alain', '123456789', '21322', 5, 'al@al.com', 9123456789, 2),
@@ -497,7 +504,8 @@ ALTER TABLE `tracks`
   ADD KEY `document_id` (`document_id`),
   ADD KEY `destination` (`destination`),
   ADD KEY `user` (`user`),
-  ADD KEY `former_office` (`former_office`);
+  ADD KEY `former_office` (`former_office`),
+  ADD KEY `options` (`options`);
 
 --
 -- Indexes for table `transactions`
@@ -536,7 +544,7 @@ ALTER TABLE `divisions`
 -- AUTO_INCREMENT for table `documents`
 --
 ALTER TABLE `documents`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `document_types`
 --
@@ -546,12 +554,12 @@ ALTER TABLE `document_types`
 -- AUTO_INCREMENT for table `files`
 --
 ALTER TABLE `files`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `groups`
 --
 ALTER TABLE `groups`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `offices`
 --

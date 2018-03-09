@@ -1,19 +1,16 @@
 angular.module('app-module', ['form-validator','bootstrap-modal','ui.bootstrap','ngRoute','module-access']).config(function($routeProvider) {
     $routeProvider
         .when('/:option/:id', {
-            templateUrl: 'user-profile.html'
+            templateUrl: 'groups-add.html'
         })
-        .when('/:option/:id', {
-            templateUrl: 'user-profile.html'
-        });		
+		
 }).factory('app', function($http,$timeout,$window,$routeParams,$location,validate,bootstrapModal,access) {
 	
 	function app() {
 
 		var self = this;
 
-		self.startup = function(scope) {
-			
+		self.startup = function(scope) {			
 			
 			scope.controls.add = true;
 			scope.controls.edit = false;	
@@ -54,10 +51,7 @@ angular.module('app-module', ['form-validator','bootstrap-modal','ui.bootstrap',
 		self.data = function(scope) {
 
 			scope.formHolder = {};
-			
 			scope.views = {};
-			
-			scope.views.currentPage = 1;
 			
 			scope.controls = {
 				btns: {
@@ -70,50 +64,23 @@ angular.module('app-module', ['form-validator','bootstrap-modal','ui.bootstrap',
 				cancel:true
 			};
 			
-			scope.user = {};
-			
-			scope.user.id = 0;	
-			
-			scope.users = [];
-			
-			scope.offices = [];
+			scope.group = {};
+			scope.group.id = 0;	
 			
 			scope.groups = [];
 			
-
-			scope.views.currentPage = 1;
-
-			
-			$http({
-				method: 'GET',
-				url: 'handlers/offices.php'
-			}).then(function mySuccess(response) {
-				
-				scope.offices = angular.copy(response.data);
-					
-			}, function myError(response) {
-		
-		
-		
-			});			
-			$http({
-				method: 'GET',
-				url: 'handlers/groups.php'
-			}).then(function mySuccess(response) {
-				
-				scope.groups = angular.copy(response.data);
-					
-			}, function myError(response) {
-		
-		
-		
-			});			
+			scope.views.currentPage = 1;	
 
 		};
 		
 		self.add = function(scope) {
 			
-			if (!access.has(scope,scope.profile.group,scope.module.id,scope.module.privileges.add)) return;
+			if (!access.has(scope,scope.profile.group,scope.module.id,scope.module.privileges.add)) return;			
+			
+			scope.group = {};		
+			scope.group.id = 0;
+			
+			privileges(scope);	
 			
 			scope.controls.btns.ok = false;
 			scope.controls.btns.cancel = false;
@@ -125,40 +92,41 @@ angular.module('app-module', ['form-validator','bootstrap-modal','ui.bootstrap',
 			scope.controls.btns.ok = true;
 			scope.controls.btns.cancel = true;
 			
-			validate.cancel(scope,'user');
+			validate.cancel(scope,'groups');
 			
 			$timeout(function() {
-				if ($routeParams.option==undefined) scope.user = {};				
+				if ($routeParams.option==undefined) scope.groups = {};				
 			},500);
 			
 		};
 		
 		self.view = function(scope,row) {
 			
-			$window.location.href = "user-profile.html#!/view/"+row.id;
-			
-		};
-		self.delete = function(scope,row){
-			
-			if (!access.has(scope,scope.profile.group,scope.module.id,scope.module.privileges.delete)) return;
-			
-			scope.views.currentPage = scope.currentPage;
-			
-			$window.location.href = "user-profile.html#!/delete/"+row.id;
+			$window.location.href = "groups-add.html#!/view/"+row.id;
 			
 		};
 		
-		self.deleteConfirm = function(scope,id) {
+		self.delete = function(scope,row){
+			
+			if (!access.has(scope,scope.profile.group,scope.module.id,scope.module.privileges.delete)) return;				
+			
+			scope.views.currentPage = scope.currentPage;
+			
+			$window.location.href = "groups-add.html#!/delete/"+row.id;
+			
+		};
+		
+		self.deleteConfirm = function(scope,id) {			
 			
 			var onOk = function() {
 				
 				$http({
 					method: 'POST',
-					url: 'handlers/profile-delete.php',
+					url: 'handlers/groups-delete.php',
 					data: {id: id}
 				}).then(function mySuccess(response) {
 					
-						$window.location.href = "users-list.html";
+						$window.location.href = "groups-list.html";
 						
 				}, function myError(response) {
 			
@@ -170,7 +138,7 @@ angular.module('app-module', ['form-validator','bootstrap-modal','ui.bootstrap',
 			
 			var onCancel = function() {
 				
-				$window.location.href = "users-list.html";
+				$window.location.href = "groups-list.html";
 				
 			};
 			
@@ -180,7 +148,7 @@ angular.module('app-module', ['form-validator','bootstrap-modal','ui.bootstrap',
 		
 		self.edit = function(scope) {
 			
-			if (!access.has(scope,scope.profile.group,scope.module.id,scope.module.privileges.edit)) return;
+			if (!access.has(scope,scope.profile.group,scope.module.id,scope.module.privileges.edit)) return;				
 			
 			scope.controls.btns.ok = false;
 			scope.controls.btns.cancel = false;			
@@ -191,11 +159,12 @@ angular.module('app-module', ['form-validator','bootstrap-modal','ui.bootstrap',
 			
 			$http({
 			  method: 'POST',
-			  url: 'handlers/user-view.php',
+			  url: 'handlers/groups-view.php',
 			  data: {id: id}
 			}).then(function mySuccess(response) {
 				
-				scope.user = angular.copy(response.data);			
+				scope.group = angular.copy(response.data);
+				privileges(scope);
 				
 			}, function myError(response) {
 				
@@ -208,17 +177,17 @@ angular.module('app-module', ['form-validator','bootstrap-modal','ui.bootstrap',
 		self.save = function(scope) {
 
 			// validation
-			if (validate.form(scope,'user')) return;
+			if (validate.form(scope,'group')) return;
 			
 			$http({
 			  method: 'POST',
-			  url: 'handlers/profile-save.php',
-			  data: scope.user
+			  url: 'handlers/groups-save.php',
+			  data: {group: scope.group, privileges: scope.privileges}
 			}).then(function mySuccess(response) {
 				
-				if (scope.user.id == 0) {
-					scope.user = {};
-					scope.user.id = 0;
+				if (scope.group.id == 0) {
+					scope.group = {};
+					scope.groups.id = 0;
 				};
 				scope.controls.btns.ok = true;
 				scope.controls.btns.cancel = true;					
@@ -233,21 +202,37 @@ angular.module('app-module', ['form-validator','bootstrap-modal','ui.bootstrap',
 		
 		self.list = function(scope) {
 			
-			scope.currentPage = scope.views.currentPage; // for pagination
-			scope.pageSize = 10; // for pagination
-			scope.maxSize = 3; // for pagination
+			scope.currentPage = scope.views.currentPage; 
+			scope.pageSize = 10; 
+			scope.maxSize = 3; 
 
 			$http({
 			  method: 'GET',
-			  url: 'handlers/users-list.php'
+			  url: 'handlers/groups-list.php'
 			}).then(function mySuccess(response) {
 				
+				scope.groups = angular.copy(response.data);	
 
-				scope.users = angular.copy(response.data);	
-
-				scope.filterData = scope.users; // for pagination
-				scope.currentPage = scope.views.currentPage; // for pagination 							
-
+				scope.filterData = scope.groups; 
+				scope.currentPage = scope.views.currentPage; 							
+				
+			}, function myError(response) {
+				
+				//
+				
+			});				
+			
+		};
+		
+		function privileges(scope) {
+			
+			$http({
+			  method: 'POST',
+			  url: 'handlers/privileges.php',
+			  data: {id: scope.group.id}
+			}).then(function mySuccess(response) {
+				
+				scope.privileges = angular.copy(response.data);
 				
 			}, function myError(response) {
 				

@@ -3,6 +3,7 @@
 require_once 'authentication.php';
 
 ?>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -13,7 +14,7 @@ require_once 'authentication.php';
     <link rel="stylesheet" href="./vendor/font-awesome/css/fontawesome-all.min.css">
     <link rel="stylesheet" href="./css/styles.css">
 </head>
-<body class="sidebar-fixed header-fixed" ng-app="maintenanceTransacList" ng-controller="maintenanceTransacCtrl">
+<body class="sidebar-fixed header-fixed" ng-app="groups" ng-controller="groupsCtrl">
 <div class="page-wrapper">
     <nav class="navbar page-header">
         <a href="#" class="btn btn-link sidebar-mobile-toggle d-md-none mr-auto">
@@ -109,13 +110,13 @@ require_once 'authentication.php';
                         </ul>
                     </li>
 					<li class="nav-item nav-dropdown" ng-show="profile.pages_access[8].value">
-                        <a href="#" class="nav-link nav-dropdown-toggle">
+                        <a href="#" class="nav-link nav-dropdown-toggle active">
                             <i class="icon icon-list"></i> Groups <i class="fa fa-caret-left"></i>
                         </a>
 
                         <ul class="nav-dropdown-items">
                             <li class="nav-item">
-                                <a href="groups-add.html" class="nav-link">
+                                <a href="groups-add.html" class="nav-link active">
                                     <i class="icon icon-plus"></i> Add Group
                                 </a>
                             </li>
@@ -127,7 +128,7 @@ require_once 'authentication.php';
                         </ul>
                     </li>
 					<li class="nav-item nav-dropdown" ng-show="profile.pages_access[9].value">
-                        <a href="#" class="nav-link nav-dropdown-toggle active">
+                        <a href="#" class="nav-link nav-dropdown-toggle">
                             <i class="icon icon-support"></i> Maintenance <i class="fa fa-caret-left"></i>
                         </a>
                         <ul class="nav-dropdown-items">
@@ -142,7 +143,7 @@ require_once 'authentication.php';
                                 </a>
                             </li>
 							<li class="nav-item">
-                                <a href="transaction-maintenance.html" class="nav-link active">
+                                <a href="transaction-maintenance.html" class="nav-link">
                                     <i class="icon icon-flag"></i> Transactions
                                 </a>
                             </li>
@@ -154,52 +155,66 @@ require_once 'authentication.php';
 
         <div class="content">
             <div class="container-fluid">
-				<div class="row">
-					<div class="col-md-4">
-						<div class="input-group">					
-                            <span class="input-group-btn">
-                                <button type="button" class="btn btn-primary"><i class="fa fa-search"></i> Search</button>
-                            </span>
-                            <input type="text" id="input-group-1" name="input1-group2" class="form-control" ng-model="search" placeholder="">
-                        </div>
-					</div>
-				</div>				
+					<button type="button" class="btn btn-primary" ng-click="app.add(this)" ng-show="controls.add" ng-disabled="!controls.btns.ok">
+						<i class="fa fa-user"></i> &nbsp; Add
+					</button>
+					<button type="button" class="btn btn-primary" ng-click="app.edit(this)" ng-show="controls.edit" ng-disabled="!controls.btns.ok">
+						<i class="fa fa-edit"></i> &nbsp; Edit
+					</button>
+					<hr>
                 <div class="row">
                     <div class="col-md-12">
-					<hr>
                         <div class="card">
                             <div class="card-header bg-light">
-                                List of Document Types
-								<button type="button" class="btn btn-primary float-right" ng-click="app.add(this,null)">
-									<i class="fa fa-user"></i> &nbsp; Add
-								</button>								
-                            </div>						
-							<div class="card-body">
-								<div class="row">
-									<table class="table table-striped">
-										<thead>
-											<tr>
-												<th>Transaction</th>
-												<th>Days</th>
-												<th>Shortname</th>
-												<th>Actions</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr ng-repeat="tran in trans | filter:search">
-											<td>{{tran.transaction}}</td>
-											<td>{{tran.days}}</td>
-											<td>{{tran.shortname}}</td>
-											<td>
-											<button class="btn btn-primary" ng-click="app.add(this,tran)"><i class="icon icon-pencil"></i></button>
-											<button class="btn btn-secondary" ng-click="app.delete(this,tran)"><i class="icon icon-trash"></i></button>
-											</td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-							</div>
-								<hr>								
+                                Groups
+                            </div>
+
+                            <div class="card-body">
+							<form novalidate autocomplete=off name="formHolder.group">
+                                <div class="row mt-4">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="form-control-label">Group Name</label>
+                                            <input type="text" class="form-control" name="group_name" ng-class="{'is-invalid': formHolder.group.group_name.$touched && formHolder.group.group_name.$invalid}" ng-model="group.group_name" ng-disabled="controls.btns.ok" required>
+											<div class="invalid-feedback">Group Name is required</div>
+										</div>										
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="form-control-label">Description</label>
+                                            <input type="text" class="form-control" name="group_description" ng-class="{'is-invalid': formHolder.group.group_description.$touched && formHolder.group.group_description.$invalid}" ng-model="group.group_description" ng-disabled="controls.btns.ok" required>
+											<div class="invalid-feedback">Description is required</div>
+										</div>	
+                                    </div>
+                                </div>
+								<hr>
+								<div class="row mt-4">
+
+									<div class="col-md-12">
+										<div class="card" ng-repeat="p in privileges">
+											<div class="card-header bg-light">
+											<h5>
+												{{p.description}}
+											</h5>
+											</div>
+											<div class="card-body">
+												<div class="row mt-4">
+													<div class="col-md-3" ng-repeat="pp in p.privileges" style="margin-bottom: 50px;">
+														<div class="toggle-switch" data-ts-color="primary">
+															<label for="{{p.id}}{{$index}}" class="ts-label">{{pp.description}}</label>
+															<input id="{{p.id}}{{$index}}" type="checkbox" hidden="hidden" ng-model="pp.value" ng-check="pp.value" ng-disabled="controls.btns.ok">
+															<label for="{{p.id}}{{$index}}" class="ts-helper"></label>
+														</div>														
+													</div>													
+												</div>												
+											</div>
+										</div>
+									</div>
+				
+                                </div>
+								<button class="btn btn-primary" ng-click="app.save(this)" ng-disabled="controls.btns.ok" ng-show="controls.ok">Save</button>
+								<button class="btn btn-secondary" ng-disabled="controls.btns.cancel" ng-click="app.cancel(this)" ng-show="controls.cancel">Cancel</button>
+							</form>
                             </div>
                         </div>
                     </div>
@@ -219,8 +234,10 @@ require_once 'authentication.php';
 <script src="vendor/bootbox/bootbox.min.js"></script>
 <script src="vendor/growl/jquery.bootstrap-growl.min.js"></script>
 <script src="vendor/blockui/jquery.blockUI.js"></script>
+
 <script src="angular/angular.min.js"></script>
 <script src="angular/angular-route.min.js"></script>
+<script src="angular/ui-bootstrap-tpls-3.0.2.min.js"></script>
 <!-- modules -->
 <script src="modules/bootstrap-modal.js"></script>
 <script src="modules/account.js"></script>
@@ -228,8 +245,8 @@ require_once 'authentication.php';
 <script src="modules/validate.js"></script>
 <script src="modules/blockui.js"></script>
 <script src="modules/growl.js"></script>
-<script src="modules/maintenance-transaction-view.js"></script>
+<script src="modules/groups-profile.js"></script>
 <!-- controller -->
-<script src="controllers/maintenance-transaction-view.js"></script>
+<script src="controllers/groups-profile.js"></script>
 </body>
 </html>

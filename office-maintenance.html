@@ -51,46 +51,46 @@ require_once 'authentication.php';
                 <ul class="nav">
                     <li class="nav-title">Navigation</li>
 
-                    <li class="nav-item">
+                    <li class="nav-item" ng-show="profile.pages_access[0].value">
                         <a href="index.html" class="nav-link">
                             <i class="icon icon-speedometer"></i> Dashboard
                         </a>
                     </li>
-					                    <li class="nav-item nav-dropdown">
+					    <li class="nav-item nav-dropdown">
                         <a href="#" class="nav-link nav-dropdown-toggle">
                             <i class="icon icon-docs"></i> Documents <i class="fa fa-caret-left"></i>
                         </a>
                         <ul class="nav-dropdown-items">
-                            <li class="nav-item">
+                            <li class="nav-item" ng-show="profile.pages_access[1].value">
                                 <a href="add-documents.html" class="nav-link">
                                     <i class="icon icon-plus"></i>Receive Document
                                 </a>
-                            </li><li class="nav-item">
-                                <a href="add-documents.html" class="nav-link">
-                                    <i class="icon icon-login"></i>Incoming Document
+                            </li><li class="nav-item" ng-show="profile.pages_access[2].value">
+                                <a href="incoming.html" class="nav-link">
+                                    <i class="icon icon-login"></i>Incoming Documents
                                 </a>
-                            </li><li class="nav-item">
+                            </li><li class="nav-item" ng-show="profile.pages_access[3].value">
                                 <a href="add-documents.html" class="nav-link">
-                                    <i class="icon icon-book-open"></i>Review Document
+                                    <i class="icon icon-book-open"></i>Transactions
                                 </a>
-                            </li><li class="nav-item">
+                            </li><li class="nav-item" ng-show="profile.pages_access[4].value">
                                 <a href="add-documents.html" class="nav-link">
-                                    <i class="icon icon-logout"></i>Outgoing Document
+                                    <i class="icon icon-logout"></i>For Pick-Up Documents
                                 </a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item" ng-show="profile.pages_access[5].value">
                                 <a href="documents-list.html" class="nav-link">
                                     <i class="icon icon-doc"></i> List of Documents
                                 </a>
                             </li>
-							</li><li class="nav-item">
+							</li><li class="nav-item" ng-show="profile.pages_access[6].value">
                                 <a href="tracks.html" class="nav-link">
-                                    <i class="icon icon-map"></i>Tracks
+                                    <i class="icon icon-location-pin"></i>Tracks
                                 </a>
                             </li>
                         </ul>
                     </li>	
-                    <li class="nav-item nav-dropdown">
+                    <li class="nav-item nav-dropdown" ng-show="profile.pages_access[7].value">
                         <a href="#" class="nav-link nav-dropdown-toggle">
                             <i class="icon icon-people"></i> Accounts <i class="fa fa-caret-left"></i>
                         </a>
@@ -108,7 +108,25 @@ require_once 'authentication.php';
                             </li>
                         </ul>
                     </li>
-					<li class="nav-item nav-dropdown">
+					<li class="nav-item nav-dropdown" ng-show="profile.pages_access[8].value">
+                        <a href="#" class="nav-link nav-dropdown-toggle">
+                            <i class="icon icon-list"></i> Groups <i class="fa fa-caret-left"></i>
+                        </a>
+
+                        <ul class="nav-dropdown-items">
+                            <li class="nav-item">
+                                <a href="groups-add.html" class="nav-link">
+                                    <i class="icon icon-plus"></i> Add Group
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="groups-list.html" class="nav-link">
+                                    <i class="icon icon-people"></i> List
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+					<li class="nav-item nav-dropdown" ng-show="profile.pages_access[9].value">
                         <a href="#" class="nav-link nav-dropdown-toggle active">
                             <i class="icon icon-support"></i> Maintenance <i class="fa fa-caret-left"></i>
                         </a>
@@ -205,7 +223,8 @@ require_once 'authentication.php';
 
 <!-- dependencies -->
 <script src="vendor/bootbox/bootbox.min.js"></script>
-
+<script src="vendor/growl/jquery.bootstrap-growl.min.js"></script>
+<script src="vendor/blockui/jquery.blockUI.js"></script>
 <script src="angular/angular.min.js"></script>
 <script src="angular/angular-route.min.js"></script>
 <script src="angular/ui-bootstrap-tpls-3.0.2.min.js"></script><!-- added for pagination -->
@@ -213,7 +232,10 @@ require_once 'authentication.php';
 <!-- modules -->
 <script src="modules/bootstrap-modal.js"></script>
 <script src="modules/account.js"></script>
+<script src="modules/module-access.js"></script>
 <script src="modules/validate.js"></script>
+<script src="modules/blockui.js"></script>
+<script src="modules/growl.js"></script>
 <script src="modules/maintenance-offices-view.js"></script>
 
 <!-- controller -->
