@@ -1,4 +1,4 @@
-angular.module('app-module', ['bootstrap-modal','ui.bootstrap','module-access']).factory('app', function($http,$timeout,$window,bootstrapModal,access) {
+angular.module('app-module', ['bootstrap-modal','ui.bootstrap']).factory('app', function($http,$timeout,$window,bootstrapModal) {
 	
 	function app() {
 
@@ -7,31 +7,35 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','module-access'])
 		self.data = function(scope) {
 
 			scope.formHolder = {};
-			scope.views = {};			
 			
-			scope.departments = [];
+			scope.views = {};
+			
+			scope.incoming = {};
+			
+			scope.incoming.id = 0;
+			
+			scope.incoming = [];
+			
+			scope.options = [];
 			
 			scope.views.currentPage = 1; // for pagination
 			
 			$http({
 				method: 'GET',
-				url: 'handlers/departments.php'
+				url: 'handlers/options.php'
 			}).then(function mySuccess(response) {
 				
-				scope.departments = angular.copy(response.data);
+				scope.options = angular.copy(response.data);
 					
 			}, function myError(response) {
 		
-			});
-
-			scope.office = {};
-			scope.office.id = 0;
-
-			scope.offices = []; // list/table
-
+		
+		
+			});	
 			
-
 		};
+		
+		
 		
 		function validate(scope,form) {
 			
@@ -57,19 +61,17 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','module-access'])
 		
 		self.delete = function(scope, row) {
 			
-			if (!access.has(scope,scope.profile.group,scope.module.id,scope.module.privileges.delete)) return;
-			
-			scope.views.currentPage = scope.currentPage; // for pagination		
+			scope.views.currentPage = scope.currentPage; // for pagination	
 			
 			var onOk = function() {
 				
 				$http({
 					method: 'POST',
-					url: 'handlers/maintenance-delete.php',
+					url: 'handlers/doctype-delete.php',
 					data: {id: row.id}
 				}).then(function mySuccess(response) {
 					
-						self.list(scope);						
+						self.list(scope);
 						
 				}, function myError(response) {
 			
@@ -86,26 +88,22 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','module-access'])
 		};
 
 		self.list = function(scope) {
-
+						
 			if (scope.$id > 2) scope = scope.$parent;
 			
 			scope.currentPage = scope.views.currentPage; // for pagination
 			scope.pageSize = 10; // for pagination
-			scope.maxSize = 3; // for pagination
+			scope.maxSize = 5; // for pagination
 			
-			/*
-			** REFERENCE: https://morgul.github.io/ui-bootstrap4/#!#pagination
-			*/
-
+			
 			$http({
 			  method: 'GET',
-			  url: 'handlers/offices-list.php'
+			  url: 'handlers/incoming.php'
 			}).then(function mySuccess(response) {
 				
-				scope.offices = angular.copy(response.data);
-				
+				scope.incoming = angular.copy(response.data);
 				scope.filterData = scope.offices; // for pagination
-				scope.currentPage = scope.views.currentPage; // for pagination 			
+				scope.currentPage = scope.views.currentPage; // for pagination 	
 				
 			}, function myError(response) {
 				
@@ -113,28 +111,26 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','module-access'])
 			
 		};
 		
-		self.add = function(scope,office) {
+		self.add = function(scope,doc_type) {
 			
-			if (!access.has(scope,scope.profile.group,scope.module.id,scope.module.privileges.add)) return;
 			
-			var title = 'Add Office';
 			
-			if (office == null) {				
+			if (doc_type == null) {				
 				
-				scope.office = {};
-				scope.office.id = 0;
+				scope.doc_type = {};
+				scope.doc_type.id = 0;
 				
 			} else {
 				
-				title = 'Edit Office Info';
+				title = 'Incoming Document';
 				
 				$http({
 				  method: 'POST',
-				  url: 'handlers/office-view.php',
-				  data: {id: office.id}
+				  url: 'handlers/doctype-view.php',
+				  data: {id: doc_type.id}
 				}).then(function mySuccess(response) {
 					
-					scope.office = angular.copy(response.data);			
+					scope.doc_type = angular.copy(response.data);			
 					
 				}, function myError(response) {
 					
@@ -146,12 +142,12 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','module-access'])
 
 			var onOk = function() {
 
-				if (validate(scope,'office')) return false;				
+				if (validate(scope,'doc_type')) return false;				
 				
 				$http({
 				  method: 'POST',
-				  url: 'handlers/office-save.php',
-				  data: scope.office
+				  url: 'handlers/doctype-save.php',
+				  data: scope.doc_type
 				}).then(function mySuccess(response) {				
 					
 					self.list(scope);
@@ -166,7 +162,7 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','module-access'])
 				
 			};
 		
-			bootstrapModal.box(scope,title,'dialogs/office.html',onOk);
+			bootstrapModal.box(scope,title,'dialogs/incoming.html',onOk);
 			
 		};	
 

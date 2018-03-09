@@ -1,4 +1,4 @@
-angular.module('app-module', ['bootstrap-modal']).factory('app', function($http,$timeout,$window,bootstrapModal) {
+angular.module('app-module', ['bootstrap-modal','ui.bootstrap','module-access']).factory('app', function($http,$timeout,$window,bootstrapModal,access) {
 	
 	function app() {
 
@@ -13,6 +13,8 @@ angular.module('app-module', ['bootstrap-modal']).factory('app', function($http,
 			scope.doc_type.id = 0;
 			
 			scope.doc_type = [];
+			
+			scope.views.currentPage = 1;
 
 		};
 		
@@ -39,6 +41,10 @@ angular.module('app-module', ['bootstrap-modal']).factory('app', function($http,
 		};
 		
 		self.delete = function(scope, row) {
+			
+			if (!access.has(scope,scope.profile.group,scope.module.id,scope.module.privileges.delete)) return;
+			
+			scope.views.currentPage = scope.currentPage;
 			
 			var onOk = function() {
 				
@@ -68,12 +74,19 @@ angular.module('app-module', ['bootstrap-modal']).factory('app', function($http,
 			
 			if (scope.$id > 2) scope = scope.$parent;
 			
+			scope.currentPage = scope.views.currentPage;
+			scope.pageSize = 10;
+			scope.maxSize = 3;
+			
 			$http({
 			  method: 'GET',
 			  url: 'handlers/doctype-list.php'
 			}).then(function mySuccess(response) {
 				
 				scope.doc_type = angular.copy(response.data);
+				
+				scope.filterData = scope.doc_type;
+				scope.currentPage = scope.views.currentPage;
 				
 			}, function myError(response) {
 				
@@ -83,6 +96,8 @@ angular.module('app-module', ['bootstrap-modal']).factory('app', function($http,
 		
 		self.add = function(scope,doc_type) {
 			
+			if (!access.has(scope,scope.profile.group,scope.module.id,scope.module.privileges.add)) return;
+			
 			var title = 'Add Document Types';
 			
 			if (doc_type == null) {				
@@ -91,6 +106,7 @@ angular.module('app-module', ['bootstrap-modal']).factory('app', function($http,
 				scope.doc_type.id = 0;
 				
 			} else {
+				
 				
 				title = 'Edit Document Type Info';
 				

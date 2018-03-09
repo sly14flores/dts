@@ -8,6 +8,8 @@ $con = new pdo_db("users");
 
 $_POST['div_id'] = $_POST['div_id']['id'];
 
+$_POST['group_id'] = $_POST['group_id']['id'];
+
 if ($_POST['id']) { # update
 	$con->updateData($_POST,'id');	
 } else { # insert

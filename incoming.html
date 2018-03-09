@@ -3,6 +3,7 @@
 require_once 'authentication.php';
 
 ?>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -13,7 +14,7 @@ require_once 'authentication.php';
     <link rel="stylesheet" href="./vendor/font-awesome/css/fontawesome-all.min.css">
     <link rel="stylesheet" href="./css/styles.css">
 </head>
-<body class="sidebar-fixed header-fixed" ng-app="maintenanceTransacList" ng-controller="maintenanceTransacCtrl">
+<body class="sidebar-fixed header-fixed" ng-app="incoming" ng-controller="incomingCtrl">
 <div class="page-wrapper">
     <nav class="navbar page-header">
         <a href="#" class="btn btn-link sidebar-mobile-toggle d-md-none mr-auto">
@@ -21,7 +22,7 @@ require_once 'authentication.php';
         </a>
 
         <a class="navbar-brand" href="javascript:;">
-            <img src="./imgs/dts.png" style ="width:180px;height:53px" alt="logo">
+            <img src="./imgs/dts.png" style ="width:180px;height:53px" alt="logo">	
         </a>
 
         <a href="#" class="btn btn-link sidebar-toggle d-md-down-none">
@@ -57,7 +58,7 @@ require_once 'authentication.php';
                         </a>
                     </li>
 					    <li class="nav-item nav-dropdown">
-                        <a href="#" class="nav-link nav-dropdown-toggle">
+                        <a href="#" class="nav-link nav-dropdown-toggle active">
                             <i class="icon icon-docs"></i> Documents <i class="fa fa-caret-left"></i>
                         </a>
                         <ul class="nav-dropdown-items">
@@ -66,7 +67,7 @@ require_once 'authentication.php';
                                     <i class="icon icon-plus"></i>Receive Document
                                 </a>
                             </li><li class="nav-item" ng-show="profile.pages_access[2].value">
-                                <a href="incoming.html" class="nav-link">
+                                <a href="incoming.html" class="nav-link active">
                                     <i class="icon icon-login"></i>Incoming Documents
                                 </a>
                             </li><li class="nav-item" ng-show="profile.pages_access[3].value">
@@ -127,7 +128,7 @@ require_once 'authentication.php';
                         </ul>
                     </li>
 					<li class="nav-item nav-dropdown" ng-show="profile.pages_access[9].value">
-                        <a href="#" class="nav-link nav-dropdown-toggle active">
+                        <a href="#" class="nav-link nav-dropdown-toggle">
                             <i class="icon icon-support"></i> Maintenance <i class="fa fa-caret-left"></i>
                         </a>
                         <ul class="nav-dropdown-items">
@@ -142,7 +143,7 @@ require_once 'authentication.php';
                                 </a>
                             </li>
 							<li class="nav-item">
-                                <a href="transaction-maintenance.html" class="nav-link active">
+                                <a href="transaction-maintenance.html" class="nav-link">
                                     <i class="icon icon-flag"></i> Transactions
                                 </a>
                             </li>
@@ -161,45 +162,49 @@ require_once 'authentication.php';
                                 <button type="button" class="btn btn-primary"><i class="fa fa-search"></i> Search</button>
                             </span>
                             <input type="text" id="input-group-1" name="input1-group2" class="form-control" ng-model="search" placeholder="">
-                        </div>
+                        </div><hr>
 					</div>
 				</div>				
                 <div class="row">
                     <div class="col-md-12">
-					<hr>
                         <div class="card">
                             <div class="card-header bg-light">
-                                List of Document Types
-								<button type="button" class="btn btn-primary float-right" ng-click="app.add(this,null)">
-									<i class="fa fa-user"></i> &nbsp; Add
-								</button>								
-                            </div>						
+                                Incoming Documents
+                            </div>
 							<div class="card-body">
-								<div class="row">
+								<div class = "row">
 									<table class="table table-striped">
 										<thead>
 											<tr>
-												<th>Transaction</th>
-												<th>Days</th>
-												<th>Shortname</th>
-												<th>Actions</th>
+												<th>Subject</th>
+												<th>Office</th>
+												<th>Type</th>
+												<th>Date</th>
+												<th>Option</th>
 											</tr>
 										</thead>
 										<tbody>
-											<tr ng-repeat="tran in trans | filter:search">
-											<td>{{tran.transaction}}</td>
-											<td>{{tran.days}}</td>
-											<td>{{tran.shortname}}</td>
+											<tr ng-repeat="i in filterData = (incoming | filter:search) | pagination: currentPage:pageSize"><!-- added pagination feature -->
+											<td>{{i.doc_name}}</td>
+											<td>{{i.origin}}</td>
+											<td>{{i.doc_type}}</td>
+											<td>{{i.date_enrolled}}</td>
 											<td>
-											<button class="btn btn-primary" ng-click="app.add(this,tran)"><i class="icon icon-pencil"></i></button>
-											<button class="btn btn-secondary" ng-click="app.delete(this,tran)"><i class="icon icon-trash"></i></button>
+												<button class="btn btn-primary" ng-click="app.add(this,i)"><i class="fas fa-edit"></i></button>
+												<!-- <button class="btn btn-secondary" ng-click="app.delete(this,dl)"><i class="icon icon-trash"></i></button> -->
 											</td>
 											</tr>
 										</tbody>
+										<tfoot><!-- added pagination feature -->
+											<tr>
+												<td colspan="5" style="text-align: center;">
+													<div class="float-right"><ul uib-pagination direction-links="false" boundary-links="true" total-items="filterData.length" ng-model="currentPage" max-size="maxSize"></ul></div>
+ 											    </td>
+											</tr>											
+										</tfoot>
 									</table>
 								</div>
 							</div>
-								<hr>								
                             </div>
                         </div>
                     </div>
@@ -217,19 +222,16 @@ require_once 'authentication.php';
 
 <!-- dependencies -->
 <script src="vendor/bootbox/bootbox.min.js"></script>
-<script src="vendor/growl/jquery.bootstrap-growl.min.js"></script>
-<script src="vendor/blockui/jquery.blockUI.js"></script>
 <script src="angular/angular.min.js"></script>
 <script src="angular/angular-route.min.js"></script>
+<script src="angular/ui-bootstrap-tpls-3.0.2.min.js"></script><!-- added for pagination -->
 <!-- modules -->
 <script src="modules/bootstrap-modal.js"></script>
 <script src="modules/account.js"></script>
-<script src="modules/module-access.js"></script>
 <script src="modules/validate.js"></script>
-<script src="modules/blockui.js"></script>
-<script src="modules/growl.js"></script>
-<script src="modules/maintenance-transaction-view.js"></script>
+<script src="modules/incoming.js"></script>
 <!-- controller -->
-<script src="controllers/maintenance-transaction-view.js"></script>
+<script src="controllers/incoming.js"></script>
+
 </body>
 </html>
