@@ -1,4 +1,4 @@
-angular.module('app-module', ['bootstrap-modal','module-access']).factory('app', function($http,$timeout,$window,bootstrapModal,access) {
+angular.module('app-module', ['bootstrap-modal','ui.bootstrap']).factory('app', function($http,$timeout,$window,bootstrapModal) {
 	
 	function app() {
 
@@ -7,13 +7,15 @@ angular.module('app-module', ['bootstrap-modal','module-access']).factory('app',
 		self.data = function(scope) {
 
 			scope.formHolder = {};
+			
 			scope.views = {};
 			
-			scope.trans = {};
-			scope.trans.id = 0;
+			scope.incoming = {};
 			
-			scope.trans = [];
-
+			scope.incomings = [];
+			
+			scope.views.currentPage = 1; // for pagination
+			
 		};
 		
 		function validate(scope,form) {
@@ -40,13 +42,13 @@ angular.module('app-module', ['bootstrap-modal','module-access']).factory('app',
 		
 		self.delete = function(scope, row) {
 			
-			if (!access.has(scope,scope.profile.group,scope.module.id,scope.module.privileges.delete)) return;
+			scope.views.currentPage = scope.currentPage; // for pagination	
 			
 			var onOk = function() {
 				
 				$http({
 					method: 'POST',
-					url: 'handlers/transaction-delete.php',
+					url: 'handlers/doctype-delete.php',
 					data: {id: row.id}
 				}).then(function mySuccess(response) {
 					
@@ -67,15 +69,21 @@ angular.module('app-module', ['bootstrap-modal','module-access']).factory('app',
 		};
 
 		self.list = function(scope) {
-			
+						
 			if (scope.$id > 2) scope = scope.$parent;
+			
+			scope.currentPage = scope.views.currentPage; // for pagination
+			scope.pageSize = 10; // for pagination
+			scope.maxSize = 5; // for pagination
 			
 			$http({
 			  method: 'GET',
-			  url: 'handlers/transaction-list.php'
+			  url: 'handlers/incoming.php'
 			}).then(function mySuccess(response) {
 				
-				scope.trans = angular.copy(response.data);
+				scope.incomings = angular.copy(response.data);
+				scope.filterData = scope.incomings; // for pagination
+				scope.currentPage = scope.views.currentPage; // for pagination 	
 				
 			}, function myError(response) {
 				
@@ -83,45 +91,28 @@ angular.module('app-module', ['bootstrap-modal','module-access']).factory('app',
 			
 		};
 		
-		self.add = function(scope,trans) {
+		self.receive = function(scope,doc) {
+			console.log(doc);
+			title = doc.doc_type;
+			date = doc.date_enrolled;
 			
-			if (!access.has(scope,scope.profile.group,scope.module.id,scope.module.privileges.add)) return;
+			var m_names = new Array("January","February","March","April","May","June","July","August","September","October","November","December");
 			
-			var title = 'Add Transaction Types';
+			var month = parseInt(date.substring(5,7));
+		
+			date = m_names[month-1] + " " + date.substring(8,10) + ", " + date.substring(0,4); 
 			
-			if (trans == null) {				
-				
-				scope.trans = {};
-				scope.trans.id = 0;
-				
-			} else {
-				
-				title = 'Edit Transaction Type Info';
-				
-				$http({
-				  method: 'POST',
-				  url: 'handlers/transaction-view.php',
-				  data: {id: trans.id}
-				}).then(function mySuccess(response) {
-					
-					scope.trans = angular.copy(response.data);			
-					
-				}, function myError(response) {
-					
-					//
-					
-				});					
-				
-			};
-
+			scope.incoming = angular.copy(doc);
+			
+			scope.incoming.date = date;
 			var onOk = function() {
 
-				if (validate(scope,'trans')) return false;				
+				if (validate(scope,'incoming')) return false;				
 				
 				$http({
 				  method: 'POST',
-				  url: 'handlers/transaction-save.php',
-				  data: scope.trans
+				  url: 'handlers/doc-receive.php',
+				  data: scope.incoming
 				}).then(function mySuccess(response) {				
 					
 					self.list(scope);
@@ -136,7 +127,7 @@ angular.module('app-module', ['bootstrap-modal','module-access']).factory('app',
 				
 			};
 		
-			bootstrapModal.box(scope,title,'dialogs/transaction.html',onOk);
+			bootstrapModal.box(scope,title,'dialogs/incoming.html',onOk);
 			
 		};	
 

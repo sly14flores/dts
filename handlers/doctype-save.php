@@ -6,8 +6,6 @@ require_once '../db.php';
 
 $con = new pdo_db("document_types");
 
-$_POST['id'] = $_POST['id'];
-
 if ($_POST['id']) { # update
 
 	$con->updateData($_POST,'id');	
