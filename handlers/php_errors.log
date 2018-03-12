@@ -1,35 +1,7 @@
-[12-Mar-2018 08:25:35 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.
- in C:\UwAmp310\www\dts\db.php:35
-Stack trace:
-#0 C:\UwAmp310\www\dts\db.php(35): PDO->__construct('mysql:host=loca...', 'root', 'root', Array)
-#1 C:\UwAmp310\www\dts\handlers\offices.php(5): pdo_db->__construct('offices')
-#2 {main}
-  thrown in C:\UwAmp310\www\dts\db.php on line 35
-[12-Mar-2018 08:25:35 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.
- in C:\UwAmp310\www\dts\db.php:35
-Stack trace:
-#0 C:\UwAmp310\www\dts\db.php(35): PDO->__construct('mysql:host=loca...', 'root', 'root', Array)
-#1 C:\UwAmp310\www\dts\handlers\doctype.php(5): pdo_db->__construct('document_types')
-#2 {main}
-  thrown in C:\UwAmp310\www\dts\db.php on line 35
-[12-Mar-2018 08:25:35 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.
- in C:\UwAmp310\www\dts\db.php:35
-Stack trace:
-#0 C:\UwAmp310\www\dts\db.php(35): PDO->__construct('mysql:host=loca...', 'root', 'root', Array)
-#1 C:\UwAmp310\www\dts\handlers\transactions.php(5): pdo_db->__construct('transactions')
-#2 {main}
-  thrown in C:\UwAmp310\www\dts\db.php on line 35
-[12-Mar-2018 08:25:36 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.
- in C:\UwAmp310\www\dts\db.php:35
-Stack trace:
-#0 C:\UwAmp310\www\dts\db.php(35): PDO->__construct('mysql:host=loca...', 'root', 'root', Array)
-#1 C:\UwAmp310\www\dts\handlers\communications.php(5): pdo_db->__construct('communications')
-#2 {main}
-  thrown in C:\UwAmp310\www\dts\db.php on line 35
-[12-Mar-2018 08:25:36 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.
- in C:\UwAmp310\www\dts\db.php:35
-Stack trace:
-#0 C:\UwAmp310\www\dts\db.php(35): PDO->__construct('mysql:host=loca...', 'root', 'root', Array)
-#1 C:\UwAmp310\www\dts\handlers\account-profile.php(9): pdo_db->__construct('users')
-#2 {main}
-  thrown in C:\UwAmp310\www\dts\db.php on line 35
+[12-Mar-2018 15:17:33 Asia/Manila] PHP Parse error:  syntax error, unexpected ')' in C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\users-list.php on line 14
+[12-Mar-2018 15:17:50 Asia/Manila] PHP Parse error:  syntax error, unexpected ')' in C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\users-list.php on line 14
+[12-Mar-2018 15:18:36 Asia/Manila] PHP Parse error:  syntax error, unexpected ')' in C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\users-list.php on line 14
+[12-Mar-2018 15:39:58 Asia/Manila] PHP Parse error:  syntax error, unexpected '(', expecting identifier (T_STRING) or variable (T_VARIABLE) or '{' or '$' in C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\add-documents.php on line 65
+[12-Mar-2018 15:42:29 Asia/Manila] PHP Parse error:  syntax error, unexpected '(', expecting identifier (T_STRING) or variable (T_VARIABLE) or '{' or '$' in C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\add-documents.php on line 67
+[12-Mar-2018 15:43:30 Asia/Manila] PHP Parse error:  syntax error, unexpected '(', expecting identifier (T_STRING) or variable (T_VARIABLE) or '{' or '$' in C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\add-documents.php on line 67
+[12-Mar-2018 15:47:00 Asia/Manila] PHP Parse error:  syntax error, unexpected '=', expecting ')' in C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\add-documents.php on line 75

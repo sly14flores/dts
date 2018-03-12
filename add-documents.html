@@ -209,7 +209,7 @@ require_once 'authentication.php';
 									<div class="col-md-3">
                                         <div class="form-group">
                                             <label class="form-control-label">Transaction</label>
-                                            <select id="single-select" class="form-control" name="transaction" ng-class="{'is-invalid': formHolder.doc.transaction.$touched && formHolder.doc.transaction.$invalid}" ng-model="doc.transaction" ng-options="t.transaction for t in transactions track by t.id" ng-disabled="controls.btns.ok" required></select>
+                                            <select id="single-select" class="form-control" name="document_transaction_type" ng-class="{'is-invalid': formHolder.doc.document_transaction_type.$touched && formHolder.doc.document_transaction_type.$invalid}" ng-model="doc.document_transaction_type" ng-options="t.transaction for t in transactions track by t.id" ng-disabled="controls.btns.ok" required></select>
 											<div class="invalid-feedback">Transaction is required</div>
 										</div>
                                     </div>
