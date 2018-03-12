@@ -175,8 +175,7 @@ require_once 'authentication.php';
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label class="form-control-label">Employee ID</label>
-                                            <input type="text" class="form-control" name="employee_id" ng-class="{'is-invalid': formHolder.user.employee_id.$touched && formHolder.user.employee_id.$invalid}" ng-model="user.employee_id" ng-disabled="controls.btns.ok" required>
-											<div class="invalid-feedback">Employee ID is required</div>
+                                            <input type="text" class="form-control" name="employee_id" ng-model="user.employee_id" ng-disabled="controls.btns.ok">
 										</div>										
                                     </div>
                                     <div class="col-md-4">
@@ -206,8 +205,7 @@ require_once 'authentication.php';
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label class="form-control-label">Middle Name</label>
-                                            <input type="text" class="form-control" name="mname" ng-class="{'is-invalid': formHolder.user.mname.$touched && formHolder.user.mname.$invalid}" ng-model="user.mname" ng-disabled="controls.btns.ok" required>
-											<div class="invalid-feedback">Middle Name is required</div>
+                                            <input type="text" class="form-control" name="mname" ng-model="user.mname" ng-disabled="controls.btns.ok">
 										</div>	
                                     </div>
                                     <div class="col-md-4">
@@ -230,16 +228,14 @@ require_once 'authentication.php';
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label class="form-control-label">E-mail</label>
-                                            <input type="email" class="form-control" name="email_address" ng-class="{'is-invalid': formHolder.user.email_address.$touched && formHolder.user.email_address.$invalid}" ng-model="user.email_address" ng-disabled="controls.btns.ok" required>
-											<div class="invalid-feedback">Email is required</div>
+                                            <input type="email" class="form-control" name="email_address" ng-model="user.email_address" ng-disabled="controls.btns.ok">
 										</div>
                                     </div>	
 
 									<div class="col-md-4">
                                         <div class="form-group">
                                             <label class="form-control-label">Phone Number</label>
-                                            <input type="text" class="form-control" name="phone_number" ng-class="{'is-invalid': formHolder.user.phone_number.$touched && formHolder.user.phone_number.$invalid}" ng-model="user.phone_number" ng-disabled="controls.btns.ok" required>
-											<div class="invalid-feedback">Phone Number is required</div>
+                                            <input type="text" class="form-control" name="phone_number" ng-model="user.phone_number" ng-disabled="controls.btns.ok">
 										</div>
                                     </div>		
 								</div>

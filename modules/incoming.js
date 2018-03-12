@@ -12,30 +12,11 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap']).factory('app', 
 			
 			scope.incoming = {};
 			
-			scope.incoming.id = 0;
-			
-			scope.incoming = [];
-			
-			scope.options = [];
+			scope.incomings = [];
 			
 			scope.views.currentPage = 1; // for pagination
 			
-			$http({
-				method: 'GET',
-				url: 'handlers/options.php'
-			}).then(function mySuccess(response) {
-				
-				scope.options = angular.copy(response.data);
-					
-			}, function myError(response) {
-		
-		
-		
-			});	
-			
 		};
-		
-		
 		
 		function validate(scope,form) {
 			
@@ -95,14 +76,13 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap']).factory('app', 
 			scope.pageSize = 10; // for pagination
 			scope.maxSize = 5; // for pagination
 			
-			
 			$http({
 			  method: 'GET',
 			  url: 'handlers/incoming.php'
 			}).then(function mySuccess(response) {
 				
-				scope.incoming = angular.copy(response.data);
-				scope.filterData = scope.offices; // for pagination
+				scope.incomings = angular.copy(response.data);
+				scope.filterData = scope.incomings; // for pagination
 				scope.currentPage = scope.views.currentPage; // for pagination 	
 				
 			}, function myError(response) {
@@ -111,43 +91,28 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap']).factory('app', 
 			
 		};
 		
-		self.add = function(scope,doc_type) {
+		self.receive = function(scope,doc) {
+			console.log(doc);
+			title = doc.doc_type;
+			date = doc.date_enrolled;
 			
+			var m_names = new Array("January","February","March","April","May","June","July","August","September","October","November","December");
 			
+			var month = parseInt(date.substring(5,7));
+		
+			date = m_names[month-1] + " " + date.substring(8,10) + ", " + date.substring(0,4); 
 			
-			if (doc_type == null) {				
-				
-				scope.doc_type = {};
-				scope.doc_type.id = 0;
-				
-			} else {
-				
-				title = 'Incoming Document';
-				
-				$http({
-				  method: 'POST',
-				  url: 'handlers/doctype-view.php',
-				  data: {id: doc_type.id}
-				}).then(function mySuccess(response) {
-					
-					scope.doc_type = angular.copy(response.data);			
-					
-				}, function myError(response) {
-					
-					//
-					
-				});					
-				
-			};
-
+			scope.incoming = angular.copy(doc);
+			
+			scope.incoming.date = date;
 			var onOk = function() {
 
-				if (validate(scope,'doc_type')) return false;				
+				if (validate(scope,'incoming')) return false;				
 				
 				$http({
 				  method: 'POST',
-				  url: 'handlers/doctype-save.php',
-				  data: scope.doc_type
+				  url: 'handlers/doc-receive.php',
+				  data: scope.incoming
 				}).then(function mySuccess(response) {				
 					
 					self.list(scope);

@@ -76,6 +76,8 @@ define('system_privileges', array(
 		"description"=>"Maintenance",
 		"privileges"=>array(
 			array("id"=>1,"description"=>"Show Maintenance","value"=>false),
+			array("id"=>2,"description"=>"Add/Edit Item","value"=>false),
+			array("id"=>3,"description"=>"Delete Item","value"=>false),
 		),
 	),
 ));

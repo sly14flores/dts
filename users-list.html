@@ -182,8 +182,7 @@ require_once 'authentication.php';
 												<th>Last Name</th>
 												<th>Position</th>
 												<th>Office</th>
-												<th>Email Address</th>
-												<th>Phone Number</th>
+												<th>Username</th>
 												<th>Options</th>
 											</tr>
 										</thead>
@@ -195,8 +194,7 @@ require_once 'authentication.php';
 											<td>{{u.lname}}</td>
 											<td>{{u.position}}</td>
 											<td>{{u.div_id}}</td>
-											<td>{{u.email_address}}</td>
-											<td>{{u.phone_number}}</td>
+											<td>{{u.uname}}</td>
 											
 											<td>
 											<button class="btn btn-primary" ng-click="app.view(this,u)"><i class="icon icon-magnifier"></i></button>
@@ -236,7 +234,6 @@ require_once 'authentication.php';
 <script src="vendor/bootbox/bootbox.min.js"></script>
 <script src="vendor/growl/jquery.bootstrap-growl.min.js"></script>
 <script src="vendor/blockui/jquery.blockUI.js"></script>
-
 <script src="angular/angular.min.js"></script>
 <script src="angular/angular-route.min.js"></script>
 <script src="angular/ui-bootstrap-tpls-3.0.2.min.js"></script>

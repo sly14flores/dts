@@ -8,8 +8,10 @@ class privileges {
 
 	function __construct($system_privileges,$group_privileges) {
 
+		$arrayHex = new ArrayHex();
+	
 		$this->system_privileges = $system_privileges;
-		$this->group_privileges = json_decode($group_privileges,true);
+		$this->group_privileges = json_decode($arrayHex->toArray($group_privileges),true);
 
 		foreach ($this->system_privileges as $key => $system_module) {
 			
@@ -156,6 +158,37 @@ class privileges {
 	
 	}
 
+};
+
+class ArrayHex {
+	
+	public function toHex($string) {
+		
+		$string = json_encode($string);
+		
+		$hex = '';
+		for ($i=0; $i<strlen($string); $i++){
+			$ord = ord($string[$i]);
+			$hexCode = dechex($ord);
+			$hex .= substr('0'.$hexCode, -2);
+		}
+		
+		return strToUpper($hex);
+		
+	}
+
+	public function toArray($hex) {
+		
+		$string='';
+		
+		for ($i=0; $i < strlen($hex)-1; $i+=2){
+			$string .= chr(hexdec($hex[$i].$hex[$i+1]));
+		}
+		
+		return json_decode($string,true);
+
+	}	
+	
 };
 
 ?>
