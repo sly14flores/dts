@@ -18,23 +18,9 @@ define('system_privileges', array(
 	),
 	array(
 		"id"=>3,
-		"description"=>"Incoming Document",
+		"description"=>"My Documents",
 		"privileges"=>array(
 			array("id"=>1,"description"=>"Show Incoming Document","value"=>false),
-		),
-	),
-	array(
-		"id"=>4,
-		"description"=>"Transactions",
-		"privileges"=>array(
-			array("id"=>1,"description"=>"Show Transactions","value"=>false),
-		),
-	),
-	array(
-		"id"=>5,
-		"description"=>"Pick-Up Documents",
-		"privileges"=>array(
-			array("id"=>1,"description"=>"Show For Pick-Up Documents","value"=>false),
 		),
 	),
 	array(
