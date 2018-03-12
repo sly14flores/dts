@@ -16,8 +16,7 @@ $_POST['origin'] = $_POST['origin']['id'];
 $_POST['doc_type'] = $_POST['doc_type']['id'];
 $_POST['communication'] = $_POST['communication']['id'];
 $_POST['transaction'] = $_POST['transaction']['id'];
-$destination = $_POST['destination']['id'];
-unset($_POST['destination']);
+$_POST['destination'] = 1;
 
 $uploads = array("files"=>$_POST['files'],"attachments"=>$_POST['attachments']);
 unset($_POST['files']);
