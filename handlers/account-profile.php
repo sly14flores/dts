@@ -8,7 +8,7 @@ session_start();
 
 $con = new pdo_db("users");
 
-$user = $con->get(["id"=>$_SESSION['id']],["employee_id","CONCAT(fname, ' ', lname) user","group_id"]);
+$user = $con->get(["id"=>$_SESSION['id']],["employee_id","CONCAT(fname, ' ', lname) user","group_id","div_id"]);
 
 $dir = "pictures/";
 $avatar = $dir."avatar.png";
@@ -32,6 +32,7 @@ if (count($group_privileges)) {
 $profile = array(
 	"user"=>$user[0]['user'],
 	"group"=>$user[0]['group_id'],
+	"office"=>$user[0]['div_id'],
 	"picture"=>$picture,
 	"pages_access"=>$pages_access
 );

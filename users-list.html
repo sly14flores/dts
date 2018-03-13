@@ -68,30 +68,21 @@ require_once 'authentication.php';
                                 </a>
                             </li><li class="nav-item" ng-show="profile.pages_access[2].value">
                                 <a href="incoming.html" class="nav-link">
-                                    <i class="icon icon-login"></i>Incoming Documents
+                                    <i class="icon icon-book-open"></i>My Documents
                                 </a>
-                            </li><li class="nav-item" ng-show="profile.pages_access[3].value">
-                                <a href="add-documents.html" class="nav-link">
-                                    <i class="icon icon-book-open"></i>Transactions
-                                </a>
-                            </li><li class="nav-item" ng-show="profile.pages_access[4].value">
-                                <a href="add-documents.html" class="nav-link">
-                                    <i class="icon icon-logout"></i>For Pick-Up Documents
-                                </a>
-                            </li>
-                            <li class="nav-item" ng-show="profile.pages_access[5].value">
+                            <li class="nav-item" ng-show="profile.pages_access[3].value">
                                 <a href="documents-list.html" class="nav-link">
                                     <i class="icon icon-doc"></i> List of Documents
                                 </a>
                             </li>
-							</li><li class="nav-item" ng-show="profile.pages_access[6].value">
+							</li><li class="nav-item" ng-show="profile.pages_access[4].value">
                                 <a href="tracks.html" class="nav-link">
                                     <i class="icon icon-location-pin"></i>Tracks
                                 </a>
                             </li>
                         </ul>
                     </li>	
-                    <li class="nav-item nav-dropdown" ng-show="profile.pages_access[7].value">
+                    <li class="nav-item nav-dropdown" ng-show="profile.pages_access[5].value">
                         <a href="#" class="nav-link nav-dropdown-toggle active">
                             <i class="icon icon-people"></i> Accounts <i class="fa fa-caret-left"></i>
                         </a>
@@ -109,7 +100,7 @@ require_once 'authentication.php';
                             </li>
                         </ul>
                     </li>
-					<li class="nav-item nav-dropdown" ng-show="profile.pages_access[8].value">
+					<li class="nav-item nav-dropdown" ng-show="profile.pages_access[6].value">
                         <a href="#" class="nav-link nav-dropdown-toggle">
                             <i class="icon icon-list"></i> Groups <i class="fa fa-caret-left"></i>
                         </a>
@@ -127,7 +118,7 @@ require_once 'authentication.php';
                             </li>
                         </ul>
                     </li>
-					<li class="nav-item nav-dropdown" ng-show="profile.pages_access[9].value">
+					<li class="nav-item nav-dropdown" ng-show="profile.pages_access[7].value">
                         <a href="#" class="nav-link nav-dropdown-toggle">
                             <i class="icon icon-support"></i> Maintenance <i class="fa fa-caret-left"></i>
                         </a>
@@ -182,8 +173,7 @@ require_once 'authentication.php';
 												<th>Last Name</th>
 												<th>Position</th>
 												<th>Office</th>
-												<th>Email Address</th>
-												<th>Phone Number</th>
+												<th>Username</th>
 												<th>Options</th>
 											</tr>
 										</thead>
@@ -195,8 +185,7 @@ require_once 'authentication.php';
 											<td>{{u.lname}}</td>
 											<td>{{u.position}}</td>
 											<td>{{u.div_id}}</td>
-											<td>{{u.email_address}}</td>
-											<td>{{u.phone_number}}</td>
+											<td>{{u.uname}}</td>
 											
 											<td>
 											<button class="btn btn-primary" ng-click="app.view(this,u)"><i class="icon icon-magnifier"></i></button>

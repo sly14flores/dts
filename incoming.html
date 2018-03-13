@@ -68,30 +68,21 @@ require_once 'authentication.php';
                                 </a>
                             </li><li class="nav-item" ng-show="profile.pages_access[2].value">
                                 <a href="incoming.html" class="nav-link active">
-                                    <i class="icon icon-login"></i>Incoming Documents
+                                    <i class="icon icon-book-open"></i>My Documents
                                 </a>
-                            </li><li class="nav-item" ng-show="profile.pages_access[3].value">
-                                <a href="add-documents.html" class="nav-link">
-                                    <i class="icon icon-book-open"></i>Transactions
-                                </a>
-                            </li><li class="nav-item" ng-show="profile.pages_access[4].value">
-                                <a href="add-documents.html" class="nav-link">
-                                    <i class="icon icon-logout"></i>For Pick-Up Documents
-                                </a>
-                            </li>
-                            <li class="nav-item" ng-show="profile.pages_access[5].value">
+                            <li class="nav-item" ng-show="profile.pages_access[3].value">
                                 <a href="documents-list.html" class="nav-link">
                                     <i class="icon icon-doc"></i> List of Documents
                                 </a>
                             </li>
-							</li><li class="nav-item" ng-show="profile.pages_access[6].value">
+							</li><li class="nav-item" ng-show="profile.pages_access[4].value">
                                 <a href="tracks.html" class="nav-link">
                                     <i class="icon icon-location-pin"></i>Tracks
                                 </a>
                             </li>
                         </ul>
                     </li>	
-                    <li class="nav-item nav-dropdown" ng-show="profile.pages_access[7].value">
+                    <li class="nav-item nav-dropdown" ng-show="profile.pages_access[5].value">
                         <a href="#" class="nav-link nav-dropdown-toggle">
                             <i class="icon icon-people"></i> Accounts <i class="fa fa-caret-left"></i>
                         </a>
@@ -109,7 +100,7 @@ require_once 'authentication.php';
                             </li>
                         </ul>
                     </li>
-					<li class="nav-item nav-dropdown" ng-show="profile.pages_access[8].value">
+					<li class="nav-item nav-dropdown" ng-show="profile.pages_access[6].value">
                         <a href="#" class="nav-link nav-dropdown-toggle">
                             <i class="icon icon-list"></i> Groups <i class="fa fa-caret-left"></i>
                         </a>
@@ -127,7 +118,7 @@ require_once 'authentication.php';
                             </li>
                         </ul>
                     </li>
-					<li class="nav-item nav-dropdown" ng-show="profile.pages_access[9].value">
+					<li class="nav-item nav-dropdown" ng-show="profile.pages_access[7].value">
                         <a href="#" class="nav-link nav-dropdown-toggle">
                             <i class="icon icon-support"></i> Maintenance <i class="fa fa-caret-left"></i>
                         </a>
@@ -177,20 +168,20 @@ require_once 'authentication.php';
 										<thead>
 											<tr>
 												<th>Subject</th>
-												<th>Office</th>
+												<th>Originating Office</th>
 												<th>Type</th>
 												<th>Date</th>
 												<th>Option</th>
 											</tr>
 										</thead>
 										<tbody>
-											<tr ng-repeat="i in filterData = (incoming | filter:search) | pagination: currentPage:pageSize"><!-- added pagination feature -->
+											<tr ng-repeat="i in filterData = (incomings | filter:search) | pagination: currentPage:pageSize"><!-- added pagination feature -->
 											<td>{{i.doc_name}}</td>
 											<td>{{i.origin}}</td>
 											<td>{{i.doc_type}}</td>
 											<td>{{i.date_enrolled}}</td>
 											<td>
-												<button class="btn btn-primary" ng-click="app.add(this,i)"><i class="fas fa-edit"></i></button>
+												<button class="btn btn-primary" ng-click="app.receive(this,i)"><i class="icon icon-login"></i></button>
 												<!-- <button class="btn btn-secondary" ng-click="app.delete(this,dl)"><i class="icon icon-trash"></i></button> -->
 											</td>
 											</tr>

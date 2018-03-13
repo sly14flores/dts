@@ -68,30 +68,21 @@ require_once 'authentication.php';
                                 </a>
                             </li><li class="nav-item" ng-show="profile.pages_access[2].value">
                                 <a href="incoming.html" class="nav-link">
-                                    <i class="icon icon-login"></i>Incoming Documents
+                                    <i class="icon icon-book-open"></i>My Documents
                                 </a>
-                            </li><li class="nav-item" ng-show="profile.pages_access[3].value">
-                                <a href="add-documents.html" class="nav-link">
-                                    <i class="icon icon-book-open"></i>Transactions
-                                </a>
-                            </li><li class="nav-item" ng-show="profile.pages_access[4].value">
-                                <a href="add-documents.html" class="nav-link">
-                                    <i class="icon icon-logout"></i>For Pick-Up Documents
-                                </a>
-                            </li>
-                            <li class="nav-item" ng-show="profile.pages_access[5].value">
+                            <li class="nav-item" ng-show="profile.pages_access[3].value">
                                 <a href="documents-list.html" class="nav-link">
                                     <i class="icon icon-doc"></i> List of Documents
                                 </a>
                             </li>
-							</li><li class="nav-item" ng-show="profile.pages_access[6].value">
+							</li><li class="nav-item" ng-show="profile.pages_access[4].value">
                                 <a href="tracks.html" class="nav-link">
                                     <i class="icon icon-location-pin"></i>Tracks
                                 </a>
                             </li>
                         </ul>
                     </li>	
-                    <li class="nav-item nav-dropdown" ng-show="profile.pages_access[7].value">
+                    <li class="nav-item nav-dropdown" ng-show="profile.pages_access[5].value">
                         <a href="#" class="nav-link nav-dropdown-toggle active">
                             <i class="icon icon-people"></i> Accounts <i class="fa fa-caret-left"></i>
                         </a>
@@ -109,7 +100,7 @@ require_once 'authentication.php';
                             </li>
                         </ul>
                     </li>
-					<li class="nav-item nav-dropdown" ng-show="profile.pages_access[8].value">
+					<li class="nav-item nav-dropdown" ng-show="profile.pages_access[6].value">
                         <a href="#" class="nav-link nav-dropdown-toggle">
                             <i class="icon icon-list"></i> Groups <i class="fa fa-caret-left"></i>
                         </a>
@@ -127,7 +118,7 @@ require_once 'authentication.php';
                             </li>
                         </ul>
                     </li>
-					<li class="nav-item nav-dropdown" ng-show="profile.pages_access[9].value">
+					<li class="nav-item nav-dropdown" ng-show="profile.pages_access[7].value">
                         <a href="#" class="nav-link nav-dropdown-toggle">
                             <i class="icon icon-support"></i> Maintenance <i class="fa fa-caret-left"></i>
                         </a>
@@ -175,8 +166,7 @@ require_once 'authentication.php';
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label class="form-control-label">Employee ID</label>
-                                            <input type="text" class="form-control" name="employee_id" ng-class="{'is-invalid': formHolder.user.employee_id.$touched && formHolder.user.employee_id.$invalid}" ng-model="user.employee_id" ng-disabled="controls.btns.ok" required>
-											<div class="invalid-feedback">Employee ID is required</div>
+                                            <input type="text" class="form-control" name="employee_id" ng-model="user.employee_id" ng-disabled="controls.btns.ok">
 										</div>										
                                     </div>
                                     <div class="col-md-4">
@@ -206,8 +196,7 @@ require_once 'authentication.php';
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label class="form-control-label">Middle Name</label>
-                                            <input type="text" class="form-control" name="mname" ng-class="{'is-invalid': formHolder.user.mname.$touched && formHolder.user.mname.$invalid}" ng-model="user.mname" ng-disabled="controls.btns.ok" required>
-											<div class="invalid-feedback">Middle Name is required</div>
+                                            <input type="text" class="form-control" name="mname" ng-model="user.mname" ng-disabled="controls.btns.ok">
 										</div>	
                                     </div>
                                     <div class="col-md-4">
@@ -230,16 +219,14 @@ require_once 'authentication.php';
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label class="form-control-label">E-mail</label>
-                                            <input type="email" class="form-control" name="email_address" ng-class="{'is-invalid': formHolder.user.email_address.$touched && formHolder.user.email_address.$invalid}" ng-model="user.email_address" ng-disabled="controls.btns.ok" required>
-											<div class="invalid-feedback">Email is required</div>
+                                            <input type="email" class="form-control" name="email_address" ng-model="user.email_address" ng-disabled="controls.btns.ok">
 										</div>
                                     </div>	
 
 									<div class="col-md-4">
                                         <div class="form-group">
                                             <label class="form-control-label">Phone Number</label>
-                                            <input type="text" class="form-control" name="phone_number" ng-class="{'is-invalid': formHolder.user.phone_number.$touched && formHolder.user.phone_number.$invalid}" ng-model="user.phone_number" ng-disabled="controls.btns.ok" required>
-											<div class="invalid-feedback">Phone Number is required</div>
+                                            <input type="text" class="form-control" name="phone_number" ng-model="user.phone_number" ng-disabled="controls.btns.ok">
 										</div>
                                     </div>		
 								</div>

@@ -68,30 +68,21 @@ require_once 'authentication.php';
                                 </a>
                             </li><li class="nav-item" ng-show="profile.pages_access[2].value">
                                 <a href="incoming.html" class="nav-link">
-                                    <i class="icon icon-login"></i>Incoming Documents
+                                    <i class="icon icon-book-open"></i>My Documents
                                 </a>
-                            </li><li class="nav-item" ng-show="profile.pages_access[3].value">
-                                <a href="add-documents.html" class="nav-link">
-                                    <i class="icon icon-book-open"></i>Transactions
-                                </a>
-                            </li><li class="nav-item" ng-show="profile.pages_access[4].value">
-                                <a href="add-documents.html" class="nav-link">
-                                    <i class="icon icon-logout"></i>For Pick-Up Documents
-                                </a>
-                            </li>
-                            <li class="nav-item" ng-show="profile.pages_access[5].value">
+                            <li class="nav-item" ng-show="profile.pages_access[3].value">
                                 <a href="documents-list.html" class="nav-link">
                                     <i class="icon icon-doc"></i> List of Documents
                                 </a>
                             </li>
-							</li><li class="nav-item" ng-show="profile.pages_access[6].value">
+							</li><li class="nav-item" ng-show="profile.pages_access[4].value">
                                 <a href="tracks.html" class="nav-link">
                                     <i class="icon icon-location-pin"></i>Tracks
                                 </a>
                             </li>
                         </ul>
                     </li>	
-                    <li class="nav-item nav-dropdown" ng-show="profile.pages_access[7].value">
+                    <li class="nav-item nav-dropdown" ng-show="profile.pages_access[5].value">
                         <a href="#" class="nav-link nav-dropdown-toggle">
                             <i class="icon icon-people"></i> Accounts <i class="fa fa-caret-left"></i>
                         </a>
@@ -109,7 +100,7 @@ require_once 'authentication.php';
                             </li>
                         </ul>
                     </li>
-					<li class="nav-item nav-dropdown" ng-show="profile.pages_access[8].value">
+					<li class="nav-item nav-dropdown" ng-show="profile.pages_access[6].value">
                         <a href="#" class="nav-link nav-dropdown-toggle">
                             <i class="icon icon-list"></i> Groups <i class="fa fa-caret-left"></i>
                         </a>
@@ -127,7 +118,7 @@ require_once 'authentication.php';
                             </li>
                         </ul>
                     </li>
-					<li class="nav-item nav-dropdown" ng-show="profile.pages_access[9].value">
+					<li class="nav-item nav-dropdown" ng-show="profile.pages_access[7].value">
                         <a href="#" class="nav-link nav-dropdown-toggle">
                             <i class="icon icon-support"></i> Maintenance <i class="fa fa-caret-left"></i>
                         </a>
@@ -209,7 +200,7 @@ require_once 'authentication.php';
 									<div class="col-md-3">
                                         <div class="form-group">
                                             <label class="form-control-label">Transaction</label>
-                                            <select id="single-select" class="form-control" name="transaction" ng-class="{'is-invalid': formHolder.doc.transaction.$touched && formHolder.doc.transaction.$invalid}" ng-model="doc.transaction" ng-options="t.transaction for t in transactions track by t.id" ng-disabled="controls.btns.ok" required></select>
+                                            <select id="single-select" class="form-control" name="document_transaction_type" ng-class="{'is-invalid': formHolder.doc.document_transaction_type.$touched && formHolder.doc.document_transaction_type.$invalid}" ng-model="doc.document_transaction_type" ng-options="t.transaction for t in transactions track by t.id" ng-disabled="controls.btns.ok" required></select>
 											<div class="invalid-feedback">Transaction is required</div>
 										</div>
                                     </div>
@@ -238,7 +229,7 @@ require_once 'authentication.php';
 								</div>							
 								<div class="row">
 									<div class="col-md-12">
-									<div class="card-header bg-light">File(s) <button class="btn btn-primary" ng-click="app.addFile(this)" ng-disabled="controls.btns.ok" ng-show="controls.ok">Add</button></div>
+									<div class="card-header bg-light">Main Document/s <button class="btn btn-primary" ng-click="app.addFile(this)" ng-disabled="controls.btns.ok" ng-show="controls.ok">Add</button></div>
 										<div class="input-group mb-3" style="display: none;">
 										  <div class="input-group-prepend">
 											<span class="input-group-text">Upload</span>
@@ -260,7 +251,7 @@ require_once 'authentication.php';
 								<hr>
 								<div class="row">
 									<div class="col-md-12">								
-									<div class="card-header bg-light">Attachment(s) <button class="btn btn-primary" ng-click="app.addAttachment(this)" ng-disabled="controls.btns.ok" ng-show="controls.ok">Add</button></div>
+									<div class="card-header bg-light">Attachment/s <button class="btn btn-primary" ng-click="app.addAttachment(this)" ng-disabled="controls.btns.ok" ng-show="controls.ok">Add</button></div>
 										<div class="input-group mb-3" style="display: none;">
 										  <div class="input-group-prepend">
 											<span class="input-group-text">Upload</span>
@@ -281,17 +272,7 @@ require_once 'authentication.php';
 									</div>
 								</div>
 								<div class="row mt-4">
-								<div class="col-md-6">
-										<div class="form-group">
-                                            <label for="single-select">Destination</label>
-                                            <select id="single-select" class="form-control" name="destination" ng-class="{'is-invalid': formHolder.doc.destination.$touched && formHolder.doc.destination.$invalid}" ng-model="doc.destination" ng-options="o.office for o in offices track by o.id" ng-disabled="controls.btns.ok" required></select>
-											<div class="invalid-feedback">Office is required</div>											
-                                        </div>
-									</div>
-								</div>
-								<div class="row mt-4">
 									<div class="col-md-12">
-									<hr>
 										<button class="btn btn-primary" ng-click="app.save(this)" ng-disabled="controls.btns.ok" ng-show="controls.ok">Save</button>
 										<button class="btn btn-secondary" ng-disabled="controls.btns.cancel" ng-click="app.cancel(this)" ng-show="controls.cancel">Cancel</button>
 									</div>
