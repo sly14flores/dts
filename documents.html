@@ -14,7 +14,7 @@ require_once 'authentication.php';
     <link rel="stylesheet" href="./vendor/font-awesome/css/fontawesome-all.min.css">
     <link rel="stylesheet" href="./css/styles.css">
 </head>
-<body class="sidebar-fixed header-fixed" ng-app="incoming" ng-controller="incomingCtrl">
+<body class="sidebar-fixed header-fixed" ng-app="documents" ng-controller="documentsCtrl">
 <div class="page-wrapper">
     <nav class="navbar page-header">
         <a href="#" class="btn btn-link sidebar-mobile-toggle d-md-none mr-auto">
@@ -67,7 +67,7 @@ require_once 'authentication.php';
                                     <i class="icon icon-plus"></i>Receive Document
                                 </a>
                             </li><li class="nav-item" ng-show="profile.pages_access[2].value">
-                                <a href="incoming.html" class="nav-link active">
+                                <a href="documents.html" class="nav-link active">
                                     <i class="icon icon-book-open"></i>My Documents
                                 </a>
                             <li class="nav-item" ng-show="profile.pages_access[3].value">
@@ -160,30 +160,31 @@ require_once 'authentication.php';
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header bg-light">
-                                Incoming Documents
+                                Documents
                             </div>
 							<div class="card-body">
 								<div class = "row">
 									<table class="table table-striped">
 										<thead>
 											<tr>
-												<th>Subject</th>
+												<th>Document Type</th>
 												<th>Originating Office</th>
-												<th>Type</th>
-												<th>Date</th>
-												<th>Option</th>
+												<th>Subject</th>
+												<th>Status</th>
+												<th>Recent Transaction</th>
+												<th>Transactions</th>
 											</tr>
 										</thead>
 										<tbody>
-											<tr ng-repeat="i in filterData = (incomings | filter:search) | pagination: currentPage:pageSize"><!-- added pagination feature -->
-											<td>{{i.doc_name}}</td>
-											<td>{{i.origin}}</td>
-											<td>{{i.doc_type}}</td>
-											<td>{{i.date_enrolled}}</td>
-											<td>
-												<button class="btn btn-primary" ng-click="app.receive(this,i)"><i class="icon icon-login"></i></button>
-												<!-- <button class="btn btn-secondary" ng-click="app.delete(this,dl)"><i class="icon icon-trash"></i></button> -->
-											</td>
+											<tr ng-repeat="i in filterData = (documents | filter:search) | pagination: currentPage:pageSize"><!-- added pagination feature -->
+												<td>{{i.doc_type}}</td>
+												<td>{{i.origin}}</td>
+												<td>{{i.doc_name}}</td>
+												<td>{{i.system_document_status}}</td>
+												<td>{{}}</td>
+												<td>
+													<button class="btn btn-primary" ng-click="app.receive(this,i)"><i class="icon icon-login"></i></button>
+												</td>
 											</tr>
 										</tbody>
 										<tfoot><!-- added pagination feature -->
@@ -220,9 +221,9 @@ require_once 'authentication.php';
 <script src="modules/bootstrap-modal.js"></script>
 <script src="modules/account.js"></script>
 <script src="modules/validate.js"></script>
-<script src="modules/incoming.js"></script>
+<script src="modules/documents.js"></script>
 <!-- controller -->
-<script src="controllers/incoming.js"></script>
+<script src="controllers/documents.js"></script>
 
 </body>
 </html>

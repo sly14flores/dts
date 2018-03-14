@@ -10,9 +10,9 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap']).factory('app', 
 			
 			scope.views = {};
 			
-			scope.incoming = {};
+			scope.document = {};
 			
-			scope.incomings = [];
+			scope.documents = [];
 			
 			scope.views.currentPage = 1; // for pagination
 			
@@ -72,18 +72,18 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap']).factory('app', 
 						
 			if (scope.$id > 2) scope = scope.$parent;
 			
-			scope.currentPage = scope.views.currentPage; // for pagination
-			scope.pageSize = 10; // for pagination
-			scope.maxSize = 5; // for pagination
+			scope.currentPage = scope.views.currentPage;
+			scope.pageSize = 10;
+			scope.maxSize = 5;
 			
 			$http({
 			  method: 'GET',
-			  url: 'handlers/incoming.php'
+			  url: 'handlers/documents.php'
 			}).then(function mySuccess(response) {
 				
-				scope.incomings = angular.copy(response.data);
-				scope.filterData = scope.incomings; // for pagination
-				scope.currentPage = scope.views.currentPage; // for pagination 	
+				scope.documents = angular.copy(response.data);
+				scope.filterData = scope.documents;
+				scope.currentPage = scope.views.currentPage;
 				
 			}, function myError(response) {
 				
@@ -92,8 +92,9 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap']).factory('app', 
 		};
 		
 		self.receive = function(scope,doc) {
-			console.log(doc);
+
 			title = doc.doc_type;
+
 			date = doc.date_enrolled;
 			
 			var m_names = new Array("January","February","March","April","May","June","July","August","September","October","November","December");
