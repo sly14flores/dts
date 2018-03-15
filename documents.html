@@ -167,21 +167,25 @@ require_once 'authentication.php';
 									<table class="table table-striped">
 										<thead>
 											<tr>
+												<th>Barcode</th>
 												<th>Document Type</th>
 												<th>Originating Office</th>
 												<th>Subject</th>
 												<th>Status</th>
-												<th>Recent Transaction</th>
-												<th>Transactions</th>
+												<th>Recent Activity</th>
+												<th>Date</th>
+												<th>Transaction</th>
 											</tr>
 										</thead>
 										<tbody>
 											<tr ng-repeat="i in filterData = (documents | filter:search) | pagination: currentPage:pageSize"><!-- added pagination feature -->
+												<td>{{i.barcode}}</td>
 												<td>{{i.doc_type}}</td>
 												<td>{{i.origin}}</td>
 												<td>{{i.doc_name}}</td>
-												<td>{{i.system_document_status}}</td>
-												<td>{{}}</td>
+												<td>{{i.document_status}}</td>
+												<td>{{i.document_transaction}}</td>
+												<td>{{i.document_transaction_date}}</td>
 												<td>
 													<button class="btn btn-primary" ng-click="app.receive(this,i)"><i class="icon icon-login"></i></button>
 												</td>
@@ -189,7 +193,7 @@ require_once 'authentication.php';
 										</tbody>
 										<tfoot><!-- added pagination feature -->
 											<tr>
-												<td colspan="5" style="text-align: center;">
+												<td colspan="8" style="text-align: center;">
 													<div class="float-right"><ul uib-pagination direction-links="false" boundary-links="true" total-items="filterData.length" ng-model="currentPage" max-size="maxSize"></ul></div>
  											    </td>
 											</tr>											

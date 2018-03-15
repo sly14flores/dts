@@ -93,9 +93,9 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap']).factory('app', 
 		
 		self.receive = function(scope,doc) {
 
-			title = doc.doc_type;
+			title = 'Receive '+doc.doc_type;
 
-			date = doc.date_enrolled;
+			date = doc.document_date;
 			
 			var m_names = new Array("January","February","March","April","May","June","July","August","September","October","November","December");
 			
@@ -103,17 +103,18 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap']).factory('app', 
 		
 			date = m_names[month-1] + " " + date.substring(8,10) + ", " + date.substring(0,4); 
 			
-			scope.incoming = angular.copy(doc);
+			scope.document = angular.copy(doc);
 			
-			scope.incoming.date = date;
+			scope.document.date = date;
+
 			var onOk = function() {
 
-				if (validate(scope,'incoming')) return false;				
+				if (validate(scope,'document')) return false;				
 				
 				$http({
 				  method: 'POST',
 				  url: 'handlers/doc-receive.php',
-				  data: scope.incoming
+				  data: scope.document
 				}).then(function mySuccess(response) {				
 					
 					self.list(scope);
@@ -128,9 +129,13 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap']).factory('app', 
 				
 			};
 		
-			bootstrapModal.box(scope,title,'dialogs/incoming.html',onOk);
+			bootstrapModal.box(scope,title,'dialogs/document.html',onOk);
 			
-		};	
+		};
+
+		self.transaction = function(scope,doc) {
+
+		};
 
 	};
 

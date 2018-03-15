@@ -1,21 +1,24 @@
-<form name="formHolder.incoming">
+<form name="formHolder.document">
 <div class="row">
-	<div class="col-md-4">Subject</div>
-	<div class="col-md-8" style="margin-bottom: 10px;"><strong>{{incoming.doc_name}}</strong></div>
+	<div class="col-md-4">Date</div>
+	<div class="col-md-8" style="margin-bottom: 10px;"><strong>{{document.date}}</strong></div>
+</div>
+<div class="row">
+	<div class="col-md-4">Document Type</div>
+	<div class="col-md-8" style="margin-bottom: 10px;"><strong>{{document.doc_type}}</strong></div>
 </div>
 <div class="row">
 	<div class="col-md-4">Originating Office</div>
-	<div class="col-md-8" style="margin-bottom: 10px;"><strong>{{incoming.origin}}</strong></div>
+	<div class="col-md-8" style="margin-bottom: 10px;"><strong>{{document.origin}}</strong></div>
+</div>
+<div class="row">
+	<div class="col-md-4">Subject</div>
+	<div class="col-md-8" style="margin-bottom: 10px;"><strong>{{document.doc_name}}</strong></div>
 </div>
 <div class="row">
 	<div class="col-md-4">Transaction</div>
-	<div class="col-md-8" style="margin-bottom: 10px;"><strong>{{incoming.transaction}}</strong></div>
+	<div class="col-md-8" style="margin-bottom: 10px;"><strong>{{document.transaction}}</strong></div>
 </div>
-<div class="row">
-	<div class="col-md-4">Date</div>
-	<div class="col-md-8" style="margin-bottom: 10px;"><strong>{{incoming.date}}</strong></div>
-</div>
-
 <hr>
 <div class="row">
 	<div class="col-md-12">

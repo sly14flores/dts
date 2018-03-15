@@ -20,7 +20,9 @@ define('system_privileges', array(
 		"id"=>3,
 		"description"=>"My Documents",
 		"privileges"=>array(
-			array("id"=>1,"description"=>"Show Incoming Document","value"=>false),
+			array("id"=>1,"description"=>"Show My Documents","value"=>false),
+			array("id"=>2,"description"=>"Incoming Documents","value"=>false),
+			array("id"=>3,"description"=>"Documents for Transaction","value"=>false),
 		),
 	),
 	array(

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 12, 2018 at 03:52 PM
+-- Generation Time: Mar 15, 2018 at 05:13 PM
 -- Server version: 5.7.11
 -- PHP Version: 7.0.3
 
@@ -315,10 +315,10 @@ CREATE TABLE `tracks` (
   `id` int(255) NOT NULL,
   `document_id` int(255) DEFAULT NULL,
   `system_document_status` varchar(100) DEFAULT NULL,
-  `track_user` int(11) DEFAULT NULL,
-  `track_option_id` int(11) DEFAULT NULL,
   `track_office` int(11) DEFAULT NULL,
   `document_transaction` varchar(500) DEFAULT NULL,
+  `document_transaction_user` int(11) DEFAULT NULL,
+  `document_transaction_date` datetime DEFAULT NULL,
   `remarks` varchar(1000) DEFAULT NULL,
   `system_log` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -376,7 +376,7 @@ INSERT INTO `users` (`id`, `fname`, `mname`, `lname`, `position`, `uname`, `pw`,
 (3, 'Renwil', 'Gatchallan', 'Flores', 'OJT', 'renn', 'renn', '', 4, '', '909090909', 1, NULL),
 (4, 'Alain', 'M.', 'Dayao II', 'OJT', 'alain', '123456789', '', 4, '', '9123456789', 1, NULL),
 (5, 'Mc Glenn', 'Gundran', 'Tangalin', 'OJT', 'glenn', 'glenn', '', 4, 'mcglenn.tangalin@lorma.edu', '09301598842', 1, NULL),
-(6, 'Jennifer Joan', NULL, 'Ortega-Manguiat', 'Provincial Administrator', 'jennifer', '123456', NULL, 2, NULL, NULL, 2, 1),
+(6, 'Jennifer Joan', NULL, 'Ortega-Manguiat', 'Provincial Administrator', 'pa', '123456', NULL, 2, NULL, NULL, 2, 1),
 (7, 'Mary Ann', 'Yan', 'Orofino', 'Administrative Aide IV', 'ann', '123456', '81018', 2, NULL, NULL, 3, NULL),
 (8, 'Ghenny Rose', NULL, 'Estipular', 'Administrative Aide VI', 'ghenny', '123456', '80005', 2, NULL, NULL, 3, NULL);
 
@@ -458,9 +458,7 @@ ALTER TABLE `options`
 ALTER TABLE `tracks`
   ADD PRIMARY KEY (`id`),
   ADD KEY `document_id` (`document_id`),
-  ADD KEY `destination` (`track_office`),
-  ADD KEY `user` (`track_user`),
-  ADD KEY `options` (`track_option_id`);
+  ADD KEY `destination` (`track_office`);
 
 --
 -- Indexes for table `transactions`
@@ -514,7 +512,7 @@ ALTER TABLE `files`
 -- AUTO_INCREMENT for table `groups`
 --
 ALTER TABLE `groups`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `offices`
 --
@@ -539,7 +537,7 @@ ALTER TABLE `transactions`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- Constraints for dumped tables
 --
