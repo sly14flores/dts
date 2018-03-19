@@ -174,20 +174,21 @@ require_once 'authentication.php';
 												<th>Status</th>
 												<th>Recent Activity</th>
 												<th>Date</th>
-												<th>Transaction</th>
+												<th>Activity</th>
 											</tr>
 										</thead>
 										<tbody>
-											<tr ng-repeat="i in filterData = (documents | filter:search) | pagination: currentPage:pageSize"><!-- added pagination feature -->
+											<tr ng-repeat="i in filterData = (documents | filter:search) | pagination: currentPage:pageSize">
 												<td>{{i.barcode}}</td>
 												<td>{{i.doc_type}}</td>
 												<td>{{i.origin}}</td>
 												<td>{{i.doc_name}}</td>
 												<td>{{i.document_status}}</td>
-												<td>{{i.document_transaction}}</td>
-												<td>{{i.document_transaction_date}}</td>
+												<td>{{i.document_activity}}</td>
+												<td>{{i.document_activity_date}}</td>
 												<td>
-													<button class="btn btn-primary" ng-click="app.receive(this,i)"><i class="icon icon-login"></i></button>
+													<button ng-show="i.system_document_status == 'incoming'" class="btn btn-info" ng-click="app.receive(this,i)"><i class="icon icon-arrow-down-circle"></i></button>
+													<button ng-show="i.system_document_status == 'transaction'" class="btn btn-info" ng-click="app.activity(this,i)"><i class="icon icon-grid"></i></button>
 												</td>
 											</tr>
 										</tbody>
@@ -220,7 +221,7 @@ require_once 'authentication.php';
 <script src="vendor/bootbox/bootbox.min.js"></script>
 <script src="angular/angular.min.js"></script>
 <script src="angular/angular-route.min.js"></script>
-<script src="angular/ui-bootstrap-tpls-3.0.2.min.js"></script><!-- added for pagination -->
+<script src="angular/ui-bootstrap-tpls-3.0.2.min.js"></script>
 <!-- modules -->
 <script src="modules/bootstrap-modal.js"></script>
 <script src="modules/account.js"></script>

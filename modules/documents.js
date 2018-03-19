@@ -10,12 +10,13 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap']).factory('app', 
 			
 			scope.views = {};
 			
-			scope.document = {};
+			scope.receive = {};
+			scope.activity = {};
 			
 			scope.documents = [];
 			
 			scope.views.currentPage = 1; // for pagination
-			
+
 		};
 		
 		function validate(scope,form) {
@@ -91,49 +92,92 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap']).factory('app', 
 			
 		};
 		
+		function barcodeAsyncSuggest(scope) { // barcode-async-suggest
+
+			scope.barcodeAsyncSuggest = function(f) {
+				
+				return $http({
+				  method: 'POST',
+				  url: 'handlers/barcode-async-suggest.php',
+				  data: {filter: f}
+				}).then(function mySucces(response) {
+					
+					return response.data;
+					
+				},
+				function myError(response) {
+
+				});					
+				
+			};
+			
+			scope.barcodeAsyncSuggest('');
+		
+		};
+
 		self.receive = function(scope,doc) {
 
+			barcodeAsyncSuggest(scope);
+		
 			title = 'Receive '+doc.doc_type;
 
-			date = doc.document_date;
-			
-			var m_names = new Array("January","February","March","April","May","June","July","August","September","October","November","December");
-			
-			var month = parseInt(date.substring(5,7));
-		
-			date = m_names[month-1] + " " + date.substring(8,10) + ", " + date.substring(0,4); 
-			
-			scope.document = angular.copy(doc);
-			
-			scope.document.date = date;
+			scope.receive = angular.copy(doc);
 
 			var onOk = function() {
 
-				if (validate(scope,'document')) return false;				
+				if (validate(scope,'receive')) return false;				
 				
 				$http({
 				  method: 'POST',
 				  url: 'handlers/doc-receive.php',
-				  data: scope.document
-				}).then(function mySuccess(response) {				
-					
+				  data: scope.receive
+				}).then(function mySuccess(response) {
+
 					self.list(scope);
-					
+
 				}, function myError(response) {
-					
+
 					//
-					
+
 				});
 				
 				return true;
 				
 			};
 		
-			bootstrapModal.box(scope,title,'dialogs/document.html',onOk);
+			bootstrapModal.box(scope,title,'dialogs/doc-receive.html',onOk);
 			
 		};
 
-		self.transaction = function(scope,doc) {
+		self.activity = function(scope,doc) {
+			
+			title = 'Transact '+doc.doc_type;
+
+			scope.activity = angular.copy(doc);
+
+			var onOk = function() {
+
+				if (validate(scope,'activity')) return false;				
+				
+				$http({
+				  method: 'POST',
+				  url: 'handlers/doc-transaction.php',
+				  data: scope.activity
+				}).then(function mySuccess(response) {
+
+					// self.list(scope);
+
+				}, function myError(response) {
+					
+					//
+					
+				});
+
+				return true;
+
+			};
+
+			bootstrapModal.box2(scope,title,'dialogs/doc-activity.html',onOk);		
 
 		};
 

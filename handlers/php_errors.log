@@ -1,55 +1,6 @@
-[14-Mar-2018 11:43:08 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'documents.transaction' in 'where clause' in C:\Users\sly\Desktop\UwAmp310\www\dts\db.php:42
+[19-Mar-2018 15:43:23 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'DISTINCT documents.barcode FROM documents LEFT JOIN tracks ON documents.id = tra' at line 1 in C:\Users\sly\Desktop\UwAmp310\www\dts\db.php:42
 Stack trace:
-#0 C:\Users\sly\Desktop\UwAmp310\www\dts\db.php(42): PDO->query('SELECT *, (SELE...')
-#1 C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\documents.php(8): pdo_db->getData('SELECT *, (SELE...')
+#0 C:\Users\sly\Desktop\UwAmp310\www\dts\db.php(42): PDO->query('SELECT document...')
+#1 C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\barcode-async-suggest.php(11): pdo_db->getData('SELECT document...')
 #2 {main}
   thrown in C:\Users\sly\Desktop\UwAmp310\www\dts\db.php on line 42
-[14-Mar-2018 16:41:39 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '= tracks.doc_type) doc_type FROM tracks LEFT JOIN documents ON tracks.document_i' at line 1 in C:\Users\sly\Desktop\UwAmp310\www\dts\db.php:42
-Stack trace:
-#0 C:\Users\sly\Desktop\UwAmp310\www\dts\db.php(42): PDO->query('SELECT *, (SELE...')
-#1 C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\documents.php(10): pdo_db->getData('SELECT *, (SELE...')
-#2 {main}
-  thrown in C:\Users\sly\Desktop\UwAmp310\www\dts\db.php on line 42
-[14-Mar-2018 16:42:02 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'tracks.doc_type' in 'where clause' in C:\Users\sly\Desktop\UwAmp310\www\dts\db.php:42
-Stack trace:
-#0 C:\Users\sly\Desktop\UwAmp310\www\dts\db.php(42): PDO->query('SELECT *, (SELE...')
-#1 C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\documents.php(10): pdo_db->getData('SELECT *, (SELE...')
-#2 {main}
-  thrown in C:\Users\sly\Desktop\UwAmp310\www\dts\db.php on line 42
-[15-Mar-2018 09:50:55 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'documents.transaction' in 'where clause' in C:\Users\sly\Desktop\UwAmp310\www\dts\db.php:42
-Stack trace:
-#0 C:\Users\sly\Desktop\UwAmp310\www\dts\db.php(42): PDO->query('SELECT *, (SELE...')
-#1 C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\documents-list.php(8): pdo_db->getData('SELECT *, (SELE...')
-#2 {main}
-  thrown in C:\Users\sly\Desktop\UwAmp310\www\dts\db.php on line 42
-[15-Mar-2018 11:28:33 Asia/Manila] PHP Notice:  Undefined variable: track in C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\add-documents.php on line 83
-[15-Mar-2018 11:28:33 Asia/Manila] PHP Stack trace:
-[15-Mar-2018 11:28:33 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\add-documents.php:0
-[15-Mar-2018 11:28:33 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in C:\Users\sly\Desktop\UwAmp310\www\dts\db.php on line 150
-[15-Mar-2018 11:28:33 Asia/Manila] PHP Stack trace:
-[15-Mar-2018 11:28:33 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\add-documents.php:0
-[15-Mar-2018 11:28:33 Asia/Manila] PHP   2. pdo_db->insertDataMulti() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\add-documents.php:83
-[15-Mar-2018 11:28:33 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in C:\Users\sly\Desktop\UwAmp310\www\dts\db.php on line 160
-[15-Mar-2018 11:28:33 Asia/Manila] PHP Stack trace:
-[15-Mar-2018 11:28:33 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\add-documents.php:0
-[15-Mar-2018 11:28:33 Asia/Manila] PHP   2. pdo_db->insertDataMulti() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\add-documents.php:83
-[15-Mar-2018 16:45:39 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'tracks.track_user' in 'where clause' in C:\Users\sly\Desktop\UwAmp310\www\dts\db.php:42
-Stack trace:
-#0 C:\Users\sly\Desktop\UwAmp310\www\dts\db.php(42): PDO->query('SELECT *, (SELE...')
-#1 C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\documents.php(10): pdo_db->getData('SELECT *, (SELE...')
-#2 {main}
-  thrown in C:\Users\sly\Desktop\UwAmp310\www\dts\db.php on line 42
-[15-Mar-2018 16:46:14 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'tracks.track_user' in 'where clause' in C:\Users\sly\Desktop\UwAmp310\www\dts\db.php:42
-Stack trace:
-#0 C:\Users\sly\Desktop\UwAmp310\www\dts\db.php(42): PDO->query('SELECT *, (SELE...')
-#1 C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\documents.php(10): pdo_db->getData('SELECT *, (SELE...')
-#2 {main}
-  thrown in C:\Users\sly\Desktop\UwAmp310\www\dts\db.php on line 42
-[15-Mar-2018 16:46:56 Asia/Manila] PHP Parse error:  syntax error, unexpected ';', expecting ',' or ')' in C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\documents.php on line 10
-[15-Mar-2018 16:47:18 Asia/Manila] PHP Parse error:  syntax error, unexpected ';', expecting ',' or ')' in C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\documents.php on line 10
-[19-Mar-2018 09:27:25 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'documents.transaction' in 'where clause' in C:\Users\SLY One\Desktop\UwAmp310\www\dts\db.php:42
-Stack trace:
-#0 C:\Users\SLY One\Desktop\UwAmp310\www\dts\db.php(42): PDO->query('SELECT *, (SELE...')
-#1 C:\Users\SLY One\Desktop\UwAmp310\www\dts\handlers\documents-list.php(8): pdo_db->getData('SELECT *, (SELE...')
-#2 {main}
-  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\dts\db.php on line 42

@@ -1,4 +1,5 @@
 <?php
+
 $_POST = json_decode(file_get_contents('php://input'), true);
 
 require_once '../db.php';
@@ -7,7 +8,7 @@ session_start();
 
 $con = new pdo_db("tracks");
 
-$documents = $con->getData("SELECT *, (SELECT document_types.document_type FROM document_types WHERE document_types.id = documents.doc_type) doc_type, (SELECT offices.office FROM offices WHERE offices.id = documents.origin) origin FROM documents LEFT JOIN tracks ON documents.id = tracks.document_id WHERE tracks.track_office = ".$_SESSION['office']." ORDER BY tracks.document_transaction_date DESC LIMIT 1");
+$documents = $con->getData("SELECT *, (SELECT document_types.document_type FROM document_types WHERE document_types.id = documents.doc_type) doc_type, (SELECT offices.office FROM offices WHERE offices.id = documents.origin) origin, (SELECT transactions.transaction FROM transactions WHERE transactions.id = documents.document_transaction_type) document_transaction_type FROM documents LEFT JOIN tracks ON documents.id = tracks.document_id WHERE tracks.track_office = ".$_SESSION['office']." ORDER BY tracks.document_activity_date DESC LIMIT 1");
 
 foreach ($documents as $i => $document) {
 
@@ -22,7 +23,7 @@ foreach ($documents as $i => $document) {
 
 	$documents[$i]['document_status'] = $document_status;
 	
-	$documents[$i]['document_transaction_date'] = date("F j, Y",strtotime($document['document_transaction_date']));
+	$documents[$i]['document_activity_date'] = date("F j, Y",strtotime($document['document_activity_date']));
 	
 
 };
