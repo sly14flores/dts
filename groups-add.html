@@ -67,8 +67,8 @@ require_once 'authentication.php';
                                     <i class="icon icon-plus"></i>Receive Document
                                 </a>
                             </li><li class="nav-item" ng-show="profile.pages_access[2].value">
-                                <a href="incoming.html" class="nav-link">
-                                    <i class="icon icon-book-open"></i>My Documents
+                                <a href="documents.html" class="nav-link">
+                                    <i class="icon icon-book-open"></i>Documents
                                 </a>
                             <li class="nav-item" ng-show="profile.pages_access[3].value">
                                 <a href="documents-list.html" class="nav-link">
@@ -190,7 +190,7 @@ require_once 'authentication.php';
 											</div>
 											<div class="card-body">
 												<div class="row mt-4">
-													<div class="col-md-3" ng-repeat="pp in p.privileges" style="margin-bottom: 50px;">
+													<div class="col-md-4" ng-repeat="pp in p.privileges" style="margin-bottom: 50px;">
 														<div class="toggle-switch" data-ts-color="primary">
 															<label for="{{p.id}}{{$index}}" class="ts-label">{{pp.description}}</label>
 															<input id="{{p.id}}{{$index}}" type="checkbox" hidden="hidden" ng-model="pp.value" ng-check="pp.value" ng-disabled="controls.btns.ok">
