@@ -1,6 +1,6 @@
-var app = angular.module('incoming',['account-module','app-module']);
+var app = angular.module('documents',['account-module','app-module']);
 
-app.controller('incomingCtrl',function($scope,app) {
+app.controller('documentsCtrl',function($scope,app) {
 	
 	$scope.app = app;
 	

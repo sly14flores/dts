@@ -67,8 +67,8 @@ require_once 'authentication.php';
                                     <i class="icon icon-plus"></i>Receive Document
                                 </a>
                             </li><li class="nav-item" ng-show="profile.pages_access[2].value">
-                                <a href="incoming.html" class="nav-link">
-                                    <i class="icon icon-book-open"></i>My Documents
+                                <a href="documents.html" class="nav-link">
+                                    <i class="icon icon-book-open"></i>Documents
                                 </a>
                             <li class="nav-item" ng-show="profile.pages_access[3].value">
                                 <a href="documents-list.html" class="nav-link active">
@@ -169,26 +169,29 @@ require_once 'authentication.php';
 											<tr>
 												<th>Subject</th>
 												<th>Barcode</th>
-												<th>Office</th>
+												<th>Type</th>												
+												<th>Originating Office</th>
 												<th>Date</th>
 												<th>Transaction</th>
-												<th>Type</th>
 												<th>Communication</th>
 												<th>Remarks</th>
+												<th>Actions</th>
 											</tr>
 										</thead>
 										<tbody>
 											<tr ng-repeat="dl in documents | filter:search">
 											<td>{{dl.doc_name}}</td>
 											<td>{{dl.barcode}}</td>
+											<td>{{dl.doc_type}}</td>											
 											<td>{{dl.origin}}</td>
-											<td>{{dl.date_enrolled}}</td>
+											<td>{{dl.document_date}}</td>
 											<td>{{dl.transaction}}</td>
-											<td>{{dl.doc_type}}</td>
 											<td>{{dl.communication}}</td>
 											<td>{{dl.remarks}}</td>
-											
-											
+											<td>
+												<button class="btn btn-primary" ng-click="app.view(this,dl)"><i class="icon icon-magnifier"></i></button>
+												<button class="btn btn-secondary" ng-click="app.delete(this,dl)"><i class="icon icon-trash"></i></button>
+											</td>
 											</tr>
 										</tbody>
 									</table>

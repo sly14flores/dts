@@ -5,8 +5,6 @@ $_POST = json_decode(file_get_contents('php://input'), true);
 require_once '../db.php';
 require_once 'folder-files.php';
 
-require_once '../system_accountabilities.php';
-
 $con = new pdo_db("documents");
 
 session_start();
@@ -54,27 +52,25 @@ if ($_POST['id']) { # update
 	$con->insertData($_POST);
 	
 	$id = $con->insertId;
-	
+
 	$barcode = $con->get(array("id"=>$id),["barcode","(SELECT document_type FROM document_types WHERE id = ".$_POST['doc_type'].") doc_type"]);
-	
+
 	uploadFiles($con,$uploads,$barcode[0]['barcode'],$id);
-	
+
 	# first track
 	if ( (isset($id)) && ($id) ) {
-
-		$user_accountabilities = user_accountabilities;
-		
-		$initial_track_user = $con->getData("SELECT id FROM users WHERE system_accountability = ".$user_accountabilities[0]['id']);
-		$track_user = (count($initial_track_user))?$initial_track_user[0]['id']:0;
 
 		$initial_track_office = $con->getData("SELECT id FROM offices WHERE is_initial_track = 1");
 		$track_office = (count($initial_track_office))?$initial_track_office[0]['id']:0;		
 
 		$track = array(
 			"document_id"=>$id,
-			"system_document_status"=>"Incoming",
-			"track_user"=>$track_user,
+			"system_document_status"=>"transaction",
 			"track_office"=>$track_office,
+			"track_office_next"=>$track_office,
+			"document_activity"=>"Received",
+			"document_activity_user"=>$_SESSION['id'],
+			"document_activity_date"=>"CURRENT_TIMESTAMP"
 		);
 
 		$con->table = "tracks";
@@ -82,9 +78,9 @@ if ($_POST['id']) { # update
 
 	};
 	#
-	
-	echo json_encode(array("barcode"=>$barcode[0]['barcode'], "doc_type"=>$barcode[0]['doc_type']));
-	
+
+	echo json_encode(array("barcode"=>$barcode[0]['barcode'],"doc_type"=>$barcode[0]['doc_type']));
+
 }
 
 function uploadFiles($con,$uploads,$barcode,$id) {

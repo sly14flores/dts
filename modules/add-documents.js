@@ -1,12 +1,4 @@
-angular.module('app-module', ['form-validator','bootstrap-modal','ngRoute','jspdf-module','upload-files','block-ui','module-access']).config(function($routeProvider) {
-    $routeProvider
-        .when('/:option/:id', {
-            templateUrl: 'add-documents.html'
-        })
-        .when('/:option/:id', {
-            templateUrl: 'add-documents.html'
-        });		
-}).factory('app', function($http,$timeout,$window,$routeParams,$location,validate,bootstrapModal,jspdf,uploadFiles,bui,access) {
+angular.module('app-module', ['form-validator','bootstrap-modal','jspdf-module','upload-files','block-ui','module-access']).factory('app', function($http,$timeout,$window,validate,bootstrapModal,jspdf,uploadFiles,bui,access) {
 	
 	function app() {		
 
@@ -15,43 +7,10 @@ angular.module('app-module', ['form-validator','bootstrap-modal','ngRoute','jspd
 		self.startup = function(scope) {
 			
 			scope.controls.add = true;
-			scope.controls.edit = false;	
-			
-			scope.$on('$routeChangeSuccess', function() {
-				
-				switch ($routeParams.option) {
-					
-					case 'view':
-					
-						if ($routeParams.id != undefined) {					
-							self.load(scope,$routeParams.id);
-							scope.controls.add = false;
-							scope.controls.edit = true;
-						};					
-					
-					break;
-					
-					case 'delete':
-					
-						if ($routeParams.id != undefined) {					
-							self.load(scope,$routeParams.id);
-							scope.controls.add = false;
-							scope.controls.edit = false;
-							scope.controls.ok=false;
-							scope.controls.cancel=false;
-							self.deleteConfirm(scope,$routeParams.id);
-						};
-							
-					break;
-					
-				};				
-
-			});				
+			scope.controls.edit = false;					
 			
 		};
-		
-					
-		
+
 		self.data = function(scope) {
 			
 			jspdf.init();
@@ -163,9 +122,7 @@ angular.module('app-module', ['form-validator','bootstrap-modal','ngRoute','jspd
 		};
 		
 		
-		self.save = function(scope) {
-
-			
+		self.save = function(scope) {			
 		
 			uploadFiles.start(scope, function() {				
 				
@@ -269,24 +226,6 @@ angular.module('app-module', ['form-validator','bootstrap-modal','ngRoute','jspd
 			
 			var blob = doc.output("blob");
 			window.open(URL.createObjectURL(blob));				
-			
-		};
-		
-		
-		self.list = function(scope) {
-
-			$http({
-			  method: 'GET',
-			  url: 'handlers/documents-list.php'
-			}).then(function mySuccess(response) {
-				
-				scope.users = angular.copy(response.data);			
-				
-			}, function myError(response) {
-				
-				//
-				
-			});				
 			
 		};
 		
