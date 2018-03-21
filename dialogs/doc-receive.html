@@ -26,7 +26,7 @@
 			<div class="input-group-prepend">
 				<span class ="input-group-text"><i class="fas fa-barcode" ></i></span>
 			</div>
-			<input type="text" class="form-control" placeholder="Enter barcode to receive document" ng-disabled="false" name="barcode" ng-model="receive.receive_barcode" uib-typeahead="b.barcode for b in barcodeAsyncSuggest($viewValue)" ng-class="{'is-invalid': formHolder.receive.barcode.$touched && formHolder.receive.barcode.$invalid}" required>
+			<input type="text" class="form-control" placeholder="Enter barcode to receive document" ng-disabled="false" name="barcode" ng-model="receive.receive_barcode" uib-typeahead="b.barcode for b in barcodeAsyncSuggest($viewValue)" typeahead-min-length="3" typeahead-on-select="app.barcodeSelected(this, $item)" ng-class="{'is-invalid': formHolder.receive.barcode.$touched && formHolder.receive.barcode.$invalid}" required>
 			<div class="invalid-feedback">Barcode is required to receive document</div>
 		</div>                
 	</div>

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 15, 2018 at 05:13 PM
+-- Generation Time: Mar 21, 2018 at 03:27 PM
 -- Server version: 5.7.11
 -- PHP Version: 7.0.3
 
@@ -31,6 +31,13 @@ CREATE TABLE `attachments` (
   `document_id` int(11) NOT NULL,
   `file_name` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `attachments`
+--
+
+INSERT INTO `attachments` (`id`, `document_id`, `file_name`) VALUES
+(1, 1, 'ICT-03-2018-00001_0.pdf');
 
 -- --------------------------------------------------------
 
@@ -179,6 +186,13 @@ CREATE TABLE `documents` (
   `remarks` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `documents`
+--
+
+INSERT INTO `documents` (`id`, `user_id`, `doc_name`, `barcode`, `origin`, `other_origin`, `document_date`, `document_transaction_type`, `doc_type`, `communication`, `remarks`) VALUES
+(1, 7, 'Items request', 'ICT-03-2018-00001', 4, NULL, '2018-03-21 14:23:31', 1, 3, 1, 'blablabla');
+
 -- --------------------------------------------------------
 
 --
@@ -225,6 +239,13 @@ CREATE TABLE `files` (
   `document_id` int(11) DEFAULT NULL,
   `file_name` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `files`
+--
+
+INSERT INTO `files` (`id`, `document_id`, `file_name`) VALUES
+(1, 1, 'ICT-03-2018-00001_0.jpg');
 
 -- --------------------------------------------------------
 
@@ -316,12 +337,20 @@ CREATE TABLE `tracks` (
   `document_id` int(255) DEFAULT NULL,
   `system_document_status` varchar(100) DEFAULT NULL,
   `track_office` int(11) DEFAULT NULL,
-  `document_transaction` varchar(500) DEFAULT NULL,
-  `document_transaction_user` int(11) DEFAULT NULL,
-  `document_transaction_date` datetime DEFAULT NULL,
+  `track_office_next` int(11) DEFAULT NULL,
+  `document_activity` varchar(500) DEFAULT NULL,
+  `document_activity_user` int(11) DEFAULT NULL,
+  `document_activity_date` datetime DEFAULT NULL,
   `remarks` varchar(1000) DEFAULT NULL,
   `system_log` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tracks`
+--
+
+INSERT INTO `tracks` (`id`, `document_id`, `system_document_status`, `track_office`, `track_office_next`, `document_activity`, `document_activity_user`, `document_activity_date`, `remarks`, `system_log`) VALUES
+(1, 1, 'transaction', 2, 2, 'Received', 7, '2018-03-21 14:23:32', NULL, '2018-03-21 14:23:32');
 
 -- --------------------------------------------------------
 
@@ -458,7 +487,8 @@ ALTER TABLE `options`
 ALTER TABLE `tracks`
   ADD PRIMARY KEY (`id`),
   ADD KEY `document_id` (`document_id`),
-  ADD KEY `destination` (`track_office`);
+  ADD KEY `destination` (`track_office`),
+  ADD KEY `track_office_next` (`track_office_next`);
 
 --
 -- Indexes for table `transactions`
@@ -482,7 +512,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `attachments`
 --
 ALTER TABLE `attachments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `departments`
 --
@@ -507,7 +537,7 @@ ALTER TABLE `document_types`
 -- AUTO_INCREMENT for table `files`
 --
 ALTER TABLE `files`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `groups`
 --

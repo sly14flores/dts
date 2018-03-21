@@ -52,7 +52,7 @@ if ($_POST['id']) { # update
 	$con->insertData($_POST);
 	
 	$id = $con->insertId;
-	
+
 	$barcode = $con->get(array("id"=>$id),["barcode","(SELECT document_type FROM document_types WHERE id = ".$_POST['doc_type'].") doc_type"]);
 
 	uploadFiles($con,$uploads,$barcode[0]['barcode'],$id);
@@ -67,9 +67,10 @@ if ($_POST['id']) { # update
 			"document_id"=>$id,
 			"system_document_status"=>"transaction",
 			"track_office"=>$track_office,
-			"document_transaction"=>"Received",
-			"document_transaction_user"=>$_SESSION['id'],
-			"document_transaction_date"=>"CURRENT_TIMESTAMP"
+			"track_office_next"=>$track_office,
+			"document_activity"=>"Received",
+			"document_activity_user"=>$_SESSION['id'],
+			"document_activity_date"=>"CURRENT_TIMESTAMP"
 		);
 
 		$con->table = "tracks";

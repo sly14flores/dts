@@ -1,4 +1,4 @@
-angular.module('app-module', ['bootstrap-modal','ui.bootstrap']).factory('app', function($http,$timeout,$window,bootstrapModal) {
+angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post']).factory('app', function($http,$timeout,$window,bootstrapModal,printPost) {
 	
 	function app() {
 
@@ -92,7 +92,7 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap']).factory('app', 
 			
 		};
 		
-		function barcodeAsyncSuggest(scope) { // barcode-async-suggest
+		function barcodeAsyncSuggest(scope) {
 
 			scope.barcodeAsyncSuggest = function(f) {
 				
@@ -110,9 +110,9 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap']).factory('app', 
 				});					
 				
 			};
-			
+
 			scope.barcodeAsyncSuggest('');
-		
+
 		};
 
 		self.receive = function(scope,doc) {
@@ -148,12 +148,34 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap']).factory('app', 
 			bootstrapModal.box(scope,title,'dialogs/doc-receive.html',onOk);
 			
 		};
+		
+		self.barcodeSelected = function(scope,item) {
+			
+			scope.receive.barcode = item;
+			
+		};
 
 		self.activity = function(scope,doc) {
 			
-			title = 'Transact '+doc.doc_type;
+			title = '<strong>'+doc.doc_name+'</strong> ('+doc.doc_type+')';
 
 			scope.activity = angular.copy(doc);
+			
+			$http({
+			  method: 'POST',
+			  url: 'handlers/doc-activity.php',
+			  data: {id: doc.id}
+			}).then(function mySuccess(response) {
+
+				scope.activity.tracks = response.data.tracks;
+				scope.activity.files = response.data.files;
+				scope.activity.attachments = response.data.attachments;
+
+			}, function myError(response) {
+				
+				//
+				
+			});
 
 			var onOk = function() {
 
@@ -179,6 +201,12 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap']).factory('app', 
 
 			bootstrapModal.box2(scope,title,'dialogs/doc-activity.html',onOk);		
 
+		};
+		
+		self.preview = function(file) {
+
+			printPost.show('preview/index.php',file);
+			
 		};
 
 	};
