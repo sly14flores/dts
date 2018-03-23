@@ -192,7 +192,7 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 				  data: scope.activity
 				}).then(function mySuccess(response) {
 
-					// self.list(scope);
+					self.list(scope);
 
 				}, function myError(response) {
 					
