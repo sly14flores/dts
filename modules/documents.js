@@ -160,7 +160,12 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 			title = '<strong>'+doc.doc_name+'</strong> ('+doc.doc_type+')';
 
 			scope.activity = angular.copy(doc);
+
+			scope.activity.next = {};
 			
+			options(scope);
+			offices(scope);
+
 			$http({
 			  method: 'POST',
 			  url: 'handlers/doc-activity.php',
@@ -187,7 +192,7 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 				  data: scope.activity
 				}).then(function mySuccess(response) {
 
-					// self.list(scope);
+					self.list(scope);
 
 				}, function myError(response) {
 					
@@ -202,7 +207,43 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 			bootstrapModal.box2(scope,title,'dialogs/doc-activity.html',onOk);		
 
 		};
+
+		function options(scope) {
+
+			scope.options = [];
 		
+			$http({
+				method: 'GET',
+				url: 'handlers/options.php'
+			}).then(function mySuccess(response) {
+				
+				scope.options = angular.copy(response.data);
+					
+			}, function myError(response) {
+				
+		
+			});			
+		
+		};
+
+		function offices(scope) {
+
+			scope.offices = [];
+		
+			$http({
+				method: 'GET',
+				url: 'handlers/offices.php'
+			}).then(function mySuccess(response) {
+				
+				scope.offices = angular.copy(response.data);
+					
+			}, function myError(response) {
+				
+		
+			});			
+		
+		};
+
 		self.preview = function(file) {
 
 			printPost.show('preview/index.php',file);

@@ -1,4 +1,4 @@
-<form name="formHolder.activity">
+<form name="formHolder.activity" novalidate autocomplete="off">
 <div class="row">
 	<div class="col-md-2">Date</div>
 	<div class="col-md-4" style="margin-bottom: 10px;"><strong>{{activity.document_activity_date}}</strong></div>
@@ -60,5 +60,65 @@
 			</tbody>
 		</table>		
 	</div>	
+</div>
+<div class="row">
+	<div class="col-md-4">
+		<div class="form-group">
+			<label class="form-control-label"><strong>Action</strong></label>
+			<select class="form-control" ng-class="{'is-invalid': formHolder.activity.action.$touched && formHolder.activity.action.$invalid}" name="action" ng-model="views.action" required>
+				<option value="Transact">Flag Document</option>
+				<option value="Route">Route Document</option>
+				<option value="Release">Release Document</option>
+				<option value="File">File Document</option>
+			</select>
+			<div class="invalid-feedback">Please select action</div>			
+		</div>
+	</div>
+</div>
+<div class="row" ng-show="views.action == 'Transact'">
+	<div class="col-md-4">
+		<div class="form-group">
+			<label class="form-control-label"><strong>Transaction</strong></label>
+			<input type="text" class="form-control" ng-class="{'is-invalid': formHolder.activity.document_activity.$touched && formHolder.activity.document_activity.$invalid}" name="document_activity" ng-model="activity.next.document_activity" required>
+			<div class="invalid-feedback">Please select transaction</div>	
+		</div>
+	</div>
+	<div class="col-md-4">
+		<div class="form-group">
+			<label class="form-control-label"><strong>Remarks</strong></label>
+			<input type="text" class="form-control" ng-model="activity.next.remarks">
+		</div>
+	</div>	
+</div>
+<div class="row" ng-show="views.action == 'Release'">
+	<div class="col-md-4">
+		<div class="form-group">
+			<label class="form-control-label"><strong>To</strong></label>
+			<select class="form-control" ng-class="{'is-invalid': formHolder.activity.track_office_next.$touched && formHolder.activity.track_office_next.$invalid}" name="track_office_next" ng-model="activity.next.track_office_next" ng-options="o.office for o in offices track by o.id" required></select>
+			<div class="invalid-feedback">Please select destination office</div>
+		</div>
+	</div>
+	<div class="col-md-4">
+		<div class="form-group">
+			<label class="form-control-label"><strong>Remarks</strong></label>
+			<input type="text" class="form-control" ng-model="activity.next.remarks">
+		</div>
+	</div>		
+</div>
+<div class="row">
+	<!-- <div class="col-md-4">
+		<div class="form-group">
+			<label class="form-control-label"><strong>To</strong></label>
+			<select class="form-control" ng-class="{'is-invalid': formHolder.activity.track_office_next.$touched && formHolder.activity.track_office_next.$invalid}" name="track_office_next" ng-model="activity.next.track_office_next" ng-options="o.office for o in offices track by o.id" required></select>
+			<div class="invalid-feedback">Please select destination office</div>
+		</div>
+	</div> -->
+	<!-- <div class="col-md-4">
+		<div class="form-group">
+			<label class="form-control-label"><strong>Transaction</strong></label>
+			<select class="form-control" ng-class="{'is-invalid': formHolder.activity.document_activity.$touched && formHolder.activity.document_activity.$invalid}" name="document_activity" ng-model="activity.next.document_activity" ng-options="opt.choice for opt in options track by opt.id" required></select>
+			<div class="invalid-feedback">Please select transaction</div>			
+		</div>
+	</div> -->
 </div>
 </form>
