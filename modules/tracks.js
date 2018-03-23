@@ -13,23 +13,17 @@ angular.module('app-module', ['form-validator','bootstrap-modal']).factory('app'
 			scope.documents = [];	
 
 		};
-		
-		self.list = function(scope) {
+
+		self.track = function(scope) {
 			
-			if (scope.$id > 2) scope = scope.$parent;
+			// track-document.php
 			
-			$http({
-			  method: 'GET',
-			  url: 'handlers/tracks.php'
-			}).then(function mySuccess(response) {
-
-				scope.documents = angular.copy(response.data);			
-
-			}, function myError(response) {
-
-
-			});				
-
+			var loading = '<div class="col-lg-12">Fetching document tracks please wait...</div>';
+			
+			$('#track').html(loading);
+			
+			$('#track').load('html/tracks.html');
+			
 		};
 
 	};
