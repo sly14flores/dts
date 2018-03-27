@@ -65,7 +65,7 @@ if ($_POST['id']) { # update
 
 		$track = array(
 			"document_id"=>$id,
-			"system_document_status"=>"transaction",
+			"system_document_action"=>"transaction",
 			"track_office"=>$track_office,
 			"track_office_next"=>$track_office,
 			"document_activity"=>"Received",

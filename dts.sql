@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 23, 2018 at 05:06 PM
+-- Generation Time: Mar 27, 2018 at 04:37 PM
 -- Server version: 5.7.11
 -- PHP Version: 7.0.3
 
@@ -184,7 +184,7 @@ CREATE TABLE `documents` (
 --
 
 INSERT INTO `documents` (`id`, `user_id`, `doc_name`, `barcode`, `origin`, `other_origin`, `document_date`, `document_transaction_type`, `doc_type`, `communication`, `remarks`) VALUES
-(1, 7, 'Sick Leave', 'ICT-03-2018-00001', 4, NULL, '2018-03-23 10:25:35', 1, 15, 1, NULL);
+(1, 7, 'Travel', 'ICT-03-2018-00001', 4, NULL, '2018-03-26 10:41:26', 1, 2, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -321,7 +321,7 @@ INSERT INTO `options` (`id`, `choice`) VALUES
 CREATE TABLE `tracks` (
   `id` int(255) NOT NULL,
   `document_id` int(255) DEFAULT NULL,
-  `system_document_status` varchar(100) DEFAULT NULL,
+  `system_document_action` varchar(100) DEFAULT NULL,
   `track_office` int(11) DEFAULT NULL,
   `track_office_next` int(11) DEFAULT NULL COMMENT 'Incoming',
   `document_activity` varchar(500) DEFAULT NULL COMMENT 'Document Status',
@@ -335,8 +335,8 @@ CREATE TABLE `tracks` (
 -- Dumping data for table `tracks`
 --
 
-INSERT INTO `tracks` (`id`, `document_id`, `system_document_status`, `track_office`, `track_office_next`, `document_activity`, `document_activity_user`, `document_activity_date`, `remarks`, `system_log`) VALUES
-(1, 1, 'transaction', 2, 2, 'Received', 7, '2018-03-23 10:25:35', NULL, '2018-03-23 10:25:35');
+INSERT INTO `tracks` (`id`, `document_id`, `system_document_action`, `track_office`, `track_office_next`, `document_activity`, `document_activity_user`, `document_activity_date`, `remarks`, `system_log`) VALUES
+(1, 1, 'transaction', 2, 2, 'Received', 7, '2018-03-26 10:41:26', NULL, '2018-03-26 10:41:26');
 
 -- --------------------------------------------------------
 
@@ -499,7 +499,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `attachments`
 --
 ALTER TABLE `attachments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `departments`
 --
@@ -524,7 +524,7 @@ ALTER TABLE `document_types`
 -- AUTO_INCREMENT for table `files`
 --
 ALTER TABLE `files`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `groups`
 --
@@ -544,7 +544,7 @@ ALTER TABLE `options`
 -- AUTO_INCREMENT for table `tracks`
 --
 ALTER TABLE `tracks`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `transactions`
 --
