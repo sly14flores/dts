@@ -67,7 +67,6 @@ if ($_POST['id']) { # update
 			"document_id"=>$id,
 			"system_document_action"=>"transaction",
 			"track_office"=>$track_office,
-			"track_office_next"=>$track_office,
 			"document_activity"=>"Received",
 			"document_activity_user"=>$_SESSION['id'],
 			"document_activity_date"=>"CURRENT_TIMESTAMP"
