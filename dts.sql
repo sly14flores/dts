@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 27, 2018 at 04:37 PM
+-- Generation Time: Mar 28, 2018 at 01:29 PM
 -- Server version: 5.7.11
 -- PHP Version: 7.0.3
 
@@ -184,7 +184,7 @@ CREATE TABLE `documents` (
 --
 
 INSERT INTO `documents` (`id`, `user_id`, `doc_name`, `barcode`, `origin`, `other_origin`, `document_date`, `document_transaction_type`, `doc_type`, `communication`, `remarks`) VALUES
-(1, 7, 'Travel', 'ICT-03-2018-00001', 4, NULL, '2018-03-26 10:41:26', 1, 2, 1, NULL);
+(1, 7, 'adgsadg', 'ICT-03-2018-00001', 4, NULL, '2018-03-28 10:32:07', 1, 3, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -323,7 +323,6 @@ CREATE TABLE `tracks` (
   `document_id` int(255) DEFAULT NULL,
   `system_document_action` varchar(100) DEFAULT NULL,
   `track_office` int(11) DEFAULT NULL,
-  `track_office_next` int(11) DEFAULT NULL COMMENT 'Incoming',
   `document_activity` varchar(500) DEFAULT NULL COMMENT 'Document Status',
   `document_activity_user` int(11) DEFAULT NULL,
   `document_activity_date` datetime DEFAULT NULL,
@@ -335,8 +334,8 @@ CREATE TABLE `tracks` (
 -- Dumping data for table `tracks`
 --
 
-INSERT INTO `tracks` (`id`, `document_id`, `system_document_action`, `track_office`, `track_office_next`, `document_activity`, `document_activity_user`, `document_activity_date`, `remarks`, `system_log`) VALUES
-(1, 1, 'transaction', 2, 2, 'Received', 7, '2018-03-26 10:41:26', NULL, '2018-03-26 10:41:26');
+INSERT INTO `tracks` (`id`, `document_id`, `system_document_action`, `track_office`, `document_activity`, `document_activity_user`, `document_activity_date`, `remarks`, `system_log`) VALUES
+(1, 1, 'transaction', 2, 'Received', 7, '2018-03-28 10:32:07', NULL, '2018-03-28 10:32:07');
 
 -- --------------------------------------------------------
 
@@ -474,8 +473,7 @@ ALTER TABLE `options`
 ALTER TABLE `tracks`
   ADD PRIMARY KEY (`id`),
   ADD KEY `document_id` (`document_id`),
-  ADD KEY `destination` (`track_office`),
-  ADD KEY `track_office_next` (`track_office_next`);
+  ADD KEY `destination` (`track_office`);
 
 --
 -- Indexes for table `transactions`
