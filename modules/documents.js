@@ -162,7 +162,7 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 			scope.activity = angular.copy(doc);
 
 			scope.activity.next = {};
-			
+
 			options(scope);
 			offices(scope);
 

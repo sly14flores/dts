@@ -65,7 +65,7 @@
 	<div class="col-md-4">
 		<div class="form-group">
 			<label class="form-control-label"><strong>Action</strong></label>
-			<select class="form-control" ng-class="{'is-invalid': formHolder.activity.action.$touched && formHolder.activity.action.$invalid}" name="action" ng-model="views.action" required>
+			<select class="form-control" ng-class="{'is-invalid': formHolder.activity.action.$touched && formHolder.activity.action.$invalid}" name="action" ng-model="activity.action" required>
 				<option value="Flag">Flag Document</option>
 				<option value="Route">Route Document</option>
 				<option value="File">File Document</option>
@@ -74,11 +74,11 @@
 		</div>
 	</div>
 </div>
-<div class="row" ng-show="views.action == 'Flag'">
+<div class="row" ng-show="activity.action == 'Flag'">
 	<div class="col-md-4">
 		<div class="form-group">
 			<label class="form-control-label"><strong>Status</strong></label>
-			<input type="text" class="form-control" ng-class="{'is-invalid': formHolder.activity.document_activity.$touched && formHolder.activity.document_activity.$invalid}" name="document_activity" ng-model="activity.next.document_activity" required>
+			<input type="text" class="form-control" ng-class="{'is-invalid': formHolder.activity.document_status.$touched && formHolder.activity.document_status.$invalid}" name="document_status" ng-model="activity.next.document_status" ng-required="activity.action == 'Flag'">
 			<div class="invalid-feedback">Please enter status</div>	
 		</div>
 	</div>
@@ -89,11 +89,11 @@
 		</div>
 	</div>	
 </div>
-<div class="row" ng-show="views.action == 'Route' || views.action == 'Release'">
+<div class="row" ng-show="activity.action == 'Route'">
 	<div class="col-md-4">
 		<div class="form-group">
 			<label class="form-control-label"><strong>To</strong></label>
-			<select class="form-control" ng-class="{'is-invalid': formHolder.activity.track_office_next.$touched && formHolder.activity.track_office_next.$invalid}" name="track_office_next" ng-model="activity.next.track_office_next" ng-options="o.office for o in offices track by o.id" required></select>
+			<select class="form-control" ng-class="{'is-invalid': formHolder.activity.route_office.$touched && formHolder.activity.route_office.$invalid}" name="route_office" ng-model="activity.next.route_office" ng-options="o.office for o in offices track by o.id" ng-required="activity.action == 'Route'"></select>
 			<div class="invalid-feedback">Please select destination office</div>
 		</div>
 	</div>
@@ -104,7 +104,7 @@
 		</div>
 	</div>		
 </div>
-<div class="row" ng-show="views.action == 'File'">
+<div class="row" ng-show="activity.action == 'File'">
 	<div class="col-md-4">
 		<div class="form-group">
 			<label class="form-control-label"><strong>Remarks</strong></label>
