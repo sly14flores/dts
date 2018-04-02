@@ -8,12 +8,12 @@ session_start();
 
 $con = new pdo_db();
 
-$tracks = $con->getData("SELECT document_activity_date, document_activity, (SELECT CONCAT(users.fname, ' ', users.lname) FROM users WHERE users.id = tracks.document_activity_user) staff, (SELECT offices.office FROM offices WHERE id = tracks.track_office) office FROM tracks WHERE document_id = ".$_POST['id']);
+$tracks = $con->getData("SELECT track_date, document_status, (SELECT CONCAT(users.fname, ' ', users.lname) FROM users WHERE users.id = tracks.document_status_user) staff, (SELECT offices.office FROM offices WHERE id = tracks.track_office) office FROM tracks WHERE document_id = ".$_POST['id']);
 
 foreach ($tracks as $i => $track) {
 	
-	$tracks[$i]['date'] = date("F j, Y",strtotime($track['document_activity_date']));
-	$tracks[$i]['time'] = date("h:i:s A",strtotime($track['document_activity_date']));
+	$tracks[$i]['date'] = date("F j, Y",strtotime($track['track_date']));
+	$tracks[$i]['time'] = date("h:i:s A",strtotime($track['track_date']));
 	
 };
 

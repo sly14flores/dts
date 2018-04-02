@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 28, 2018 at 01:29 PM
+-- Generation Time: Apr 02, 2018 at 01:50 PM
 -- Server version: 5.7.11
 -- PHP Version: 7.0.3
 
@@ -184,7 +184,7 @@ CREATE TABLE `documents` (
 --
 
 INSERT INTO `documents` (`id`, `user_id`, `doc_name`, `barcode`, `origin`, `other_origin`, `document_date`, `document_transaction_type`, `doc_type`, `communication`, `remarks`) VALUES
-(1, 7, 'adgsadg', 'ICT-03-2018-00001', 4, NULL, '2018-03-28 10:32:07', 1, 3, 1, NULL);
+(1, 7, 'adgas', 'ICT-04-2018-00001', 4, NULL, '2018-04-02 09:30:27', 1, 4, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -321,11 +321,11 @@ INSERT INTO `options` (`id`, `choice`) VALUES
 CREATE TABLE `tracks` (
   `id` int(255) NOT NULL,
   `document_id` int(255) DEFAULT NULL,
-  `system_document_action` varchar(100) DEFAULT NULL,
+  `document_status` varchar(100) DEFAULT NULL,
+  `document_status_user` int(11) DEFAULT NULL,
+  `document_tracks_status` varchar(100) DEFAULT NULL,
   `track_office` int(11) DEFAULT NULL,
-  `document_activity` varchar(500) DEFAULT NULL COMMENT 'Document Status',
-  `document_activity_user` int(11) DEFAULT NULL,
-  `document_activity_date` datetime DEFAULT NULL,
+  `track_date` datetime DEFAULT NULL,
   `remarks` varchar(1000) DEFAULT NULL,
   `system_log` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -334,8 +334,8 @@ CREATE TABLE `tracks` (
 -- Dumping data for table `tracks`
 --
 
-INSERT INTO `tracks` (`id`, `document_id`, `system_document_action`, `track_office`, `document_activity`, `document_activity_user`, `document_activity_date`, `remarks`, `system_log`) VALUES
-(1, 1, 'transaction', 2, 'Received', 7, '2018-03-28 10:32:07', NULL, '2018-03-28 10:32:07');
+INSERT INTO `tracks` (`id`, `document_id`, `document_status`, `document_status_user`, `document_tracks_status`, `track_office`, `track_date`, `remarks`, `system_log`) VALUES
+(1, 1, 'Received', 7, 'transaction', 2, '2018-04-02 09:30:27', NULL, '2018-04-02 09:30:27');
 
 -- --------------------------------------------------------
 

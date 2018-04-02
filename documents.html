@@ -171,8 +171,8 @@ require_once 'authentication.php';
 												<th>Document Type</th>
 												<th>Originating Office</th>
 												<th>Subject</th>
-												<th>Action</th>
-												<th>Recent Track Status</th>
+												<th>Document Status</th>												
+												<th>Tracks Status</th>
 												<th>Date</th>
 												<th>Activity</th>
 											</tr>
@@ -184,11 +184,11 @@ require_once 'authentication.php';
 												<td>{{i.origin}}</td>
 												<td>{{i.doc_name}}</td>
 												<td>{{i.document_status}}</td>
-												<td>{{i.document_activity}}</td>
-												<td>{{i.document_activity_date}}</td>
+												<td>{{i.tracks_status}}</td>												
+												<td>{{i.track_date}}</td>
 												<td>
-													<button ng-show="i.system_document_action == 'incoming'" class="btn btn-info" ng-click="app.receive(this,i)"><i class="icon icon-arrow-down-circle"></i></button>
-													<button ng-show="i.system_document_action == 'transaction'" class="btn btn-info" ng-click="app.activity(this,i)"><i class="icon icon-grid"></i></button>
+													<button ng-show="i.document_tracks_status == 'incoming'" class="btn btn-info" ng-click="app.receive(this,i)"><i class="icon icon-arrow-down-circle"></i></button>
+													<button ng-show="i.document_tracks_status == 'transaction'" class="btn btn-info" ng-click="app.activity(this,i)"><i class="icon icon-grid"></i></button>
 												</td>
 											</tr>
 										</tbody>
