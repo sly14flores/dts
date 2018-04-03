@@ -5,7 +5,5 @@ app.controller('tracksCtrl',function($scope,app) {
 	$scope.app = app;
 	
 	$scope.app.data($scope);
-
-	$scope.app.list($scope);
 	
 });

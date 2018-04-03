@@ -66,23 +66,30 @@ require_once 'authentication.php';
                                 <a href="add-documents.html" class="nav-link">
                                     <i class="icon icon-plus"></i>Receive Document
                                 </a>
-                            </li><li class="nav-item" ng-show="profile.pages_access[2].value">
-                                <a href="documents.html" class="nav-link">
-                                    <i class="icon icon-book-open"></i>Documents
+                            </li>
+							<li class="nav-item" ng-show="profile.pages_access[2].value">
+                                <a href="incoming.html" class="nav-link">
+                                    <i class="icon icon-book-open"></i>Incoming
                                 </a>
-                            <li class="nav-item" ng-show="profile.pages_access[3].value">
+							</li>							
+							<li class="nav-item" ng-show="profile.pages_access[3].value">
+                                <a href="transact.html" class="nav-link">
+                                    <i class="icon icon-book-open"></i>Transact
+                                </a>
+							</li>
+                            <li class="nav-item" ng-show="profile.pages_access[4].value">
                                 <a href="documents-list.html" class="nav-link">
                                     <i class="icon icon-doc"></i> List of Documents
                                 </a>
                             </li>
-							</li><li class="nav-item" ng-show="profile.pages_access[4].value">
+							<li class="nav-item" ng-show="profile.pages_access[5].value">
                                 <a href="tracks.html" class="nav-link">
                                     <i class="icon icon-location-pin"></i>Tracks
                                 </a>
                             </li>
                         </ul>
                     </li>	
-                    <li class="nav-item nav-dropdown" ng-show="profile.pages_access[5].value">
+                    <li class="nav-item nav-dropdown" ng-show="profile.pages_access[6].value">
                         <a href="#" class="nav-link nav-dropdown-toggle">
                             <i class="icon icon-people"></i> Accounts <i class="fa fa-caret-left"></i>
                         </a>
@@ -100,7 +107,7 @@ require_once 'authentication.php';
                             </li>
                         </ul>
                     </li>
-					<li class="nav-item nav-dropdown" ng-show="profile.pages_access[6].value">
+					<li class="nav-item nav-dropdown" ng-show="profile.pages_access[7].value">
                         <a href="#" class="nav-link nav-dropdown-toggle">
                             <i class="icon icon-list"></i> Groups <i class="fa fa-caret-left"></i>
                         </a>
@@ -118,7 +125,7 @@ require_once 'authentication.php';
                             </li>
                         </ul>
                     </li>
-					<li class="nav-item nav-dropdown" ng-show="profile.pages_access[7].value">
+					<li class="nav-item nav-dropdown" ng-show="profile.pages_access[8].value">
                         <a href="#" class="nav-link nav-dropdown-toggle">
                             <i class="icon icon-support"></i> Maintenance <i class="fa fa-caret-left"></i>
                         </a>

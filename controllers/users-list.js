@@ -9,7 +9,7 @@ app.controller('profileListCtrl',function($scope,app) {
 	$scope.app.list($scope);
 	
 	$scope.module = {
-		id: 8,
+		id: 7,
 		privileges: {
 			show: 1,
 			add: 2,

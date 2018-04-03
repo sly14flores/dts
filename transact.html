@@ -14,7 +14,7 @@ require_once 'authentication.php';
     <link rel="stylesheet" href="./vendor/font-awesome/css/fontawesome-all.min.css">
     <link rel="stylesheet" href="./css/styles.css">
 </head>
-<body class="sidebar-fixed header-fixed" ng-app="profileList" ng-controller="profileListCtrl">
+<body class="sidebar-fixed header-fixed" ng-app="documents" ng-controller="documentsCtrl">
 <div class="page-wrapper">
     <nav class="navbar page-header">
         <a href="#" class="btn btn-link sidebar-mobile-toggle d-md-none mr-auto">
@@ -58,7 +58,7 @@ require_once 'authentication.php';
                         </a>
                     </li>
 					    <li class="nav-item nav-dropdown">
-                        <a href="#" class="nav-link nav-dropdown-toggle">
+                        <a href="#" class="nav-link nav-dropdown-toggle active">
                             <i class="icon icon-docs"></i> Documents <i class="fa fa-caret-left"></i>
                         </a>
                         <ul class="nav-dropdown-items">
@@ -71,12 +71,12 @@ require_once 'authentication.php';
                                 <a href="incoming.html" class="nav-link">
                                     <i class="icon icon-book-open"></i>Incoming
                                 </a>
-							</li>							
+							</li>						
 							<li class="nav-item" ng-show="profile.pages_access[3].value">
                                 <a href="transact.html" class="nav-link">
                                     <i class="icon icon-book-open"></i>Transact
                                 </a>
-							</li>							
+							</li>
                             <li class="nav-item" ng-show="profile.pages_access[4].value">
                                 <a href="documents-list.html" class="nav-link">
                                     <i class="icon icon-doc"></i> List of Documents
@@ -90,7 +90,7 @@ require_once 'authentication.php';
                         </ul>
                     </li>	
                     <li class="nav-item nav-dropdown" ng-show="profile.pages_access[6].value">
-                        <a href="#" class="nav-link nav-dropdown-toggle active">
+                        <a href="#" class="nav-link nav-dropdown-toggle">
                             <i class="icon icon-people"></i> Accounts <i class="fa fa-caret-left"></i>
                         </a>
 
@@ -101,7 +101,7 @@ require_once 'authentication.php';
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="users-list.html" class="nav-link active">
+                                <a href="users-list.html" class="nav-link">
                                     <i class="icon icon-people"></i> List
                                 </a>
                             </li>
@@ -167,42 +167,41 @@ require_once 'authentication.php';
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header bg-light">
-                                List of Users
+                                Documents
                             </div>
 							<div class="card-body">
 								<div class = "row">
 									<table class="table table-striped">
 										<thead>
 											<tr>
-												<th>ID</th>
-												<th>Group</th>
-												<th>First Name</th>
-												<th>Last Name</th>
-												<th>Position</th>
-												<th>Office</th>
-												<th>Username</th>
-												<th>Options</th>
+												<th>Barcode</th>
+												<th>Document Type</th>
+												<th>Originating Office</th>
+												<th>Subject</th>
+												<th>Document Status</th>												
+												<th>Tracks Status</th>
+												<th>Remarks</th>
+												<th>Date</th>
+												<th>Activity</th>
 											</tr>
 										</thead>
 										<tbody>
-											<tr ng-repeat="u in filterData = (users | filter:search) | pagination: currentPage:pageSize">
-											<td>{{u.employee_id}}</td>
-											<td>{{u.group_name}}</td>
-											<td>{{u.fname}}</td>
-											<td>{{u.lname}}</td>
-											<td>{{u.position}}</td>
-											<td>{{u.div_id}}</td>
-											<td>{{u.uname}}</td>
-											
-											<td>
-												<button class="btn btn-primary" ng-click="app.view(this,u)"><i class="icon icon-magnifier"></i></button>
-												<button class="btn btn-secondary" ng-click="app.delete(this,u)"><i class="icon icon-trash"></i></button>
-											</td>
+											<tr ng-repeat="i in filterData = (documents | filter:search) | pagination: currentPage:pageSize">
+												<td>{{i.barcode}}</td>
+												<td>{{i.doc_type}}</td>
+												<td>{{i.origin}}</td>
+												<td>{{i.doc_name}}</td>
+												<td>{{i.document_status}}</td>
+												<td>{{i.tracks_status}}</td>												
+												<td>{{i.remarks}}</td>												
+												<td>{{i.track_date}}</td>
+												<td>
+													<button ng-show="i.document_tracks_status == 'incoming'" class="btn btn-info" ng-click="app.receive(this,i)"><i class="icon icon-arrow-down-circle"></i></button>
+													<button ng-show="i.document_tracks_status == 'transaction'" class="btn btn-info" ng-click="app.activity(this,i)"><i class="icon icon-grid"></i></button>
+												</td>
 											</tr>
 										</tbody>
-
 										<tfoot><!-- added pagination feature -->
-
 											<tr>
 												<td colspan="9" style="text-align: center;">
 													<div class="float-right"><ul uib-pagination direction-links="false" boundary-links="true" total-items="filterData.length" ng-model="currentPage" max-size="maxSize"></ul></div>
@@ -211,9 +210,8 @@ require_once 'authentication.php';
 										</tfoot>
 									</table>
 								</div>
-
 							</div>
-
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -230,21 +228,17 @@ require_once 'authentication.php';
 
 <!-- dependencies -->
 <script src="vendor/bootbox/bootbox.min.js"></script>
-<script src="vendor/growl/jquery.bootstrap-growl.min.js"></script>
-<script src="vendor/blockui/jquery.blockUI.js"></script>
 <script src="angular/angular.min.js"></script>
 <script src="angular/angular-route.min.js"></script>
 <script src="angular/ui-bootstrap-tpls-3.0.2.min.js"></script>
 <!-- modules -->
 <script src="modules/bootstrap-modal.js"></script>
 <script src="modules/account.js"></script>
-<script src="modules/module-access.js"></script>
 <script src="modules/validate.js"></script>
-<script src="modules/blockui.js"></script>
-<script src="modules/growl.js"></script>
-<script src="modules/user-profile.js"></script>
+<script src="modules/window-open-post.js"></script>
+<script src="modules/documents.js"></script>
 <!-- controller -->
-<script src="controllers/users-list.js"></script>
+<script src="controllers/documents.js"></script>
 
 </body>
 </html>

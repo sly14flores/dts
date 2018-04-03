@@ -65,12 +65,11 @@ if ($_POST['id']) { # update
 
 		$track = array(
 			"document_id"=>$id,
-			"system_document_status"=>"transaction",
-			"track_office"=>$track_office,
-			"track_office_next"=>$track_office,
-			"document_activity"=>"Received",
-			"document_activity_user"=>$_SESSION['id'],
-			"document_activity_date"=>"CURRENT_TIMESTAMP"
+			"document_status"=>"Received", # document status
+			"document_status_user"=>$_SESSION['id'],			
+			"document_tracks_status"=>"transaction", # tracks status
+			"track_office"=>$track_office,			
+			"track_date"=>"CURRENT_TIMESTAMP"
 		);
 
 		$con->table = "tracks";
