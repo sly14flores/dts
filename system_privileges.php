@@ -25,9 +25,9 @@ define('system_privileges', array(
 	),	
 	array( # 3
 		"id"=>4,
-		"description"=>"Documents",
+		"description"=>"Transact",
 		"privileges"=>array(
-			array("id"=>1,"description"=>"Show Documents","value"=>false),
+			array("id"=>1,"description"=>"Show Transact","value"=>false),
 		),
 	),
 	array( # 4
