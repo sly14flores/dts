@@ -13,6 +13,7 @@ require_once 'authentication.php';
     <link rel="stylesheet" href="./vendor/simple-line-icons/css/simple-line-icons.css">
     <link rel="stylesheet" href="./vendor/font-awesome/css/fontawesome-all.min.css">
     <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/timeline.css">
 </head>
 <body class="sidebar-fixed header-fixed" ng-app="tracks" ng-controller="tracksCtrl">
 <div class="page-wrapper">
@@ -66,23 +67,30 @@ require_once 'authentication.php';
                                 <a href="add-documents.html" class="nav-link">
                                     <i class="icon icon-plus"></i>Receive Document
                                 </a>
-                            </li><li class="nav-item" ng-show="profile.pages_access[2].value">
-                                <a href="documents.html" class="nav-link">
-                                    <i class="icon icon-book-open"></i>Documents
+                            </li>
+							<li class="nav-item" ng-show="profile.pages_access[2].value">
+                                <a href="incoming.html" class="nav-link">
+                                    <i class="icon icon-book-open"></i>Incoming
                                 </a>
-                            <li class="nav-item" ng-show="profile.pages_access[3].value">
+							</li>							
+							<li class="nav-item" ng-show="profile.pages_access[3].value">
+                                <a href="transact.html" class="nav-link">
+                                    <i class="icon icon-book-open"></i>Transact
+                                </a>
+							</li>						
+                            <li class="nav-item" ng-show="profile.pages_access[4].value">
                                 <a href="documents-list.html" class="nav-link">
                                     <i class="icon icon-doc"></i> List of Documents
                                 </a>
                             </li>
-							</li><li class="nav-item" ng-show="profile.pages_access[4].value">
+							<li class="nav-item" ng-show="profile.pages_access[5].value">
                                 <a href="tracks.html" class="nav-link active">
                                     <i class="icon icon-location-pin"></i>Tracks
                                 </a>
                             </li>
                         </ul>
                     </li>	
-                    <li class="nav-item nav-dropdown" ng-show="profile.pages_access[5].value">
+                    <li class="nav-item nav-dropdown" ng-show="profile.pages_access[6].value">
                         <a href="#" class="nav-link nav-dropdown-toggle">
                             <i class="icon icon-people"></i> Accounts <i class="fa fa-caret-left"></i>
                         </a>
@@ -100,7 +108,7 @@ require_once 'authentication.php';
                             </li>
                         </ul>
                     </li>
-					<li class="nav-item nav-dropdown" ng-show="profile.pages_access[6].value">
+					<li class="nav-item nav-dropdown" ng-show="profile.pages_access[7].value">
                         <a href="#" class="nav-link nav-dropdown-toggle">
                             <i class="icon icon-list"></i> Groups <i class="fa fa-caret-left"></i>
                         </a>
@@ -118,7 +126,7 @@ require_once 'authentication.php';
                             </li>
                         </ul>
                     </li>
-					<li class="nav-item nav-dropdown" ng-show="profile.pages_access[7].value">
+					<li class="nav-item nav-dropdown" ng-show="profile.pages_access[8].value">
                         <a href="#" class="nav-link nav-dropdown-toggle">
                             <i class="icon icon-support"></i> Maintenance <i class="fa fa-caret-left"></i>
                         </a>
@@ -147,52 +155,17 @@ require_once 'authentication.php';
         <div class="content">
             <div class="container-fluid">
 				<div class="row">
-					<div class="col-md-4">
-						<div class="input-group">					
-                            <span class="input-group-btn">
-                                <button type="button" class="btn btn-primary"><i class="fa fa-search"></i> Search</button>
-                            </span>
-                            <input type="text" id="input-group-1" name="input1-group2" class="form-control" ng-model="search" placeholder="">
-                        </div><hr>
-					</div>
-				</div>				
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-header bg-light">
-                                List of Documents
-                            </div>
-							<div class="card-body">
-								<div class = "row">
-									<table class="table table-striped">
-										<thead>
-											<tr>
-												<th>Activity</th>
-												<th>Date</th>
-												<th>Time</th>												
-												<th>Staff</th>
-												<th>Office</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr ng-repeat="dlo in documents | filter:search">
-											<td>{{dl.doc_name}}</td>
-											<td>{{dl.barcode}}</td>
-											<td>{{dl.doc_type}}</td>											
-											<td>{{dl.origin}}</td>
-											<td>{{dl.document_date}}</td>
-											
-											</tr>
-										</tbody>
-									</table>
-								</div>
-							</div>
-
-                            
-                            </div>
+					<div class="col-lg-4 offset-lg-4 col-md-4 offset-md-4">
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="Enter Barcode">
+							<span class="input-group-btn">
+								<button type="button" class="btn btn-primary" ng-click="app.track(this)"><i class="fa fa-search"></i> Track</button>
+							</span>
                         </div>
-                    </div>
-                </div>
+					</div>
+				</div>
+				<hr>
+                <div class="row" id="track"></div>
 			</div>
         </div><!-- /content -->
     </div>

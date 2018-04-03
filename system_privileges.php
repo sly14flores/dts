@@ -1,46 +1,51 @@
 <?php
 
 define('system_privileges', array(
-	array(
+	array( # 0
 		"id"=>1,
 		"description"=>"Dashboard",
 		"privileges"=>array( # id=1 must be always page access
 			array("id"=>1,"description"=>"Show Dashboard","value"=>false),
 		),
 	),
-	array(
+	array( # 1
 		"id"=>2,
 		"description"=>"Receive Document",
 		"privileges"=>array(
 			array("id"=>1,"description"=>"Show Receive Document","value"=>false),
-			array("id"=>2,"description"=>"Add Document","value"=>false),			
+			array("id"=>2,"description"=>"Add Document","value"=>false),		
 		),
 	),
-	array(
+	array( # 2
 		"id"=>3,
-		"description"=>"My Documents",
+		"description"=>"Incoming",
 		"privileges"=>array(
-			array("id"=>1,"description"=>"Show My Documents","value"=>false),
-			array("id"=>2,"description"=>"Incoming Documents","value"=>false),
-			array("id"=>3,"description"=>"Documents for Transaction","value"=>false),
+			array("id"=>1,"description"=>"Show Incoming Document","value"=>false),
+		),
+	),	
+	array( # 3
+		"id"=>4,
+		"description"=>"Transact",
+		"privileges"=>array(
+			array("id"=>1,"description"=>"Show Transact","value"=>false),
 		),
 	),
-	array(
-		"id"=>6,
+	array( # 4
+		"id"=>5,
 		"description"=>"List of Documents",
 		"privileges"=>array(
 			array("id"=>1,"description"=>"Show List of Documents","value"=>false),
 		),
 	),
-	array(
-		"id"=>7,
+	array( # 5
+		"id"=>6,
 		"description"=>"Tracks",
 		"privileges"=>array(
-			array("id"=>1,"description"=>"Show Tracks of Documents","value"=>false),
+			array("id"=>1,"description"=>"Show Tracks","value"=>false),
 		),
 	),
-	array(
-		"id"=>8,
+	array( # 6
+		"id"=>7,
 		"description"=>"Accounts",
 		"privileges"=>array(
 			array("id"=>1,"description"=>"Show User Accounts","value"=>false),
@@ -49,8 +54,8 @@ define('system_privileges', array(
 			array("id"=>4,"description"=>"Delete User Account","value"=>false),
 		),
 	),
-	array(
-		"id"=>9,
+	array( # 7
+		"id"=>8,
 		"description"=>"Groups",
 		"privileges"=>array(
 			array("id"=>1,"description"=>"Show User Groups","value"=>false),
@@ -59,8 +64,8 @@ define('system_privileges', array(
 			array("id"=>4,"description"=>"Delete User Groups","value"=>false),
 		),
 	),
-	array(
-		"id"=>10,
+	array( # 8
+		"id"=>9,
 		"description"=>"Maintenance",
 		"privileges"=>array(
 			array("id"=>1,"description"=>"Show Maintenance","value"=>false),
