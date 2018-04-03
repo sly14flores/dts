@@ -10,12 +10,11 @@ $con = new pdo_db("tracks");
 
 $track = array(
 	"document_id"=>$_POST['id'],
-	"system_document_status"=>"transaction",
-	"track_office"=>$_POST['track_office'],
-	"track_office_next"=>$_POST['track_office'],
-	"document_activity"=>"Received",
-	"document_activity_user"=>$_SESSION['id'],
-	"document_activity_date"=>"CURRENT_TIMESTAMP"
+	"document_status"=>"Received", # document status
+	"document_status_user"=>$_SESSION['id'],
+	"document_tracks_status"=>"received", # tracks status
+	"track_office"=>$_SESSION['office'],
+	"track_date"=>"CURRENT_TIMESTAMP"
 );
 
 $con->insertData($track);

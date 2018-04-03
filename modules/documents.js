@@ -40,34 +40,6 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 			return scope.formHolder[form].$invalid;
 			
 		};
-		
-		self.delete = function(scope, row) {
-			
-			scope.views.currentPage = scope.currentPage; // for pagination	
-			
-			var onOk = function() {
-				
-				$http({
-					method: 'POST',
-					url: 'handlers/doctype-delete.php',
-					data: {id: row.id}
-				}).then(function mySuccess(response) {
-					
-						self.list(scope);
-						
-				}, function myError(response) {
-			
-
-			
-				});
-
-			};
-			
-			var onCancel = function() { };
-			
-			bootstrapModal.confirm(scope,'Confirmation','Are you sure you want to Delete?',onOk,onCancel);
-			
-		};
 
 		self.list = function(scope) {
 						
@@ -90,70 +62,7 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 				
 			});				
 			
-		};
-		
-		function barcodeAsyncSuggest(scope) {
-
-			scope.barcodeAsyncSuggest = function(f) {
-				
-				return $http({
-				  method: 'POST',
-				  url: 'handlers/barcode-async-suggest.php',
-				  data: {filter: f}
-				}).then(function mySucces(response) {
-					
-					return response.data;
-					
-				},
-				function myError(response) {
-
-				});					
-				
-			};
-
-			scope.barcodeAsyncSuggest('');
-
-		};
-
-		self.receive = function(scope,doc) {
-
-			barcodeAsyncSuggest(scope);
-		
-			title = 'Receive '+doc.doc_type;
-
-			scope.receive = angular.copy(doc);
-
-			var onOk = function() {
-
-				if (validate(scope,'receive')) return false;				
-				
-				$http({
-				  method: 'POST',
-				  url: 'handlers/doc-receive.php',
-				  data: scope.receive
-				}).then(function mySuccess(response) {
-
-					self.list(scope);
-
-				}, function myError(response) {
-
-					//
-
-				});
-				
-				return true;
-				
-			};
-		
-			bootstrapModal.box(scope,title,'dialogs/doc-receive.html',onOk);
-			
-		};
-		
-		self.barcodeSelected = function(scope,item) {
-			
-			scope.receive.barcode = item;
-			
-		};
+		};		
 
 		self.activity = function(scope,doc) {
 			
