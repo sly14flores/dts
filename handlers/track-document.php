@@ -6,8 +6,25 @@ require_once '../db.php';
 
 $con = new pdo_db("documents");
 
-$documents = $con->getData("SELECT documents.id, documents.doc_name, documents.barcode, DATE_FORMAT(documents.document_date, '%M %e, %Y') document_date , (SELECT offices.shortname FROM offices WHERE offices.id = documents.origin) origin, (SELECT transactions.transaction FROM transactions WHERE transactions.id = documents.document_transaction_type) transaction, (SELECT document_types.document_type FROM document_types WHERE document_types.id = documents.doc_type) doc_type,(SELECT communications.shortname FROM communications WHERE communications.id = documents.communication) communication, documents.remarks FROM documents");
+$tracks = $con->getData("SELECT tracks.id, tracks.document_status, tracks.track_office, tracks.document_status_user, tracks.track_date FROM tracks LEFT JOIN documents ON tracks.document_id = documents.id WHERE documents.id = ".$_POST['id']." ORDER BY track_date DESC");
 
-echo json_encode($documents);
+$status_arr = array(
+	"Routed"=>"to"
+);
+
+foreach ($tracks as $i => $track) {
+
+	$user = $con->getData("SELECT CONCAT(users.fname, ' ', users.lname) user FROM users WHERE users.id = ".$track['document_status_user']);
+	$office = $con->getData("SELECT offices.office FROM offices WHERE offices.id = ".$track['track_office']);
+	
+	$prepo = (isset($status_arr[$track['document_status']]))?$status_arr[$track['document_status']]:"at";
+	
+	$tracks[$i]['track_date_f'] = date("(D) F j, Y",strtotime($track['track_date']));
+	$tracks[$i]['track_time_f'] = date("h:i A",strtotime($track['track_date']));
+	$tracks[$i]['status'] = $track['document_status']." $prepo ".$office[0]['office']." by ".$user[0]['user']." on ".$tracks[$i]['track_date_f']." ".$tracks[$i]['track_time_f'];
+
+};
+
+echo json_encode($tracks);
 
 ?>
