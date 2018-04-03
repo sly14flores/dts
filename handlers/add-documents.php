@@ -69,7 +69,8 @@ if ($_POST['id']) { # update
 			"document_status_user"=>$_SESSION['id'],			
 			"document_tracks_status"=>"transaction", # tracks status
 			"track_office"=>$track_office,			
-			"track_date"=>"CURRENT_TIMESTAMP"
+			"track_date"=>"CURRENT_TIMESTAMP",
+			"route_office"=>$track_office,
 		);
 
 		$con->table = "tracks";

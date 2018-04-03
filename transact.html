@@ -73,7 +73,7 @@ require_once 'authentication.php';
                                 </a>
 							</li>						
 							<li class="nav-item" ng-show="profile.pages_access[3].value">
-                                <a href="transact.html" class="nav-link">
+                                <a href="transact.html" class="nav-link active">
                                     <i class="icon icon-book-open"></i>Transact
                                 </a>
 							</li>
@@ -186,18 +186,17 @@ require_once 'authentication.php';
 											</tr>
 										</thead>
 										<tbody>
-											<tr ng-repeat="i in filterData = (documents | filter:search) | pagination: currentPage:pageSize">
-												<td>{{i.barcode}}</td>
-												<td>{{i.doc_type}}</td>
-												<td>{{i.origin}}</td>
-												<td>{{i.doc_name}}</td>
-												<td>{{i.document_status}}</td>
-												<td>{{i.tracks_status}}</td>												
-												<td>{{i.remarks}}</td>												
-												<td>{{i.track_date}}</td>
+											<tr ng-repeat="t in filterData = (documents | filter:search) | pagination: currentPage:pageSize">
+												<td>{{t.barcode}}</td>
+												<td>{{t.doc_type}}</td>
+												<td>{{t.origin}}</td>
+												<td>{{t.doc_name}}</td>
+												<td>{{t.document_status}}</td>
+												<td>{{t.tracks_status}}</td>												
+												<td>{{t.remarks}}</td>												
+												<td>{{t.track_date}}</td>
 												<td>
-													<button ng-show="i.document_tracks_status == 'incoming'" class="btn btn-info" ng-click="app.receive(this,i)"><i class="icon icon-arrow-down-circle"></i></button>
-													<button ng-show="i.document_tracks_status == 'transaction'" class="btn btn-info" ng-click="app.activity(this,i)"><i class="icon icon-grid"></i></button>
+													<button class="btn btn-info" ng-click="app.activity(this,t)"><i class="icon icon-grid"></i></button>
 												</td>
 											</tr>
 										</tbody>

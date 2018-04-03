@@ -157,7 +157,7 @@ require_once 'authentication.php';
 				<div class="row">
 					<div class="col-lg-4 offset-lg-4 col-md-4 offset-md-4">
 						<div class="input-group">
-							<input type="text" class="form-control" placeholder="Enter Barcode">
+							<input type="text" class="form-control" placeholder="Enter Barcode" ng-model="document.barcode" uib-typeahead="b.barcode for b in barcodeAsyncSuggest($viewValue)" typeahead-min-length="3" typeahead-on-select="app.barcodeSelected(this, $item)">
 							<span class="input-group-btn">
 								<button type="button" class="btn btn-primary" ng-click="app.track(this)"><i class="fa fa-search"></i> Track</button>
 							</span>
@@ -182,6 +182,7 @@ require_once 'authentication.php';
 
 <script src="angular/angular.min.js"></script>
 <script src="angular/angular-route.min.js"></script>
+<script src="angular/ui-bootstrap-tpls-3.0.2.min.js"></script>
 <!-- modules -->
 <script src="modules/bootstrap-modal.js"></script>
 <script src="modules/account.js"></script>
