@@ -1,0 +1,14 @@
+<form name="formHolder.opt">
+<div class="row">
+	<div class="col-md-12">
+		<label>Options</label>
+		<div class="input-group mb-3">
+			<div class="input-group-prepend">
+				<i class="icon icon-organization input-group-text"></i>
+			</div>
+			<input type="text" class="form-control" placeholder="Options" name="choice" ng-class="{'is-invalid': formHolder.opt.choice.$touched && formHolder.opt.choice.$invalid}" ng-model="opt.choice" required>
+			<div class="invalid-feedback">Options is required</div>
+		</div>                
+	</div>
+</div>
+</form>
