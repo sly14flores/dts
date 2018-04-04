@@ -49,7 +49,10 @@ angular.module('app-module', ['form-validator','bootstrap-modal','ui.bootstrap']
 			
 			$('#track').html('');
 			
-			if (scope.document.id === undefined) return;
+			if (scope.document.id === undefined) {
+				$('#track').html('<div class="col-lg-4 offset-lg-4"><div class="alert alert-danger">No document found.</div></div>');
+				return;
+			};
 			
 			var loading = '<div class="col-lg-12">Fetching document tracks please wait...</div>';
 			
@@ -61,7 +64,7 @@ angular.module('app-module', ['form-validator','bootstrap-modal','ui.bootstrap']
 			  data: {id: scope.document.id}
 			}).then(function mySuccess(response) {
 				
-				delete scope.document.id;
+				// delete scope.document.id;
 				scope.tracks = response.data;				
 				
 				$('#track').load('html/tracks.html',function() {
