@@ -1,4 +1,4 @@
-<form name="formHolder.trans">
+<form name="formHolder.tran">
 <div class="row">
 	<div class="col-md-12">
 		<label>Transaction</label>
@@ -6,7 +6,7 @@
 			<div class="input-group-prepend">
 				<i class="icon icon-organization input-group-text"></i>
 			</div>
-			<input type="text" class="form-control" placeholder="Transaction" name="transaction" ng-class="{'is-invalid': formHolder.trans.transaction.$touched && formHolder.trans.transaction.$invalid}" ng-model="trans.transaction" required>
+			<input type="text" class="form-control" placeholder="Transaction" name="transaction" ng-class="{'is-invalid': formHolder.tran.transaction.$touched && formHolder.tran.transaction.$invalid}" ng-model="tran.transaction" required>
 			<div class="invalid-feedback">Document Type is required</div>
 		</div>                
 	</div>
@@ -18,7 +18,7 @@
 			<div class="input-group-prepend">
 				<i class="icon icon-calendar input-group-text"></i>
 			</div>
-			<input type="text" class="form-control" placeholder="Days" name="days" ng-class="{'is-invalid': formHolder.trans.days.$touched && formHolder.trans.days.$invalid}" ng-model="trans.days" required>
+			<input type="text" class="form-control" placeholder="Days" name="days" ng-class="{'is-invalid': formHolder.tran.days.$touched && formHolder.tran.days.$invalid}" ng-model="tran.days" required>
 			<div class="invalid-feedback">Days is required</div>
 		</div>                
 	</div>
@@ -30,7 +30,7 @@
 			<div class="input-group-prepend">
 				<i class="icon icon-social-reddit input-group-text"></i>
 			</div>
-			<input type="text" class="form-control" placeholder="Shortname" name="shortname" ng-class="{'is-invalid': formHolder.trans.shortname.$touched && formHolder.trans.shortname.$invalid}" ng-model="trans.shortname" required>
+			<input type="text" class="form-control" placeholder="Shortname" name="shortname" ng-class="{'is-invalid': formHolder.tran.shortname.$touched && formHolder.tran.shortname.$invalid}" ng-model="tran.shortname" required>
 			<div class="invalid-feedback">Shortname is required</div>
 		</div>                
 	</div>

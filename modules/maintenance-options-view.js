@@ -9,10 +9,10 @@ angular.module('app-module', ['bootstrap-modal','module-access']).factory('app',
 			scope.formHolder = {};
 			scope.views = {};
 			
-			scope.tran = {};
-			scope.tran.id = 0;
+			scope.opt = {};
+			scope.opt.id = 0;
 			
-			scope.trans = [];
+			scope.opts = [];
 
 		};
 		
@@ -46,7 +46,7 @@ angular.module('app-module', ['bootstrap-modal','module-access']).factory('app',
 				
 				$http({
 					method: 'POST',
-					url: 'handlers/transaction-delete.php',
+					url: 'handlers/options-delete.php',
 					data: {id: row.id}
 				}).then(function mySuccess(response) {
 					
@@ -72,10 +72,10 @@ angular.module('app-module', ['bootstrap-modal','module-access']).factory('app',
 			
 			$http({
 			  method: 'GET',
-			  url: 'handlers/transaction-list.php'
+			  url: 'handlers/options-list.php'
 			}).then(function mySuccess(response) {
 				
-				scope.trans = angular.copy(response.data);
+				scope.opts = angular.copy(response.data);
 				
 			}, function myError(response) {
 				
@@ -83,28 +83,28 @@ angular.module('app-module', ['bootstrap-modal','module-access']).factory('app',
 			
 		};
 		
-		self.add = function(scope,tran) {
+		self.add = function(scope,opt) {
 			
 			if (!access.has(scope,scope.profile.group,scope.module.id,scope.module.privileges.add)) return;
 			
-			var title = 'Add Transaction Types';
+			var title = 'Add Options';
 			
-			if (tran == null) {				
+			if (opt == null) {				
 				
-				scope.tran = {};
-				scope.tran.id = 0;
+				scope.opt = {};
+				scope.opt.id = 0;
 				
 			} else {
 				
-				title = 'Edit Transaction Type Info';
+				title = 'Edit Options Info';
 				
 				$http({
 				  method: 'POST',
-				  url: 'handlers/transaction-view.php',
-				  data: {id: tran.id}
+				  url: 'handlers/options-view.php',
+				  data: {id: opt.id}
 				}).then(function mySuccess(response) {
 					
-					scope.tran = angular.copy(response.data);			
+					scope.opt = angular.copy(response.data);			
 					
 				}, function myError(response) {
 					
@@ -116,12 +116,12 @@ angular.module('app-module', ['bootstrap-modal','module-access']).factory('app',
 
 			var onOk = function() {
 
-				if (validate(scope,'tran')) return false;				
+				if (validate(scope,'opt')) return false;				
 				
 				$http({
 				  method: 'POST',
-				  url: 'handlers/transaction-save.php',
-				  data: scope.tran
+				  url: 'handlers/options-save.php',
+				  data: scope.opt
 				}).then(function mySuccess(response) {				
 					
 					self.list(scope);
@@ -136,7 +136,7 @@ angular.module('app-module', ['bootstrap-modal','module-access']).factory('app',
 				
 			};
 		
-			bootstrapModal.box(scope,title,'dialogs/transaction.html',onOk);
+			bootstrapModal.box(scope,title,'dialogs/option.html',onOk);
 			
 		};	
 

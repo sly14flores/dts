@@ -12,7 +12,7 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','module-access'])
 			scope.doc_type = {};
 			scope.doc_type.id = 0;
 			
-			scope.doc_type = [];
+			scope.doc_types = [];
 			
 			scope.views.currentPage = 1;
 
@@ -83,7 +83,7 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','module-access'])
 			  url: 'handlers/doctype-list.php'
 			}).then(function mySuccess(response) {
 				
-				scope.doc_type = angular.copy(response.data);
+				scope.doc_types = angular.copy(response.data);
 				
 				scope.filterData = scope.doc_type;
 				scope.currentPage = scope.views.currentPage;
