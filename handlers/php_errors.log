@@ -1,0 +1,12 @@
+[04-Apr-2018 16:27:40 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'BY tracks.track_date DESC LIMIT 1' at line 1 in C:\Users\sly\Desktop\UwAmp310\www\dts\db.php:42
+Stack trace:
+#0 C:\Users\sly\Desktop\UwAmp310\www\dts\db.php(42): PDO->query('SELECT document...')
+#1 C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\outgoings.php(14): pdo_db->getData('SELECT document...')
+#2 {main}
+  thrown in C:\Users\sly\Desktop\UwAmp310\www\dts\db.php on line 42
+[04-Apr-2018 16:29:53 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'BY tracks.track_date DESC LIMIT 1' at line 1 in C:\Users\sly\Desktop\UwAmp310\www\dts\db.php:42
+Stack trace:
+#0 C:\Users\sly\Desktop\UwAmp310\www\dts\db.php(42): PDO->query('SELECT document...')
+#1 C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\outgoings.php(14): pdo_db->getData('SELECT document...')
+#2 {main}
+  thrown in C:\Users\sly\Desktop\UwAmp310\www\dts\db.php on line 42
