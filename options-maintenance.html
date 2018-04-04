@@ -3,7 +3,6 @@
 require_once 'authentication.php';
 
 ?>
-<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -14,7 +13,7 @@ require_once 'authentication.php';
     <link rel="stylesheet" href="./vendor/font-awesome/css/fontawesome-all.min.css">
     <link rel="stylesheet" href="./css/styles.css">
 </head>
-<body class="header-fixed" ng-app="dashboard" ng-controller="dashboardCtrl">
+<body class="sidebar-fixed header-fixed" ng-app="maintenanceOptionsList" ng-controller="maintenanceOptionsCtrl">
 <div class="page-wrapper">
     <nav class="navbar page-header">
         <a href="#" class="btn btn-link sidebar-mobile-toggle d-md-none mr-auto">
@@ -53,7 +52,7 @@ require_once 'authentication.php';
                     <li class="nav-title">Navigation</li>
 
                     <li class="nav-item" ng-show="profile.pages_access[0].value">
-                        <a href="index.html" class="nav-link active">
+                        <a href="index.html" class="nav-link">
                             <i class="icon icon-speedometer"></i> Dashboard
                         </a>
                     </li>
@@ -126,7 +125,7 @@ require_once 'authentication.php';
                         </ul>
                     </li>
 					<li class="nav-item nav-dropdown" ng-show="profile.pages_access[8].value">
-                        <a href="#" class="nav-link nav-dropdown-toggle">
+                        <a href="#" class="nav-link nav-dropdown-toggle active">
                             <i class="icon icon-support"></i> Maintenance <i class="fa fa-caret-left"></i>
                         </a>
                         <ul class="nav-dropdown-items">
@@ -146,7 +145,7 @@ require_once 'authentication.php';
                                 </a>
                             </li>
 							<li class="nav-item">
-                                <a href="options-maintenance.html" class="nav-link">
+                                <a href="options-maintenance.html" class="nav-link active">
                                     <i class="icon icon-bubbles"></i> Options
                                 </a>
                             </li>
@@ -157,8 +156,54 @@ require_once 'authentication.php';
         </div>
 
         <div class="content">
-			
-			
+            <div class="container-fluid">
+				<div class="row">
+					<div class="col-md-4">
+						<div class="input-group">					
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-primary"><i class="fa fa-search"></i> Search</button>
+                            </span>
+                            <input type="text" id="input-group-1" name="input1-group2" class="form-control" ng-model="search" placeholder="">
+                        </div>
+					</div>
+				</div>				
+                <div class="row">
+                    <div class="col-md-12">
+					<hr>
+                        <div class="card">
+                            <div class="card-header bg-light">
+                                List of Document Types
+								<button type="button" class="btn btn-primary float-right" ng-click="app.add(this,null)">
+									<i class="fas fa-plus"></i> &nbsp; Add
+								</button>								
+                            </div>						
+							<div class="card-body">
+								<div class="row">
+									<table class="table table-striped">
+										<thead>
+											<tr>
+												<th>Options</th>
+												<th>Actions</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr ng-repeat="op in opts | filter:search">
+											<td>{{op.choice}}</td>
+											<td>
+											<button class="btn btn-primary" ng-click="app.add(this,op)"><i class="icon icon-pencil"></i></button>
+											<button class="btn btn-secondary" ng-click="app.delete(this,op)"><i class="icon icon-trash"></i></button>
+											</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+								<hr>								
+                            </div>
+                        </div>
+                    </div>
+                </div>
+			</div>
         </div><!-- /content -->
     </div>
 </div>
@@ -171,13 +216,19 @@ require_once 'authentication.php';
 
 <!-- dependencies -->
 <script src="vendor/bootbox/bootbox.min.js"></script>
-
+<script src="vendor/growl/jquery.bootstrap-growl.min.js"></script>
+<script src="vendor/blockui/jquery.blockUI.js"></script>
 <script src="angular/angular.min.js"></script>
+<script src="angular/angular-route.min.js"></script>
 <!-- modules -->
 <script src="modules/bootstrap-modal.js"></script>
 <script src="modules/account.js"></script>
-<script src="modules/dashboard.js"></script>
+<script src="modules/module-access.js"></script>
+<script src="modules/validate.js"></script>
+<script src="modules/blockui.js"></script>
+<script src="modules/growl.js"></script>
+<script src="modules/maintenance-options-view.js"></script>
 <!-- controller -->
-<script src="controllers/dashboard.js"></script>
+<script src="controllers/maintenance-options-view.js"></script>
 </body>
 </html>

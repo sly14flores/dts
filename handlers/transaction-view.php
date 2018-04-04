@@ -6,8 +6,8 @@ require_once '../db.php';
 
 $con = new pdo_db("transactions");
 
-$trans = $con->getData("SELECT id,transaction,days,shortname FROM transactions WHERE id = ".$_POST['id']);
+$tran = $con->getData("SELECT id,transaction,days,shortname FROM transactions WHERE id = ".$_POST['id']);
 
-echo json_encode($trans[0]);
+echo json_encode($tran[0]);
 
 ?>
