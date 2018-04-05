@@ -24,19 +24,18 @@ switch ($_POST['action']) {
 
 	break;
 
-	case "Route":
+	case "Forward":
 
-		$document_status = "Routed";
-		$document_tracks_status = "incoming";
+		$document_status = "Forward";
+		$document_tracks_status = "for_pick_up";
 		$route_office = $_POST['next']['route_office']['id'];
-		$route_user = $_POST['next']['route_user']['id'];
 
 	break;
 
 	case "Release":
 
 		$document_status = "Release";
-		$document_tracks_status = "released";
+		$document_tracks_status = "incoming";
 		$route_office = $_POST['next']['route_office']['id'];
 		$route_user = $_POST['next']['route_user']['id'];	
 

@@ -188,12 +188,10 @@ require_once 'authentication.php';
 									<table class="table table-striped">
 										<thead>
 											<tr>
-												<th>Barcode</th>
 												<th>Document Type</th>
 												<th>Originating Office</th>
 												<th>Subject</th>
-												<th>Document Status</th>												
-												<th>Tracks Status</th>
+												<th>Document Status</th>
 												<th>Remarks</th>
 												<th>Date</th>
 												<th></th>
@@ -201,16 +199,14 @@ require_once 'authentication.php';
 										</thead>
 										<tbody>
 											<tr ng-repeat="i in filterData = (incomings | filter:search) | pagination: currentPage:pageSize">
-												<td>{{i.barcode}}</td>
 												<td>{{i.doc_type}}</td>
 												<td>{{i.origin}}</td>
 												<td>{{i.doc_name}}</td>
 												<td>{{i.document_status}}</td>
-												<td>{{i.tracks_status}}</td>												
 												<td>{{i.remarks}}</td>												
 												<td>{{i.track_date}}</td>
 												<td>
-													<button class="btn btn-info" ng-click="app.receive(this,i)"><i class="icon icon-arrow-down-circle"></i></button>
+													<button class="btn btn-info" ng-show="document_tracks_status == 'incoming'" ng-click="app.receive(this,i)"><i class="icon icon-arrow-down-circle"></i></button>
 												</td>
 											</tr>
 										</tbody>
