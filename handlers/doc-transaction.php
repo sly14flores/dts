@@ -8,17 +8,19 @@ session_start();
 
 $con = new pdo_db("tracks");
 
-$track_office = $_POST['track_office'];
-$document_status = "";
+$document_status = NULL;
 $document_tracks_status = "transaction";
+$track_office = $_POST['track_office'];
+$track_option = NULL;
 $route_office = NULL;
+$route_user = NULL;
 $remarks = (isset($_POST['next']['remarks']))?$_POST['next']['remarks']:"";
 
 switch ($_POST['action']) {
 
 	case "Flag":
 
-		$document_status = $_POST['next']['document_status'];
+		$track_option = getOption($_POST['options']);
 
 	break;
 
@@ -27,12 +29,16 @@ switch ($_POST['action']) {
 		$document_status = "Routed";
 		$document_tracks_status = "incoming";
 		$route_office = $_POST['next']['route_office']['id'];
+		$route_user = $_POST['next']['route_user']['id'];
 
 	break;
 
-	case "File":
+	case "Release":
 
-		$document_status = "Filed";
+		$document_status = "Release";
+		$document_tracks_status = "released";
+		$route_office = $_POST['next']['route_office']['id'];
+		$route_user = $_POST['next']['route_user']['id'];	
 
 	break;
 
@@ -46,8 +52,31 @@ $track = array(
 	"track_office"=>$track_office,
 	"track_date"=>"CURRENT_TIMESTAMP",
 	"route_office"=>$route_office,
+	"route_user"=>$route_user,
+	"track_option"=>$track_option,
 	"remarks"=>$remarks
 );
+
+function getOption($options) {
+	
+	$option = NULL;
+	
+	foreach ($options as $opt) {
+
+		if (isset($opt['value'])) {
+
+			if ($opt['value']) {
+				$option = $opt['id'];
+				break;
+			};
+
+		};
+
+	};
+
+	return $option;
+	
+};
 
 $con->insertData($track);
 

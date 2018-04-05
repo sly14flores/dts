@@ -75,6 +75,8 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 			options(scope);
 			offices(scope);
 
+			scope.staffs = [];
+			
 			$http({
 			  method: 'POST',
 			  url: 'handlers/doc-activity.php',
@@ -94,6 +96,8 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 			var onOk = function() {
 
 				if (validate(scope,'activity')) return false;				
+				
+				scope.activity.options = scope.options;
 				
 				$http({
 				  method: 'POST',
@@ -151,8 +155,24 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 		
 			});			
 		
-		};
+		};	
+		
+		self.optionChosen = function(scope,opt) {
+			
+			var index = scope.options.indexOf(opt);
+			
+			angular.forEach(scope.options,function(option,i) {
+				
+				if (typeof option.value === 'boolean') {
 
+					if (i != index) scope.options[i].value = false;
+
+				};
+
+			});
+			
+		};
+		
 		self.preview = function(file) {
 
 			printPost.show('preview/index.php',file);
