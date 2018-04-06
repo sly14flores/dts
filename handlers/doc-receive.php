@@ -12,7 +12,7 @@ $track = array(
 	"document_id"=>$_POST['id'],
 	"document_status"=>"Received", # document status
 	"document_status_user"=>$_SESSION['id'],
-	"document_tracks_status"=>"received", # tracks status
+	"document_tracks_status"=>"transaction", # tracks status
 	"track_office"=>$_SESSION['office'],
 	"track_date"=>"CURRENT_TIMESTAMP"
 );

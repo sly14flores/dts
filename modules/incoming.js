@@ -17,27 +17,27 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 			scope.views.currentPage = 1;	
 		
 		};
-		
+
 		function validate(scope,form) {
-			
+
 			var controls = scope.formHolder[form].$$controls;
-			
+
 			angular.forEach(controls,function(elem,i) {
 
 				if (elem.$$attr.$attr.required) {
-					
+
 					scope.$apply(function() {
-						
+
 						elem.$touched = elem.$invalid;
-						
+
 					});
-					
+
 				};
-									
+
 			});
 
 			return scope.formHolder[form].$invalid;
-			
+
 		};
 
 		self.list = function(scope) {
