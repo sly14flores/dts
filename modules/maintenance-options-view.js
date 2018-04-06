@@ -62,7 +62,7 @@ angular.module('app-module', ['bootstrap-modal','module-access']).factory('app',
 			
 			var onCancel = function() { };
 			
-			bootstrapModal.confirm(scope,'Confirmation','Are you sure you want to Delete?',onOk,onCancel);
+			bootstrapModal.confirm(scope,'Confirmation','Are you sure you want to delete this option?',onOk,onCancel);
 			
 		};
 
@@ -87,7 +87,7 @@ angular.module('app-module', ['bootstrap-modal','module-access']).factory('app',
 			
 			if (!access.has(scope,scope.profile.group,scope.module.id,scope.module.privileges.add)) return;
 			
-			var title = 'Add Options';
+			var title = 'Add Option';
 			
 			if (opt == null) {				
 				
@@ -96,7 +96,7 @@ angular.module('app-module', ['bootstrap-modal','module-access']).factory('app',
 				
 			} else {
 				
-				title = 'Edit Options Info';
+				title = 'Edit Option Info';
 				
 				$http({
 				  method: 'POST',

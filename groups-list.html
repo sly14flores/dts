@@ -50,16 +50,16 @@ require_once 'authentication.php';
         <div class="sidebar">
             <nav class="sidebar-nav">
                 <ul class="nav">
-                    <li class="nav-title">Navigation</li>
+                    <li class="nav-title">Menu</li>
 
                     <li class="nav-item" ng-show="profile.pages_access[0].value">
                         <a href="index.html" class="nav-link">
-                            <i class="icon icon-speedometer"></i> Dashboard
+                            <i class="icon icon-speedometer"></i>Dashboard
                         </a>
                     </li>
-					    <li class="nav-item nav-dropdown">
+					<li class="nav-item nav-dropdown">
                         <a href="#" class="nav-link nav-dropdown-toggle">
-                            <i class="icon icon-docs"></i> Documents <i class="fa fa-caret-left"></i>
+                            <i class="icon icon-docs"></i>Documents <i class="fa fa-caret-left"></i>
                         </a>
                         <ul class="nav-dropdown-items">
                             <li class="nav-item" ng-show="profile.pages_access[1].value">
@@ -69,17 +69,27 @@ require_once 'authentication.php';
                             </li>
 							<li class="nav-item" ng-show="profile.pages_access[2].value">
                                 <a href="incoming.html" class="nav-link">
-                                    <i class="icon icon-book-open"></i>Incoming
+                                    <i class="icon icon-arrow-down-circle"></i>Incoming
                                 </a>
 							</li>							
 							<li class="nav-item" ng-show="profile.pages_access[3].value">
                                 <a href="transact.html" class="nav-link">
-                                    <i class="icon icon-book-open"></i>Transact
+                                    <i class="icon icon-menu"></i>Transact
                                 </a>
 							</li>
+							<li class="nav-item">
+                                <a href="outgoing.html" class="nav-link">
+                                    <i class="icon icon-arrow-up-circle"></i>Outgoing
+                                </a>
+							</li>
+							<li class="nav-item">
+                                <a href="archives.html" class="nav-link">
+                                    <i class="icon icon-folder-alt"></i>Archives
+                                </a>
+							</li>	
                             <li class="nav-item" ng-show="profile.pages_access[4].value">
                                 <a href="documents-list.html" class="nav-link">
-                                    <i class="icon icon-doc"></i> List of Documents
+                                    <i class="icon icon-doc"></i>List of Documents
                                 </a>
                             </li>
 							<li class="nav-item" ng-show="profile.pages_access[5].value">
@@ -91,63 +101,63 @@ require_once 'authentication.php';
                     </li>	
                     <li class="nav-item nav-dropdown" ng-show="profile.pages_access[6].value">
                         <a href="#" class="nav-link nav-dropdown-toggle">
-                            <i class="icon icon-people"></i> Accounts <i class="fa fa-caret-left"></i>
+                            <i class="icon icon-people"></i>Accounts <i class="fa fa-caret-left"></i>
                         </a>
 
                         <ul class="nav-dropdown-items">
                             <li class="nav-item">
                                 <a href="user-profile.html" class="nav-link">
-                                    <i class="icon icon-user"></i> User Profile
+                                    <i class="icon icon-user"></i>User Profile
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="users-list.html" class="nav-link">
-                                    <i class="icon icon-people"></i> List
+                                    <i class="icon icon-people"></i>List
                                 </a>
                             </li>
                         </ul>
                     </li>
 					<li class="nav-item nav-dropdown" ng-show="profile.pages_access[7].value">
                         <a href="#" class="nav-link nav-dropdown-toggle active">
-                            <i class="icon icon-list"></i> Groups <i class="fa fa-caret-left"></i>
+                            <i class="icon icon-list"></i>Groups <i class="fa fa-caret-left"></i>
                         </a>
 
                         <ul class="nav-dropdown-items">
                             <li class="nav-item">
                                 <a href="groups-add.html" class="nav-link">
-                                    <i class="icon icon-plus"></i> Add Group
+                                    <i class="icon icon-plus"></i>Add Group
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="groups-list.html" class="nav-link active">
-                                    <i class="icon icon-people"></i> List
+                                    <i class="icon icon-people"></i>List
                                 </a>
                             </li>
                         </ul>
                     </li>
 					<li class="nav-item nav-dropdown" ng-show="profile.pages_access[8].value">
                         <a href="#" class="nav-link nav-dropdown-toggle">
-                            <i class="icon icon-support"></i> Maintenance <i class="fa fa-caret-left"></i>
+                            <i class="icon icon-support"></i>Maintenance <i class="fa fa-caret-left"></i>
                         </a>
                         <ul class="nav-dropdown-items">
                             <li class="nav-item">
                                 <a href="office-maintenance.html" class="nav-link">
-                                    <i class="icon icon-user"></i> Offices
+                                    <i class="icon icon-user"></i>Offices
                                 </a>
                             </li>
 							<li class="nav-item">
                                 <a href="doctype-maintenance.html" class="nav-link">
-                                    <i class="icon icon-docs"></i> Document Types
+                                    <i class="icon icon-docs"></i>Document Types
                                 </a>
                             </li>
 							<li class="nav-item">
                                 <a href="transaction-maintenance.html" class="nav-link">
-                                    <i class="icon icon-flag"></i> Transactions
+                                    <i class="icon icon-flag"></i>Transactions
                                 </a>
                             </li>
 							<li class="nav-item">
                                 <a href="options-maintenance.html" class="nav-link">
-                                    <i class="icon icon-bubbles"></i> Options
+                                    <i class="icon icon-bubbles"></i>Options
                                 </a>
                             </li>
                         </ul>
