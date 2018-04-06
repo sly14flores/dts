@@ -1,39 +1,9 @@
-[05-Apr-2018 22:02:20 Asia/Manila] PHP Notice:  Undefined index: route_office in C:\Users\SLY One\Desktop\UwAmp310\www\dts\handlers\doc-transaction.php on line 31
-[05-Apr-2018 22:02:20 Asia/Manila] PHP Stack trace:
-[05-Apr-2018 22:02:20 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\dts\handlers\doc-transaction.php:0
-[05-Apr-2018 22:02:20 Asia/Manila] PHP Notice:  Undefined index: route_user in C:\Users\SLY One\Desktop\UwAmp310\www\dts\handlers\doc-transaction.php on line 32
-[05-Apr-2018 22:02:20 Asia/Manila] PHP Stack trace:
-[05-Apr-2018 22:02:20 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\dts\handlers\doc-transaction.php:0
-[05-Apr-2018 22:08:43 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'BY tracks.track_date DESC LIMIT 1' at line 1 in C:\Users\SLY One\Desktop\UwAmp310\www\dts\db.php:42
+[06-Apr-2018 10:18:51 Asia/Manila] PHP Notice:  Undefined variable: document in C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\outgoings.php on line 31
+[06-Apr-2018 10:18:51 Asia/Manila] PHP Stack trace:
+[06-Apr-2018 10:18:51 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\outgoings.php:0
+[06-Apr-2018 10:18:51 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in C:\Users\sly\Desktop\UwAmp310\www\dts\db.php:42
 Stack trace:
-#0 C:\Users\SLY One\Desktop\UwAmp310\www\dts\db.php(42): PDO->query('SELECT document...')
-#1 C:\Users\SLY One\Desktop\UwAmp310\www\dts\handlers\documents.php(14): pdo_db->getData('SELECT document...')
+#0 C:\Users\sly\Desktop\UwAmp310\www\dts\db.php(42): PDO->query('SELECT id, choi...')
+#1 C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\outgoings.php(31): pdo_db->getData('SELECT id, choi...')
 #2 {main}
-  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\dts\db.php on line 42
-[05-Apr-2018 22:13:04 Asia/Manila] PHP Notice:  Undefined variable: tracks_status in C:\Users\SLY One\Desktop\UwAmp310\www\dts\handlers\incomings.php on line 20
-[05-Apr-2018 22:13:04 Asia/Manila] PHP Stack trace:
-[05-Apr-2018 22:13:04 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\dts\handlers\incomings.php:0
-[05-Apr-2018 22:44:46 Asia/Manila] PHP Notice:  Undefined index: route_office in C:\Users\SLY One\Desktop\UwAmp310\www\dts\handlers\doc-activity.php on line 16
-[05-Apr-2018 22:44:46 Asia/Manila] PHP Stack trace:
-[05-Apr-2018 22:44:46 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\dts\handlers\doc-activity.php:0
-[05-Apr-2018 22:44:46 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in C:\Users\SLY One\Desktop\UwAmp310\www\dts\db.php:42
-Stack trace:
-#0 C:\Users\SLY One\Desktop\UwAmp310\www\dts\db.php(42): PDO->query('SELECT id, offi...')
-#1 C:\Users\SLY One\Desktop\UwAmp310\www\dts\handlers\doc-activity.php(16): pdo_db->getData('SELECT id, offi...')
-#2 {main}
-  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\dts\db.php on line 42
-[05-Apr-2018 22:57:22 Asia/Manila] PHP Notice:  Undefined index: document_tracks_status in C:\Users\SLY One\Desktop\UwAmp310\www\dts\handlers\doc-activity.php on line 15
-[05-Apr-2018 22:57:22 Asia/Manila] PHP Stack trace:
-[05-Apr-2018 22:57:22 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\dts\handlers\doc-activity.php:0
-[05-Apr-2018 22:57:22 Asia/Manila] PHP Notice:  Undefined index: document_tracks_status in C:\Users\SLY One\Desktop\UwAmp310\www\dts\handlers\doc-activity.php on line 15
-[05-Apr-2018 22:57:22 Asia/Manila] PHP Stack trace:
-[05-Apr-2018 22:57:22 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\dts\handlers\doc-activity.php:0
-[05-Apr-2018 22:57:22 Asia/Manila] PHP Notice:  Undefined index: document_tracks_status in C:\Users\SLY One\Desktop\UwAmp310\www\dts\handlers\doc-activity.php on line 15
-[05-Apr-2018 22:57:22 Asia/Manila] PHP Stack trace:
-[05-Apr-2018 22:57:22 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\dts\handlers\doc-activity.php:0
-[05-Apr-2018 23:12:28 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SELECT document_types.document_type FROM document_types WHERE document_types.id ' at line 1 in C:\Users\SLY One\Desktop\UwAmp310\www\dts\db.php:42
-Stack trace:
-#0 C:\Users\SLY One\Desktop\UwAmp310\www\dts\db.php(42): PDO->query('SELECT document...')
-#1 C:\Users\SLY One\Desktop\UwAmp310\www\dts\handlers\documents.php(14): pdo_db->getData('SELECT document...')
-#2 {main}
-  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\dts\db.php on line 42
+  thrown in C:\Users\sly\Desktop\UwAmp310\www\dts\db.php on line 42
