@@ -9,31 +9,11 @@ angular.module('app-module', ['form-validator','bootstrap-modal']).factory('app'
 			scope.formHolder = {};
 			scope.views = {};
 
+			scope.activity = {};
+			
 			scope.documents = [];	
 
-		};
-		
-		self.delete = function(scope,doc) {
-			
-			var onOk = function() {
-				
-				$http({
-					method: 'POST',
-					url: 'handlers/delete-documents.php',
-					data: {id: doc.id}
-				}).then(function mySuccess(response) {
-					
-					self.list(scope);
-						
-				}, function myError(response) {
-			
-				});
-
-			};
-			
-			bootstrapModal.confirm(scope,'Confirmation','Are you sure you want to delete this document?',onOk,function() {});
-				
-		};
+		};		
 
 		self.list = function(scope) {
 			
@@ -53,7 +33,59 @@ angular.module('app-module', ['form-validator','bootstrap-modal']).factory('app'
 			});				
 
 		};
+		
+		self.view = function(scope,document) {
+			
+			title = '<strong>'+document.doc_name+'</strong> ('+document.doc_type+')';
 
+			scope.activity = angular.copy(document);			
+
+			$http({
+			  method: 'POST',
+			  url: 'handlers/doc-activity.php',
+			  data: {id: document.id}
+			}).then(function mySuccess(response) {
+
+				scope.activity.tracks = response.data.tracks;
+				scope.activity.files = response.data.files;
+				scope.activity.attachments = response.data.attachments;
+
+			}, function myError(response) {
+				
+				//
+				
+			});			
+
+			var onOk = function() {
+
+			};
+
+			bootstrapModal.box2(scope,title,'dialogs/document.html',onOk);			
+			
+		};		
+
+		self.delete = function(scope,doc) {
+
+			var onOk = function() {
+				
+				$http({
+					method: 'POST',
+					url: 'handlers/delete-documents.php',
+					data: {id: doc.id}
+				}).then(function mySuccess(response) {
+
+					self.list(scope);
+
+				}, function myError(response) {
+
+				});
+
+			};
+
+			bootstrapModal.confirm(scope,'Confirmation','Are you sure you want to delete this document?',onOk,function() {});
+
+		};
+		
 	};
 
 	return new app();
