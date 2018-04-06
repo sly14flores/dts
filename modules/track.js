@@ -22,7 +22,7 @@ angular.module('app-module', ['form-validator','bootstrap-modal','ui.bootstrap']
 				
 				return $http({
 				  method: 'POST',
-				  url: 'handlers/track-barcode-async-suggest.php',
+				  url: 'handlers/guest-track-barcode-async-suggest.php',
 				  data: {filter: f}
 				}).then(function mySucces(response) {
 					
@@ -67,7 +67,7 @@ angular.module('app-module', ['form-validator','bootstrap-modal','ui.bootstrap']
 				// delete scope.document.id;
 				scope.tracks = response.data;				
 				
-				$('#track').load('html/tracks.html',function() {
+				$('#track').load('html/track.html',function() {
 					$timeout(function() { $compile($('#track')[0])(scope); }, 100);
 				});
 				
