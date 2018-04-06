@@ -1,4 +1,4 @@
-angular.module('app-module', ['form-validator','bootstrap-modal']).factory('app', function($http,$timeout,$window,validate,bootstrapModal) {
+angular.module('app-module', ['form-validator','bootstrap-modal','window-open-post']).factory('app', function($http,$timeout,$window,validate,bootstrapModal,printPost) {
 	
 	function app() {
 
@@ -94,6 +94,12 @@ angular.module('app-module', ['form-validator','bootstrap-modal']).factory('app'
 
 			bootstrapModal.confirm(scope,'Confirmation','Are you sure you want to delete this document?',onOk,function() {});
 
+		};
+		
+		self.preview = function(file) {
+
+			printPost.show('preview/index.php',file);
+			
 		};
 		
 	};
