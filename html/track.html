@@ -1,0 +1,73 @@
+<div class="col-lg-10 offset-lg-1 col-md-10 offset-md-1">
+	<div class="card border-0">
+		<div class="card-header border border-top-0 border-right-0 border-left-0 bg-success">
+			<div class="row">
+				<div class="col-md-2">Date</div>
+				<div class="col-md-4" style="margin-bottom: 10px;"><strong> {{document.document_date}} </strong></div>
+				<div class="col-md-2">Transaction</div>
+				<div class="col-md-4" style="margin-bottom: 10px;"><strong> {{document.document_transaction_type}} </strong></div>	
+			</div>
+			<div class="row">
+				<div class="col-md-2">Document Type</div>
+				<div class="col-md-4" style="margin-bottom: 10px;"><strong> {{document.doc_type}} </strong></div>
+				<div class="col-md-2">Originating Office</div>
+				<div class="col-md-4" style="margin-bottom: 10px;"><strong> {{document.origin}} </strong></div>	
+			</div>
+			<div class="row">
+				<div class="col-md-2">Subject</div>
+				<div class="col-md-4" style="margin-bottom: 10px;"><strong> {{document.doc_name}} </strong></div>	
+				<div class="col-md-2">Barcode</div>
+				<div class="col-md-4" style="margin-bottom: 10px;"><strong> {{document.barcode}} </strong></div>	
+			</div>
+		</div>
+		<div class="card-body bg-success">
+			<div class="timeline-centered">
+				<article class="timeline-entry" ng-repeat="track in tracks">							
+					<div class="timeline-entry-inner">
+						<time class="timeline-time" datetime="" style="margin-left: -20px!important;"><span>{{track.track_time_f}}</span><span>{{track.track_date_f}}</span></time>
+						<div class="timeline-icon bg-primary"><i class="fas fa-check"></i></div>
+						<div class="timeline-label">
+							<h2>{{track.status}}</h2>
+						</div>
+					</div>
+				</article>						
+				<!-- <article class="timeline-entry">
+					<div class="timeline-entry-inner">
+						<time class="timeline-time" datetime=""><span>03:35 PM</span><span>(Thu) Mar 22</span></time>
+						<div class="timeline-icon bg-info"><i class="fa fa-refresh"></i></div>						
+						<div class="timeline-label">
+							<ul class="timeline-list">
+								<li><h2>In Transit to BAE San Fernando EC (La Union) (Thu) Mar 22 <span class="pull-right text-muted"><small>03:35 PM</small></span></h2></li>
+								<li><h2>Received at BAE Sorting Center Parañaque on (Thu) Mar 22 <span class="pull-right text-muted"><small>03:14 PM</small></span></h2></li>
+							</ul>
+						</div>
+					</div>
+				</article>
+				<article class="timeline-entry">							
+					<div class="timeline-entry-inner">
+						<time class="timeline-time" datetime=""><span>07:31 PM</span><span>(Wed) Mar 21</span></time>
+						<div class="timeline-icon bg-info"><i class="fa fa-motorcycle"></i></div>								
+						<div class="timeline-label">
+							<ul class="timeline-list">
+								<li><h2>In Transit to BAE Sorting Center Parañaque (Wed) Mar 21 <span class="pull-right text-muted"><small>07:31 PM</small></span></h2></li>
+								<li><h2>Received at Binondo on (Wed) Mar 21 <span class="pull-right text-muted"><small>07:04 PM</small></span></h2></li>											
+								<li><h2>Pickup Completed <span class="pull-right text-muted"><small>06:59 PM</small></span></h2></li>
+								<li><h2>On Pickup (Wed) Mar 21 <span class="pull-right text-muted"><small>10:04 AM</small></span></h2></li>
+								<li><h2>On Next Pickup Attempt (Wed) Mar 21 <span class="pull-right text-muted"><small>10:04 AM</small></span></h2></li>
+							</ul>
+						</div>
+					</div>					
+				</article>
+				<article class="timeline-entry begin">
+					<div class="timeline-entry-inner">
+						<time class="timeline-time" datetime=""><span>01:01 AM</span> <span>(Wed) Mar 21</span></time>
+						<div class="timeline-icon" style=""><i class="fa fa-paper-plane-o"></i></div>
+						<div class="timeline-label">
+							<h2>Shopee Own Packaging item booked. </h2>
+						</div>
+					</div>		
+				</article> -->
+			</div>
+		</div>
+	</div>
+</div>

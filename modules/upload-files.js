@@ -24,6 +24,8 @@ angular.module('upload-files', []).directive('addFiles',function($timeout) {
 					
 					var type = file.type.split("/");
 					
+					if ( (type[1] != "jpeg") && (type[1] != "png") && (type[1] != "pdf") ) return; 
+					
 					scope.$apply(function() {
 						scope.documentFiles.push({type: type[1]});
 					});
@@ -76,7 +78,9 @@ angular.module('upload-files', []).directive('addFiles',function($timeout) {
 
 				angular.forEach(files, function(file,n) {
 
-					var type = file.type.split("/");				
+					var type = file.type.split("/");		
+
+					if ( (type[1] != "jpeg") && (type[1] != "png") && (type[1] != "pdf") ) return; 
 				
 					scope.$apply(function() {
 						scope.attachmentFiles.push({type: type[1]});

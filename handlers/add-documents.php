@@ -15,7 +15,7 @@ $_POST['user_id'] = $_SESSION['id'];
 $_POST['origin'] = $_POST['origin']['id'];
 $_POST['doc_type'] = $_POST['doc_type']['id'];
 $_POST['communication'] = $_POST['communication']['id'];
-$_POST['transaction'] = $_POST['transaction']['id'];
+$_POST['document_transaction_type'] = $_POST['document_transaction_type']['id'];
 
 $uploads = array("files"=>$_POST['files'],"attachments"=>$_POST['attachments']);
 unset($_POST['files']);
@@ -52,13 +52,35 @@ if ($_POST['id']) { # update
 	$con->insertData($_POST);
 	
 	$id = $con->insertId;
-	
+
 	$barcode = $con->get(array("id"=>$id),["barcode","(SELECT document_type FROM document_types WHERE id = ".$_POST['doc_type'].") doc_type"]);
-	
+
 	uploadFiles($con,$uploads,$barcode[0]['barcode'],$id);
-	
-	echo json_encode(array("barcode"=>$barcode[0]['barcode'], "doc_type"=>$barcode[0]['doc_type']));
-	
+
+	# first track
+	if ( (isset($id)) && ($id) ) {
+
+		$initial_track_office = $con->getData("SELECT id FROM offices WHERE is_initial_track = 1");
+		$track_office = (count($initial_track_office))?$initial_track_office[0]['id']:0;		
+
+		$track = array(
+			"document_id"=>$id,
+			"document_status"=>"Received", # document status
+			"document_status_user"=>$_SESSION['id'],			
+			"document_tracks_status"=>"transaction", # tracks status
+			"track_office"=>$track_office,			
+			"track_date"=>"CURRENT_TIMESTAMP",
+			"route_office"=>$track_office,
+		);
+
+		$con->table = "tracks";
+		$first_track = $con->insertData($track);
+
+	};
+	#
+
+	echo json_encode(array("barcode"=>$barcode[0]['barcode'],"doc_type"=>$barcode[0]['doc_type']));
+
 }
 
 function uploadFiles($con,$uploads,$barcode,$id) {

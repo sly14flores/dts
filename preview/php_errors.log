@@ -1,0 +1,50 @@
+[21-Mar-2018 15:03:52 Asia/Manila] PHP Notice:  Undefined index: params in C:\Users\sly\Desktop\UwAmp310\www\dts\preview\index.php on line 3
+[21-Mar-2018 15:03:52 Asia/Manila] PHP Stack trace:
+[21-Mar-2018 15:03:52 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\dts\preview\index.php:0
+[21-Mar-2018 15:04:04 Asia/Manila] PHP Warning:  json_decode() expects parameter 1 to be string, array given in C:\Users\sly\Desktop\UwAmp310\www\dts\preview\index.php on line 3
+[21-Mar-2018 15:04:04 Asia/Manila] PHP Stack trace:
+[21-Mar-2018 15:04:04 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\dts\preview\index.php:0
+[21-Mar-2018 15:04:04 Asia/Manila] PHP   2. json_decode() C:\Users\sly\Desktop\UwAmp310\www\dts\preview\index.php:3
+[21-Mar-2018 15:07:04 Asia/Manila] PHP Notice:  Undefined index: params in C:\Users\sly\Desktop\UwAmp310\www\dts\preview\index.php on line 3
+[21-Mar-2018 15:07:04 Asia/Manila] PHP Stack trace:
+[21-Mar-2018 15:07:04 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\dts\preview\index.php:0
+[21-Mar-2018 15:08:38 Asia/Manila] PHP Notice:  Undefined index: params in C:\Users\sly\Desktop\UwAmp310\www\dts\preview\index.php on line 3
+[21-Mar-2018 15:08:38 Asia/Manila] PHP Stack trace:
+[21-Mar-2018 15:08:38 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\dts\preview\index.php:0
+[21-Mar-2018 15:08:43 Asia/Manila] PHP Notice:  Undefined index: params in C:\Users\sly\Desktop\UwAmp310\www\dts\preview\index.php on line 3
+[21-Mar-2018 15:08:43 Asia/Manila] PHP Stack trace:
+[21-Mar-2018 15:08:43 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\dts\preview\index.php:0
+[21-Mar-2018 15:09:07 Asia/Manila] PHP Notice:  Undefined index: params in C:\Users\sly\Desktop\UwAmp310\www\dts\preview\index.php on line 3
+[21-Mar-2018 15:09:07 Asia/Manila] PHP Stack trace:
+[21-Mar-2018 15:09:07 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\dts\preview\index.php:0
+[21-Mar-2018 15:09:27 Asia/Manila] PHP Notice:  Undefined index: params in C:\Users\sly\Desktop\UwAmp310\www\dts\preview\index.php on line 5
+[21-Mar-2018 15:09:27 Asia/Manila] PHP Stack trace:
+[21-Mar-2018 15:09:27 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\dts\preview\index.php:0
+[21-Mar-2018 15:10:51 Asia/Manila] PHP Notice:  Undefined index: params in C:\Users\sly\Desktop\UwAmp310\www\dts\preview\index.php on line 5
+[21-Mar-2018 15:10:51 Asia/Manila] PHP Stack trace:
+[21-Mar-2018 15:10:51 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\dts\preview\index.php:0
+[21-Mar-2018 15:11:17 Asia/Manila] PHP Notice:  Undefined index: params in C:\Users\sly\Desktop\UwAmp310\www\dts\preview\index.php on line 5
+[21-Mar-2018 15:11:17 Asia/Manila] PHP Stack trace:
+[21-Mar-2018 15:11:17 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\dts\preview\index.php:0
+[21-Mar-2018 15:12:21 Asia/Manila] PHP Notice:  Undefined index: params in C:\Users\sly\Desktop\UwAmp310\www\dts\preview\index.php on line 5
+[21-Mar-2018 15:12:21 Asia/Manila] PHP Stack trace:
+[21-Mar-2018 15:12:21 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\dts\preview\index.php:0
+[21-Mar-2018 15:13:25 Asia/Manila] PHP Notice:  Undefined index: params in C:\Users\sly\Desktop\UwAmp310\www\dts\preview\index.php on line 5
+[21-Mar-2018 15:13:25 Asia/Manila] PHP Stack trace:
+[21-Mar-2018 15:13:25 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\dts\preview\index.php:0
+[21-Mar-2018 15:15:42 Asia/Manila] PHP Notice:  Undefined variable: filter in C:\Users\sly\Desktop\UwAmp310\www\dts\preview\index.php on line 5
+[21-Mar-2018 15:15:42 Asia/Manila] PHP Stack trace:
+[21-Mar-2018 15:15:42 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\dts\preview\index.php:0
+[21-Mar-2018 15:23:12 Asia/Manila] PHP Parse error:  syntax error, unexpected ')', expecting ']' in C:\Users\sly\Desktop\UwAmp310\www\dts\preview\index.php on line 13
+[21-Mar-2018 15:23:24 Asia/Manila] PHP Notice:  Undefined index: type in C:\Users\sly\Desktop\UwAmp310\www\dts\preview\index.php on line 13
+[21-Mar-2018 15:23:24 Asia/Manila] PHP Stack trace:
+[21-Mar-2018 15:23:24 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\dts\preview\index.php:0
+[21-Mar-2018 15:23:24 Asia/Manila] PHP Notice:  Undefined index:  in C:\Users\sly\Desktop\UwAmp310\www\dts\preview\index.php on line 13
+[21-Mar-2018 15:23:24 Asia/Manila] PHP Stack trace:
+[21-Mar-2018 15:23:24 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\dts\preview\index.php:0
+[21-Mar-2018 15:23:27 Asia/Manila] PHP Notice:  Undefined index: type in C:\Users\sly\Desktop\UwAmp310\www\dts\preview\index.php on line 13
+[21-Mar-2018 15:23:27 Asia/Manila] PHP Stack trace:
+[21-Mar-2018 15:23:27 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\dts\preview\index.php:0
+[21-Mar-2018 15:23:27 Asia/Manila] PHP Notice:  Undefined index:  in C:\Users\sly\Desktop\UwAmp310\www\dts\preview\index.php on line 13
+[21-Mar-2018 15:23:27 Asia/Manila] PHP Stack trace:
+[21-Mar-2018 15:23:27 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\dts\preview\index.php:0

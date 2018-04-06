@@ -1,4 +1,4 @@
-angular.module('app-module', ['bootstrap-modal']).factory('app', function($http,$timeout,$window,bootstrapModal) {
+angular.module('app-module', ['bootstrap-modal','module-access']).factory('app', function($http,$timeout,$window,bootstrapModal,access) {
 	
 	function app() {
 
@@ -9,8 +9,8 @@ angular.module('app-module', ['bootstrap-modal']).factory('app', function($http,
 			scope.formHolder = {};
 			scope.views = {};
 			
-			scope.trans = {};
-			scope.trans.id = 0;
+			scope.tran = {};
+			scope.tran.id = 0;
 			
 			scope.trans = [];
 
@@ -39,6 +39,8 @@ angular.module('app-module', ['bootstrap-modal']).factory('app', function($http,
 		};
 		
 		self.delete = function(scope, row) {
+			
+			if (!access.has(scope,scope.profile.group,scope.module.id,scope.module.privileges.delete)) return;
 			
 			var onOk = function() {
 				
@@ -81,14 +83,16 @@ angular.module('app-module', ['bootstrap-modal']).factory('app', function($http,
 			
 		};
 		
-		self.add = function(scope,trans) {
+		self.add = function(scope,tran) {
+			
+			if (!access.has(scope,scope.profile.group,scope.module.id,scope.module.privileges.add)) return;
 			
 			var title = 'Add Transaction Types';
 			
-			if (trans == null) {				
+			if (tran == null) {				
 				
-				scope.trans = {};
-				scope.trans.id = 0;
+				scope.tran = {};
+				scope.tran.id = 0;
 				
 			} else {
 				
@@ -97,10 +101,10 @@ angular.module('app-module', ['bootstrap-modal']).factory('app', function($http,
 				$http({
 				  method: 'POST',
 				  url: 'handlers/transaction-view.php',
-				  data: {id: trans.id}
+				  data: {id: tran.id}
 				}).then(function mySuccess(response) {
 					
-					scope.trans = angular.copy(response.data);			
+					scope.tran = angular.copy(response.data);			
 					
 				}, function myError(response) {
 					
@@ -112,12 +116,12 @@ angular.module('app-module', ['bootstrap-modal']).factory('app', function($http,
 
 			var onOk = function() {
 
-				if (validate(scope,'trans')) return false;				
+				if (validate(scope,'tran')) return false;				
 				
 				$http({
 				  method: 'POST',
 				  url: 'handlers/transaction-save.php',
-				  data: scope.trans
+				  data: scope.tran
 				}).then(function mySuccess(response) {				
 					
 					self.list(scope);

@@ -1,222 +1,107 @@
-angular.module('app-module', ['form-validator','bootstrap-modal','ngRoute']).config(function($routeProvider) {
-    $routeProvider
-        .when('/:option/:id', {
-            templateUrl: 'user-profile.html'
-        })
-        .when('/:option/:id', {
-            templateUrl: 'user-profile.html'
-        });		
-}).factory('app', function($http,$timeout,$window,$routeParams,$location,validate,bootstrapModal) {
+angular.module('app-module', ['form-validator','bootstrap-modal','window-open-post']).factory('app', function($http,$timeout,$window,validate,bootstrapModal,printPost) {
 	
 	function app() {
 
 		var self = this;
-
-		self.startup = function(scope) {
-			
-			scope.controls.add = true;
-			scope.controls.edit = false;	
-			
-			scope.$on('$routeChangeSuccess', function() {
-				
-				switch ($routeParams.option) {
-					
-					case 'view':
-					
-						if ($routeParams.id != undefined) {					
-							self.load(scope,$routeParams.id);
-							scope.controls.add = false;
-							scope.controls.edit = true;
-						};					
-					
-					break;
-					
-					case 'delete':
-					
-						if ($routeParams.id != undefined) {					
-							self.load(scope,$routeParams.id);
-							scope.controls.add = false;
-							scope.controls.edit = false;
-							scope.controls.ok=false;
-							scope.controls.cancel=false;
-							self.deleteConfirm(scope,$routeParams.id);
-						};
-							
-					break;
-					
-				};				
-
-			});				
-			
-		};
 		
 		self.data = function(scope) {
 
 			scope.formHolder = {};
 			scope.views = {};
-			
-			scope.controls = {
-				btns: {
-					ok: true,
-					cancel: true
-				},
-				add: true,
-				edit: true,
-				ok: true,
-				cancel:true
-			};
-			
-			scope.user = {};
-			scope.user.id = 0;	
-			
-			scope.documents = [];
-			
-			scope.offices = [];
-			
-			$http({
-				method: 'GET',
-				url: 'handlers/offices.php'
-			}).then(function mySuccess(response) {
-				
-				scope.offices = angular.copy(response.data);
-					
-			}, function myError(response) {
-		
-		
-		
-			});			
 
-		};
-		
-		self.add = function(scope) {
+			scope.activity = {};
 			
-			scope.controls.btns.ok = false;
-			scope.controls.btns.cancel = false;
+			scope.documents = [];	
 			
-		};
-		
-		self.cancel = function(scope) {
-			
-			scope.controls.btns.ok = true;
-			scope.controls.btns.cancel = true;
-			
-			validate.cancel(scope,'user');
-			
-			$timeout(function() {
-				if ($routeParams.option==undefined) scope.user = {};				
-			},500);
-			
-		};
-		
-		self.view = function(scope,row) {
-			
-			$window.location.href = "user-profile.html#!/view/"+row.id;
-			
-		};
-		self.delete = function(scope,row){
-			
-			$window.location.href = "user-profile.html#!/delete/"+row.id;
-			
-		};
-		
-		self.deleteConfirm = function(scope,id) {
-			
-			var onOk = function() {
+			scope.$watch(function(scope) {
 				
-				$http({
-					method: 'POST',
-					url: 'handlers/profile-delete.php',
-					data: {id: id}
-				}).then(function mySuccess(response) {
-					
-						$window.location.href = "users-list.html";
-						
-				}, function myError(response) {
-			
-			
-			
-				});
+				return scope.search;
+				
+			},function(newValue, oldValue) {
+				
+				$timeout(function() { $('[data-toggle="tooltip"]').tooltip(); },500);
+				
+			});
 
-			};
-			
-			var onCancel = function() {
-				
-				$window.location.href = "users-list.html";
-				
-			};
-			
-			bootstrapModal.confirm(scope,'Confirmation','Are you sure you want to Delete?',onOk,onCancel);
-				
-		};
-		
-		self.edit = function(scope) {
-			
-			scope.controls.btns.ok = false;
-			scope.controls.btns.cancel = false;			
-			
-		};
-		
-		self.load = function(scope,id) {
-			
-			$http({
-			  method: 'POST',
-			  url: 'handlers/user-view.php',
-			  data: {id: id}
-			}).then(function mySuccess(response) {
-				
-				scope.user = angular.copy(response.data);			
-				
-			}, function myError(response) {
-				
-				//
-				
-			});			
-			
-		};
-		
-		self.save = function(scope) {
+		};		
 
-			// validation
-			if (validate.form(scope,'user')) return;
-			
-			$http({
-			  method: 'POST',
-			  url: 'handlers/profile-save.php',
-			  data: scope.user
-			}).then(function mySuccess(response) {
-				
-				if (scope.user.id == 0) {
-					scope.user = {};
-					scope.user.id = 0;
-				};
-				scope.controls.btns.ok = true;
-				scope.controls.btns.cancel = true;					
-				
-			}, function myError(response) {
-				
-				//
-				
-			});			
-			
-		};
-		
 		self.list = function(scope) {
-
+			
+			if (scope.$id > 2) scope = scope.$parent;
+			
 			$http({
 			  method: 'GET',
 			  url: 'handlers/documents-list.php'
 			}).then(function mySuccess(response) {
-				
+
 				scope.documents = angular.copy(response.data);			
-				
+
+			}, function myError(response) {
+
+				//
+
+			});				
+
+		};
+		
+		self.view = function(scope,document) {
+			
+			title = '<strong>'+document.doc_name+'</strong> ('+document.doc_type+')';
+
+			scope.activity = angular.copy(document);			
+
+			$http({
+			  method: 'POST',
+			  url: 'handlers/doc-activity.php',
+			  data: {id: document.id}
+			}).then(function mySuccess(response) {
+
+				scope.activity.tracks = response.data.tracks;
+				scope.activity.files = response.data.files;
+				scope.activity.attachments = response.data.attachments;
+
 			}, function myError(response) {
 				
 				//
 				
-			});				
-			
+			});			
+
+			var onOk = function() {
+
+			};
+
+			bootstrapModal.box2(scope,title,'dialogs/document.html',onOk);			
+
 		};
 
+		self.delete = function(scope,doc) {
+
+			var onOk = function() {
+				
+				$http({
+					method: 'POST',
+					url: 'handlers/delete-documents.php',
+					data: {id: doc.id}
+				}).then(function mySuccess(response) {
+
+					self.list(scope);
+
+				}, function myError(response) {
+
+				});
+
+			};
+
+			bootstrapModal.confirm(scope,'Confirmation','Are you sure you want to delete this document?',onOk,function() {});
+
+		};
+		
+		self.preview = function(file) {
+
+			printPost.show('preview/index.php',file);
+			
+		};
+		
 	};
 
 	return new app();

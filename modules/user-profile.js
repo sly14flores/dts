@@ -1,4 +1,4 @@
-angular.module('app-module', ['form-validator','bootstrap-modal','ngRoute']).config(function($routeProvider) {
+angular.module('app-module', ['form-validator','bootstrap-modal','ui.bootstrap','ngRoute','module-access']).config(function($routeProvider) {
     $routeProvider
         .when('/:option/:id', {
             templateUrl: 'user-profile.html'
@@ -6,13 +6,14 @@ angular.module('app-module', ['form-validator','bootstrap-modal','ngRoute']).con
         .when('/:option/:id', {
             templateUrl: 'user-profile.html'
         });		
-}).factory('app', function($http,$timeout,$window,$routeParams,$location,validate,bootstrapModal) {
+}).factory('app', function($http,$timeout,$window,$routeParams,$location,validate,bootstrapModal,access) {
 	
 	function app() {
 
 		var self = this;
 
 		self.startup = function(scope) {
+			
 			
 			scope.controls.add = true;
 			scope.controls.edit = false;	
@@ -53,7 +54,10 @@ angular.module('app-module', ['form-validator','bootstrap-modal','ngRoute']).con
 		self.data = function(scope) {
 
 			scope.formHolder = {};
+			
 			scope.views = {};
+			
+			scope.views.currentPage = 1;
 			
 			scope.controls = {
 				btns: {
@@ -67,11 +71,18 @@ angular.module('app-module', ['form-validator','bootstrap-modal','ngRoute']).con
 			};
 			
 			scope.user = {};
+			
 			scope.user.id = 0;	
 			
 			scope.users = [];
 			
 			scope.offices = [];
+			
+			scope.groups = [];
+			
+
+			scope.views.currentPage = 1;
+
 			
 			$http({
 				method: 'GET',
@@ -85,10 +96,24 @@ angular.module('app-module', ['form-validator','bootstrap-modal','ngRoute']).con
 		
 		
 			});			
+			$http({
+				method: 'GET',
+				url: 'handlers/groups.php'
+			}).then(function mySuccess(response) {
+				
+				scope.groups = angular.copy(response.data);
+					
+			}, function myError(response) {
+		
+		
+		
+			});			
 
 		};
 		
 		self.add = function(scope) {
+			
+			if (!access.has(scope,scope.profile.group,scope.module.id,scope.module.privileges.add)) return;
 			
 			scope.controls.btns.ok = false;
 			scope.controls.btns.cancel = false;
@@ -114,6 +139,10 @@ angular.module('app-module', ['form-validator','bootstrap-modal','ngRoute']).con
 			
 		};
 		self.delete = function(scope,row){
+			
+			if (!access.has(scope,scope.profile.group,scope.module.id,scope.module.privileges.delete)) return;
+			
+			scope.views.currentPage = scope.currentPage;
 			
 			$window.location.href = "user-profile.html#!/delete/"+row.id;
 			
@@ -150,6 +179,8 @@ angular.module('app-module', ['form-validator','bootstrap-modal','ngRoute']).con
 		};
 		
 		self.edit = function(scope) {
+			
+			if (!access.has(scope,scope.profile.group,scope.module.id,scope.module.privileges.edit)) return;
 			
 			scope.controls.btns.ok = false;
 			scope.controls.btns.cancel = false;			
@@ -201,13 +232,22 @@ angular.module('app-module', ['form-validator','bootstrap-modal','ngRoute']).con
 		};
 		
 		self.list = function(scope) {
+			
+			scope.currentPage = scope.views.currentPage; // for pagination
+			scope.pageSize = 10; // for pagination
+			scope.maxSize = 3; // for pagination
 
 			$http({
 			  method: 'GET',
 			  url: 'handlers/users-list.php'
 			}).then(function mySuccess(response) {
 				
-				scope.users = angular.copy(response.data);			
+
+				scope.users = angular.copy(response.data);	
+
+				scope.filterData = scope.users; // for pagination
+				scope.currentPage = scope.views.currentPage; // for pagination 							
+
 				
 			}, function myError(response) {
 				
