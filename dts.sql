@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 02, 2018 at 05:41 PM
+-- Generation Time: Apr 05, 2018 at 05:32 PM
 -- Server version: 5.7.11
 -- PHP Version: 7.0.3
 
@@ -184,7 +184,7 @@ CREATE TABLE `documents` (
 --
 
 INSERT INTO `documents` (`id`, `user_id`, `doc_name`, `barcode`, `origin`, `other_origin`, `document_date`, `document_transaction_type`, `doc_type`, `communication`, `remarks`) VALUES
-(1, 7, 'adgas', 'ICT-04-2018-00001', 4, NULL, '2018-04-02 09:30:27', 1, 4, 1, NULL);
+(1, 7, 'bla bla bla', 'ICT-04-2018-00001', 4, NULL, '2018-04-05 13:17:08', 1, 3, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -324,9 +324,11 @@ CREATE TABLE `tracks` (
   `document_status` varchar(100) DEFAULT NULL,
   `document_status_user` int(11) DEFAULT NULL,
   `document_tracks_status` varchar(100) DEFAULT NULL,
+  `track_option` int(11) DEFAULT NULL,
   `track_office` int(11) DEFAULT NULL,
   `track_date` datetime DEFAULT NULL,
   `route_office` int(11) DEFAULT NULL,
+  `route_user` int(11) DEFAULT NULL,
   `remarks` varchar(1000) DEFAULT NULL,
   `system_log` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -335,10 +337,9 @@ CREATE TABLE `tracks` (
 -- Dumping data for table `tracks`
 --
 
-INSERT INTO `tracks` (`id`, `document_id`, `document_status`, `document_status_user`, `document_tracks_status`, `track_office`, `track_date`, `route_office`, `remarks`, `system_log`) VALUES
-(1, 1, 'Received', 7, 'transaction', 2, '2018-04-02 09:30:27', NULL, NULL, '2018-04-02 09:30:27'),
-(2, 1, 'Approved', 6, 'transaction', 2, '2018-04-02 16:26:29', NULL, 'Basta', '2018-04-02 16:26:29'),
-(3, 1, 'Routed', 6, 'incoming', 2, '2018-04-02 16:27:19', 4, 'blablabla', '2018-04-02 16:27:19');
+INSERT INTO `tracks` (`id`, `document_id`, `document_status`, `document_status_user`, `document_tracks_status`, `track_option`, `track_office`, `track_date`, `route_office`, `route_user`, `remarks`, `system_log`) VALUES
+(1, 1, 'Received', 7, 'transaction', NULL, 2, '2018-04-05 13:17:08', 2, NULL, NULL, '2018-04-05 13:17:08'),
+(2, 1, NULL, 6, 'transaction', 4, 2, '2018-04-05 17:01:57', NULL, NULL, '', '2018-04-05 17:01:57');
 
 -- --------------------------------------------------------
 
@@ -477,7 +478,10 @@ ALTER TABLE `tracks`
   ADD PRIMARY KEY (`id`),
   ADD KEY `document_id` (`document_id`),
   ADD KEY `destination` (`track_office`),
-  ADD KEY `route_office` (`route_office`);
+  ADD KEY `route_office` (`route_office`),
+  ADD KEY `track_option` (`track_option`),
+  ADD KEY `route_user` (`route_user`),
+  ADD KEY `document_status_user` (`document_status_user`);
 
 --
 -- Indexes for table `transactions`
@@ -546,7 +550,7 @@ ALTER TABLE `options`
 -- AUTO_INCREMENT for table `tracks`
 --
 ALTER TABLE `tracks`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `transactions`
 --
