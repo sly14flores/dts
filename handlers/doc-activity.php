@@ -15,14 +15,14 @@ foreach ($tracks as $i => $track) {
 	if ($track['document_tracks_status'] == "for_pick_up") {
 		$route_office = $con->getData("SELECT id, office FROM offices WHERE id = ".$track['route_office']);		
 		$tracks[$i]['document_status'] = "For pick up for ".$route_office[0]['office'];
-	};	
+	};
 
 	if ($track['document_tracks_status'] == "incoming") {
 		$route_office = $con->getData("SELECT id, office FROM offices WHERE id = ".$track['route_office']);		
 		$route_user = $con->getData("SELECT id, CONCAT(fname, ' ', lname) fullname FROM users WHERE id = ".$track['route_user']);		
 		$tracks[$i]['document_status'] = "Picked up by ".$route_user[0]['fullname'];
 	};	
-	
+
 	if ($track['track_option'] != NULL) {
 		$track_option = $con->getData("SELECT id, choice FROM options WHERE id = ".$track['track_option']);
 		$tracks[$i]['document_status'] = $track_option[0]['choice'];

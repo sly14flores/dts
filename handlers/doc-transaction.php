@@ -37,7 +37,14 @@ switch ($_POST['action']) {
 		$document_status = "Release";
 		$document_tracks_status = "incoming";
 		$route_office = $_POST['next']['route_office']['id'];
-		$route_user = $_POST['next']['route_user']['id'];	
+		$route_user = $_POST['next']['route_user']['id'];
+
+	break;
+
+	case "File":
+
+		$document_status = "Filed";
+		$document_tracks_status = "filed";	
 
 	break;
 

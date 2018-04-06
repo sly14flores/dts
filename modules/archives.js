@@ -9,7 +9,9 @@ angular.module('app-module', ['form-validator','bootstrap-modal']).factory('app'
 			scope.formHolder = {};
 			scope.views = {};
 
-			scope.documents = [];	
+			scope.activity = {};
+			
+			scope.archives = [];	
 
 		};
 
@@ -22,7 +24,7 @@ angular.module('app-module', ['form-validator','bootstrap-modal']).factory('app'
 			  url: 'handlers/archives.php'
 			}).then(function mySuccess(response) {
 
-				scope.documents = angular.copy(response.data);			
+				scope.archives = angular.copy(response.data);			
 
 			}, function myError(response) {
 
@@ -30,6 +32,36 @@ angular.module('app-module', ['form-validator','bootstrap-modal']).factory('app'
 
 			});				
 
+		};
+		
+		self.view = function(scope,archive) {
+			
+			title = '<strong>'+archive.doc_name+'</strong> ('+archive.doc_type+')';
+
+			scope.activity = angular.copy(archive);			
+
+			$http({
+			  method: 'POST',
+			  url: 'handlers/doc-activity.php',
+			  data: {id: archive.id}
+			}).then(function mySuccess(response) {
+
+				scope.activity.tracks = response.data.tracks;
+				scope.activity.files = response.data.files;
+				scope.activity.attachments = response.data.attachments;
+
+			}, function myError(response) {
+				
+				//
+				
+			});			
+
+			var onOk = function() {
+
+			};
+
+			bootstrapModal.box2(scope,title,'dialogs/archive.html',onOk);			
+			
 		};
 
 	};

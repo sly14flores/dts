@@ -27,7 +27,6 @@ foreach ($documents as $i => $document) {
 	};	
 	
 	if ($document['track_option'] != NULL) {
-		$tracks_status = "";
 		$track_option = $con->getData("SELECT id, choice FROM options WHERE id = ".$document['track_option']);
 		$documents[$i]['document_status'] = $track_option[0]['choice'];
 	};
