@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 06, 2018 at 02:49 PM
+-- Generation Time: Apr 06, 2018 at 04:35 PM
 -- Server version: 5.7.11
 -- PHP Version: 7.0.3
 
@@ -179,6 +179,13 @@ CREATE TABLE `documents` (
   `remarks` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `documents`
+--
+
+INSERT INTO `documents` (`id`, `user_id`, `doc_name`, `barcode`, `origin`, `other_origin`, `document_date`, `document_transaction_type`, `doc_type`, `communication`, `remarks`) VALUES
+(1, 5, 'dota', 'OPG-04-2018-00001', 3, NULL, '2018-04-06 16:25:38', 1, 5, 2, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -196,23 +203,12 @@ CREATE TABLE `document_types` (
 --
 
 INSERT INTO `document_types` (`id`, `document_type`, `shortname`) VALUES
-(1, 'RESOLUTIONS', 'RES'),
-(2, 'ORDERS', 'OR'),
-(3, 'LETTERS', 'LET'),
-(4, 'TRAVELS', 'TR'),
-(5, 'CONTRACTS', 'CON'),
-(6, 'COMMUNICATIONS', 'COM'),
-(7, 'MEMORANDUMS', 'MEM'),
-(8, 'APPOINMENTS', 'APM'),
-(9, 'CERTIFICATES', 'CER'),
-(10, 'MESSAGES', 'MES'),
-(11, 'DAILY TIME RECORD', 'DTR'),
-(12, 'CLEARANCE ', 'CL'),
-(13, 'APPLICATIONS', 'APP'),
-(14, 'PROPOSALS', 'PRO'),
-(15, 'LEAVE', 'LV'),
-(16, 'PLANTILLA', 'PL'),
-(17, 'COMPENSATORY TIME OFF', 'CTO');
+(2, 'ORDER', 'OR'),
+(3, 'LETTER', 'LET'),
+(4, 'TRAVEL ORDER', 'TR'),
+(5, 'CONTRACT', 'CON'),
+(7, 'MEMORANDUM', 'MEM'),
+(11, 'DAILY TIME RECORD', 'DTR');
 
 -- --------------------------------------------------------
 
@@ -326,6 +322,14 @@ CREATE TABLE `tracks` (
   `remarks` varchar(1000) DEFAULT NULL,
   `system_log` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tracks`
+--
+
+INSERT INTO `tracks` (`id`, `document_id`, `document_status`, `document_status_user`, `document_tracks_status`, `track_option`, `track_office`, `track_date`, `route_office`, `route_user`, `remarks`, `system_log`) VALUES
+(1, 1, 'Received', 5, 'transaction', NULL, 2, '2018-04-06 16:25:39', 2, NULL, NULL, '2018-04-06 16:25:39'),
+(2, 1, 'Release', 6, 'incoming', NULL, 2, '2018-04-06 16:26:23', 4, 5, '', '2018-04-06 16:26:23');
 
 -- --------------------------------------------------------
 
@@ -518,7 +522,7 @@ ALTER TABLE `document_types`
 -- AUTO_INCREMENT for table `files`
 --
 ALTER TABLE `files`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `groups`
 --
@@ -538,7 +542,7 @@ ALTER TABLE `options`
 -- AUTO_INCREMENT for table `tracks`
 --
 ALTER TABLE `tracks`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `transactions`
 --
