@@ -201,17 +201,17 @@ require_once 'authentication.php';
 											</tr>
 										</thead>
 										<tbody>
-											<tr ng-repeat="dl in documents | filter:search">
-											<td>{{dl.doc_name}}</td>
-											<td>{{dl.barcode}}</td>
-											<td>{{dl.doc_type}}</td>											
-											<td>{{dl.origin}}</td>
-											<td>{{dl.document_date}}</td>
-											<td>{{dl.transaction}}</td>
-											<td>{{dl.communication}}</td>
-											<td>{{dl.remarks}}</td>
+											<tr ng-repeat="a in archives | filter:search">
+											<td>{{a.doc_name}}</td>
+											<td>{{a.barcode}}</td>
+											<td>{{a.doc_type}}</td>											
+											<td>{{a.origin}}</td>
+											<td>{{a.document_date}}</td>
+											<td>{{a.transaction}}</td>
+											<td>{{a.communication}}</td>
+											<td>{{a.remarks}}</td>
 											<td>
-												<button class="btn btn-primary" ng-click="app.view(this,dl)"><i class="icon icon-magnifier"></i></button>
+												<button class="btn btn-primary" ng-click="app.view(this,a)"><i class="icon icon-magnifier"></i></button>
 											</td>
 											</tr>
 										</tbody>
