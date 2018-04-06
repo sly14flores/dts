@@ -61,8 +61,8 @@ angular.module('app-module', ['form-validator','bootstrap-modal']).factory('app'
 			};
 
 			bootstrapModal.box2(scope,title,'dialogs/document.html',onOk);			
-			
-		};		
+
+		};
 
 		self.delete = function(scope,doc) {
 

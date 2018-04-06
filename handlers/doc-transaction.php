@@ -29,6 +29,7 @@ switch ($_POST['action']) {
 		$document_status = "Forward";
 		$document_tracks_status = "for_pick_up";
 		$route_office = $_POST['next']['route_office']['id'];
+		$track_option = $_POST['track_option'];
 
 	break;
 
@@ -38,13 +39,15 @@ switch ($_POST['action']) {
 		$document_tracks_status = "incoming";
 		$route_office = $_POST['next']['route_office']['id'];
 		$route_user = $_POST['next']['route_user']['id'];
+		$track_option = $_POST['track_option'];		
 
 	break;
 
 	case "File":
 
 		$document_status = "Filed";
-		$document_tracks_status = "filed";	
+		$document_tracks_status = "filed";
+		$track_option = $_POST['track_option'];
 
 	break;
 
