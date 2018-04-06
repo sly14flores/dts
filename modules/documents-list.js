@@ -12,6 +12,16 @@ angular.module('app-module', ['form-validator','bootstrap-modal']).factory('app'
 			scope.activity = {};
 			
 			scope.documents = [];	
+			
+			scope.$watch(function(scope) {
+				
+				return scope.search;
+				
+			},function(newValue, oldValue) {
+				
+				$timeout(function() { $('[data-toggle="tooltip"]').tooltip(); },500);
+				
+			});
 
 		};		
 
