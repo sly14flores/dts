@@ -16,6 +16,16 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 			scope.documents = [];
 			
 			scope.views.currentPage = 1; // for pagination
+			
+			scope.$watch(function(scope) {
+				
+				return scope.search;
+				
+			},function(newValue, oldValue) {
+				
+				$timeout(function() { $('[data-toggle="tooltip"]').tooltip(); },500);
+				
+			});			
 
 		};
 		
@@ -57,6 +67,7 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 				scope.documents = angular.copy(response.data);
 				scope.filterData = scope.documents;
 				scope.currentPage = scope.views.currentPage;
+				$timeout(function() { $('[data-toggle="tooltip"]').tooltip(); },500);
 				
 			}, function myError(response) {
 				

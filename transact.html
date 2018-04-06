@@ -209,7 +209,7 @@ require_once 'authentication.php';
 												<td>{{t.remarks}}</td>												
 												<td>{{t.track_date}}</td>
 												<td>
-													<button class="btn btn-info" ng-click="app.activity(this,t)"><i class="icon icon-grid"></i></button>
+													<button class="btn btn-info" ng-click="app.activity(this,t)" data-toggle="tooltip" data-placement="top" title="Transact Document"><i class="icon icon-grid" ></i></button>
 												</td>
 											</tr>
 										</tbody>
@@ -251,6 +251,10 @@ require_once 'authentication.php';
 <script src="modules/documents.js"></script>
 <!-- controller -->
 <script src="controllers/documents.js"></script>
-
+<script type="text/javascript">
+	$(function() {
+		$('[data-toggle="tooltip"]').tooltip();
+	});
+</script>
 </body>
 </html>

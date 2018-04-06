@@ -14,7 +14,17 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 			
 			scope.outgoings = [];
 			
-			scope.views.currentPage = 1;	
+			scope.views.currentPage = 1;
+			
+			scope.$watch(function(scope) {
+				
+				return scope.search;
+				
+			},function(newValue, oldValue) {
+				
+				$timeout(function() { $('[data-toggle="tooltip"]').tooltip(); },500);
+				
+			});
 		
 		};
 		
