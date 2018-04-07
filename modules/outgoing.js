@@ -10,11 +10,21 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 			
 			scope.views = {};
 			
-			scope.receive = {};
+			scope.activity = {};
 			
 			scope.outgoings = [];
 			
-			scope.views.currentPage = 1;	
+			scope.views.currentPage = 1;
+			
+			scope.$watch(function(scope) {
+				
+				return scope.search;
+				
+			},function(newValue, oldValue) {
+				
+				$timeout(function() { $('[data-toggle="tooltip"]').tooltip(); },500);
+				
+			});
 		
 		};
 		
@@ -61,8 +71,38 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 				
 			});				
 			
-		};	
+		};
 		
+		self.tracks = function(scope,outgoing) {
+
+			title = '<strong>'+outgoing.doc_name+'</strong> ('+outgoing.doc_type+')';
+
+			scope.activity = angular.copy(outgoing);			
+
+			$http({
+			  method: 'POST',
+			  url: 'handlers/doc-activity.php',
+			  data: {id: outgoing.id}
+			}).then(function mySuccess(response) {
+
+				scope.activity.tracks = response.data.tracks;
+				scope.activity.files = response.data.files;
+				scope.activity.attachments = response.data.attachments;
+
+			}, function myError(response) {
+				
+				//
+				
+			});			
+
+			var onOk = function() {
+
+			};
+
+			bootstrapModal.box2(scope,title,'dialogs/outgoing-tracks.html',onOk);
+
+		};
+
 	};
 	
 	return new app();

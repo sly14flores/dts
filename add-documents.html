@@ -179,7 +179,7 @@ require_once 'authentication.php';
                         <div class="card">
                             <div class="card-header bg-light">
                                 Documents
-								<i class="fa fa-print float-right" style="cursor: pointer;" ng-click="app.print(this)"></i>
+								<i class="fa fa-print float-right" style="cursor: pointer;" ng-click="app.print(this)" data-toggle="tooltip" data-placement="top" title="Print"></i>
                             </div>
 
                             <div class="card-body">
@@ -338,5 +338,11 @@ require_once 'authentication.php';
 <script src="modules/add-documents.js"></script>
 <!-- controller -->
 <script src="controllers/add-documents.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$('[data-toggle="tooltip"]').tooltip();
+	});
+</script>
+
 </body>
 </html>

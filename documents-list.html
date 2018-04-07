@@ -211,7 +211,7 @@ require_once 'authentication.php';
 											<td>{{dl.communication}}</td>
 											<td>{{dl.remarks}}</td>
 											<td>
-												<button class="btn btn-primary" ng-click="app.view(this,dl)"><i class="icon icon-magnifier"></i></button>
+												<button class="btn btn-primary" ng-click="app.view(this,dl)" data-toggle="tooltip" data-placement="top" title="View Details"><i class="icon icon-magnifier"></i></button>
 												<button class="btn btn-secondary" ng-click="app.delete(this,dl)"><i class="icon icon-trash"></i></button>
 											</td>
 											</tr>
@@ -245,6 +245,7 @@ require_once 'authentication.php';
 <script src="modules/bootstrap-modal.js"></script>
 <script src="modules/account.js"></script>
 <script src="modules/validate.js"></script>
+<script src="modules/window-open-post.js"></script>
 <script src="modules/documents-list.js"></script>
 <!-- controller -->
 <script src="controllers/documents-list.js"></script>
