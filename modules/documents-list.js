@@ -1,4 +1,4 @@
-angular.module('app-module', ['form-validator','bootstrap-modal','window-open-post']).factory('app', function($http,$timeout,$window,validate,bootstrapModal,printPost) {
+angular.module('app-module', ['form-validator','ui.bootstrap','bootstrap-modal','window-open-post']).factory('app', function($http,$timeout,$window,validate,bootstrapModal,printPost,bootstrapModal) {
 	
 	function app() {
 
@@ -12,6 +12,8 @@ angular.module('app-module', ['form-validator','bootstrap-modal','window-open-po
 			scope.activity = {};
 			
 			scope.documents = [];	
+			
+			scope.views.currentPage = 1;
 			
 			scope.$watch(function(scope) {
 				
@@ -29,12 +31,19 @@ angular.module('app-module', ['form-validator','bootstrap-modal','window-open-po
 			
 			if (scope.$id > 2) scope = scope.$parent;
 			
+			scope.currentPage = scope.views.currentPage;
+			scope.pageSize = 10;
+			scope.maxSize = 3;
+			
 			$http({
 			  method: 'GET',
 			  url: 'handlers/documents-list.php'
 			}).then(function mySuccess(response) {
 
-				scope.documents = angular.copy(response.data);			
+				scope.documents = angular.copy(response.data);	
+
+				scope.filterData = scope.documents;
+				scope.currentPage = scope.views.currentPage;				
 
 			}, function myError(response) {
 
@@ -75,6 +84,8 @@ angular.module('app-module', ['form-validator','bootstrap-modal','window-open-po
 		};
 
 		self.delete = function(scope,doc) {
+			
+			scope.views.currentPage = scope.currentPage;
 
 			var onOk = function() {
 				
