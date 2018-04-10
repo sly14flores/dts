@@ -33,7 +33,7 @@ foreach ($system_privileges as $i => $sp) {
 	
 };
 
-$system_privileges = toHex(json_encode(system_privileges));
+$system_privileges = toHex(json_encode($system_privileges));
 
 echo '<textarea style="width: 50%; height: 100%;">'.$system_privileges.'</textarea>';
 

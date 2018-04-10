@@ -9,7 +9,7 @@ app.controller('maintenanceOfficesCtrl',function($scope,app) {
 	$scope.app.list($scope);
 	
 	$scope.module = {
-		id: 9,
+		id: 'maintenance',
 		privileges: {
 			show: 1,
 			add: 2,

@@ -1,14 +1,14 @@
 <?php
 
 define('system_privileges', array(
-	array( # 0
+	array(
 		"id"=>"dashboard",
 		"description"=>"Dashboard",
 		"privileges"=>array( # id=1 must be always page access
 			array("id"=>1,"description"=>"Show Dashboard","value"=>false),
 		),
 	),
-	array( # 1
+	array(
 		"id"=>"receive_document",
 		"description"=>"Receive Document",
 		"privileges"=>array(
@@ -16,35 +16,49 @@ define('system_privileges', array(
 			array("id"=>2,"description"=>"Add Document","value"=>false),		
 		),
 	),
-	array( # 2
+	array(
 		"id"=>"incoming",
 		"description"=>"Incoming",
 		"privileges"=>array(
 			array("id"=>1,"description"=>"Show Incoming Document","value"=>false),
 		),
 	),	
-	array( # 3
+	array(
 		"id"=>"transact",
 		"description"=>"Transact",
 		"privileges"=>array(
 			array("id"=>1,"description"=>"Show Transact","value"=>false),
 		),
 	),
-	array( # 4
+	array(
+		"id"=>"outgoing",
+		"description"=>"Outgoing",
+		"privileges"=>array(
+			array("id"=>1,"description"=>"Show Outgoing","value"=>false),
+		),
+	),
+	array(
+		"id"=>"archives",
+		"description"=>"Archives",
+		"privileges"=>array(
+			array("id"=>1,"description"=>"Show Archives","value"=>false),
+		),
+	),	
+	array(
 		"id"=>"document_list",
 		"description"=>"List of Documents",
 		"privileges"=>array(
 			array("id"=>1,"description"=>"Show List of Documents","value"=>false),
 		),
 	),
-	array( # 5
+	array(
 		"id"=>"tracks",
 		"description"=>"Tracks",
 		"privileges"=>array(
 			array("id"=>1,"description"=>"Show Tracks","value"=>false),
 		),
 	),
-	array( # 6
+	array(
 		"id"=>"accounts",
 		"description"=>"Accounts",
 		"privileges"=>array(
@@ -54,7 +68,7 @@ define('system_privileges', array(
 			array("id"=>4,"description"=>"Delete User Account","value"=>false),
 		),
 	),
-	array( # 7
+	array(
 		"id"=>"groups",
 		"description"=>"Groups",
 		"privileges"=>array(
@@ -64,7 +78,7 @@ define('system_privileges', array(
 			array("id"=>4,"description"=>"Delete User Groups","value"=>false),
 		),
 	),
-	array( # 8
+	array(
 		"id"=>"maintenance",
 		"description"=>"Maintenance",
 		"privileges"=>array(

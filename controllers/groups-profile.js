@@ -9,7 +9,7 @@ app.controller('groupsCtrl',function($scope,app) {
 	$scope.app.startup($scope);	
 	
 	$scope.module = {
-		id: 8,
+		id: 'groups',
 		privileges: {
 			show: 1,
 			add: 2,
@@ -17,6 +17,5 @@ app.controller('groupsCtrl',function($scope,app) {
 			delete: 4,
 		}
 	};	
-
 	
 });
