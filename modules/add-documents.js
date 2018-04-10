@@ -122,9 +122,20 @@ angular.module('app-module', ['form-validator','bootstrap-modal','jspdf-module',
 		};
 		
 		
-		self.save = function(scope) {			
+		self.save = function(scope) {		
 		
 			uploadFiles.start(scope, function() {				
+				
+				$timeout(function() {
+					
+					if (scope.doc.files.length == 0) {
+						
+						
+						return;
+						
+					};
+					
+				}, 500);
 				
 				if (validate.form(scope,'doc')) return;
 					
