@@ -1,7 +1,8 @@
 angular.module('account-module', ['bootstrap-modal']).directive('dropDown', function() {
+
 	return {
 		restrict: 'A',
-		template: '<div class="dropdown-header">Account</div><a href="javascript:;" class="dropdown-item" logout-account><i class="fa fa-lock"></i> Logout</a>'
+		templateUrl: 'html/account.html'
 	};
 	
 }).directive('accountProfile',function($http) {

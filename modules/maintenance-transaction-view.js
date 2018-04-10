@@ -1,4 +1,4 @@
-angular.module('app-module', ['bootstrap-modal','module-access']).factory('app', function($http,$timeout,$window,bootstrapModal,access) {
+angular.module('app-module', ['bootstrap-modal','module-access','notifications-module']).factory('app', function($http,$timeout,$window,bootstrapModal,access) {
 	
 	function app() {
 

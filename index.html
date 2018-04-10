@@ -31,11 +31,8 @@ require_once 'authentication.php';
 
         <ul class="navbar-nav ml-auto">
             <li class="nav-item d-md-down-none">
-                <a class="nav-link dropdown-toggle" href="javascript:;" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-bell"></i><span class="badge badge-pill badge-danger">5</span></a>
-                <div class="dropdown-menu dropdown-menu-right">
-                    <div class="dropdown-header">Header</div>
-                    <a href="javascript:;" class="dropdown-item">Body</a>
-                </div>				
+                <a class="nav-link dropdown-toggle" href="javascript:;" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-bell"></i><span class="badge badge-pill badge-danger">{{(notifications.count)?notifications.count:""}}</span></a>
+				<div notifications></div>
             </li>
             <li class="nav-item dropdown" account-profile>
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -184,9 +181,11 @@ require_once 'authentication.php';
 <script src="vendor/bootbox/bootbox.min.js"></script>
 
 <script src="angular/angular.min.js"></script>
+<script src="angular/angular-sanitize.min.js"></script>
 <!-- modules -->
 <script src="modules/bootstrap-modal.js"></script>
 <script src="modules/account.js"></script>
+<script src="modules/notifications.js"></script>
 <script src="modules/dashboard.js"></script>
 <!-- controller -->
 <script src="controllers/dashboard.js"></script>
