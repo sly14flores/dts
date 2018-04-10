@@ -1,5 +1,7 @@
 <?php
 
+require_once 'system_privileges.php';
+
 function toHex($string){
 	$string = json_encode($string);
 	$hex = '';
