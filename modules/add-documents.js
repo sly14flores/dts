@@ -130,7 +130,6 @@ angular.module('app-module', ['form-validator','bootstrap-modal','jspdf-module',
 					
 					if (scope.doc.files.length == 0) {
 						
-						
 						return;
 						
 					};
