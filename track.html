@@ -33,9 +33,9 @@ require_once 'authentication.php';
                 </a>
             </li> -->
             <li class="nav-item" account-profile>
-                <a class="nav-link" href="#" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link" href="javascript:;" aria-haspopup="true" aria-expanded="false">
                     <img src="{{profile.picture}}" class="avatar avatar-sm" alt="logo">
-                    <span class="small ml-1 d-md-down-none"> GUEST </span>
+                    <span class="small ml-1 d-md-down-none"> Guest </span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" drop-down></div>
             </li>
@@ -48,7 +48,7 @@ require_once 'authentication.php';
 				<div class="row">
 					<div class="col-lg-4 offset-lg-4 col-md-4 offset-md-4">
 						<div class="input-group">
-							<input type="text" class="form-control" placeholder="Enter Barcode or Document Subject" ng-model="document.text" uib-typeahead="b.text for b in barcodeAsyncSuggest($viewValue)" typeahead-min-length="3" typeahead-on-select="app.barcodeSelected(this, $item)">
+							<input type="text" class="form-control" placeholder="Enter Barcode" ng-model="document.text" uib-typeahead="b.text for b in barcodeAsyncSuggest($viewValue)" typeahead-min-length="3" typeahead-on-select="app.barcodeSelected(this, $item)">
 							<span class="input-group-btn">
 								<button type="button" class="btn btn-primary" ng-click="app.track(this)"><i class="fa fa-search"></i> Track</button>
 							</span>
