@@ -8,6 +8,13 @@ app.controller('documentListCtrl',function($scope,app) {
 
 	$scope.app.list($scope);
 	
+	$scope.module = {
+		id: 'document_list',
+		privileges: {
+
+		}
+	};		
+	
 });
 
 app.filter('pagination', function() {

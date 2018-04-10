@@ -6,4 +6,11 @@ app.controller('tracksCtrl',function($scope,app) {
 	
 	$scope.app.data($scope);
 	
+	$scope.module = {
+		id: 'tracks',
+		privileges: {
+
+		}
+	};		
+	
 });
