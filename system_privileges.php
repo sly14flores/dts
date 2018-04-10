@@ -2,14 +2,14 @@
 
 define('system_privileges', array(
 	array( # 0
-		"id"=>1,
+		"id"=>"dashboard",
 		"description"=>"Dashboard",
 		"privileges"=>array( # id=1 must be always page access
 			array("id"=>1,"description"=>"Show Dashboard","value"=>false),
 		),
 	),
 	array( # 1
-		"id"=>2,
+		"id"=>"receive_document",
 		"description"=>"Receive Document",
 		"privileges"=>array(
 			array("id"=>1,"description"=>"Show Receive Document","value"=>false),
@@ -17,35 +17,35 @@ define('system_privileges', array(
 		),
 	),
 	array( # 2
-		"id"=>3,
+		"id"=>"incoming",
 		"description"=>"Incoming",
 		"privileges"=>array(
 			array("id"=>1,"description"=>"Show Incoming Document","value"=>false),
 		),
 	),	
 	array( # 3
-		"id"=>4,
+		"id"=>"transact",
 		"description"=>"Transact",
 		"privileges"=>array(
 			array("id"=>1,"description"=>"Show Transact","value"=>false),
 		),
 	),
 	array( # 4
-		"id"=>5,
+		"id"=>"document_list",
 		"description"=>"List of Documents",
 		"privileges"=>array(
 			array("id"=>1,"description"=>"Show List of Documents","value"=>false),
 		),
 	),
 	array( # 5
-		"id"=>6,
+		"id"=>"tracks",
 		"description"=>"Tracks",
 		"privileges"=>array(
 			array("id"=>1,"description"=>"Show Tracks","value"=>false),
 		),
 	),
 	array( # 6
-		"id"=>7,
+		"id"=>"accounts",
 		"description"=>"Accounts",
 		"privileges"=>array(
 			array("id"=>1,"description"=>"Show User Accounts","value"=>false),
@@ -55,7 +55,7 @@ define('system_privileges', array(
 		),
 	),
 	array( # 7
-		"id"=>8,
+		"id"=>"groups",
 		"description"=>"Groups",
 		"privileges"=>array(
 			array("id"=>1,"description"=>"Show User Groups","value"=>false),
@@ -65,7 +65,7 @@ define('system_privileges', array(
 		),
 	),
 	array( # 8
-		"id"=>9,
+		"id"=>"maintenance",
 		"description"=>"Maintenance",
 		"privileges"=>array(
 			array("id"=>1,"description"=>"Show Maintenance","value"=>false),
