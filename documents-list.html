@@ -216,6 +216,13 @@ require_once 'authentication.php';
 											</td>
 											</tr>
 										</tbody>
+										<tfoot><!-- added pagination feature -->
+											<tr>
+												<td colspan="10" style="text-align: center;">
+													<div class="float-right"><ul uib-pagination direction-links="false" boundary-links="true" total-items="filterData.length" ng-model="currentPage" max-size="maxSize"></ul></div>
+ 											    </td>
+											</tr>											
+										</tfoot>
 									</table>
 								</div>
 							</div>
@@ -238,8 +245,8 @@ require_once 'authentication.php';
 
 <!-- dependencies -->
 <script src="vendor/bootbox/bootbox.min.js"></script>
-
 <script src="angular/angular.min.js"></script>
+<script src="angular/ui-bootstrap-tpls-3.0.2.min.js"></script>
 <script src="angular/angular-route.min.js"></script>
 <!-- modules -->
 <script src="modules/bootstrap-modal.js"></script>
