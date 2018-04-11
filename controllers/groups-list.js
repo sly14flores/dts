@@ -9,7 +9,7 @@ app.controller('groupsListCtrl',function($scope,app) {
 	$scope.app.list($scope);
 	
 	$scope.module = {
-		id: 8,
+		id: 'groups',
 		privileges: {
 			show: 1,
 			add: 2,

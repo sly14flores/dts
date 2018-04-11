@@ -90,8 +90,7 @@ class privileges {
 			if ($smp['id'] > 1) continue;
 			
 			$access = $this->groupPagesAccess($group_module_privileges,$smp);
-			
-			
+
 		};
 		
 		return $access;
@@ -119,9 +118,9 @@ class privileges {
 	}	
 	
 	public function getPagesPrivileges() {
-		
+
 		$this->page_privileges = [];
-		
+
 		foreach ($this->system_privileges as $key => $system_module) {
 			
 			$system_module['value'] = $this->getPagesAccess($system_module['privileges'],$this->getModule($system_module));							
@@ -131,9 +130,20 @@ class privileges {
 			$this->page_privileges[] = $system_module;			
 			
 		};
-		
-		return $this->page_privileges;
-		
+
+		$page_privileges = [];
+		foreach ($this->page_privileges as $p => $pp) {
+
+			if ($p == 0) {
+				$page_privileges = array($pp['id']=>array("value"=>$pp['value']));
+			} else {
+				$page_privileges[$pp['id']] = array("value"=>$pp['value']);
+			};
+
+		};
+
+		return $page_privileges;
+
 	}
 	
 	public function hasAccess($mod,$prop) {

@@ -29,12 +29,10 @@ require_once 'authentication.php';
         </a>
 
         <ul class="navbar-nav ml-auto">
-            <!-- <li class="nav-item d-md-down-none">
-                <a href="#">
-                    <i class="fa fa-bell"></i>
-                    <span class="badge badge-pill badge-danger">5</span>
-                </a>
-            </li> -->
+            <li class="nav-item d-md-down-none">
+                <a class="nav-link dropdown-toggle" href="javascript:;" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-bell"></i><span class="badge badge-pill badge-danger">{{(notifications.count)?notifications.count:""}}</span></a>
+				<div notifications></div>
+            </li>
             <li class="nav-item dropdown" account-profile>
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <img src="{{profile.picture}}" class="avatar avatar-sm" alt="logo">
@@ -51,7 +49,7 @@ require_once 'authentication.php';
                 <ul class="nav">
                     <li class="nav-title">Menu</li>
 
-                    <li class="nav-item" ng-show="profile.pages_access[0].value">
+                    <li class="nav-item" ng-show="profile.pages_access.dashboard.value">
                         <a href="index.html" class="nav-link">
                             <i class="icon icon-speedometer"></i>Dashboard
                         </a>
@@ -61,44 +59,44 @@ require_once 'authentication.php';
                             <i class="icon icon-docs"></i>Documents <i class="fa fa-caret-left"></i>
                         </a>
                         <ul class="nav-dropdown-items">
-                            <li class="nav-item" ng-show="profile.pages_access[1].value">
+                            <li class="nav-item" ng-show="profile.pages_access.receive_document.value">
                                 <a href="add-documents.html" class="nav-link">
                                     <i class="icon icon-plus"></i>Receive Document
                                 </a>
                             </li>
-							<li class="nav-item" ng-show="profile.pages_access[2].value">
+							<li class="nav-item" ng-show="profile.pages_access.incoming.value">
                                 <a href="incoming.html" class="nav-link">
                                     <i class="icon icon-arrow-down-circle"></i>Incoming
                                 </a>
 							</li>							
-							<li class="nav-item" ng-show="profile.pages_access[3].value">
+							<li class="nav-item" ng-show="profile.pages_access.transact.value">
                                 <a href="transact.html" class="nav-link">
                                     <i class="icon icon-menu"></i>Transact
                                 </a>
 							</li>
-							<li class="nav-item">
+							<li class="nav-item" ng-show="profile.pages_access.outgoing.value">
                                 <a href="outgoing.html" class="nav-link">
                                     <i class="icon icon-arrow-up-circle"></i>Outgoing
                                 </a>
 							</li>
-							<li class="nav-item">
+							<li class="nav-item" ng-show="profile.pages_access.archives.value">
                                 <a href="archives.html" class="nav-link">
                                     <i class="icon icon-folder-alt"></i>Archives
                                 </a>
 							</li>								
-                            <li class="nav-item" ng-show="profile.pages_access[4].value">
+                            <li class="nav-item" ng-show="profile.pages_access.document_list.value">
                                 <a href="documents-list.html" class="nav-link">
                                     <i class="icon icon-doc"></i>List of Documents
                                 </a>
                             </li>
-							<li class="nav-item" ng-show="profile.pages_access[5].value">
+							<li class="nav-item" ng-show="profile.pages_access.tracks.value">
                                 <a href="tracks.html" class="nav-link">
                                     <i class="icon icon-location-pin"></i>Tracks
                                 </a>
                             </li>
                         </ul>
                     </li>	
-                    <li class="nav-item nav-dropdown" ng-show="profile.pages_access[6].value">
+                    <li class="nav-item nav-dropdown" ng-show="profile.pages_access.accounts.value">
                         <a href="#" class="nav-link nav-dropdown-toggle">
                             <i class="icon icon-people"></i>Accounts <i class="fa fa-caret-left"></i>
                         </a>
@@ -116,7 +114,7 @@ require_once 'authentication.php';
                             </li>
                         </ul>
                     </li>
-					<li class="nav-item nav-dropdown" ng-show="profile.pages_access[7].value">
+					<li class="nav-item nav-dropdown" ng-show="profile.pages_access.groups.value">
                         <a href="#" class="nav-link nav-dropdown-toggle">
                             <i class="icon icon-list"></i>Groups <i class="fa fa-caret-left"></i>
                         </a>
@@ -134,7 +132,7 @@ require_once 'authentication.php';
                             </li>
                         </ul>
                     </li>
-					<li class="nav-item nav-dropdown" ng-show="profile.pages_access[8].value">
+					<li class="nav-item nav-dropdown" ng-show="profile.pages_access.maintenance.value">
                         <a href="#" class="nav-link nav-dropdown-toggle active">
                             <i class="icon icon-support"></i>Maintenance <i class="fa fa-caret-left"></i>
                         </a>
@@ -236,12 +234,16 @@ require_once 'authentication.php';
 <script src="vendor/bootbox/bootbox.min.js"></script>
 <script src="vendor/growl/jquery.bootstrap-growl.min.js"></script>
 <script src="vendor/blockui/jquery.blockUI.js"></script>
+
 <script src="angular/angular.min.js"></script>
 <script src="angular/angular-route.min.js"></script>
+<script src="angular/angular-sanitize.min.js"></script>
 <script src="angular/ui-bootstrap-tpls-3.0.2.min.js"></script>
+
 <!-- modules -->
 <script src="modules/bootstrap-modal.js"></script>
 <script src="modules/account.js"></script>
+<script src="modules/notifications.js"></script>
 <script src="modules/module-access.js"></script>
 <script src="modules/validate.js"></script>
 <script src="modules/blockui.js"></script>

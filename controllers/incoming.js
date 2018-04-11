@@ -8,6 +8,13 @@ app.controller('incomingCtrl',function($scope,app) {
 
 	$scope.app.list($scope);
 	
+	$scope.module = {
+		id: 'incoming',
+		privileges: {
+
+		}
+	};
+	
 });
 
 app.filter('pagination', function() {

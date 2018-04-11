@@ -8,4 +8,11 @@ app.controller('archivesCtrl',function($scope,app) {
 
 	$scope.app.list($scope);
 	
+	$scope.module = {
+		id: 'archives',
+		privileges: {
+
+		}
+	};	
+	
 });

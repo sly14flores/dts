@@ -1,6 +1,6 @@
-angular.module('app-module', ['form-validator','bootstrap-modal','jspdf-module','upload-files','block-ui','module-access']).factory('app', function($http,$timeout,$window,validate,bootstrapModal,jspdf,uploadFiles,bui,access) {
+angular.module('app-module', ['form-validator','bootstrap-modal','jspdf-module','upload-files','block-ui','module-access','notifications-module']).factory('app', function($http,$timeout,$window,validate,bootstrapModal,jspdf,uploadFiles,bui,access) {
 	
-	function app() {		
+	function app() {
 
 		var self = this;
 
@@ -122,9 +122,15 @@ angular.module('app-module', ['form-validator','bootstrap-modal','jspdf-module',
 		};
 		
 		
-		self.save = function(scope) {			
+		self.save = function(scope) {		
 		
 			uploadFiles.start(scope, function() {				
+
+				/* if (scope.doc.files.length == 0) {
+					
+					return;
+					
+				}; */
 				
 				if (validate.form(scope,'doc')) return;
 					

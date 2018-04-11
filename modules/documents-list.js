@@ -1,4 +1,4 @@
-angular.module('app-module', ['form-validator','ui.bootstrap','bootstrap-modal','window-open-post']).factory('app', function($http,$timeout,$window,validate,bootstrapModal,printPost,bootstrapModal) {
+angular.module('app-module', ['form-validator','ui.bootstrap','bootstrap-modal','window-open-post','notifications-module']).factory('app', function($http,$timeout,$window,validate,bootstrapModal,printPost,bootstrapModal) {
 	
 	function app() {
 
