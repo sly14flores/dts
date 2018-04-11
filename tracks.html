@@ -31,12 +31,10 @@ require_once 'authentication.php';
         </a>
 
         <ul class="navbar-nav ml-auto">
-            <!-- <li class="nav-item d-md-down-none">
-                <a href="#">
-                    <i class="fa fa-bell"></i>
-                    <span class="badge badge-pill badge-danger">5</span>
-                </a>
-            </li> -->
+            <li class="nav-item d-md-down-none">
+                <a class="nav-link dropdown-toggle" href="javascript:;" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-bell"></i><span class="badge badge-pill badge-danger">{{(notifications.count)?notifications.count:""}}</span></a>
+				<div notifications></div>
+            </li>
             <li class="nav-item dropdown" account-profile>
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <img src="{{profile.picture}}" class="avatar avatar-sm" alt="logo">
@@ -196,10 +194,13 @@ require_once 'authentication.php';
 
 <script src="angular/angular.min.js"></script>
 <script src="angular/angular-route.min.js"></script>
+<script src="angular/angular-sanitize.min.js"></script>
 <script src="angular/ui-bootstrap-tpls-3.0.2.min.js"></script>
+
 <!-- modules -->
 <script src="modules/bootstrap-modal.js"></script>
 <script src="modules/account.js"></script>
+<script src="modules/notifications.js"></script>
 <script src="modules/validate.js"></script>
 <script src="modules/tracks.js"></script>
 <!-- controller -->

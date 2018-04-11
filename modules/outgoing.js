@@ -1,4 +1,4 @@
-angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post']).factory('app', function($http,$timeout,$window,bootstrapModal,printPost) {
+angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post','notifications-module']).factory('app', function($http,$timeout,$window,bootstrapModal,printPost) {
 	
 	function app() {
 

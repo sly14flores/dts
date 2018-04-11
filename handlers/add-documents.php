@@ -4,10 +4,19 @@ $_POST = json_decode(file_get_contents('php://input'), true);
 
 require_once '../db.php';
 require_once 'folder-files.php';
+require_once 'notify.php';
 
 $con = new pdo_db("documents");
 
 session_start();
+
+$staff = $con->getData("SELECT CONCAT(fname, ' ', lname) fullname FROM users WHERE id = ".$_SESSION['id']);
+
+# for notification
+
+$doc_type = $_POST['doc_type']['document_type'];
+
+#
 
 $com = $_POST['communication']['shortname'];
 $office = $_POST['origin']['shortname'];
@@ -60,21 +69,39 @@ if ($_POST['id']) { # update
 	# first track
 	if ( (isset($id)) && ($id) ) {
 
-		$initial_track_office = $con->getData("SELECT id FROM offices WHERE is_initial_track = 1");
-		$track_office = (count($initial_track_office))?$initial_track_office[0]['id']:0;		
-
+		$initial_track_office = $con->getData("SELECT id, office FROM offices WHERE is_initial_track = 1");
+		$track_office = (count($initial_track_office))?$initial_track_office[0]['id']:0;
+		$track_office_name = (count($initial_track_office))?$initial_track_office[0]['office']:"";
+		
+		$track_date = date("Y-m-d H:i:s");
+		
 		$track = array(
 			"document_id"=>$id,
 			"document_status"=>"Received", # document status
 			"document_status_user"=>$_SESSION['id'],			
 			"document_tracks_status"=>"transaction", # tracks status
 			"track_office"=>$track_office,			
-			"track_date"=>"CURRENT_TIMESTAMP",
+			"track_date"=>$track_date,
 			"route_office"=>$track_office,
 		);
 
 		$con->table = "tracks";
 		$first_track = $con->insertData($track);
+
+		# notification
+		$notifications = [];
+
+		# notify origin user
+		$notifications[] = array(
+			"doc_id"=>$id,
+			"office_id"=>$_POST['origin'],
+			"notification_type"=>"outgoing",
+			"message"=>"$doc_type with subject: <strong>".$_POST['doc_name']."</strong> was received at $track_office_name<br>by ".$staff[0]['fullname']."  on ".date("F j, Y h:i A",strtotime($track_date))
+		);
+
+		notify($con,$notifications);
+
+		#
 
 	};
 	#

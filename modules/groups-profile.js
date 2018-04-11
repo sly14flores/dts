@@ -1,4 +1,4 @@
-angular.module('app-module', ['form-validator','bootstrap-modal','ui.bootstrap','ngRoute','module-access']).config(function($routeProvider) {
+angular.module('app-module', ['form-validator','bootstrap-modal','ui.bootstrap','ngRoute','module-access','notifications-module']).config(function($routeProvider) {
     $routeProvider
         .when('/:option/:id', {
             templateUrl: 'groups-add.html'
