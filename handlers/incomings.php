@@ -8,9 +8,9 @@ session_start();
 
 $con = new pdo_db("tracks");
 
-$filter = "WHERE tracks.route_office = ".$_SESSION['office']." AND document_tracks_status = 'for_pick_up' OR document_tracks_status = 'incoming' OR document_tracks_status = 'transaction' OR document_tracks_status = 'filed'";
+$filter = "WHERE tracks.track_office = ".$_SESSION['office']." OR tracks.route_office = ".$_SESSION['office']." AND document_tracks_status = 'for_pick_up' AND document_tracks_status = 'incoming' AND document_tracks_status = 'transaction'";
 
-$sql = "SELECT documents.id, documents.barcode, documents.doc_name, tracks.document_status, tracks.document_status_user, tracks.document_tracks_status, tracks.track_office, tracks.route_user, tracks.track_date, tracks.track_option, tracks.remarks, (SELECT document_types.document_type FROM document_types WHERE document_types.id = documents.doc_type) doc_type, (SELECT offices.office FROM offices WHERE offices.id = documents.origin) origin, (SELECT transactions.transaction FROM transactions WHERE transactions.id = documents.document_transaction_type) document_transaction_type FROM documents LEFT JOIN tracks ON documents.id = tracks.document_id {$filter}ORDER BY tracks.track_date DESC LIMIT 1";
+$sql = "SELECT documents.id, documents.barcode, documents.doc_name, tracks.document_status, tracks.document_status_user, tracks.document_tracks_status, tracks.track_office, tracks.route_user, tracks.track_date, tracks.track_option, tracks.remarks, (SELECT document_types.document_type FROM document_types WHERE document_types.id = documents.doc_type) doc_type, (SELECT offices.office FROM offices WHERE offices.id = documents.origin) origin, (SELECT transactions.transaction FROM transactions WHERE transactions.id = documents.document_transaction_type) document_transaction_type FROM documents LEFT JOIN tracks ON documents.id = tracks.document_id {$filter} ORDER BY tracks.track_date DESC LIMIT 1";
 $incomings = $con->getData($sql);
 
 $response = [];
