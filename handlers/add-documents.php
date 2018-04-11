@@ -72,7 +72,7 @@ if ($_POST['id']) { # update
 	# first track
 	if ( (isset($id)) && ($id) ) {
 
-		$initial_track_office = $con->getData("SELECT id, office FROM offices WHERE id = ".getAssignmentId($assignments['office'],1,"office"));
+		$initial_track_office = $con->getData("SELECT id, office FROM offices WHERE id IN ".getAssignmentIds($assignments['office'],1,"office"));
 		$track_office = (count($initial_track_office))?$initial_track_office[0]['id']:0;
 		$track_office_name = (count($initial_track_office))?$initial_track_office[0]['office']:"";
 		
@@ -94,8 +94,8 @@ if ($_POST['id']) { # update
 		$notifications = [];
 
 		# notify liaison officers
-		$liaisons = $con->getData("SELECT id FROM users WHERE div_id = ".$_POST['origin']." AND group_id = ".getAssignmentId($assignments['group'],1,"group"));
-		
+		$liaisons = $con->getData("SELECT id FROM users WHERE div_id = ".$_POST['origin']." AND group_id IN ".getAssignmentIds($assignments['group'],1,"group"));
+
 		foreach ($liaisons as $liaison) {			
 			$notifications[] = array(
 				"doc_id"=>$id,
@@ -103,7 +103,7 @@ if ($_POST['id']) { # update
 				"notification_type"=>"outgoing",
 				"message"=>"$doc_type with subject: <strong>".$_POST['doc_name']."</strong> was received at $track_office_name<br>by ".$staff[0]['fullname']."  on ".date("F j, Y h:i A",strtotime($track_date))
 			);
-		};		
+		};	
 
 		# notification for transaction
 		$notifications[] = array(
