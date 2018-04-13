@@ -154,3 +154,69 @@ Stack trace:
 #1 C:\UwAmp310\www\dts\handlers\notifications.php(22): pdo_db->getData('SELECT id, mess...')
 #2 {main}
   thrown in C:\UwAmp310\www\dts\db.php on line 42
+[13-Apr-2018 08:18:52 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'dts.notifications' doesn't exist in C:\UwAmp310\www\dts\db.php:42
+Stack trace:
+#0 C:\UwAmp310\www\dts\db.php(42): PDO->query('SELECT id, mess...')
+#1 C:\UwAmp310\www\dts\handlers\notifications.php(22): pdo_db->getData('SELECT id, mess...')
+#2 {main}
+  thrown in C:\UwAmp310\www\dts\db.php on line 42
+[13-Apr-2018 08:18:54 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'dts.notifications' doesn't exist in C:\UwAmp310\www\dts\db.php:42
+Stack trace:
+#0 C:\UwAmp310\www\dts\db.php(42): PDO->query('SELECT id, mess...')
+#1 C:\UwAmp310\www\dts\handlers\notifications.php(22): pdo_db->getData('SELECT id, mess...')
+#2 {main}
+  thrown in C:\UwAmp310\www\dts\db.php on line 42
+[13-Apr-2018 08:18:56 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'dts.notifications' doesn't exist in C:\UwAmp310\www\dts\db.php:42
+Stack trace:
+#0 C:\UwAmp310\www\dts\db.php(42): PDO->query('SELECT id, mess...')
+#1 C:\UwAmp310\www\dts\handlers\notifications.php(22): pdo_db->getData('SELECT id, mess...')
+#2 {main}
+  thrown in C:\UwAmp310\www\dts\db.php on line 42
+[13-Apr-2018 08:18:58 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'dts.notifications' doesn't exist in C:\UwAmp310\www\dts\db.php:42
+Stack trace:
+#0 C:\UwAmp310\www\dts\db.php(42): PDO->query('SELECT id, mess...')
+#1 C:\UwAmp310\www\dts\handlers\notifications.php(22): pdo_db->getData('SELECT id, mess...')
+#2 {main}
+  thrown in C:\UwAmp310\www\dts\db.php on line 42
+[13-Apr-2018 08:19:00 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'dts.notifications' doesn't exist in C:\UwAmp310\www\dts\db.php:42
+Stack trace:
+#0 C:\UwAmp310\www\dts\db.php(42): PDO->query('SELECT id, mess...')
+#1 C:\UwAmp310\www\dts\handlers\notifications.php(22): pdo_db->getData('SELECT id, mess...')
+#2 {main}
+  thrown in C:\UwAmp310\www\dts\db.php on line 42
+[13-Apr-2018 08:19:02 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'dts.notifications' doesn't exist in C:\UwAmp310\www\dts\db.php:42
+Stack trace:
+#0 C:\UwAmp310\www\dts\db.php(42): PDO->query('SELECT id, mess...')
+#1 C:\UwAmp310\www\dts\handlers\notifications.php(22): pdo_db->getData('SELECT id, mess...')
+#2 {main}
+  thrown in C:\UwAmp310\www\dts\db.php on line 42
+[13-Apr-2018 08:19:04 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'dts.notifications' doesn't exist in C:\UwAmp310\www\dts\db.php:42
+Stack trace:
+#0 C:\UwAmp310\www\dts\db.php(42): PDO->query('SELECT id, mess...')
+#1 C:\UwAmp310\www\dts\handlers\notifications.php(22): pdo_db->getData('SELECT id, mess...')
+#2 {main}
+  thrown in C:\UwAmp310\www\dts\db.php on line 42
+[13-Apr-2018 08:19:06 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'dts.notifications' doesn't exist in C:\UwAmp310\www\dts\db.php:42
+Stack trace:
+#0 C:\UwAmp310\www\dts\db.php(42): PDO->query('SELECT id, mess...')
+#1 C:\UwAmp310\www\dts\handlers\notifications.php(22): pdo_db->getData('SELECT id, mess...')
+#2 {main}
+  thrown in C:\UwAmp310\www\dts\db.php on line 42
+[13-Apr-2018 08:19:08 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'dts.notifications' doesn't exist in C:\UwAmp310\www\dts\db.php:42
+Stack trace:
+#0 C:\UwAmp310\www\dts\db.php(42): PDO->query('SELECT id, mess...')
+#1 C:\UwAmp310\www\dts\handlers\notifications.php(22): pdo_db->getData('SELECT id, mess...')
+#2 {main}
+  thrown in C:\UwAmp310\www\dts\db.php on line 42
+[13-Apr-2018 08:19:10 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'dts.notifications' doesn't exist in C:\UwAmp310\www\dts\db.php:42
+Stack trace:
+#0 C:\UwAmp310\www\dts\db.php(42): PDO->query('SELECT id, mess...')
+#1 C:\UwAmp310\www\dts\handlers\notifications.php(22): pdo_db->getData('SELECT id, mess...')
+#2 {main}
+  thrown in C:\UwAmp310\www\dts\db.php on line 42
+[13-Apr-2018 08:19:12 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'dts.notifications' doesn't exist in C:\UwAmp310\www\dts\db.php:42
+Stack trace:
+#0 C:\UwAmp310\www\dts\db.php(42): PDO->query('SELECT id, mess...')
+#1 C:\UwAmp310\www\dts\handlers\notifications.php(22): pdo_db->getData('SELECT id, mess...')
+#2 {main}
+  thrown in C:\UwAmp310\www\dts\db.php on line 42
