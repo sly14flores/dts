@@ -19,9 +19,9 @@ $response = array(
 	"incoming"=>[],
 );
 
-$outgoing = $con->getData("SELECT id, message, system_log FROM notifications WHERE dismiss = 0 AND notification_type = 'outgoing' AND office_id = ".$_SESSION['office']);
-$transaction = $con->getData("SELECT id, message, system_log FROM notifications WHERE dismiss = 0 AND notification_type = 'transaction' AND office_id = ".$_SESSION['office']);
-$incoming = $con->getData("SELECT id, message, system_log FROM notifications WHERE dismiss = 0 AND notification_type = 'incoming' AND office_id = ".$_SESSION['office']);
+$outgoing = $con->getData("SELECT id, message, system_log FROM notifications WHERE dismiss = 0 AND notification_type = 'outgoing' AND user_id = ".$_SESSION['id']." ORDER BY system_log DESC");
+$transaction = $con->getData("SELECT id, message, system_log FROM notifications WHERE dismiss = 0 AND notification_type = 'transaction' AND user_id = ".$_SESSION['id']." ORDER BY system_log DESC");
+$incoming = $con->getData("SELECT id, message, system_log FROM notifications WHERE dismiss = 0 AND notification_type = 'incoming' AND user_id = ".$_SESSION['id']." ORDER BY system_log DESC");
 
 $response['count'] = count($outgoing)+count($transaction)+count($incoming);
 $response['outgoing'] = $outgoing;

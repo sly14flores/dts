@@ -1,7 +1,7 @@
 <div class="dropdown-menu dropdown-menu-right">
 	<div class="dropdown-header" ng-show="notifications.count == 0">No new notifications</div>
 	<div ng-show="notifications.outgoing.length">
-		<div class="dropdown-header">Outgoing</div>
+		<div class="dropdown-header">Outgoing <strong>({{notifications.outgoing.length}})</strong></div>
 		<div class="dropdown-item" ng-repeat="n in notifications.outgoing">
 			<div class="alert alert-dismissible alert-info">
 				<p ng-bind-html="n.message" style="line-height: 175%;"></p>
@@ -12,7 +12,7 @@
 		</div>
 	</div>
 	<div ng-show="notifications.transaction.length">
-		<div class="dropdown-header">For Action</div>
+		<div class="dropdown-header">For Action <strong>({{notifications.transaction.length}})</strong></div>
 		<div class="dropdown-item" ng-repeat="n in notifications.transaction">
 			<div class="alert alert-dismissible alert-danger">
 				<p ng-bind-html="n.message" style="line-height: 175%;"></p>
@@ -23,7 +23,7 @@
 		</div>
 	</div>	
 	<div ng-show="notifications.incoming.length">
-		<div class="dropdown-header">Incoming</div>
+		<div class="dropdown-header">Incoming <strong>({{notifications.incoming.length}})</strong></div>
 		<div class="dropdown-item" ng-repeat="n in notifications.incoming">
 			<div class="alert alert-dismissible alert-success">
 				<p ng-bind-html="n.message" style="line-height: 175%;"></p>

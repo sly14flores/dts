@@ -33,7 +33,7 @@ foreach ($tracks as $i => $track) {
 
 	if ($track['document_tracks_status'] == "for_pick_up") {
 		$route_office = $con->getData("SELECT id, office FROM offices WHERE id = ".$track['route_office']);		
-		$status = $document_status." and for pick up for ".$route_office[0]['office']." on ".$tracks[$i]['track_date_f']." ".$tracks[$i]['track_time_f'];
+		$status = "For pick up for ".$route_office[0]['office']." on ".$tracks[$i]['track_date_f']." ".$tracks[$i]['track_time_f'];
 	};
 
 	if ($track['document_tracks_status'] == "incoming") {
