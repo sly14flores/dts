@@ -14,7 +14,7 @@ $con = new pdo_db("tracks");
 
 $document_status = NULL;
 $document_tracks_status = "transaction";
-$track_office = $_POST['track_office'];
+$track_office = $_POST['route_office'];
 $track_option = NULL;
 $route_office = NULL;
 $route_user = NULL;
@@ -35,7 +35,8 @@ switch ($_POST['action']) {
 	case "Flag":
 	
 		$track_option = getOption($_POST['options']);
-
+		$route_office = $_POST['route_office'];
+		
 		# liaisons
 		$liaisons = $con->getData("SELECT id FROM users WHERE div_id = ".$document_origin[0]['origin']." AND group_id IN ".getAssignmentIds($assignments['group'],1,"group"));
 		foreach ($liaisons as $liaison) {
@@ -61,7 +62,6 @@ switch ($_POST['action']) {
 			);
 
 		};		
-		
 
 	break;
 
@@ -84,7 +84,20 @@ switch ($_POST['action']) {
 			);
 
 		};
+		
+		# AOs
+		$aos = $con->getData("SELECT id FROM users WHERE div_id = ".$track_office." AND group_id IN ".getAssignmentIds($assignments['group'],2,"group"));
+		foreach ($aos as $ao) {
 
+			$notifications[] = array(
+				"doc_id"=>$_POST['id'],
+				"user_id"=>$ao['id'],
+				"notification_type"=>"outgoing",
+				"message"=>$_POST['doc_type']." with subject: <strong>".$_POST['doc_name']."</strong> was marked ready for pick up by ".$staff[0]['fullname']." at $track_office_name<br>Date: ".date("F j, Y",strtotime($track_date))."<br>Time: ".date("h:i A",strtotime($track_date))
+			);
+
+		};	
+		
 	break;
 
 	case "Release":
@@ -110,6 +123,19 @@ switch ($_POST['action']) {
 
 		};
 
+		# AOs
+		$aos = $con->getData("SELECT id FROM users WHERE div_id = ".$track_office." AND group_id IN ".getAssignmentIds($assignments['group'],2,"group"));
+		foreach ($aos as $ao) {
+
+			$notifications[] = array(
+				"doc_id"=>$_POST['id'],
+				"user_id"=>$ao['id'],
+				"notification_type"=>"outgoing",
+				"message"=>$_POST['doc_type']." with subject: <strong>".$_POST['doc_name']."</strong> was picked up<br>by ".$pick_up_by[0]['fullname']." at $track_office_name on ".date("F j, Y h:i A",strtotime($track_date))
+			);
+
+		};
+		
 	break;
 
 	case "File":

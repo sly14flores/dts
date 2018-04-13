@@ -8,9 +8,9 @@ session_start();
 
 $con = new pdo_db("tracks");
 
-$filter = (isset($_POST['filter']))?" AND documents.barcode LIKE '%".$_POST['filter']."%'":"";
+$filter = (isset($_POST['filter']))?" WHERE documents.id = ".$_POST['id']." AND documents.barcode LIKE '%".$_POST['filter']."%'":"";
 
-$documents = $con->getData("SELECT DISTINCT documents.id, documents.barcode FROM documents LEFT JOIN tracks ON documents.id = tracks.document_id WHERE tracks.route_office = ".$_SESSION['office'].$filter);
+$documents = $con->getData("SELECT documents.id, documents.barcode FROM documents".$filter);
 
 echo json_encode($documents);
 

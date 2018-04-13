@@ -8,12 +8,11 @@ session_start();
 
 $con = new pdo_db("tracks");
 
-$filter = "WHERE tracks.route_office = ".$_SESSION['office']." AND document_tracks_status = 'transaction'";
+$filter = "WHERE documents.id = ".$_POST['id'];
 
 $sql = "SELECT documents.id, documents.barcode, documents.doc_name, documents.document_date, tracks.document_status, tracks.document_status_user, tracks.document_tracks_status, tracks.track_office, tracks.track_date, tracks.remarks, tracks.track_option, tracks.route_office, tracks.route_user, (SELECT document_types.document_type FROM document_types WHERE document_types.id = documents.doc_type) doc_type, (SELECT offices.office FROM offices WHERE offices.id = documents.origin) origin, (SELECT transactions.transaction FROM transactions WHERE transactions.id = documents.document_transaction_type) document_transaction_type FROM documents LEFT JOIN tracks ON documents.id = tracks.document_id {$filter} ORDER BY tracks.track_date DESC LIMIT 1";
-$documents = $con->getData($sql);
 
-$response = [];
+$documents = $con->getData($sql);
 
 foreach ($documents as $i => $document) {
 
@@ -44,10 +43,8 @@ foreach ($documents as $i => $document) {
 	$documents[$i]['track_date'] = date("F j, Y h:i A",strtotime($document['track_date']));
 	$documents[$i]['document_date'] = date("F j, Y",strtotime($document['document_date']));
 
-	if ($document['document_tracks_status'] != "filed") $response[] = $documents[$i];
-
 };
 
-echo json_encode($response);
+echo json_encode($documents[0]);
 
 ?>

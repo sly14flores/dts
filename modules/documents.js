@@ -1,4 +1,8 @@
-angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post','notifications-module']).factory('app', function($http,$timeout,$window,bootstrapModal,printPost) {
+angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post','notifications-module','ngRoute']).config(function($routeProvider) {
+    $routeProvider.when('/:option/:id', {
+        templateUrl: 'transact.html'
+    });	
+}).factory('app', function($http,$timeout,$window,bootstrapModal,printPost,$routeParams,$location) {
 	
 	function app() {
 
@@ -27,6 +31,34 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 				
 			});			
 
+			scope.$on('$routeChangeSuccess', function() {
+
+				if ($routeParams.option != undefined) {
+					
+					if ($routeParams.id != undefined) {
+						
+						$timeout(function() {
+							
+							$http({
+							  method: 'POST',
+							  url: 'handlers/document.php',
+							  data: {id: $routeParams.id}
+							}).then(function mySuccess(response) {
+
+								self.activity(scope,response.data);
+
+							}, function myError(response) {
+								
+							});								
+							
+						}, 1000);
+
+					};
+					
+				};			
+
+			});
+			
 		};
 		
 		function validate(scope,form) {

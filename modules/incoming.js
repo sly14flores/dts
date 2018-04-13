@@ -1,4 +1,8 @@
-angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post','notifications-module']).factory('app', function($http,$timeout,$window,bootstrapModal,printPost) {
+angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post','notifications-module','ngRoute']).config(function($routeProvider) {
+    $routeProvider.when('/:option/:id', {
+        templateUrl: 'incoming.html'
+    });	
+}).factory('app', function($http,$timeout,$window,bootstrapModal,printPost,$routeParams,$location) {
 	
 	function app() {
 
@@ -24,7 +28,35 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 				
 				$timeout(function() { $('[data-toggle="tooltip"]').tooltip(); },500);
 				
-			});	
+			});
+			
+			scope.$on('$routeChangeSuccess', function() {
+
+				if ($routeParams.option != undefined) {
+					
+					if ($routeParams.id != undefined) {
+						
+						$timeout(function() {
+							
+							$http({
+							  method: 'POST',
+							  url: 'handlers/incoming.php',
+							  data: {id: $routeParams.id}
+							}).then(function mySuccess(response) {
+
+								self.receive(scope,response.data);
+
+							}, function myError(response) {
+								
+							});								
+							
+						}, 1000);
+
+					};
+					
+				};			
+
+			});
 		
 		};
 
@@ -73,14 +105,14 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 			
 		};
 
-		function barcodeAsyncSuggest(scope) {
+		function barcodeAsyncSuggest(scope,doc) {
 
 			scope.barcodeAsyncSuggest = function(f) {
 				
 				return $http({
 				  method: 'POST',
 				  url: 'handlers/barcode-async-suggest.php',
-				  data: {filter: f}
+				  data: {id: doc.id, filter: f}
 				}).then(function mySucces(response) {
 					
 					return response.data;
@@ -98,7 +130,7 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 
 		self.receive = function(scope,doc) {
 
-			barcodeAsyncSuggest(scope);
+			barcodeAsyncSuggest(scope,doc);
 		
 			title = 'Receive '+doc.doc_type;
 

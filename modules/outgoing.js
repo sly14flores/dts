@@ -1,4 +1,8 @@
-angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post','notifications-module']).factory('app', function($http,$timeout,$window,bootstrapModal,printPost) {
+angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post','notifications-module','ngRoute']).config(function($routeProvider) {
+    $routeProvider.when('/:option/:id', {
+        templateUrl: 'outgoing.html'
+    });	
+}).factory('app', function($http,$timeout,$window,$routeParams,$location,bootstrapModal,printPost) {
 	
 	function app() {
 
@@ -25,6 +29,34 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 				$timeout(function() { $('[data-toggle="tooltip"]').tooltip(); },500);
 				
 			});
+
+			scope.$on('$routeChangeSuccess', function() {
+
+				if ($routeParams.option != undefined) {
+					
+					if ($routeParams.id != undefined) {
+						
+						$timeout(function() {
+							
+							$http({
+							  method: 'POST',
+							  url: 'handlers/outgoing.php',
+							  data: {id: $routeParams.id}
+							}).then(function mySuccess(response) {
+
+								self.tracks(scope,response.data);
+
+							}, function myError(response) {
+								
+							});								
+							
+						}, 1000);
+
+					};
+					
+				};			
+
+			});			
 		
 		};
 		
@@ -99,7 +131,7 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 
 			};
 
-			bootstrapModal.box2(scope,title,'dialogs/outgoing-tracks.html',onOk);
+			bootstrapModal.box3(scope,title,'dialogs/outgoing-tracks.html',onOk);
 
 		};
 

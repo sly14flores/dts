@@ -60,7 +60,7 @@ angular.module('app-module', ['form-validator','bootstrap-modal','notifications-
 
 			};
 
-			bootstrapModal.box2(scope,title,'dialogs/archive.html',onOk);			
+			bootstrapModal.box3(scope,title,'dialogs/archive.html',onOk);			
 			
 		};
 
