@@ -156,7 +156,8 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 
 			};
 
-			bootstrapModal.box2(scope,title,'dialogs/outgoing-tracks.html',onOk);
+			if (outgoing.document_tracks_status == 'for_pick_up') bootstrapModal.box2(scope,title,'dialogs/outgoing-tracks.html',onOk);
+			else bootstrapModal.box3(scope,title,'dialogs/outgoing-tracks.html',onOk);
 
 		};
 		

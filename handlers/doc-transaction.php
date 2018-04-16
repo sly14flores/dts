@@ -27,12 +27,14 @@ $track_date = date("Y-m-d H:i:s");
 $staff = $con->getData("SELECT CONCAT(fname, ' ', lname) fullname FROM users WHERE id = ".$_SESSION['id']);
 
 $document_origin = $con->getData("SELECT origin FROM documents WHERE id = ".$_POST['id']);
-$get_track_office = $con->getData("SELECT id, office FROM offices WHERE id = $track_office");
-$track_office_name = $get_track_office[0]['office'];
+
 
 switch ($_POST['action']) {
 
 	case "Flag":
+	
+		$get_track_office = $con->getData("SELECT id, office FROM offices WHERE id = $track_office");
+		$track_office_name = $get_track_office[0]['office'];	
 	
 		$track_option = getOption($_POST['options']);
 		$route_office = $_POST['route_office'];
@@ -67,6 +69,9 @@ switch ($_POST['action']) {
 
 	case "Forward":
 
+		$get_track_office = $con->getData("SELECT id, office FROM offices WHERE id = $track_office");
+		$track_office_name = $get_track_office[0]['office'];	
+	
 		$document_status = "Forward";
 		$document_tracks_status = "for_pick_up";
 		$route_office = $_POST['next']['route_office']['id'];
@@ -102,6 +107,9 @@ switch ($_POST['action']) {
 
 	case "Release":
 
+		$get_track_office = $con->getData("SELECT id, office FROM offices WHERE id = $track_office");
+		$track_office_name = $get_track_office[0]['office'];	
+	
 		$document_status = "Release";
 		$document_tracks_status = "incoming";
 		$route_office = $_POST['next']['route_office']['id'];
@@ -139,13 +147,17 @@ switch ($_POST['action']) {
 	break;
 
 	case "File":
+		
+		$track_office = $_POST['track_office'];
+		
+		$get_track_office = $con->getData("SELECT id, office FROM offices WHERE id = $track_office");
+		$track_office_name = $get_track_office[0]['office'];	
 
 		$document_status = "Filed";
 		$document_tracks_status = "filed";
 		$track_option = $_POST['track_option'];
 
 		$file_by = $con->getData("SELECT CONCAT(fname, ' ', lname) fullname FROM users WHERE id = ".$_SESSION['id']);		
-		
 		$file_office = $con->getData("SELECT id, office FROM offices WHERE id = ".$_SESSION['office']);
 		$file_office_name = $file_office[0]['office'];		
 		
