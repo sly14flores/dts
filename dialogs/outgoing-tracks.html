@@ -61,4 +61,37 @@
 		</table>		
 	</div>	
 </div>
+<div class="row" ng-show="activity.document_tracks_status == 'for_pick_up'">
+	<div class="col-md-4">
+		<div class="form-group">
+			<label class="form-control-label"><strong>Action</strong></label>
+			<select class="form-control" ng-class="{'is-invalid': formHolder.activity.action.$touched && formHolder.activity.action.$invalid}" name="action" ng-model="activity.action" required>
+				<option value="Release">Release actual document</option>
+			</select>
+			<div class="invalid-feedback">Please select action</div>		
+		</div>
+	</div>
+</div>
+<div class="row" ng-show="activity.action == 'Forward' || activity.action == 'Release'">
+	<div class="col-md-4">
+		<div class="form-group">
+			<label class="form-control-label"><strong>Office</strong></label>
+			<select class="form-control" ng-class="{'is-invalid': formHolder.activity.route_office.$touched && formHolder.activity.route_office.$invalid}" name="route_office" ng-model="activity.next.route_office" ng-options="o.office for o in offices track by o.id" ng-change="staffs = activity.next.route_office.staffs" ng-required="activity.action == 'Forward' || activity.action == 'Release'"></select>
+			<div class="invalid-feedback">Please select destination office</div>
+		</div>
+	</div>
+	<div class="col-md-4" ng-show="activity.action == 'Release'">
+		<div class="form-group">
+			<label class="form-control-label"><strong>Staff</strong></label>
+			<select class="form-control" ng-class="{'is-invalid': formHolder.activity.route_user.$touched && formHolder.activity.route_user.$invalid}" name="route_user" ng-model="activity.next.route_user" ng-options="staff.fullname for staff in staffs track by staff.id" ng-required="activity.action == 'Release'"></select>
+			<div class="invalid-feedback">Please select staff</div>
+		</div>
+	</div>	
+	<div class="col-md-4">
+		<div class="form-group">
+			<label class="form-control-label"><strong>Remarks</strong></label>
+			<input type="text" class="form-control" ng-model="activity.next.remarks">
+		</div>
+	</div>		
+</div>
 </form>

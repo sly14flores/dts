@@ -24,6 +24,7 @@ $track = array(
 );
 
 $con->insertData($track);
+$track_id = $con->insertId;
 
 # notify
 
@@ -39,6 +40,7 @@ foreach ($liaisons as $liaison) {
 	$notifications[] = array(
 		"doc_id"=>$_POST['id'],
 		"user_id"=>$liaison['id'],
+		"track_id"=>intval($track_id),
 		"notification_type"=>"incoming",
 		"message"=>$_POST['doc_type']." with subject: <strong>".$_POST['doc_name']."</strong> was received at ".$office[0]['office']."<br>by ".$receive_by[0]['fullname']."  on ".date("F j, Y h:i A",strtotime($track_date))
 	);

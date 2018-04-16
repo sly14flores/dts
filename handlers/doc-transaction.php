@@ -219,9 +219,13 @@ function getOptionDescription($options,$track_option) {
 };
 
 $con->insertData($track);
+$track_id = $con->insertId;
 
 # notify
 if (count($notifications)) {
+	foreach ($notifications as $i => $notification) {
+		$notifications[$i]['track_id'] = intval($track_id);
+	};
 	notify($con,$notifications);	
 };
 

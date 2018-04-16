@@ -59,7 +59,7 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 			});			
 		
 		};
-		
+
 		function validate(scope,form) {
 			
 			var controls = scope.formHolder[form].$$controls;
@@ -111,6 +111,11 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 
 			scope.activity = angular.copy(outgoing);			
 
+			scope.activity.next = {};
+			offices(scope);
+
+			scope.staffs = [];	
+			
 			$http({
 			  method: 'POST',
 			  url: 'handlers/doc-activity.php',
@@ -129,10 +134,48 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 
 			var onOk = function() {
 
+				if (validate(scope,'activity')) return false;				
+				
+				scope.activity.options = scope.options;
+				
+				$http({
+				  method: 'POST',
+				  url: 'handlers/doc-transaction.php',
+				  data: scope.activity
+				}).then(function mySuccess(response) {
+
+					self.list(scope);
+
+				}, function myError(response) {
+					
+					//
+					
+				});
+
+				return true;
+
 			};
 
-			bootstrapModal.box3(scope,title,'dialogs/outgoing-tracks.html',onOk);
+			bootstrapModal.box2(scope,title,'dialogs/outgoing-tracks.html',onOk);
 
+		};
+		
+		function offices(scope) {
+
+			scope.offices = [];
+		
+			$http({
+				method: 'GET',
+				url: 'handlers/offices.php'
+			}).then(function mySuccess(response) {
+				
+				scope.offices = angular.copy(response.data);
+					
+			}, function myError(response) {
+				
+		
+			});			
+		
 		};
 
 	};

@@ -19,9 +19,9 @@ $response = array(
 	"incoming"=>[],
 );
 
-$outgoing = $con->getData("SELECT id, doc_id, message, system_log FROM notifications WHERE dismiss = 0 AND notification_type = 'outgoing' AND user_id = ".$_SESSION['id']." ORDER BY system_log DESC");
-$transaction = $con->getData("SELECT id, doc_id, message, system_log FROM notifications WHERE dismiss = 0 AND notification_type = 'transaction' AND user_id = ".$_SESSION['id']." ORDER BY system_log DESC");
-$incoming = $con->getData("SELECT id, doc_id, message, system_log FROM notifications WHERE dismiss = 0 AND notification_type = 'incoming' AND user_id = ".$_SESSION['id']." ORDER BY system_log DESC");
+$outgoing = $con->getData("SELECT notifications.id, notifications.doc_id, notifications.message, notifications.system_log, tracks.document_tracks_status FROM notifications LEFT JOIN tracks ON notifications.track_id = tracks.id WHERE dismiss = 0 AND notification_type = 'outgoing' AND user_id = ".$_SESSION['id']." ORDER BY system_log DESC");
+$transaction = $con->getData("SELECT notifications.id, notifications.doc_id, notifications.message, notifications.system_log, tracks.document_tracks_status FROM notifications LEFT JOIN tracks ON notifications.track_id = tracks.id WHERE dismiss = 0 AND notification_type = 'transaction' AND user_id = ".$_SESSION['id']." ORDER BY system_log DESC");
+$incoming = $con->getData("SELECT notifications.id, notifications.doc_id, notifications.message, notifications.system_log, tracks.document_tracks_status FROM notifications LEFT JOIN tracks ON notifications.track_id = tracks.id WHERE dismiss = 0 AND notification_type = 'incoming' AND user_id = ".$_SESSION['id']." ORDER BY system_log DESC");
 
 $response['count'] = count($outgoing)+count($transaction)+count($incoming);
 $response['outgoing'] = $outgoing;
