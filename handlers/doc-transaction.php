@@ -14,11 +14,15 @@ $con = new pdo_db("tracks");
 
 $document_status = NULL;
 $document_tracks_status = "transaction";
-$track_office = $_POST['route_office'];
+$track_office = $_POST['track_office'];
 $track_option = NULL;
 $route_office = NULL;
 $route_user = NULL;
 $remarks = (isset($_POST['next']['remarks']))?$_POST['next']['remarks']:"";
+
+# preceding_track
+$preceding_track = 0;
+if (count($_POST['tracks'])) $preceding_track = $_POST['tracks'][0]['id'];
 
 $notifications = [];
 
@@ -188,7 +192,8 @@ $track = array(
 	"route_office"=>$route_office,
 	"route_user"=>$route_user,
 	"track_option"=>$track_option,
-	"remarks"=>$remarks
+	"remarks"=>$remarks,
+	"preceding_track"=>$preceding_track
 );
 
 function getOption($options) {

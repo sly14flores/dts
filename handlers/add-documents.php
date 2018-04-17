@@ -73,9 +73,9 @@ if ($_POST['id']) { # update
 	# first track
 	if ( (isset($id)) && ($id) ) {
 
-		$initial_route_office = $con->getData("SELECT id, office FROM offices WHERE id IN ".getAssignmentIds($assignments['office'],1,"office"));
-		$route_office = (count($initial_route_office))?$initial_route_office[0]['id']:0;
-		$route_office_name = (count($initial_route_office))?$initial_route_office[0]['office']:"";
+		$initial_track_office = $con->getData("SELECT id, office FROM offices WHERE id IN ".getAssignmentIds($assignments['office'],1,"office"));
+		$track_office = (count($initial_track_office))?$initial_track_office[0]['id']:0;
+		$track_office_name = (count($initial_track_office))?$initial_track_office[0]['office']:"";
 		
 		$track_date = date("Y-m-d H:i:s");
 
@@ -85,7 +85,8 @@ if ($_POST['id']) { # update
 			"document_status_user"=>$_SESSION['id'],			
 			"document_tracks_status"=>"transaction", # tracks status
 			"track_date"=>$track_date,
-			"route_office"=>$route_office
+			"track_office"=>$track_office,
+			"preceding_track"=>0
 		);
 
 		$con->table = "tracks";
@@ -104,7 +105,7 @@ if ($_POST['id']) { # update
 				"user_id"=>$liaison['id'],
 				"track_id"=>intval($track_id),
 				"notification_type"=>"outgoing",
-				"message"=>"$doc_type with subject: <strong>".$_POST['doc_name']."</strong> was received at $route_office_name<br>by ".$staff[0]['fullname']."  on ".date("F j, Y h:i A",strtotime($track_date))
+				"message"=>"$doc_type with subject: <strong>".$_POST['doc_name']."</strong> was received at $track_office_name<br>by ".$staff[0]['fullname']."  on ".date("F j, Y h:i A",strtotime($track_date))
 			);
 		};	
 

@@ -14,13 +14,18 @@ $con = new pdo_db("tracks");
 
 $track_date = date("Y-m-d H:i:s");
 
+# preceding_track
+$preceding_track = 0;
+if (count($_POST['tracks'])) $preceding_track = $_POST['tracks'][0]['id'];
+
 $track = array(
 	"document_id"=>$_POST['id'],
 	"document_status"=>"Received", # document status
 	"document_status_user"=>$_SESSION['id'],
 	"document_tracks_status"=>"transaction", # tracks status
 	"track_office"=>$_SESSION['office'],
-	"track_date"=>$track_date
+	"track_date"=>$track_date,
+	"preceding_track"=>$preceding_track
 );
 
 $con->insertData($track);
