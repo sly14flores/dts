@@ -2,7 +2,7 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
     $routeProvider.when('/:option/:id', {
         templateUrl: 'transact.html'
     });	
-}).factory('app', function($http,$timeout,$window,bootstrapModal,printPost,$routeParams,$location) {
+}).factory('app', function($http,$timeout,$compile,$window,bootstrapModal,printPost,$routeParams,$location) {
 	
 	function app() {
 
@@ -21,7 +21,7 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 			
 			scope.views.currentPage = 1; // for pagination
 			
-			scope.$watch(function(scope) {
+			/* scope.$watch(function(scope) {
 				
 				return scope.search;
 				
@@ -29,7 +29,7 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 				
 				$timeout(function() { $('[data-toggle="tooltip"]').tooltip(); },500);
 				
-			});			
+			});	 */		
 
 			scope.$on('$routeChangeSuccess', function() {
 
@@ -59,8 +59,10 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 
 			});
 			
+			self.list(scope);
+			
 		};
-		
+
 		function validate(scope,form) {
 			
 			var controls = scope.formHolder[form].$$controls;
@@ -68,15 +70,11 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 			angular.forEach(controls,function(elem,i) {
 
 				if (elem.$$attr.$attr.required) {
-					
-					scope.$apply(function() {
-						
-						elem.$touched = elem.$invalid;
-						
-					});
-					
+
+					elem.$touched = elem.$invalid;
+
 				};
-									
+
 			});
 
 			return scope.formHolder[form].$invalid;
@@ -99,17 +97,19 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 				scope.documents = angular.copy(response.data);
 				scope.filterData = scope.documents;
 				scope.currentPage = scope.views.currentPage;
-				$timeout(function() { $('[data-toggle="tooltip"]').tooltip(); },500);
+				// $timeout(function() { $('[data-toggle="tooltip"]').tooltip(); },500);
 				
 			}, function myError(response) {
 				
-			});				
+			});
+			
+			$('#content').load('lists/transact.html',function() {
+				$timeout(function() { $compile($('#content')[0])(scope); }, 500);
+			});			
 			
 		};		
 
 		self.activity = function(scope,doc) {
-			
-			title = '<strong>'+doc.doc_name+'</strong> ('+doc.doc_type+')';
 
 			scope.activity = angular.copy(doc);
 
@@ -136,34 +136,34 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 				
 			});
 
-			var onOk = function() {
-
-				if (validate(scope,'activity')) return false;				
-				
-				scope.activity.options = scope.options;
-				
-				$http({
-				  method: 'POST',
-				  url: 'handlers/doc-transaction.php',
-				  data: scope.activity
-				}).then(function mySuccess(response) {
-
-					self.list(scope);
-
-				}, function myError(response) {
-					
-					//
-					
-				});
-
-				return true;
-
-			};
-
-			bootstrapModal.box2(scope,title,'dialogs/doc-activity.html',onOk);		
+			$('#content').load('forms/transact.html',function() {
+				$timeout(function() { $compile($('#content')[0])(scope); }, 500);
+			});			
 
 		};
 
+		self.save = function(scope) {
+			
+			if (validate(scope,'activity')) return false;				
+			
+			scope.activity.options = scope.options;
+			
+			$http({
+			  method: 'POST',
+			  url: 'handlers/doc-transaction.php',
+			  data: scope.activity
+			}).then(function mySuccess(response) {
+
+				self.list(scope);
+
+			}, function myError(response) {
+				
+				//
+				
+			});			
+			
+		};
+		
 		function options(scope) {
 
 			scope.options = [];
