@@ -14,7 +14,6 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 			
 			scope.views = {};
 			
-			scope.receive = {};
 			scope.activity = {};
 			
 			scope.documents = [];

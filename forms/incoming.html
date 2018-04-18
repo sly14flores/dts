@@ -1,0 +1,101 @@
+<form name="formHolder.activity" novalidate autocomplete="off">
+<div class="row">
+	<div class="col-md-2">Date</div>
+	<div class="col-md-4" style="margin-bottom: 10px;"><strong>{{activity.document_date}}</strong></div>
+	<div class="col-md-2">Transaction</div>
+	<div class="col-md-4" style="margin-bottom: 10px;"><strong>{{activity.document_transaction_type}}</strong></div>	
+</div>
+<div class="row">
+	<div class="col-md-2">Document Type</div>
+	<div class="col-md-4" style="margin-bottom: 10px;"><strong>{{activity.doc_type}}</strong></div>
+	<div class="col-md-2">Originating Office</div>
+	<div class="col-md-4" style="margin-bottom: 10px;"><strong>{{activity.origin}}</strong></div>	
+</div>
+<div class="row">
+	<div class="col-md-2">Subject</div>
+	<div class="col-md-4" style="margin-bottom: 10px;"><strong>{{activity.doc_name}}</strong></div>	
+	<div class="col-md-2">Barcode</div>
+	<div class="col-md-4" style="margin-bottom: 10px;"><strong>{{activity.barcode}}</strong></div>	
+</div>
+<hr>
+<div class="row">
+	<div class="col-md-4">
+		<h5>Main Document(s)</h5>
+		<table class="table table-bordered">
+			<thead>
+				<tr><th>#</th><th>File Type</th><th>Action</th></tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="af in activity.files">
+				<td>{{$index+1}}</td><td>{{af.type}}</td>
+				<td>
+					<button class="btn btn-primary" ng-click="app.preview(af)"><i class="icon icon-magnifier"></i></button>
+				</td>
+				</tr>
+			</tbody>
+		</table>
+		<h5>Attachment(s)</h5>
+		<table class="table table-bordered">
+			<thead>
+				<tr><th>#</th><th>File Type</th><th>Action</th></tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="aa in activity.attachments">
+				<td>{{$index+1}}</td><td>{{aa.type}}</td>
+				<td>
+					<button class="btn btn-primary" ng-click="app.preview(aa)"><i class="icon icon-magnifier"></i></button>				
+				</td>
+				</tr>
+			</tbody>
+		</table>		
+	</div>
+	<div class="col-md-8">
+		<h5>Tracks</h5>
+		<table class="table table-bordered">
+			<thead>
+				<tr><th>Status</th><th>Date</th><th>Time</th><th>By</th><th>Office</th></tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="at in activity.tracks"><td>{{at.document_status}}</td><td>{{at.date}}</td><td>{{at.time}}</td><td>{{at.staff}}</td><td>{{at.office}}</td></tr>
+			</tbody>
+		</table>		
+	</div>	
+</div>
+<hr>
+<div class="row">
+	<div class="col-md-4">
+		<div class="form-group">
+			<label class="form-control-label"><strong>Barcode</strong></label>		
+			<input type="text" class="form-control" placeholder="Enter barcode to receive document" ng-disabled="false" name="barcode" ng-model="receive.receive_barcode" uib-typeahead="b.barcode for b in barcodeAsyncSuggest($viewValue)" typeahead-min-length="3" typeahead-on-select="app.barcodeSelected(this, $item)" ng-class="{'is-invalid': formHolder.activity.barcode.$touched && formHolder.activity.barcode.$invalid}" required>
+			<div class="invalid-feedback">Barcode is required</div>
+		</div>                
+	</div>
+	<div class="col-md-4">
+		<div ng-repeat="o in activity.next.option">
+			<div class="toggle-switch" data-ts-color="info" style="margin-top: 20px;">
+				<label for="ts{{$index}}" class="ts-label">{{o.description}}</label>
+				<input id="ts1{{$index}}" type="checkbox" hidden="hidden" ng-model="o.value" ng-checked="o.value" ng-change="app.optionChange(this,o)">
+				<label for="ts1{{$index}}" class="ts-helper"></label>
+			</div>
+		<br>
+		</div>
+		<div class="alert alert-danger" style="margin-top: 15px;" ng-show="views.noOption">Please select if document is for transaction or filing</div>		
+	</div>
+	<div class="col-md-4">
+		<div class="form-group">
+			<label class="form-control-label"><strong>Remarks</strong></label>
+			<input type="text" class="form-control" ng-model="activity.next.remarks">
+		</div>
+	</div>
+</div>
+</form>
+<hr>
+<div class="row mt-4">
+	<div class="col-md-12">
+		<div class="float-right">
+			<button class="btn btn-primary" ng-click="app.save(this)">Update</button>
+			<button class="btn btn-secondary" ng-click="app.list(this)">Close</button>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+</div>
