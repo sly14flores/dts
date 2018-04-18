@@ -2,7 +2,7 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
     $routeProvider.when('/:option/:id', {
         templateUrl: 'outgoing.html'
     });	
-}).factory('app', function($http,$timeout,$window,$routeParams,$location,bootstrapModal,printPost) {
+}).factory('app', function($http,$timeout,$compile,$window,$routeParams,$location,bootstrapModal,printPost) {
 	
 	function app() {
 
@@ -20,15 +20,15 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 			
 			scope.views.currentPage = 1;
 			
-			scope.$watch(function(scope) {
+			// scope.$watch(function(scope) {
 				
-				return scope.search;
+				// return scope.search;
 				
-			},function(newValue, oldValue) {
+			// },function(newValue, oldValue) {
 				
-				$timeout(function() { $('[data-toggle="tooltip"]').tooltip(); },500);
+				// $timeout(function() { $('[data-toggle="tooltip"]').tooltip(); },500);
 				
-			});
+			// });
 
 			scope.$on('$routeChangeSuccess', function() {
 
@@ -56,7 +56,9 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 					
 				};			
 
-			});			
+			});
+			
+			self.list(scope);
 		
 		};
 
@@ -68,11 +70,7 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 
 				if (elem.$$attr.$attr.required) {
 					
-					scope.$apply(function() {
-						
-						elem.$touched = elem.$invalid;
-						
-					});
+					elem.$touched = elem.$invalid;
 					
 				};
 									
@@ -101,13 +99,15 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 				
 			}, function myError(response) {
 				
-			});				
+			});	
+			
+			$('#content').load('lists/outgoing.html',function() {
+				$timeout(function() { $compile($('#content')[0])(scope); }, 500);
+			});			
 			
 		};
 		
 		self.tracks = function(scope,outgoing) {
-
-			title = '<strong>'+outgoing.doc_name+'</strong> ('+outgoing.doc_type+')';
 
 			scope.activity = angular.copy(outgoing);			
 
@@ -130,11 +130,18 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 				
 				//
 				
-			});			
+			});	
+			
+			$('#content').load('forms/outgoing.html',function() {
+				$timeout(function() { $compile($('#content')[0])(scope); }, 500);
+			});	
+			
+		};
+		
 
-			var onOk = function() {
-
-				if (validate(scope,'activity')) return false;				
+		self.save = function(scope) {
+			
+			if (validate(scope,'activity')) return false;				
 				
 				scope.activity.options = scope.options;
 				
@@ -151,15 +158,12 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 					//
 					
 				});
+				
+		};		
+			
 
-				return true;
 
-			};
-
-			if (outgoing.document_tracks_status == 'for_pick_up') bootstrapModal.box2(scope,title,'dialogs/outgoing-tracks.html',onOk);
-			else bootstrapModal.box3(scope,title,'dialogs/outgoing-tracks.html',onOk);
-
-		};
+		
 		
 		function offices(scope) {
 

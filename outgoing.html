@@ -181,44 +181,7 @@ require_once 'authentication.php';
                             <div class="card-header bg-light">
                                 Documents
                             </div>
-							<div class="card-body">
-								<div class = "row">
-									<table class="table table-striped">
-										<thead>
-											<tr>
-												<th>Barcode</th>
-												<th>Document Type</th>
-												<th>Originating Office</th>
-												<th>Subject</th>
-												<th>Document Status</th>												
-												<th>Remarks</th>
-												<th>Date</th>
-												<th></th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr ng-repeat="o in filterData = (outgoings | filter:search) | pagination: currentPage:pageSize">
-												<td>{{o.barcode}}</td>
-												<td>{{o.doc_type}}</td>
-												<td>{{o.origin}}</td>
-												<td>{{o.doc_name}}</td>
-												<td>{{o.document_status}}</td>												
-												<td>{{o.remarks}}</td>												
-												<td>{{o.track_date}}</td>
-												<td>
-													<button class="btn btn-info" ng-click="app.tracks(this,o)" data-toggle="tooltip" data-placement="top" title="View Tracks"><i class="icon icon-graph"></i></button>
-												</td>
-											</tr>
-										</tbody>
-										<tfoot><!-- added pagination feature -->
-											<tr>
-												<td colspan="9" style="text-align: center;">
-													<div class="float-right"><ul uib-pagination direction-links="false" boundary-links="true" total-items="filterData.length" ng-model="currentPage" max-size="maxSize"></ul></div>
- 											    </td>
-											</tr>											
-										</tfoot>
-									</table>
-								</div>
+							<div class="card-body" id="content">
 							</div>
                             </div>
                         </div>
