@@ -90,7 +90,33 @@ angular.module('bootstrap-modal',[]).service('bootstrapModal', function($compile
 		dialog.init(function() {
 			dialog.find('.bootbox-body').load(content);
 			$('.modal-content').css({"width": "230%","left": "-65%"});			
-			$timeout(function() { $compile($('.bootbox-body')[0])(scope); }, 500);
+			$timeout(function() { $compile($('.bootbox-body')[0])(scope); }, 1000);
+		});
+
+	};
+	
+	this.box3 = function(scope,title,content,onOk) {
+	
+		var dialog = bootbox.alert({
+			title: title,
+			message: 'Loading...',
+			buttons: {
+				ok: {
+					label: 'Close',
+					className: 'btn-info'
+				}				
+			},			
+			callback: function (result) {
+				if (result) {
+					return onOk(scope);
+				}
+			}
+		});
+
+		dialog.init(function() {
+			dialog.find('.bootbox-body').load(content);
+			$('.modal-content').css({"width": "230%","left": "-65%"});			
+			$timeout(function() { $compile($('.bootbox-body')[0])(scope); }, 1000);
 		});
 
 	};	

@@ -4,39 +4,12 @@ $_POST = json_decode(file_get_contents('php://input'), true);
 
 require_once '../db.php';
 
-session_start();
-
 $con = new pdo_db("tracks");
 
-$outgoings = [];
-
-# Origination from an office
-
-$filter = "WHERE tracks.id = (SELECT MAX(tracks.id) FROM documents LEFT JOIN tracks ON documents.id = tracks.document_id WHERE tracks.document_id = documents.id)";
-$filter .= " AND tracks.track_office != ".$_SESSION['office']." AND documents.origin = ".$_SESSION['office']." AND document_tracks_status = 'transaction'";
+$filter = "WHERE documents.id = ".$_POST['id'];
 
 $sql = "SELECT documents.id, documents.barcode, documents.doc_name, documents.document_date, tracks.document_status, tracks.document_status_user, tracks.document_tracks_status, tracks.track_office, tracks.track_date, tracks.track_option, tracks.route_office, tracks.route_user, tracks.remarks, (SELECT document_types.document_type FROM document_types WHERE document_types.id = documents.doc_type) doc_type, (SELECT offices.office FROM offices WHERE offices.id = documents.origin) origin, (SELECT transactions.transaction FROM transactions WHERE transactions.id = documents.document_transaction_type) document_transaction_type FROM documents LEFT JOIN tracks ON documents.id = tracks.document_id {$filter} ORDER BY tracks.track_date DESC LIMIT 1";
-$originating = $con->getData($sql);
-
-foreach ($originating as $o) {
-	
-	$outgoings[] = $o;
-	
-};
-
-# For pick to other offices
-
-$filter = "WHERE tracks.id = (SELECT MAX(tracks.id) FROM documents LEFT JOIN tracks ON documents.id = tracks.document_id WHERE tracks.document_id = documents.id)";
-$filter .= " AND tracks.track_office = ".$_SESSION['office']." AND document_tracks_status = 'for_pick_up'";
-
-$sql = "SELECT documents.id, documents.barcode, documents.doc_name, documents.document_date, tracks.document_status, tracks.document_status_user, tracks.document_tracks_status, tracks.track_office, tracks.track_date, tracks.track_option, tracks.route_office, tracks.route_user, tracks.remarks, (SELECT document_types.document_type FROM document_types WHERE document_types.id = documents.doc_type) doc_type, (SELECT offices.office FROM offices WHERE offices.id = documents.origin) origin, (SELECT transactions.transaction FROM transactions WHERE transactions.id = documents.document_transaction_type) document_transaction_type FROM documents LEFT JOIN tracks ON documents.id = tracks.document_id {$filter} ORDER BY tracks.track_date DESC LIMIT 1";
-$transactions = $con->getData($sql);
-
-foreach ($transactions as $i => $t) {
-
-	$outgoings[] = $t;	
-
-};
+$outgoings = $con->getData($sql);
 
 foreach ($outgoings as $i => $outgoing) {
 
@@ -45,12 +18,12 @@ foreach ($outgoings as $i => $outgoing) {
 	if ($outgoing['track_option'] != NULL) {
 		$track_option = $con->getData("SELECT id, choice FROM options WHERE id = ".$outgoing['track_option']);
 		$status = $track_option[0]['choice'];
-	};
+	};		
 	
 	if ( ($outgoing['document_status'] == "Received") && ($outgoing['document_tracks_status'] == "transaction") ) {
 		$document_status_user = $con->getData("SELECT id, CONCAT(fname, ' ', lname) fullname FROM users WHERE id = ".$outgoing['document_status_user']);
 		$status .= " by ".$document_status_user[0]['fullname'];
-	};
+	};		
 	
 	if ($outgoing['document_tracks_status'] == "for_pick_up") {
 		$track_office = $con->getData("SELECT id, office FROM offices WHERE id = ".$outgoing['track_office']);		
@@ -66,9 +39,9 @@ foreach ($outgoings as $i => $outgoing) {
 	$outgoings[$i]['document_status'] = $status;	
 	$outgoings[$i]['track_date'] = date("F j, Y h:i A",strtotime($outgoing['track_date']));
 	$outgoings[$i]['document_date'] = date("F j, Y",strtotime($outgoing['document_date']));
-
+	
 };
 
-echo json_encode($outgoings);
+echo json_encode($outgoings[0]);
 
 ?>

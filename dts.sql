@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 11, 2018 at 05:44 PM
+-- Generation Time: Apr 18, 2018 at 09:16 AM
 -- Server version: 5.7.11
 -- PHP Version: 7.0.3
 
@@ -196,9 +196,8 @@ CREATE TABLE `document_types` (
 --
 
 INSERT INTO `document_types` (`id`, `document_type`, `shortname`) VALUES
-(1, 'ORDER', 'OR'),
 (2, 'LETTER', 'LET'),
-(3, 'TRAVEL ORDER', 'TR'),
+(3, 'TRAVEL ORDER', 'TO'),
 (4, 'CONTRACT', 'CON'),
 (5, 'MEMORANDUM', 'MEM'),
 (6, 'DAILY TIME RECORD', 'DTR');
@@ -249,6 +248,7 @@ INSERT INTO `groups` (`id`, `group_name`, `group_description`, `privileges`) VAL
 CREATE TABLE `notifications` (
   `id` int(11) NOT NULL,
   `doc_id` int(11) DEFAULT NULL,
+  `track_id` int(11) DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
   `office_id` int(11) DEFAULT NULL,
   `notification_type` varchar(20) DEFAULT NULL,
@@ -331,6 +331,7 @@ CREATE TABLE `tracks` (
   `track_date` datetime DEFAULT NULL,
   `route_office` int(11) DEFAULT NULL,
   `route_user` int(11) DEFAULT NULL,
+  `preceding_track` int(11) DEFAULT NULL,
   `remarks` varchar(1000) DEFAULT NULL,
   `system_log` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -461,7 +462,8 @@ ALTER TABLE `notifications`
   ADD PRIMARY KEY (`id`),
   ADD KEY `user_id` (`user_id`),
   ADD KEY `office_id` (`office_id`),
-  ADD KEY `doc_id` (`doc_id`);
+  ADD KEY `doc_id` (`doc_id`),
+  ADD KEY `track_id` (`track_id`);
 
 --
 -- Indexes for table `offices`
@@ -545,7 +547,7 @@ ALTER TABLE `groups`
 -- AUTO_INCREMENT for table `notifications`
 --
 ALTER TABLE `notifications`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `offices`
 --
@@ -560,7 +562,7 @@ ALTER TABLE `options`
 -- AUTO_INCREMENT for table `tracks`
 --
 ALTER TABLE `tracks`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `transactions`
 --
@@ -597,7 +599,8 @@ ALTER TABLE `files`
 -- Constraints for table `notifications`
 --
 ALTER TABLE `notifications`
-  ADD CONSTRAINT `notifications_ibfk_1` FOREIGN KEY (`doc_id`) REFERENCES `documents` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+  ADD CONSTRAINT `notifications_ibfk_1` FOREIGN KEY (`doc_id`) REFERENCES `documents` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  ADD CONSTRAINT `notifications_ibfk_2` FOREIGN KEY (`track_id`) REFERENCES `tracks` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `offices`

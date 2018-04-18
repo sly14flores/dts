@@ -84,12 +84,14 @@ if ($_POST['id']) { # update
 			"document_status"=>"Received", # document status
 			"document_status_user"=>$_SESSION['id'],			
 			"document_tracks_status"=>"transaction", # tracks status
-			"track_office"=>$track_office,		
-			"track_date"=>$track_date
+			"track_date"=>$track_date,
+			"track_office"=>$track_office,
+			"preceding_track"=>0
 		);
 
 		$con->table = "tracks";
 		$first_track = $con->insertData($track);
+		$track_id = $con->insertId;
 
 		# notification
 		$notifications = [];
@@ -101,6 +103,7 @@ if ($_POST['id']) { # update
 			$notifications[] = array(
 				"doc_id"=>$id,
 				"user_id"=>$liaison['id'],
+				"track_id"=>intval($track_id),
 				"notification_type"=>"outgoing",
 				"message"=>"$doc_type with subject: <strong>".$_POST['doc_name']."</strong> was received at $track_office_name<br>by ".$staff[0]['fullname']."  on ".date("F j, Y h:i A",strtotime($track_date))
 			);
@@ -110,6 +113,7 @@ if ($_POST['id']) { # update
 		$notifications[] = array(
 			"doc_id"=>$id,
 			"user_id"=>getAssignmentId($assignments['user'],1,"user"),
+			"track_id"=>intval($track_id),			
 			"notification_type"=>"transaction",
 			"message"=>"Type: $doc_type, Subject: <strong>".$_POST['doc_name']."</strong> Office: $office_origin<br>Received on ".date("F j, Y h:i A",strtotime($track_date))." by ".$staff[0]['fullname']
 		);

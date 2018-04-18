@@ -20,6 +20,10 @@ $route_office = NULL;
 $route_user = NULL;
 $remarks = (isset($_POST['next']['remarks']))?$_POST['next']['remarks']:"";
 
+# preceding_track
+$preceding_track = 0;
+if (count($_POST['tracks'])) $preceding_track = $_POST['tracks'][0]['id'];
+
 $notifications = [];
 
 $track_date = date("Y-m-d H:i:s");
@@ -27,15 +31,18 @@ $track_date = date("Y-m-d H:i:s");
 $staff = $con->getData("SELECT CONCAT(fname, ' ', lname) fullname FROM users WHERE id = ".$_SESSION['id']);
 
 $document_origin = $con->getData("SELECT origin FROM documents WHERE id = ".$_POST['id']);
-$get_track_office = $con->getData("SELECT id, office FROM offices WHERE id = $track_office");
-$track_office_name = $get_track_office[0]['office'];
+
 
 switch ($_POST['action']) {
 
 	case "Flag":
 	
+		$get_track_office = $con->getData("SELECT id, office FROM offices WHERE id = $track_office");
+		$track_office_name = $get_track_office[0]['office'];	
+	
 		$track_option = getOption($_POST['options']);
-
+		$route_office = $_POST['route_office'];
+		
 		# liaisons
 		$liaisons = $con->getData("SELECT id FROM users WHERE div_id = ".$document_origin[0]['origin']." AND group_id IN ".getAssignmentIds($assignments['group'],1,"group"));
 		foreach ($liaisons as $liaison) {
@@ -61,12 +68,14 @@ switch ($_POST['action']) {
 			);
 
 		};		
-		
 
 	break;
 
 	case "Forward":
 
+		$get_track_office = $con->getData("SELECT id, office FROM offices WHERE id = $track_office");
+		$track_office_name = $get_track_office[0]['office'];	
+	
 		$document_status = "Forward";
 		$document_tracks_status = "for_pick_up";
 		$route_office = $_POST['next']['route_office']['id'];
@@ -84,11 +93,27 @@ switch ($_POST['action']) {
 			);
 
 		};
+		
+		# AOs
+		$aos = $con->getData("SELECT id FROM users WHERE div_id = ".$track_office." AND group_id IN ".getAssignmentIds($assignments['group'],2,"group"));
+		foreach ($aos as $ao) {
 
+			$notifications[] = array(
+				"doc_id"=>$_POST['id'],
+				"user_id"=>$ao['id'],
+				"notification_type"=>"outgoing",
+				"message"=>$_POST['doc_type']." with subject: <strong>".$_POST['doc_name']."</strong> was marked ready for pick up by ".$staff[0]['fullname']." at $track_office_name<br>Date: ".date("F j, Y",strtotime($track_date))."<br>Time: ".date("h:i A",strtotime($track_date))
+			);
+
+		};	
+		
 	break;
 
 	case "Release":
 
+		$get_track_office = $con->getData("SELECT id, office FROM offices WHERE id = $track_office");
+		$track_office_name = $get_track_office[0]['office'];	
+	
 		$document_status = "Release";
 		$document_tracks_status = "incoming";
 		$route_office = $_POST['next']['route_office']['id'];
@@ -110,16 +135,33 @@ switch ($_POST['action']) {
 
 		};
 
+		# AOs
+		$aos = $con->getData("SELECT id FROM users WHERE div_id = ".$track_office." AND group_id IN ".getAssignmentIds($assignments['group'],2,"group"));
+		foreach ($aos as $ao) {
+
+			$notifications[] = array(
+				"doc_id"=>$_POST['id'],
+				"user_id"=>$ao['id'],
+				"notification_type"=>"outgoing",
+				"message"=>$_POST['doc_type']." with subject: <strong>".$_POST['doc_name']."</strong> was picked up<br>by ".$pick_up_by[0]['fullname']." at $track_office_name on ".date("F j, Y h:i A",strtotime($track_date))
+			);
+
+		};
+		
 	break;
 
 	case "File":
+		
+		$track_office = $_POST['track_office'];
+		
+		$get_track_office = $con->getData("SELECT id, office FROM offices WHERE id = $track_office");
+		$track_office_name = $get_track_office[0]['office'];	
 
 		$document_status = "Filed";
 		$document_tracks_status = "filed";
 		$track_option = $_POST['track_option'];
 
 		$file_by = $con->getData("SELECT CONCAT(fname, ' ', lname) fullname FROM users WHERE id = ".$_SESSION['id']);		
-		
 		$file_office = $con->getData("SELECT id, office FROM offices WHERE id = ".$_SESSION['office']);
 		$file_office_name = $file_office[0]['office'];		
 		
@@ -150,7 +192,8 @@ $track = array(
 	"route_office"=>$route_office,
 	"route_user"=>$route_user,
 	"track_option"=>$track_option,
-	"remarks"=>$remarks
+	"remarks"=>$remarks,
+	"preceding_track"=>$preceding_track
 );
 
 function getOption($options) {
@@ -193,9 +236,13 @@ function getOptionDescription($options,$track_option) {
 };
 
 $con->insertData($track);
+$track_id = $con->insertId;
 
 # notify
 if (count($notifications)) {
+	foreach ($notifications as $i => $notification) {
+		$notifications[$i]['track_id'] = intval($track_id);
+	};
 	notify($con,$notifications);	
 };
 
