@@ -1,4 +1,4 @@
-angular.module('app-module', ['form-validator','bootstrap-modal','notifications-module']).factory('app', function($http,$timeout,$window,validate,bootstrapModal) {
+angular.module('app-module', ['form-validator','bootstrap-modal','notifications-module']).factory('app', function($http,$timeout,$compile,$window,validate,bootstrapModal) {
 
 	function app() {
 
@@ -12,6 +12,8 @@ angular.module('app-module', ['form-validator','bootstrap-modal','notifications-
 			scope.activity = {};
 			
 			scope.archives = [];	
+			
+			self.list(scope);
 
 		};
 
@@ -30,6 +32,10 @@ angular.module('app-module', ['form-validator','bootstrap-modal','notifications-
 
 				//
 
+			});		
+
+			$('#content').load('lists/archive.html',function() {
+				$timeout(function() { $compile($('#content')[0])(scope); }, 500);
 			});				
 
 		};
@@ -54,15 +60,13 @@ angular.module('app-module', ['form-validator','bootstrap-modal','notifications-
 				
 				//
 				
-			});			
-
-			var onOk = function() {
-
-			};
-
-			bootstrapModal.box3(scope,title,'dialogs/archive.html',onOk);			
+			});						
 			
 		};
+		
+		$('#content').load('forms/archive.html',function() {
+				$timeout(function() { $compile($('#content')[0])(scope); }, 500);
+			});	
 
 	};
 

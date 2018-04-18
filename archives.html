@@ -182,42 +182,8 @@ require_once 'authentication.php';
                             <div class="card-header bg-light">
                                 List of Documents
                             </div>
-							<div class="card-body">
-								<div class = "row">
-									<table class="table table-striped">
-										<thead>
-											<tr>
-												<th>Subject</th>
-												<th>Barcode</th>
-												<th>Type</th>												
-												<th>Originating Office</th>
-												<th>Date</th>
-												<th>Transaction</th>
-												<th>Communication</th>
-												<th>Remarks</th>
-												<th>Actions</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr ng-repeat="a in archives | filter:search">
-											<td>{{a.doc_name}}</td>
-											<td>{{a.barcode}}</td>
-											<td>{{a.doc_type}}</td>											
-											<td>{{a.origin}}</td>
-											<td>{{a.document_date}}</td>
-											<td>{{a.transaction}}</td>
-											<td>{{a.communication}}</td>
-											<td>{{a.remarks}}</td>
-											<td>
-												<button class="btn btn-primary" ng-click="app.view(this,a)"><i class="icon icon-magnifier"></i></button>
-											</td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
+							<div class="card-body" id="content"></div>	
 							</div>
-
-                            
                             </div>
                         </div>
                     </div>
