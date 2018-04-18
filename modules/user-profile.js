@@ -14,7 +14,6 @@ angular.module('app-module', ['form-validator','bootstrap-modal','ui.bootstrap',
 
 		self.startup = function(scope) {
 			
-			
 			scope.controls.add = true;
 			scope.controls.edit = false;	
 			

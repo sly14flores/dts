@@ -79,7 +79,7 @@ angular.module('app-module', ['form-validator','ui.bootstrap','bootstrap-modal',
 
 			};
 
-			bootstrapModal.box2(scope,title,'dialogs/document.html',onOk);			
+			bootstrapModal.box3(scope,title,'dialogs/document.html',onOk);			
 
 		};
 
