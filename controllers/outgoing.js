@@ -6,8 +6,6 @@ app.controller('outgoingCtrl',function($scope,app) {
 	
 	$scope.app.data($scope);
 
-	$scope.app.list($scope);
-
 	$scope.module = {
 		id: 'outgoing',
 		privileges: {

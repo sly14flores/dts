@@ -2,7 +2,7 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
     $routeProvider.when('/:option/:id', {
         templateUrl: 'incoming.html'
     });	
-}).factory('app', function($http,$timeout,$window,bootstrapModal,printPost,$routeParams,$location) {
+}).factory('app', function($http,$timeout,$compile,$window,bootstrapModal,printPost,$routeParams,$location) {
 	
 	function app() {
 
@@ -20,7 +20,7 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 			
 			scope.views.currentPage = 1;
 
-			scope.$watch(function(scope) {
+			/* scope.$watch(function(scope) {
 				
 				return scope.search;
 				
@@ -28,7 +28,7 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 				
 				$timeout(function() { $('[data-toggle="tooltip"]').tooltip(); },500);
 				
-			});
+			}); */
 			
 			scope.$on('$routeChangeSuccess', function() {
 
@@ -57,6 +57,8 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 				};			
 
 			});
+			
+			self.list(scope);
 		
 		};
 
@@ -68,11 +70,7 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 
 				if (elem.$$attr.$attr.required) {
 
-					scope.$apply(function() {
-
-						elem.$touched = elem.$invalid;
-
-					});
+					elem.$touched = elem.$invalid;
 
 				};
 
@@ -101,7 +99,11 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 				
 			}, function myError(response) {
 				
-			});				
+			});
+
+			$('#content').load('lists/incoming.html',function() {
+				$timeout(function() { $compile($('#content')[0])(scope); }, 500);
+			});			
 			
 		};
 
@@ -130,35 +132,56 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 
 		self.receive = function(scope,doc) {
 
-			barcodeAsyncSuggest(scope,doc);
+			barcodeAsyncSuggest(scope,doc);		
+
+			scope.activity = angular.copy(doc);
+
+			scope.activity.next = {};	
+
+			scope.activity.next.option = [
+				{description: 'Receive and transact', choice: 'transact', value: false},
+				{description: 'Receive and file', choice: 'file', value: false}
+			];
+			
+			$http({
+			  method: 'POST',
+			  url: 'handlers/doc-activity.php',
+			  data: {id: doc.id}
+			}).then(function mySuccess(response) {
+
+				scope.activity.tracks = response.data.tracks;
+				scope.activity.files = response.data.files;
+				scope.activity.attachments = response.data.attachments;
+
+			}, function myError(response) {
+				
+				//
+				
+			});			
+			
+			$('#content').load('forms/incoming.html',function() {
+				$timeout(function() { $compile($('#content')[0])(scope); }, 500);
+			});				
+
+		};
 		
-			title = 'Receive '+doc.doc_type;
+		self.save = function(scope) {
+			
+			if (validate(scope,'receive')) return false;				
+			
+			$http({
+			  method: 'POST',
+			  url: 'handlers/doc-receive.php',
+			  data: scope.receive
+			}).then(function mySuccess(response) {
 
-			scope.receive = angular.copy(doc);
+				self.list(scope);
 
-			var onOk = function() {
+			}, function myError(response) {
 
-				if (validate(scope,'receive')) return false;				
-				
-				$http({
-				  method: 'POST',
-				  url: 'handlers/doc-receive.php',
-				  data: scope.receive
-				}).then(function mySuccess(response) {
+				//
 
-					self.list(scope);
-
-				}, function myError(response) {
-
-					//
-
-				});
-				
-				return true;
-				
-			};
-		
-			bootstrapModal.box(scope,title,'dialogs/doc-receive.html',onOk);
+			});			
 			
 		};
 		
@@ -167,6 +190,26 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 			scope.receive.barcode = item;
 			
 		};		
+		
+		self.optionChange = function(scope,opt) {
+			
+			var index = scope.activity.next.option.indexOf(opt);
+			
+			angular.forEach(scope.activity.next.option, function(item,i) {
+				
+				if (i != index) scope.activity.next.option[i].value = false;
+				
+			});
+			
+			if (opt.value) {
+				scope.activity.next.opt = opt.choice;
+				scope.views.noOption = false;
+			} else {
+				delete scope.activity.next.opt;
+				scope.views.noOption = true;				
+			};
+
+		};
 		
 	};
 	
