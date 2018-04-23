@@ -13,20 +13,28 @@ angular.module('app-module', ['form-validator','bootstrap-modal','notifications-
 			
 			scope.archives = [];	
 			
+			scope.views.currentPage = 1;			
+			
 			self.list(scope);
 
 		};
 
-		self.list = function(scope) {
+		self.list = function(scope) {			
 			
-			if (scope.$id > 2) scope = scope.$parent;
+			if (scope.$id > 2) scope = scope.$parent;			
 			
+			scope.currentPage = scope.views.currentPage;
+			scope.pageSize = 10;
+			scope.maxSize = 5;			
+
 			$http({
 			  method: 'GET',
 			  url: 'handlers/archives.php'
 			}).then(function mySuccess(response) {
 
-				scope.archives = angular.copy(response.data);			
+				scope.archives = angular.copy(response.data);
+				scope.filterData = scope.archives;
+				scope.currentPage = scope.views.currentPage;	
 
 			}, function myError(response) {
 
@@ -39,7 +47,7 @@ angular.module('app-module', ['form-validator','bootstrap-modal','notifications-
 			});				
 
 		};
-		
+
 		self.view = function(scope,archive) {
 			
 			title = '<strong>'+archive.doc_name+'</strong> ('+archive.doc_type+')';
@@ -57,16 +65,16 @@ angular.module('app-module', ['form-validator','bootstrap-modal','notifications-
 				scope.activity.attachments = response.data.attachments;
 
 			}, function myError(response) {
-				
+
 				//
 				
-			});						
-			
-		};
-		
-		$('#content').load('forms/archive.html',function() {
+			});				
+
+			$('#content').load('forms/archive.html',function() {
 				$timeout(function() { $compile($('#content')[0])(scope); }, 500);
-			});	
+			});
+
+		};
 
 	};
 

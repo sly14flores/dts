@@ -11,13 +11,15 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 		self.data = function(scope) {
 
 			scope.formHolder = {};
-			
+
 			scope.views = {};
-			
+
 			scope.receive = {};
+
+			scope.activity = {};
 			
 			scope.incomings = [];
-			
+
 			scope.views.currentPage = 1;
 
 			/* scope.$watch(function(scope) {
@@ -139,10 +141,10 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 			scope.activity.next = {};	
 
 			scope.activity.next.option = [
-				{description: 'Receive and transact', choice: 'transact', value: false},
-				{description: 'Receive and file', choice: 'file', value: false}
+				{description: 'Receive and transact', choice: 'transaction', value: false},
+				{description: 'Receive and file', choice: 'filed', value: false}
 			];
-			
+
 			$http({
 			  method: 'POST',
 			  url: 'handlers/doc-activity.php',
@@ -167,12 +169,19 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 		
 		self.save = function(scope) {
 			
-			if (validate(scope,'receive')) return false;				
+			scope.views.noOption = false;
+			
+			if (validate(scope,'activity')) return false;				
+			
+			if (scope.activity.next.opt == undefined) {
+				scope.views.noOption = true;
+				return;
+			};
 			
 			$http({
 			  method: 'POST',
 			  url: 'handlers/doc-receive.php',
-			  data: scope.receive
+			  data: scope.activity
 			}).then(function mySuccess(response) {
 
 				self.list(scope);

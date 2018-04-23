@@ -14,33 +14,81 @@ $con = new pdo_db("tracks");
 
 $track_date = date("Y-m-d H:i:s");
 
+# notification
+$notifications = [];
+
+$liaisons = $con->getData("SELECT id FROM users WHERE div_id = ".$_SESSION['office']." AND group_id IN ".getAssignmentIds($assignments['group'],1,"group"));
+$office = $con->getData("SELECT id, office FROM offices WHERE id = ".$_SESSION['office']);
+$receive_by = $con->getData("SELECT CONCAT(fname, ' ', lname) fullname FROM users WHERE id = ".$_SESSION['id']);
+#
+
 # preceding_track
 $preceding_track = 0;
 if (count($_POST['tracks'])) $preceding_track = $_POST['tracks'][0]['id'];
 
-$track = array(
-	"document_id"=>$_POST['id'],
-	"document_status"=>"Received", # document status
-	"document_status_user"=>$_SESSION['id'],
-	"document_tracks_status"=>"transaction", # tracks status
-	"track_office"=>$_SESSION['office'],
-	"track_date"=>$track_date,
-	"preceding_track"=>$preceding_track
-);
+switch ($_POST['next']['opt']) {
 
-$con->insertData($track);
-$track_id = $con->insertId;
+	case "transaction":
 
-# notify
+		$document_status = "Received";
+		$document_tracks_status = "transaction";
 
-$notifications = [];
+		$track = array(
+			"document_id"=>$_POST['id'],
+			"document_status"=>$document_status, # document status
+			"document_status_user"=>$_SESSION['id'],
+			"document_tracks_status"=>$document_tracks_status, # tracks status
+			"track_office"=>$_SESSION['office'],
+			"track_date"=>$track_date,
+			"preceding_track"=>$preceding_track
+		);
 
-$liaisons = $con->getData("SELECT id FROM users WHERE div_id = ".$_SESSION['office']." AND group_id IN ".getAssignmentIds($assignments['group'],1,"group"));
+		$con->insertData($track);
+		$track_id = $con->insertId;
 
-$office = $con->getData("SELECT id, office FROM offices WHERE id = ".$_SESSION['office']);
+	break;
 
-$receive_by = $con->getData("SELECT CONCAT(fname, ' ', lname) fullname FROM users WHERE id = ".$_SESSION['id']);
+	case "filed":
 
+		$document_status = "Received";
+		$document_tracks_status = "transaction";
+
+		$track = array(
+			"document_id"=>$_POST['id'],
+			"document_status"=>$document_status, # document status
+			"document_status_user"=>$_SESSION['id'],
+			"document_tracks_status"=>$document_tracks_status, # tracks status
+			"track_office"=>$_SESSION['office'],
+			"track_date"=>$track_date,
+			"preceding_track"=>$preceding_track
+		);	
+
+		$con->insertData($track);
+		$track_id = $con->insertId;		
+
+		$document_status = "Filed";
+		$document_tracks_status = "filed";
+
+		$track = array(
+			"document_id"=>$_POST['id'],
+			"document_status"=>$document_status, # document status
+			"document_status_user"=>$_SESSION['id'],
+			"document_tracks_status"=>$document_tracks_status, # tracks status
+			"track_office"=>$_SESSION['office'],
+			"track_date"=>$track_date,
+			"preceding_track"=>$preceding_track
+		);
+
+		$con->insertData($track);
+		$track_id = $con->insertId;		
+
+	break;
+
+};
+
+
+
+/* # notify
 foreach ($liaisons as $liaison) {
 	$notifications[] = array(
 		"doc_id"=>$_POST['id'],
@@ -53,6 +101,6 @@ foreach ($liaisons as $liaison) {
 
 if (count($notifications)) {
 	notify($con,$notifications);	
-};
+}; */
 
 ?>

@@ -1,4 +1,4 @@
-var app = angular.module('incoming',['account-module','app-module']);
+var app = angular.module('incoming',['account-module','app-module','ui.bootstrap']);
 
 app.controller('incomingCtrl',function($scope,app) {
 	
