@@ -2,25 +2,27 @@
 	<table class="table table-striped">
 		<thead>
 			<tr>
+				<th>Barcode</th>
 				<th>Document Type</th>
 				<th>Originating Office</th>
 				<th>Subject</th>
-				<th>Document Status</th>
+				<th>Document Status</th>												
 				<th>Remarks</th>
 				<th>Date</th>
 				<th></th>
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-repeat="i in filterData = (incomings | filter:search) | pagination: currentPage:pageSize">
-				<td>{{i.doc_type}}</td>
-				<td>{{i.origin}}</td>
-				<td>{{i.doc_name}}</td>
-				<td>{{i.document_status}}</td>
-				<td>{{i.remarks}}</td>												
-				<td>{{i.track_date_dt}}</td>
+			<tr ng-repeat="o in filterData = (outgoings | filter:search) | pagination: currentPage:pageSize">
+				<td>{{o.barcode}}</td>
+				<td>{{o.doc_type}}</td>
+				<td>{{o.origin}}</td>
+				<td>{{o.doc_name}}</td>
+				<td>{{o.document_status}}</td>												
+				<td>{{o.remarks}}</td>												
+				<td>{{o.track_date}}</td>
 				<td>
-					<button class="btn btn-info" ng-show="i.document_tracks_status == 'incoming'" ng-click="app.receive(this,i)" data-toggle="tooltip" data-placement="top" title="Show Details"><i class="icon icon-grid"></i></button>
+					<button class="btn btn-info" ng-click="app.tracks(this,o)" data-toggle="tooltip" data-placement="top" title="View Tracks"><i class="icon icon-grid"></i></button>
 				</td>
 			</tr>
 		</tbody>

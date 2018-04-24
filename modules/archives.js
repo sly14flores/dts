@@ -48,9 +48,7 @@ angular.module('app-module', ['form-validator','bootstrap-modal','notifications-
 
 		};
 
-		self.view = function(scope,archive) {
-			
-			title = '<strong>'+archive.doc_name+'</strong> ('+archive.doc_type+')';
+		self.view = function(scope,archive) {			
 
 			scope.activity = angular.copy(archive);			
 

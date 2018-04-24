@@ -15,7 +15,7 @@ $incomings = [];
 $filter = "WHERE tracks.id = (SELECT MAX(tracks.id) FROM documents LEFT JOIN tracks ON documents.id = tracks.document_id WHERE tracks.document_id = documents.id)";
 $filter .= " AND tracks.route_office = ".$_SESSION['office']." AND document_tracks_status = 'for_pick_up'";
 
-$sql = "SELECT documents.id, documents.barcode, documents.doc_name, tracks.document_status, tracks.document_status_user, tracks.document_tracks_status, tracks.track_office, tracks.route_user, tracks.track_date, tracks.track_option, tracks.remarks, (SELECT document_types.document_type FROM document_types WHERE document_types.id = documents.doc_type) doc_type, (SELECT offices.office FROM offices WHERE offices.id = documents.origin) origin, (SELECT transactions.transaction FROM transactions WHERE transactions.id = documents.document_transaction_type) document_transaction_type FROM documents LEFT JOIN tracks ON documents.id = tracks.document_id {$filter} ORDER BY tracks.track_date DESC LIMIT 1";
+$sql = "SELECT documents.id, documents.barcode, documents.doc_name, tracks.document_status, tracks.document_status_user, tracks.document_tracks_status, tracks.track_office, tracks.route_user, tracks.track_date, tracks.track_option, tracks.remarks, (SELECT document_types.document_type FROM document_types WHERE document_types.id = documents.doc_type) doc_type, (SELECT offices.office FROM offices WHERE offices.id = documents.origin) origin, (SELECT transactions.transaction FROM transactions WHERE transactions.id = documents.document_transaction_type) document_transaction_type, documents.document_date FROM documents LEFT JOIN tracks ON documents.id = tracks.document_id {$filter} ORDER BY tracks.track_date DESC LIMIT 1";
 $incomings1 = $con->getData($sql);
 
 foreach ($incomings1 as $i => $incoming) {
@@ -43,8 +43,12 @@ foreach ($incomings1 as $i => $incoming) {
 		$status = "Picked up from ".$track_office[0]['office']." by ".$route_user[0]['fullname'];
 	};	
 
-	$incomings1[$i]['document_status'] = $status;	
-	$incomings1[$i]['track_date'] = date("F j, Y h:i A",strtotime($incoming['track_date']));
+	$incomings1[$i]['document_status'] = $status;
+	
+	$incomings1[$i]['document_date'] = date("F j, Y",strtotime($incoming['document_date']));	
+	
+	$incomings1[$i]['track_date_dt'] = date("F j, Y h:i A",strtotime($incoming['track_date']));
+	$incomings1[$i]['track_date'] = date("F j, Y",strtotime($incoming['track_date']));
 
 	$incomings[] = $incomings1[$i];
 
@@ -55,7 +59,7 @@ foreach ($incomings1 as $i => $incoming) {
 $filter = "WHERE tracks.id = (SELECT MAX(tracks.id) FROM documents LEFT JOIN tracks ON documents.id = tracks.document_id WHERE tracks.document_id = documents.id)";
 $filter .= " AND tracks.route_office = ".$_SESSION['office']." AND document_tracks_status = 'incoming'";
 
-$sql = "SELECT documents.id, documents.barcode, documents.doc_name, tracks.document_status, tracks.document_status_user, tracks.document_tracks_status, tracks.track_office, tracks.route_user, tracks.track_date, tracks.track_option, tracks.remarks, (SELECT document_types.document_type FROM document_types WHERE document_types.id = documents.doc_type) doc_type, (SELECT offices.office FROM offices WHERE offices.id = documents.origin) origin, (SELECT transactions.transaction FROM transactions WHERE transactions.id = documents.document_transaction_type) document_transaction_type FROM documents LEFT JOIN tracks ON documents.id = tracks.document_id {$filter} ORDER BY tracks.track_date DESC LIMIT 1";
+$sql = "SELECT documents.id, documents.barcode, documents.doc_name, tracks.document_status, tracks.document_status_user, tracks.document_tracks_status, tracks.track_office, tracks.route_user, tracks.track_date, tracks.track_option, tracks.remarks, (SELECT document_types.document_type FROM document_types WHERE document_types.id = documents.doc_type) doc_type, (SELECT offices.office FROM offices WHERE offices.id = documents.origin) origin, (SELECT transactions.transaction FROM transactions WHERE transactions.id = documents.document_transaction_type) document_transaction_type, documents.document_date FROM documents LEFT JOIN tracks ON documents.id = tracks.document_id {$filter} ORDER BY tracks.track_date DESC LIMIT 1";
 $incomings2 = $con->getData($sql);
 
 foreach ($incomings2 as $i => $incoming) {
@@ -84,7 +88,11 @@ foreach ($incomings2 as $i => $incoming) {
 	};	
 
 	$incomings2[$i]['document_status'] = $status;	
-	$incomings2[$i]['track_date'] = date("F j, Y h:i A",strtotime($incoming['track_date']));
+	
+	$incomings2[$i]['document_date'] = date("F j, Y",strtotime($incoming['document_date']));
+	
+	$incomings2[$i]['track_date_dt'] = date("F j, Y h:i A",strtotime($incoming['track_date']));
+	$incomings2[$i]['track_date'] = date("F j, Y",strtotime($incoming['track_date']));
 
 	$incomings[] = $incomings2[$i];
 
