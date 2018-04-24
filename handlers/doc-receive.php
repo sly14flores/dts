@@ -46,6 +46,17 @@ switch ($_POST['next']['opt']) {
 		$con->insertData($track);
 		$track_id = $con->insertId;
 
+		# notify
+		foreach ($liaisons as $liaison) {
+			$notifications[] = array(
+				"doc_id"=>$_POST['id'],
+				"user_id"=>$liaison['id'],
+				"track_id"=>intval($track_id),
+				"notification_type"=>"incoming",
+				"message"=>$_POST['doc_type']." with subject: <strong>".$_POST['doc_name']."</strong> was received at ".$office[0]['office']."<br>by ".$receive_by[0]['fullname']."  on ".date("F j, Y h:i A",strtotime($track_date))
+			);
+		};
+
 	break;
 
 	case "filed":
@@ -61,13 +72,25 @@ switch ($_POST['next']['opt']) {
 			"track_office"=>$_SESSION['office'],
 			"track_date"=>$track_date,
 			"preceding_track"=>$preceding_track
-		);	
+		);
 
 		$con->insertData($track);
-		$track_id = $con->insertId;		
+		$track_id = $con->insertId;
+
+		# notify
+		foreach ($liaisons as $liaison) {
+			$notifications[] = array(
+				"doc_id"=>$_POST['id'],
+				"user_id"=>$liaison['id'],
+				"track_id"=>intval($track_id),
+				"notification_type"=>"incoming",
+				"message"=>$_POST['doc_type']." with subject: <strong>".$_POST['doc_name']."</strong> was received at ".$office[0]['office']."<br>by ".$receive_by[0]['fullname']."  on ".date("F j, Y h:i A",strtotime($track_date))
+			);
+		};		
 
 		$document_status = "Filed";
-		$document_tracks_status = "filed";
+		$document_tracks_status = "filed";	
+		$preceding_track = $track_id;
 
 		$track = array(
 			"document_id"=>$_POST['id'],
@@ -82,25 +105,23 @@ switch ($_POST['next']['opt']) {
 		$con->insertData($track);
 		$track_id = $con->insertId;		
 
+		# notify
+		foreach ($liaisons as $liaison) {
+			$notifications[] = array(
+				"doc_id"=>$_POST['id'],
+				"user_id"=>$liaison['id'],
+				"track_id"=>intval($track_id),
+				"notification_type"=>"incoming",
+				"message"=>$_POST['doc_type']." with subject: <strong>".$_POST['doc_name']."</strong> was filed <br>by ".$receive_by[0]['fullname']." at ".$office[0]['office']." on ".date("F j, Y h:i A",strtotime($track_date))
+			);
+		};		
+
 	break;
 
 };
 
-
-
-/* # notify
-foreach ($liaisons as $liaison) {
-	$notifications[] = array(
-		"doc_id"=>$_POST['id'],
-		"user_id"=>$liaison['id'],
-		"track_id"=>intval($track_id),
-		"notification_type"=>"incoming",
-		"message"=>$_POST['doc_type']." with subject: <strong>".$_POST['doc_name']."</strong> was received at ".$office[0]['office']."<br>by ".$receive_by[0]['fullname']."  on ".date("F j, Y h:i A",strtotime($track_date))
-	);
-};
-
 if (count($notifications)) {
 	notify($con,$notifications);	
-}; */
+};
 
 ?>
