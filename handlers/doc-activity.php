@@ -32,7 +32,7 @@ foreach ($tracks as $i => $track) {
 	if ( ($track['document_status'] == "Received") && ($track['document_tracks_status'] == "transaction") ) {
 		$document_status_user = $con->getData("SELECT id, CONCAT(fname, ' ', lname) fullname FROM users WHERE id = ".$track['document_status_user']);
 		$status .= " by ".$document_status_user[0]['fullname'];
-		$office = $route_office_name;
+		$office = $track_office_name;
 	};		
 
 	if ($track['document_tracks_status'] == "for_pick_up") {
