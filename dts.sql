@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 18, 2018 at 09:16 AM
+-- Generation Time: May 07, 2018 at 04:41 PM
 -- Server version: 5.7.11
 -- PHP Version: 7.0.3
 
@@ -179,6 +179,14 @@ CREATE TABLE `documents` (
   `remarks` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `documents`
+--
+
+INSERT INTO `documents` (`id`, `user_id`, `doc_name`, `barcode`, `origin`, `other_origin`, `document_date`, `document_transaction_type`, `doc_type`, `communication`, `remarks`) VALUES
+(1, 7, 'qwerty', 'ICT-05-2018-00001', 4, NULL, '2018-05-07 12:01:28', 2, 3, 1, NULL),
+(2, 7, 'May Payroll', 'ICT-05-2018-00002', 4, NULL, '2018-05-07 12:50:54', 1, 6, 1, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -258,6 +266,22 @@ CREATE TABLE `notifications` (
   `last_modified` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `notifications`
+--
+
+INSERT INTO `notifications` (`id`, `doc_id`, `track_id`, `user_id`, `office_id`, `notification_type`, `message`, `dismiss`, `system_log`, `last_modified`) VALUES
+(1, 1, 1, 9, NULL, 'outgoing', 'TRAVEL ORDER with subject: <strong>qwerty</strong> was received at PA<br>by Mary Ann Orofino  on May 7, 2018 12:01 PM', 0, '2018-05-07 12:01:28', NULL),
+(2, 1, 1, 6, NULL, 'transaction', 'Type: TRAVEL ORDER, Subject: <strong>qwerty</strong> Office: ICTD<br>Received on May 7, 2018 12:01 PM by Mary Ann Orofino', 0, '2018-05-07 12:01:28', NULL),
+(3, 1, 2, 9, NULL, 'outgoing', 'TRAVEL ORDER with subject: <strong>qwerty</strong> was  at PA<br>by Jennifer Joan Ortega-Manguiat  on May 7, 2018 12:46 PM', 0, '2018-05-07 12:46:33', NULL),
+(4, 1, 2, 7, NULL, 'transaction', 'TRAVEL ORDER with subject: <strong>qwerty</strong> was  at PA<br>by Jennifer Joan Ortega-Manguiat  on May 7, 2018 12:46 PM', 0, '2018-05-07 12:46:33', NULL),
+(5, 1, 2, 8, NULL, 'transaction', 'TRAVEL ORDER with subject: <strong>qwerty</strong> was  at PA<br>by Jennifer Joan Ortega-Manguiat  on May 7, 2018 12:46 PM', 0, '2018-05-07 12:46:33', NULL),
+(6, 2, 3, 9, NULL, 'outgoing', 'DAILY TIME RECORD with subject: <strong>May Payroll</strong> was received at PA<br>by Mary Ann Orofino  on May 7, 2018 12:50 PM', 0, '2018-05-07 12:50:54', NULL),
+(7, 2, 3, 6, NULL, 'transaction', 'Type: DAILY TIME RECORD, Subject: <strong>May Payroll</strong> Office: ICTD<br>Received on May 7, 2018 12:50 PM by Mary Ann Orofino', 0, '2018-05-07 12:50:54', NULL),
+(8, 2, 4, 9, NULL, 'outgoing', 'DAILY TIME RECORD with subject: <strong>May Payroll</strong> was approved at PA<br>by Jennifer Joan Ortega-Manguiat  on May 7, 2018 04:40 PM', 0, '2018-05-07 16:40:19', NULL),
+(9, 2, 4, 7, NULL, 'transaction', 'DAILY TIME RECORD with subject: <strong>May Payroll</strong> was approved at PA<br>by Jennifer Joan Ortega-Manguiat  on May 7, 2018 04:40 PM', 0, '2018-05-07 16:40:19', NULL),
+(10, 2, 4, 8, NULL, 'transaction', 'DAILY TIME RECORD with subject: <strong>May Payroll</strong> was approved at PA<br>by Jennifer Joan Ortega-Manguiat  on May 7, 2018 04:40 PM', 0, '2018-05-07 16:40:19', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -335,6 +359,16 @@ CREATE TABLE `tracks` (
   `remarks` varchar(1000) DEFAULT NULL,
   `system_log` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tracks`
+--
+
+INSERT INTO `tracks` (`id`, `document_id`, `document_status`, `document_status_user`, `document_tracks_status`, `track_option`, `track_office`, `track_date`, `route_office`, `route_user`, `preceding_track`, `remarks`, `system_log`) VALUES
+(1, 1, 'Received', 7, 'transaction', NULL, 2, '2018-05-07 12:01:28', NULL, NULL, 0, NULL, '2018-05-07 12:01:28'),
+(2, 1, NULL, 6, 'transaction', 1, 2, '2018-05-07 12:46:33', NULL, NULL, 1, '', '2018-05-07 12:46:33'),
+(3, 2, 'Received', 7, 'transaction', NULL, 2, '2018-05-07 12:50:54', NULL, NULL, 0, NULL, '2018-05-07 12:50:54'),
+(4, 2, NULL, 6, 'transaction', 4, 2, '2018-05-07 16:40:19', NULL, NULL, 3, '', '2018-05-07 16:40:19');
 
 -- --------------------------------------------------------
 
@@ -527,7 +561,7 @@ ALTER TABLE `divisions`
 -- AUTO_INCREMENT for table `documents`
 --
 ALTER TABLE `documents`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `document_types`
 --
@@ -547,7 +581,7 @@ ALTER TABLE `groups`
 -- AUTO_INCREMENT for table `notifications`
 --
 ALTER TABLE `notifications`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `offices`
 --
@@ -562,7 +596,7 @@ ALTER TABLE `options`
 -- AUTO_INCREMENT for table `tracks`
 --
 ALTER TABLE `tracks`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `transactions`
 --

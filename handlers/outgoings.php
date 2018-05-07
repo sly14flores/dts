@@ -67,7 +67,7 @@ foreach ($outgoings as $i => $outgoing) {
 	
 	$outgoings[$i]['document_status'] = $status;	
 	$outgoings[$i]['track_date'] = date("F j, Y h:i A",strtotime($outgoing['track_date']));
-	$outgoings[$i]['document_date'] = date("F j, Y",strtotime($outgoing['document_date']));
+	$outgoings[$i]['document_date'] = date("F j, Y h:i A",strtotime($outgoing['document_date']));
 	
 	if ($outgoing['office_origin'] == $_SESSION['office']) $outgoings[$i]['show_action'] = false;
 

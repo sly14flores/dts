@@ -89,7 +89,7 @@ foreach ($incomings2 as $i => $incoming) {
 
 	$incomings2[$i]['document_status'] = $status;	
 	
-	$incomings2[$i]['document_date'] = date("F j, Y",strtotime($incoming['document_date']));
+	$incomings2[$i]['document_date'] = date("F j, Y h:i A",strtotime($incoming['document_date']));
 	
 	$incomings2[$i]['track_date_dt'] = date("F j, Y h:i A",strtotime($incoming['track_date']));
 	$incomings2[$i]['track_date'] = date("F j, Y",strtotime($incoming['track_date']));
