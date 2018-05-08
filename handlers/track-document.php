@@ -26,10 +26,9 @@ foreach ($tracks as $i => $track) {
 
 	if ($track['track_option'] != NULL) {
 		$document_status = "";
-		$pre_phrase = $con->getData("SELECT pre_phrase FROM options WHERE id = ".$track['track_option']);
-		if ($pre_phrase[0]['pre_phrase'] != NULL) $document_status = $pre_phrase[0]['pre_phrase']." ";		
+		$option = $con->getData("SELECT pre_phrase, description FROM options WHERE id = ".$track['track_option']);
 		$track_option = $con->getData("SELECT id, choice FROM options WHERE id = ".$track['track_option']);
-		$document_status .= $track_option[0]['choice'];
+		$document_status .= ($option[0]['description']==NULL)?$track_option[0]['choice']:ucfirst($option[0]['description']);
 	};
 
 	$tracks[$i]['track_date_f'] = date("(D) F j, Y",strtotime($track['track_date']));

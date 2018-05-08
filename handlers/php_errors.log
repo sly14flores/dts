@@ -1,0 +1,22 @@
+[08-May-2018 16:57:10 Asia/Manila] PHP Warning:  require_once(documents/trasactions.php): failed to open stream: No such file or directory in C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\documents.php on line 5
+[08-May-2018 16:57:10 Asia/Manila] PHP Stack trace:
+[08-May-2018 16:57:10 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\documents.php:0
+[08-May-2018 16:57:10 Asia/Manila] PHP Fatal error:  require_once(): Failed opening required 'documents/trasactions.php' (include_path='.;C:\php\pear') in C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\documents.php on line 5
+[08-May-2018 16:57:10 Asia/Manila] PHP Stack trace:
+[08-May-2018 16:57:10 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\documents.php:0
+[08-May-2018 16:58:01 Asia/Manila] PHP Notice:  A session had already been started - ignoring session_start() in C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\documents\incomings.php on line 5
+[08-May-2018 16:58:01 Asia/Manila] PHP Stack trace:
+[08-May-2018 16:58:01 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\dashboard.php:0
+[08-May-2018 16:58:01 Asia/Manila] PHP   2. require_once() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\dashboard.php:4
+[08-May-2018 16:58:01 Asia/Manila] PHP   3. session_start() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\documents\incomings.php:5
+[08-May-2018 16:58:01 Asia/Manila] PHP Notice:  A session had already been started - ignoring session_start() in C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\documents\transactions.php on line 5
+[08-May-2018 16:58:01 Asia/Manila] PHP Stack trace:
+[08-May-2018 16:58:01 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\dashboard.php:0
+[08-May-2018 16:58:01 Asia/Manila] PHP   2. require_once() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\dashboard.php:5
+[08-May-2018 16:58:01 Asia/Manila] PHP   3. session_start() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\documents\transactions.php:5
+[08-May-2018 16:58:01 Asia/Manila] PHP Notice:  Undefined variable: incomings in C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\dashboard.php on line 15
+[08-May-2018 16:58:01 Asia/Manila] PHP Stack trace:
+[08-May-2018 16:58:01 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\dashboard.php:0
+[08-May-2018 16:58:01 Asia/Manila] PHP Notice:  Undefined variable: transactions in C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\dashboard.php on line 16
+[08-May-2018 16:58:01 Asia/Manila] PHP Stack trace:
+[08-May-2018 16:58:01 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\dashboard.php:0
