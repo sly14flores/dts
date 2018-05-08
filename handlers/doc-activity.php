@@ -9,7 +9,7 @@ session_start();
 $con = new pdo_db();
 
 $tracks = $con->getData("SELECT id, track_date, document_status, document_tracks_status, document_status_user, track_option, IFNULL(track_office,0) track_office, IFNULL(route_office,0) route_office, route_user, (SELECT CONCAT(users.fname, ' ', users.lname) FROM users WHERE users.id = tracks.document_status_user) staff FROM tracks WHERE document_id = ".$_POST['id']." ORDER BY tracks.track_date DESC");
-
+// var_dump($tracks); exit();
 foreach ($tracks as $i => $track) {
 
 	$status = $track['document_status'];
@@ -25,7 +25,10 @@ foreach ($tracks as $i => $track) {
 	if ($track['track_option'] != NULL) {
 		$track_option = $con->getData("SELECT id, choice FROM options WHERE id = ".$track['track_option']);
 		$document_status_user = $con->getData("SELECT id, CONCAT(fname, ' ', lname) fullname FROM users WHERE id = ".$track['document_status_user']);
-		$status = $track_option[0]['choice'];
+		$status = "";
+		$pre_phrase = $con->getData("SELECT pre_phrase FROM options WHERE id = ".$track['track_option']);
+		if ($pre_phrase[0]['pre_phrase'] != NULL) $status .= $pre_phrase[0]['pre_phrase']." ";
+		$status .= $track_option[0]['choice'];
 		$status .= " by ".$document_status_user[0]['fullname'];		
 	};
 
@@ -36,7 +39,7 @@ foreach ($tracks as $i => $track) {
 	};		
 
 	if ($track['document_tracks_status'] == "for_pick_up") {
-		$status .= " and for pick up for ".$route_office[0]['office'];
+		$status = "For pick up for ".$route_office[0]['office'];
 		$office = $route_office_name;		
 	};
 

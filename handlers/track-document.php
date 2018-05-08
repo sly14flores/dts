@@ -21,12 +21,15 @@ foreach ($tracks as $i => $track) {
 	$user = $con->getData("SELECT CONCAT(users.fname, ' ', users.lname) user FROM users WHERE users.id = ".$track['document_status_user']);
 	$track_office = $con->getData("SELECT offices.office FROM offices WHERE offices.id = ".$track['track_office']);
 	$route_office = $con->getData("SELECT id, office FROM offices WHERE id = ".$track['route_office']);			
-	
+
 	$prepo = (isset($status_arr[$document_status]))?$status_arr[$document_status]:"at";
-	
+
 	if ($track['track_option'] != NULL) {
+		$document_status = "";
+		$pre_phrase = $con->getData("SELECT pre_phrase FROM options WHERE id = ".$track['track_option']);
+		if ($pre_phrase[0]['pre_phrase'] != NULL) $document_status = $pre_phrase[0]['pre_phrase']." ";		
 		$track_option = $con->getData("SELECT id, choice FROM options WHERE id = ".$track['track_option']);
-		$document_status = $track_option[0]['choice'];
+		$document_status .= $track_option[0]['choice'];
 	};
 
 	$tracks[$i]['track_date_f'] = date("(D) F j, Y",strtotime($track['track_date']));
