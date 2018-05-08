@@ -137,6 +137,7 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 			barcodeAsyncSuggest(scope,doc);		
 
 			scope.activity = angular.copy(doc);
+			scope.receive.receive_barcode = {id:0, barcode:''};
 
 			scope.activity.next = {};	
 

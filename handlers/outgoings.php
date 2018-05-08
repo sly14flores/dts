@@ -12,10 +12,10 @@ $outgoings = [];
 
 # Origination from an office
 
-$filter = "WHERE tracks.id = (SELECT MAX(tracks.id) FROM documents LEFT JOIN tracks ON documents.id = tracks.document_id WHERE tracks.document_id = documents.id)";
+$filter = "WHERE tracks.id = (SELECT MAX(tracks.id) FROM tracks WHERE tracks.document_id = documents.id)";
 $filter .= " AND tracks.track_office != ".$_SESSION['office']." AND documents.origin = ".$_SESSION['office']." AND document_tracks_status = 'transaction'";
 
-$sql = "SELECT documents.id, documents.origin office_origin, documents.barcode, documents.doc_name, documents.document_date, tracks.document_status, tracks.document_status_user, tracks.document_tracks_status, tracks.track_office, tracks.track_date, tracks.track_option, tracks.route_office, tracks.route_user, tracks.remarks, (SELECT document_types.document_type FROM document_types WHERE document_types.id = documents.doc_type) doc_type, (SELECT offices.office FROM offices WHERE offices.id = documents.origin) origin, (SELECT transactions.transaction FROM transactions WHERE transactions.id = documents.document_transaction_type) document_transaction_type FROM documents LEFT JOIN tracks ON documents.id = tracks.document_id {$filter} ORDER BY tracks.track_date DESC LIMIT 1";
+$sql = "SELECT documents.id, documents.origin office_origin, documents.barcode, documents.doc_name, documents.document_date, tracks.document_status, tracks.document_status_user, tracks.document_tracks_status, tracks.track_office, tracks.track_date, tracks.track_option, tracks.route_office, tracks.route_user, tracks.remarks, (SELECT document_types.document_type FROM document_types WHERE document_types.id = documents.doc_type) doc_type, (SELECT offices.office FROM offices WHERE offices.id = documents.origin) origin, (SELECT transactions.transaction FROM transactions WHERE transactions.id = documents.document_transaction_type) document_transaction_type FROM documents LEFT JOIN tracks ON documents.id = tracks.document_id {$filter} ORDER BY tracks.track_date DESC";
 $originating = $con->getData($sql);
 
 foreach ($originating as $o) {
@@ -26,10 +26,10 @@ foreach ($originating as $o) {
 
 # For pick to other offices
 
-$filter = "WHERE tracks.id = (SELECT MAX(tracks.id) FROM documents LEFT JOIN tracks ON documents.id = tracks.document_id WHERE tracks.document_id = documents.id)";
+$filter = "WHERE tracks.id = (SELECT MAX(tracks.id) FROM tracks WHERE tracks.document_id = documents.id)";
 $filter .= " AND tracks.track_office = ".$_SESSION['office']." AND document_tracks_status = 'for_pick_up'";
 
-$sql = "SELECT documents.id, documents.origin office_origin, documents.barcode, documents.doc_name, documents.document_date, tracks.document_status, tracks.document_status_user, tracks.document_tracks_status, tracks.track_office, tracks.track_date, tracks.track_option, tracks.route_office, tracks.route_user, tracks.remarks, (SELECT document_types.document_type FROM document_types WHERE document_types.id = documents.doc_type) doc_type, (SELECT offices.office FROM offices WHERE offices.id = documents.origin) origin, (SELECT transactions.transaction FROM transactions WHERE transactions.id = documents.document_transaction_type) document_transaction_type FROM documents LEFT JOIN tracks ON documents.id = tracks.document_id {$filter} ORDER BY tracks.track_date DESC LIMIT 1";
+$sql = "SELECT documents.id, documents.origin office_origin, documents.barcode, documents.doc_name, documents.document_date, tracks.document_status, tracks.document_status_user, tracks.document_tracks_status, tracks.track_office, tracks.track_date, tracks.track_option, tracks.route_office, tracks.route_user, tracks.remarks, (SELECT document_types.document_type FROM document_types WHERE document_types.id = documents.doc_type) doc_type, (SELECT offices.office FROM offices WHERE offices.id = documents.origin) origin, (SELECT transactions.transaction FROM transactions WHERE transactions.id = documents.document_transaction_type) document_transaction_type FROM documents LEFT JOIN tracks ON documents.id = tracks.document_id {$filter} ORDER BY tracks.track_date DESC";
 $transactions = $con->getData($sql);
 
 foreach ($transactions as $i => $t) {

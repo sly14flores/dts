@@ -13,6 +13,7 @@ angular.module('app-module', ['form-validator','bootstrap-modal','ui.bootstrap',
 			barcodeAsyncSuggest(scope);
 			
 			scope.document = {};
+			scope.doc = {};			
 
 		};
 
@@ -57,6 +58,8 @@ angular.module('app-module', ['form-validator','bootstrap-modal','ui.bootstrap',
 			var loading = '<div class="col-lg-12">Fetching document tracks please wait...</div>';
 			
 			$('#track').html(loading);
+			
+			scope.doc = angular.copy(scope.document);			
 			
 			$http({
 			  method: 'POST',

@@ -13,6 +13,7 @@ angular.module('app-module', ['form-validator','bootstrap-modal','ui.bootstrap']
 			barcodeAsyncSuggest(scope);
 			
 			scope.document = {};
+			scope.doc = {};
 
 		};
 
@@ -46,17 +47,19 @@ angular.module('app-module', ['form-validator','bootstrap-modal','ui.bootstrap']
 		};	
 
 		self.track = function(scope) {
-			
+
 			$('#track').html('');
-			
+
 			if (scope.document.id === undefined) {
 				$('#track').html('<div class="col-lg-4 offset-lg-4"><div class="alert alert-danger">No document found.</div></div>');
 				return;
 			};
 			
 			var loading = '<div class="col-lg-12">Fetching document tracks please wait...</div>';
-			
+
 			$('#track').html(loading);
+
+			scope.doc = angular.copy(scope.document);
 			
 			$http({
 			  method: 'POST',
@@ -74,7 +77,7 @@ angular.module('app-module', ['form-validator','bootstrap-modal','ui.bootstrap']
 			}, function myError(response) {
 
 			});			
-			
+
 		};
 
 	};

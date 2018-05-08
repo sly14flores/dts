@@ -5,8 +5,6 @@ app.controller('documentsCtrl',function($scope,app) {
 	$scope.app = app;
 	
 	$scope.app.data($scope);
-
-	$scope.app.list($scope);
 	
 	$scope.module = {
 		id: 'transact',
