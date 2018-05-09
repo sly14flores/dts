@@ -86,6 +86,9 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 						
 			if (scope.$id > 2) scope = scope.$parent;
 			
+			scope.views.title = 'Incomings';
+			scope.views.search = false;
+			
 			scope.currentPage = scope.views.currentPage;
 			scope.pageSize = 10;
 			scope.maxSize = 5;
@@ -133,6 +136,9 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 		};
 
 		self.receive = function(scope,doc) {
+
+			scope.views.title = '';
+			scope.views.search = true;
 
 			barcodeAsyncSuggest(scope,doc);		
 

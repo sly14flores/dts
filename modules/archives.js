@@ -23,6 +23,9 @@ angular.module('app-module', ['form-validator','bootstrap-modal','notifications-
 			
 			if (scope.$id > 2) scope = scope.$parent;			
 			
+			scope.views.title = 'Archives';
+			scope.views.search = false;			
+			
 			scope.currentPage = scope.views.currentPage;
 			scope.pageSize = 10;
 			scope.maxSize = 5;			
@@ -50,6 +53,9 @@ angular.module('app-module', ['form-validator','bootstrap-modal','notifications-
 
 		self.view = function(scope,archive) {			
 
+			scope.views.title = '';
+			scope.views.search = true;			
+		
 			scope.activity = angular.copy(archive);			
 
 			$http({

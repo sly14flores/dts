@@ -65,19 +65,20 @@
 	<div class="col-md-4">
 		<div class="form-group">
 			<label class="form-control-label"><strong>Action</strong></label>
-			<select class="form-control" ng-class="{'is-invalid': formHolder.activity.action.$touched && formHolder.activity.action.$invalid}" name="action" ng-model="activity.action" required>
+			<select class="form-control" ng-class="{'is-invalid': formHolder.activity.action.$touched && formHolder.activity.action.$invalid}" name="action" ng-model="activity.action" ng-change="app.errorDisplayReset(this)" required>
 				<option value="Flag">Flag document</option>
 				<option value="Forward">Notify for pick up or forwarding</option>
 				<option value="File">File document</option>
 			</select>
-			<div class="invalid-feedback">Please select action</div>			
+			<div class="invalid-feedback">Please select action</div>
 		</div>
+		<div class="alert alert-danger" style="margin-top: 15px;" ng-show="views.error.pickup.show">{{views.error.pickup.msg}}</div>
 	</div>
 </div>
 <div ng-show="activity.action == 'Flag'">
 <div class="row">
 	<div class="col-md-12">	
-		<div class="card" style="margin-top: 15px;">
+		<div class="card">
 			<div class="card-header">
 				<strong>Options</strong>
 			<hr>		
@@ -90,6 +91,11 @@
 							<label for="{{opt.id}}{{$index}}" class="ts-helper"></label>						
 							<label for="{{opt.id}}{{$index}}" class="ts-label"><span style="padding-left: 10px;">{{opt.choice}}</span></label>
 						</div>	
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-4">
+						<div class="alert alert-danger" style="margin-top: 15px;" ng-show="views.error.chosen.show">{{views.error.chosen.msg}}</div>
 					</div>
 				</div>
 			</div>

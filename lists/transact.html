@@ -3,6 +3,7 @@
 		<thead>
 			<tr>
 				<th>Barcode</th>
+				<th>Transaction</th>
 				<th>Document Type</th>
 				<th>Originating Office</th>
 				<th>Subject</th>
@@ -15,6 +16,7 @@
 		<tbody>
 			<tr ng-repeat="t in filterData = (documents | filter:search) | pagination: currentPage:pageSize">
 				<td>{{t.barcode}}</td>
+				<td>{{t.document_transaction_type}}</td>
 				<td>{{t.doc_type}}</td>
 				<td>{{t.origin}}</td>
 				<td>{{t.doc_name}}</td>

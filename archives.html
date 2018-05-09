@@ -172,16 +172,14 @@ require_once 'authentication.php';
                             <span class="input-group-btn">
                                 <button type="button" class="btn btn-primary"><i class="fa fa-search"></i> Search</button>
                             </span>
-                            <input type="text" id="input-group-1" name="input1-group2" class="form-control" ng-model="search" placeholder="">
+                            <input type="text" id="input-group-1" name="input1-group2" class="form-control" ng-model="search" ng-disabled="views.search" placeholder="">
                         </div><hr>
 					</div>
 				</div>				
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
-                            <div class="card-header bg-light">
-                                List of Documents
-                            </div>
+                            <div class="card-header bg-light">{{views.title}}</div>
 							<div class="card-body" id="content"></div>	
 							</div>
                             </div>

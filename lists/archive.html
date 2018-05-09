@@ -2,6 +2,7 @@
 	<table class="table table-striped">
 		<thead>
 			<tr>
+				<th>Transaction</th>
 				<th>Subject</th>
 				<th>Barcode</th>
 				<th>Type</th>												
@@ -15,6 +16,7 @@
 		</thead>
 		<tbody>
 			<tr ng-repeat="a in filterData = (archives | filter:search) | pagination: currentPage:pageSize">
+				<td>{{a.transaction}}</td>
 				<td>{{a.doc_name}}</td>
 				<td>{{a.barcode}}</td>
 				<td>{{a.doc_type}}</td>											
@@ -30,7 +32,7 @@
 		</tbody>
 		<tfoot><!-- added pagination feature -->
 			<tr>
-				<td colspan="9" style="text-align: center;">
+				<td colspan="10" style="text-align: center;">
 					<div class="float-right"><ul uib-pagination direction-links="false" boundary-links="true" total-items="filterData.length" ng-model="currentPage" max-size="maxSize"></ul></div>
 				</td>
 			</tr>											

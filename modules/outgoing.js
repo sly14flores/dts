@@ -84,6 +84,9 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 						
 			if (scope.$id > 2) scope = scope.$parent;
 			
+			scope.views.title = 'Outgoings';
+			scope.views.search = false;			
+			
 			scope.currentPage = scope.views.currentPage;
 			scope.pageSize = 10;
 			scope.maxSize = 5;
@@ -109,6 +112,9 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 		
 		self.tracks = function(scope,outgoing) {
 
+			scope.views.title = '';	
+			scope.views.search = true;
+		
 			scope.activity = angular.copy(outgoing);			
 
 			scope.activity.next = {};

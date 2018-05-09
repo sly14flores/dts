@@ -3,6 +3,7 @@
 		<thead>
 			<tr>
 				<th>Document Type</th>
+				<th>Transaction</th>
 				<th>Originating Office</th>
 				<th>Subject</th>
 				<th>Document Status</th>
@@ -14,6 +15,7 @@
 		<tbody>
 			<tr ng-repeat="i in filterData = (incomings | filter:search) | pagination: currentPage:pageSize">
 				<td>{{i.doc_type}}</td>
+				<td>{{i.document_transaction_type}}</td>
 				<td>{{i.origin}}</td>
 				<td>{{i.doc_name}}</td>
 				<td>{{i.document_status}}</td>
@@ -26,7 +28,7 @@
 		</tbody>
 		<tfoot><!-- added pagination feature -->
 			<tr>
-				<td colspan="9" style="text-align: center;">
+				<td colspan="8" style="text-align: center;">
 					<div class="float-right"><ul uib-pagination direction-links="false" boundary-links="true" total-items="filterData.length" ng-model="currentPage" max-size="maxSize"></ul></div>
 				</td>
 			</tr>											

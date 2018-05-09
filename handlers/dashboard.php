@@ -13,6 +13,9 @@ $documents = array(
 );
 
 $outgoings = outgoings();
+$incomings = incomings();
+$transactions = transactions();
+
 $documents['outgoings'] = $outgoings;
 $documents['incomings'] = $incomings;
 $documents['transactions'] = $transactions;

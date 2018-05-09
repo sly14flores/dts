@@ -1,8 +1,8 @@
-angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post','notifications-module','ngRoute']).config(function($routeProvider) {
+angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post','notifications-module','ngRoute','block-ui','bootstrap-growl']).config(function($routeProvider) {
     $routeProvider.when('/:option/:id', {
         templateUrl: 'transact.html'
     });	
-}).factory('app', function($http,$timeout,$compile,$window,bootstrapModal,printPost,$routeParams,$location) {
+}).factory('app', function($http,$timeout,$compile,$window,bootstrapModal,printPost,$routeParams,$location,$q,bui,growl) {
 	
 	function app() {
 
@@ -13,6 +13,16 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 			scope.formHolder = {};
 			
 			scope.views = {};
+			
+			scope.views.error = {};
+			scope.views.error.pickup = {
+				show: false,
+				msg: ''
+			};
+			scope.views.error.chosen = {
+				show: false,
+				msg: ''
+			};			
 			
 			scope.activity = {};
 			
@@ -84,6 +94,9 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 						
 			if (scope.$id > 2) scope = scope.$parent;
 			
+			scope.views.title = 'For Transactions';
+			scope.views.search = false;
+			
 			scope.currentPage = scope.views.currentPage;
 			scope.pageSize = 10;
 			scope.maxSize = 5;
@@ -110,6 +123,9 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 
 		self.activity = function(scope,doc) {
 
+			scope.views.title = '';		
+			scope.views.search = true;
+		
 			scope.activity = angular.copy(doc);
 
 			scope.activity.next = {};
@@ -141,25 +157,76 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 
 		};
 
-		self.save = function(scope) {
-			
-			if (validate(scope,'activity')) return false;				
-			
-			scope.activity.options = scope.options;
-			
-			$http({
-			  method: 'POST',
-			  url: 'handlers/doc-transaction.php',
-			  data: scope.activity
-			}).then(function mySuccess(response) {
+		self.save = function(scope) {		
 
-				self.list(scope);
+			scope.views.error.pickup.show = false;
+			scope.views.error.pickup.msg = '';	
+			
+			scope.views.error.chosen.show = false;
+			scope.views.error.chosen.msg = '';			
+			
+			if (scope.activity.action == 'Forward') {
+			
+				okForPickUp(scope).then(function success(response) {
+					
+					update();
+					
+				}, function error(response) {
 
-			}, function myError(response) {
+					scope.views.error.pickup.show = true;
+					scope.views.error.pickup.msg = 'Document cannot be forwarded if it has no flag yet';
+
+				});	
+
+			} else {
+
+				update();
+
+			};
+			
+			function update() {
+			
+				if (validate(scope,'activity')) return;
+			
+				scope.activity.options = scope.options;
+
+				if (!hasChosenOption(scope)) {
+
+					scope.views.error.chosen.show = true;
+					scope.views.error.chosen.msg = 'Please choose one option';
+					
+					return;
+
+				};
 				
-				//
+				bui.show();
 				
-			});			
+				$http({
+				  method: 'POST',
+				  url: 'handlers/doc-transaction.php',
+				  data: scope.activity
+				}).then(function mySuccess(response) {
+
+					// self.list(scope);
+					bui.hide();
+					growl.show('success',{from: 'top', amount: 55},'Updated');
+
+				}, function myError(response) {
+
+				});			
+			
+			};
+			
+		};
+		
+		function okForPickUp(scope) {
+			
+			return $q(function(resolve, reject) {
+				
+				if (scope.activity.tracks[((scope.activity.tracks.length-1)<0)?0:scope.activity.tracks.length-1].ds == 'Received') reject(true);
+				else resolve(false);
+				
+			});
 			
 		};
 		
@@ -215,9 +282,36 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 			
 		};
 		
+		function hasChosenOption(scope) {
+			
+			var chosen = false;
+			
+			angular.forEach(scope.options,function(option,i) {
+				
+				if (typeof option.value === 'boolean') {
+
+					chosen = true;
+
+				};
+
+			});
+			
+			return chosen;
+			
+		};
+		
 		self.preview = function(file) {
 
 			printPost.show('preview/index.php',file);
+			
+		};
+		
+		self.errorDisplayReset = function(scope) {
+			
+			scope.views.error.pickup.show = false;
+			scope.views.error.pickup.msg = '';				
+			scope.views.error.chosen.show = false;
+			scope.views.error.chosen.msg = '';			
 			
 		};
 
