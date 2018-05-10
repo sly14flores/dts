@@ -65,7 +65,7 @@
 	<div class="col-md-4">
 		<div class="form-group">
 			<label class="form-control-label"><strong>Action</strong></label>
-			<select class="form-control" ng-class="{'is-invalid': formHolder.activity.action.$touched && formHolder.activity.action.$invalid}" name="action" ng-model="activity.action" ng-change="app.errorDisplayReset(this)" required>
+			<select class="form-control" ng-class="{'is-invalid': formHolder.activity.action.$touched && formHolder.activity.action.$invalid}" name="action" ng-model="activity.action" ng-change="app.errorDisplayReset(this)" ng-disabled="btns.transact.controls.ok" required>
 				<option value="Flag">Flag document</option>
 				<option value="Forward">Notify for pick up or forwarding</option>
 				<option value="File">File document</option>
@@ -146,8 +146,9 @@
 <div class="row mt-4">
 	<div class="col-md-12">
 		<div class="float-right">
-			<button class="btn btn-primary" ng-click="app.save(this)">Update</button>
-			<button class="btn btn-secondary" ng-click="app.list(this)">Close</button>
+			<button class="btn btn-primary" ng-click="app.transact(this)" ng-disabled="btns.transact.controls.edit">{{btns.transact.labels.edit}}</button>
+			<button class="btn btn-primary" ng-click="app.save(this)" ng-disabled="btns.transact.controls.ok">{{btns.transact.labels.ok}}</button>
+			<button class="btn btn-secondary" ng-click="app.cancel(this)" ng-disabled="btns.transact.controls.cancel">{{btns.transact.labels.cancel}}</button>
 		</div>
 		<div class="clearfix"></div>
 	</div>

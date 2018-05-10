@@ -24,6 +24,20 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 				msg: ''
 			};			
 			
+			scope.btns = {};
+			scope.btns.transact = {
+				controls: {
+					edit: false,
+					ok: true,
+					cancel: false
+				},
+				labels: {
+					edit: 'Transact',
+					ok: 'Update',
+					cancel: 'Close'		
+				}
+			};
+			
 			scope.activity = {};
 			
 			scope.documents = [];
@@ -66,7 +80,7 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 					
 				};			
 
-			});
+			});		
 			
 			self.list(scope);
 			
@@ -93,6 +107,21 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 		self.list = function(scope) {
 						
 			if (scope.$id > 2) scope = scope.$parent;
+			
+			scope.btns.transact = {
+				controls: {
+					edit: false,
+					ok: true,
+					cancel: false
+				},
+				labels: {
+					edit: 'Transact',
+					ok: 'Update',
+					cancel: 'Close'		
+				}
+			};			
+			
+			scope.activity = {};
 			
 			scope.views.title = 'For Transactions';
 			scope.views.search = false;
@@ -121,7 +150,7 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 			
 		};		
 
-		self.activity = function(scope,doc) {
+		self.activity = function(scope,doc,form) {
 
 			scope.views.title = '';		
 			scope.views.search = true;
@@ -151,13 +180,42 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 				
 			});
 
-			$('#content').load('forms/transact.html',function() {
-				$timeout(function() { $compile($('#content')[0])(scope); }, 500);
-			});			
+			if (form) {
+				$('#content').load('forms/transact.html',function() {
+					$timeout(function() { $compile($('#content')[0])(scope); }, 500);
+				});
+			};
 
 		};
 
-		self.save = function(scope) {		
+		self.transact = function(scope) {
+			
+			scope.btns.transact.controls.edit = true;
+			scope.btns.transact.controls.ok = false;
+			scope.btns.transact.labels.cancel = 'Cancel';
+			
+		};
+
+		self.cancel = function(scope) {
+			
+			if (scope.btns.transact.controls.ok) {
+				self.list(scope);
+			} else {
+				scope.btns.transact.controls.edit = false;
+				scope.btns.transact.controls.ok = true;
+				scope.btns.transact.labels.cancel = 'Close';				
+				delete scope.activity.action;
+				if (scope.formHolder.activity.action.$touched) scope.formHolder.activity.action.$touched = false;
+				scope.views.error.pickup.show = false;
+				scope.views.error.pickup.msg = '';	
+				
+				scope.views.error.chosen.show = false;
+				scope.views.error.chosen.msg = '';
+			};
+
+		};
+
+		self.save = function(scope) {
 
 			scope.views.error.pickup.show = false;
 			scope.views.error.pickup.msg = '';	
@@ -168,8 +226,8 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 			if (scope.activity.action == 'Forward') {
 			
 				okForPickUp(scope).then(function success(response) {
-					
-					update();
+
+					update(scope);
 					
 				}, function error(response) {
 
@@ -180,23 +238,27 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 
 			} else {
 
-				update();
+				update(scope);
 
 			};
 			
-			function update() {
-			
+			function update(scope) {
+
 				if (validate(scope,'activity')) return;
-			
+	
 				scope.activity.options = scope.options;
 
-				if (!hasChosenOption(scope)) {
+				if (scope.activity.action == 'Flag') {
+				
+					if (!hasChosenOption(scope)) {
 
-					scope.views.error.chosen.show = true;
-					scope.views.error.chosen.msg = 'Please choose one option';
+						scope.views.error.chosen.show = true;
+						scope.views.error.chosen.msg = 'Please choose one option';
+						
+						return;
+
+					};
 					
-					return;
-
 				};
 				
 				bui.show();
@@ -207,9 +269,19 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 				  data: scope.activity
 				}).then(function mySuccess(response) {
 
-					// self.list(scope);
 					bui.hide();
-					growl.show('success',{from: 'top', amount: 55},'Updated');
+					scope.btns.transact.controls.edit = false;
+					scope.btns.transact.controls.ok = true;
+					scope.btns.transact.labels.cancel = 'Close';					
+					
+					var action = scope.activity.action;
+					notify(scope,action);
+					
+					self.activity(scope,scope.activity,false);
+					
+					$timeout(function() {
+						delete scope.activity.action;
+					},500);
 
 				}, function myError(response) {
 
@@ -219,11 +291,35 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 			
 		};
 		
+		function notify(scope,action) {			
+			
+			var text = '';
+
+			switch (action) {
+				
+				case 'Flag':
+					text = 'Document was '+(chosenOption(scope))['description'];
+				break;
+				
+				case 'Forward':
+					text = 'Document is ready for pick up';
+				break;
+				
+				case 'File':
+					text = 'Document was moved to archived';
+				break;
+				
+			};
+			
+			growl.show('success',{from: 'top', amount: 55},text);			
+			
+		};
+		
 		function okForPickUp(scope) {
 			
 			return $q(function(resolve, reject) {
-				
-				if (scope.activity.tracks[((scope.activity.tracks.length-1)<0)?0:scope.activity.tracks.length-1].ds == 'Received') reject(true);
+
+				if (scope.activity.tracks[0].ds == 'Received') reject(true);
 				else resolve(false);
 				
 			});
@@ -267,14 +363,16 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 		};	
 		
 		self.optionChosen = function(scope,opt) {
-			
+
 			var index = scope.options.indexOf(opt);
 			
 			angular.forEach(scope.options,function(option,i) {
 				
 				if (typeof option.value === 'boolean') {
 
-					if (i != index) scope.options[i].value = false;
+					if (i != index) {
+						scope.options[i].value = false;
+					};
 
 				};
 
@@ -299,6 +397,24 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 			return chosen;
 			
 		};
+		
+		function chosenOption(scope) {
+			
+			var chosen = {};
+			
+			angular.forEach(scope.options,function(option,i) {
+				
+				if (typeof option.value === 'boolean') {
+
+					chosen = option;
+
+				};
+
+			});
+			
+			return chosen;
+			
+		};		
 		
 		self.preview = function(file) {
 
