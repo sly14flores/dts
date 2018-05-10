@@ -66,7 +66,8 @@
 	<div class="col-md-4">
 		<div class="form-group">
 			<label class="form-control-label"><strong>Barcode</strong></label>		
-			<input type="text" class="form-control" placeholder="Enter barcode to receive document" ng-disabled="false" name="barcode" ng-model="receive.receive_barcode" uib-typeahead="b.barcode for b in barcodeAsyncSuggest($viewValue)" typeahead-min-length="3" typeahead-on-select="app.barcodeSelected(this, $item)" ng-class="{'is-invalid': formHolder.activity.barcode.$touched && formHolder.activity.barcode.$invalid}" required>
+			<!-- <input type="text" class="form-control" placeholder="Enter barcode to receive document" ng-disabled="false" name="barcode" ng-model="receive.receive_barcode" uib-typeahead="b.barcode for b in barcodeAsyncSuggest($viewValue)" typeahead-min-length="3" typeahead-on-select="app.barcodeSelected(this, $item)" ng-class="{'is-invalid': formHolder.activity.barcode.$touched && formHolder.activity.barcode.$invalid}" required> -->
+			<input type="text" class="form-control" placeholder="Enter barcode to receive document" ng-disabled="false" name="barcode" ng-model="receive.receive_barcode" ng-class="{'is-invalid': formHolder.activity.barcode.$touched && formHolder.activity.barcode.$invalid}" required>
 			<div class="invalid-feedback">Barcode is required</div>
 		</div>                
 	</div>
@@ -79,7 +80,8 @@
 			</div>
 		<br>
 		</div>
-		<div class="alert alert-danger" style="margin-top: 15px;" ng-show="views.noOption">Please select if document is for transaction or filing</div>
+		<div class="alert alert-danger" style="margin-top: 15px;" ng-show="views.error.receive.show">{{views.error.receive.msg}}</div>
+		<div class="alert alert-danger" style="margin-top: 15px;" ng-show="views.error.barcode.show">{{views.error.barcode.msg}}</div>
 	</div>
 	<div class="col-md-4">
 		<div class="form-group">

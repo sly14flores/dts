@@ -14,6 +14,16 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 
 			scope.views = {};
 
+			scope.views.error = {};
+			scope.views.error.receive = {
+				show: false,
+				msg: ''
+			};
+			scope.views.error.barcode = {
+				show: false,
+				msg: ''
+			};			
+
 			scope.receive = {};
 
 			scope.activity = {};
@@ -139,11 +149,12 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 
 			scope.views.title = '';
 			scope.views.search = true;
-
-			barcodeAsyncSuggest(scope,doc);		
+			
+			// barcodeAsyncSuggest(scope,doc);		
 
 			scope.activity = angular.copy(doc);
-			scope.receive.receive_barcode = {id:0, barcode:''};
+			// scope.receive.receive_barcode = {id:0, barcode:''};
+			scope.receive.receive_barcode = '';
 
 			scope.activity.next = {};	
 
@@ -176,12 +187,22 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 		
 		self.save = function(scope) {
 			
-			scope.views.noOption = false;
+			scope.views.error.barcode.show = false;
+			scope.views.error.barcode.msg = '';			
+			scope.views.error.receive.show = false;
+			scope.views.error.receive.msg = '';
 			
-			if (validate(scope,'activity')) return false;				
+			if (validate(scope,'activity')) return false;
+			
+			if (scope.receive.receive_barcode != scope.activity.barcode) {
+				scope.views.error.barcode.show = true;
+				scope.views.error.barcode.msg = 'Barcode is incorrect';
+				return;				
+			};
 			
 			if (scope.activity.next.opt == undefined) {
-				scope.views.noOption = true;
+				scope.views.error.receive.show = true;
+				scope.views.error.receive.msg = 'Please select if document is for transaction or filing';
 				return;
 			};
 			
