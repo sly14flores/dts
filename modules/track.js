@@ -10,10 +10,11 @@ angular.module('app-module', ['form-validator','bootstrap-modal','ui.bootstrap']
 			
 			scope.views = {};
 
-			barcodeAsyncSuggest(scope);
+			// barcodeAsyncSuggest(scope);
 			
+			scope.barcode = '';
 			scope.document = {};
-			scope.doc = {};
+			scope.tracks = [];
 
 		};
 
@@ -50,7 +51,7 @@ angular.module('app-module', ['form-validator','bootstrap-modal','ui.bootstrap']
 
 			$('#track').html('');
 
-			if (scope.document.id === undefined) {
+			if ((scope.barcode === undefined) || (scope.barcode === '')) {
 				$('#track').html('<div class="col-lg-4 offset-lg-4"><div class="alert alert-danger">No document found.</div></div>');
 				return;
 			};
@@ -63,12 +64,13 @@ angular.module('app-module', ['form-validator','bootstrap-modal','ui.bootstrap']
 			
 			$http({
 			  method: 'POST',
-			  url: 'handlers/track-document.php',
-			  data: {id: scope.document.id}
+			  url: 'handlers/track-document-guest.php',
+			  data: {barcode: scope.barcode}
 			}).then(function mySuccess(response) {
 				
-				// delete scope.document.id;
-				scope.tracks = response.data;				
+				scope.barcode = '';
+				scope.document = angular.copy(response.data.document);
+				scope.tracks = angular.copy(response.data.tracks);
 				
 				$('#track').load('html/track.html',function() {
 					$timeout(function() { $compile($('#track')[0])(scope); }, 100);
