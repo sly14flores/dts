@@ -40,11 +40,16 @@ function tracks($con,$tracks) {
 		};
 
 		$tracks[$i]['status'] = $status;
+		
+		# Interval between tracks
+		if ($i == (count($tracks)-1)) break;
+
+		
 
 	};
 
 	return $tracks;
-	
+
 };
 
 ?>

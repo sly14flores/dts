@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 07, 2018 at 04:41 PM
+-- Generation Time: May 18, 2018 at 04:57 PM
 -- Server version: 5.7.11
 -- PHP Version: 7.0.3
 
@@ -184,8 +184,7 @@ CREATE TABLE `documents` (
 --
 
 INSERT INTO `documents` (`id`, `user_id`, `doc_name`, `barcode`, `origin`, `other_origin`, `document_date`, `document_transaction_type`, `doc_type`, `communication`, `remarks`) VALUES
-(1, 7, 'qwerty', 'ICT-05-2018-00001', 4, NULL, '2018-05-07 12:01:28', 2, 3, 1, NULL),
-(2, 7, 'May Payroll', 'ICT-05-2018-00002', 4, NULL, '2018-05-07 12:50:54', 1, 6, 1, NULL);
+(1, 7, 'Training at Baguio City', 'ICT-05-2018-00001', 4, NULL, '2018-05-17 13:31:53', 1, 3, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -271,16 +270,11 @@ CREATE TABLE `notifications` (
 --
 
 INSERT INTO `notifications` (`id`, `doc_id`, `track_id`, `user_id`, `office_id`, `notification_type`, `message`, `dismiss`, `system_log`, `last_modified`) VALUES
-(1, 1, 1, 9, NULL, 'outgoing', 'TRAVEL ORDER with subject: <strong>qwerty</strong> was received at PA<br>by Mary Ann Orofino  on May 7, 2018 12:01 PM', 0, '2018-05-07 12:01:28', NULL),
-(2, 1, 1, 6, NULL, 'transaction', 'Type: TRAVEL ORDER, Subject: <strong>qwerty</strong> Office: ICTD<br>Received on May 7, 2018 12:01 PM by Mary Ann Orofino', 0, '2018-05-07 12:01:28', NULL),
-(3, 1, 2, 9, NULL, 'outgoing', 'TRAVEL ORDER with subject: <strong>qwerty</strong> was  at PA<br>by Jennifer Joan Ortega-Manguiat  on May 7, 2018 12:46 PM', 0, '2018-05-07 12:46:33', NULL),
-(4, 1, 2, 7, NULL, 'transaction', 'TRAVEL ORDER with subject: <strong>qwerty</strong> was  at PA<br>by Jennifer Joan Ortega-Manguiat  on May 7, 2018 12:46 PM', 0, '2018-05-07 12:46:33', NULL),
-(5, 1, 2, 8, NULL, 'transaction', 'TRAVEL ORDER with subject: <strong>qwerty</strong> was  at PA<br>by Jennifer Joan Ortega-Manguiat  on May 7, 2018 12:46 PM', 0, '2018-05-07 12:46:33', NULL),
-(6, 2, 3, 9, NULL, 'outgoing', 'DAILY TIME RECORD with subject: <strong>May Payroll</strong> was received at PA<br>by Mary Ann Orofino  on May 7, 2018 12:50 PM', 0, '2018-05-07 12:50:54', NULL),
-(7, 2, 3, 6, NULL, 'transaction', 'Type: DAILY TIME RECORD, Subject: <strong>May Payroll</strong> Office: ICTD<br>Received on May 7, 2018 12:50 PM by Mary Ann Orofino', 0, '2018-05-07 12:50:54', NULL),
-(8, 2, 4, 9, NULL, 'outgoing', 'DAILY TIME RECORD with subject: <strong>May Payroll</strong> was approved at PA<br>by Jennifer Joan Ortega-Manguiat  on May 7, 2018 04:40 PM', 0, '2018-05-07 16:40:19', NULL),
-(9, 2, 4, 7, NULL, 'transaction', 'DAILY TIME RECORD with subject: <strong>May Payroll</strong> was approved at PA<br>by Jennifer Joan Ortega-Manguiat  on May 7, 2018 04:40 PM', 0, '2018-05-07 16:40:19', NULL),
-(10, 2, 4, 8, NULL, 'transaction', 'DAILY TIME RECORD with subject: <strong>May Payroll</strong> was approved at PA<br>by Jennifer Joan Ortega-Manguiat  on May 7, 2018 04:40 PM', 0, '2018-05-07 16:40:19', NULL);
+(1, 1, 1, 9, NULL, 'outgoing', 'TRAVEL ORDER with subject: <strong>Training at Baguio City</strong> was received at PA<br>by Mary Ann Orofino  on May 17, 2018 01:31 PM', 0, '2018-05-17 13:31:53', NULL),
+(2, 1, 1, 6, NULL, 'transaction', 'Type: TRAVEL ORDER, Subject: <strong>Training at Baguio City</strong> Office: ICTD<br>Received on May 17, 2018 01:31 PM by Mary Ann Orofino', 0, '2018-05-17 13:31:53', NULL),
+(3, 1, 2, 9, NULL, 'outgoing', 'TRAVEL ORDER with subject: <strong>Training at Baguio City</strong> was approved at PA<br>by Jennifer Joan Ortega-Manguiat  on May 18, 2018 01:14 PM', 0, '2018-05-18 13:14:54', NULL),
+(4, 1, 2, 7, NULL, 'transaction', 'TRAVEL ORDER with subject: <strong>Training at Baguio City</strong> was approved at PA<br>by Jennifer Joan Ortega-Manguiat  on May 18, 2018 01:14 PM', 0, '2018-05-18 13:14:54', NULL),
+(5, 1, 2, 8, NULL, 'transaction', 'TRAVEL ORDER with subject: <strong>Training at Baguio City</strong> was approved at PA<br>by Jennifer Joan Ortega-Manguiat  on May 18, 2018 01:14 PM', 0, '2018-05-18 13:14:54', NULL);
 
 -- --------------------------------------------------------
 
@@ -313,6 +307,7 @@ INSERT INTO `offices` (`id`, `office`, `shortname`, `dept_id`) VALUES
 
 CREATE TABLE `options` (
   `id` int(11) NOT NULL,
+  `pre_phrase` varchar(100) DEFAULT NULL,
   `choice` varchar(250) DEFAULT NULL,
   `description` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -321,22 +316,22 @@ CREATE TABLE `options` (
 -- Dumping data for table `options`
 --
 
-INSERT INTO `options` (`id`, `choice`, `description`) VALUES
-(1, 'FOR COMMENT/RECOMMENDATION', NULL),
-(2, 'FOR DISSEMINATION', NULL),
-(3, 'RETURN DOCUMENTS TO ME', NULL),
-(4, 'APPROVED', 'approved'),
-(5, 'PLEASE HANDLE', NULL),
-(6, 'PLEASE PREPARE REPLY LETTER', NULL),
-(7, 'FOR FILE', NULL),
-(8, 'FOR INFORMATION/REFERENCE', NULL),
-(9, 'LET US DISCUSS/SEE ME', NULL),
-(10, 'FOR REVIEW/EVALUATION', NULL),
-(11, 'PLEASE ATTEND', NULL),
-(12, 'FOR APPROPRIATE ACTION', NULL),
-(13, 'PLEASE PREPARE SPEECH/MESSAGE', NULL),
-(14, 'PLEASE CONFIRM', NULL),
-(15, 'FORWARDED', NULL);
+INSERT INTO `options` (`id`, `pre_phrase`, `choice`, `description`) VALUES
+(1, 'Flagged as', 'FOR COMMENT/RECOMMENDATION', 'flagged as For Comment/Recommendation'),
+(2, 'Flagged as', 'FOR DISSEMINATION', 'flagged as For Dissemination'),
+(3, 'Flagged as', 'RETURN DOCUMENTS TO ME', 'flagged as Return Documents to me'),
+(4, NULL, 'APPROVED', 'approved'),
+(5, 'Flagged as', 'PLEASE HANDLE', 'flagged as Please Handle'),
+(6, 'Flagged as', 'PLEASE PREPARE REPLY LETTER', 'flagged as Please Prepare Reply Letter'),
+(7, 'Flagged as', 'FOR FILE', 'flagged as For Filing'),
+(8, 'Flagged as', 'FOR INFORMATION/REFERENCE', 'flagged as For Information/Reference'),
+(9, 'Flagged as', 'LET US DISCUSS/SEE ME', 'flagged as Let us discuss/See me'),
+(10, 'Flagged as', 'FOR REVIEW/EVALUATION', 'flagged as For Review/Evaluation'),
+(11, 'Flagged as', 'PLEASE ATTEND', 'flagged as Please Attend'),
+(12, 'Flagged as', 'FOR APPROPRIATE ACTION', 'flagged as For Appropriate Action'),
+(13, 'Flagged as', 'PLEASE PREPARE SPEECH/MESSAGE', 'flagged as Please Prepare Speech/Message'),
+(14, 'Flagged as', 'PLEASE CONFIRM', 'flagged as Please Confirm'),
+(15, NULL, 'FORWARDED', 'forwarded');
 
 -- --------------------------------------------------------
 
@@ -365,10 +360,8 @@ CREATE TABLE `tracks` (
 --
 
 INSERT INTO `tracks` (`id`, `document_id`, `document_status`, `document_status_user`, `document_tracks_status`, `track_option`, `track_office`, `track_date`, `route_office`, `route_user`, `preceding_track`, `remarks`, `system_log`) VALUES
-(1, 1, 'Received', 7, 'transaction', NULL, 2, '2018-05-07 12:01:28', NULL, NULL, 0, NULL, '2018-05-07 12:01:28'),
-(2, 1, NULL, 6, 'transaction', 1, 2, '2018-05-07 12:46:33', NULL, NULL, 1, '', '2018-05-07 12:46:33'),
-(3, 2, 'Received', 7, 'transaction', NULL, 2, '2018-05-07 12:50:54', NULL, NULL, 0, NULL, '2018-05-07 12:50:54'),
-(4, 2, NULL, 6, 'transaction', 4, 2, '2018-05-07 16:40:19', NULL, NULL, 3, '', '2018-05-07 16:40:19');
+(1, 1, 'Received', 7, 'transaction', NULL, 2, '2018-05-17 13:31:53', NULL, NULL, 0, NULL, '2018-05-17 13:31:53'),
+(2, 1, NULL, 6, 'transaction', 4, 2, '2018-05-18 13:14:54', NULL, NULL, 1, '', '2018-05-18 13:14:54');
 
 -- --------------------------------------------------------
 
@@ -561,7 +554,7 @@ ALTER TABLE `divisions`
 -- AUTO_INCREMENT for table `documents`
 --
 ALTER TABLE `documents`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `document_types`
 --
@@ -581,7 +574,7 @@ ALTER TABLE `groups`
 -- AUTO_INCREMENT for table `notifications`
 --
 ALTER TABLE `notifications`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `offices`
 --
@@ -596,7 +589,7 @@ ALTER TABLE `options`
 -- AUTO_INCREMENT for table `tracks`
 --
 ALTER TABLE `tracks`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `transactions`
 --
