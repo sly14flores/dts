@@ -1,5 +1,7 @@
 <?php
 
+require_once 'datetime.php';
+
 function tracks($con,$tracks) {
 
 	$status_arr = array(
@@ -40,11 +42,21 @@ function tracks($con,$tracks) {
 		};
 
 		$tracks[$i]['status'] = $status;
+		$tracks[$i]['interval'] = "";
 		
 		# Interval between tracks
-		if ($i == (count($tracks)-1)) break;
-
+		if ($i < (count($tracks)-1)) {
+			
+			$previous_track_date = $tracks[$i+1]['track_date'];
+			$track_date = $track['track_date'];
+			$interval = date_diff_f($previous_track_date,$track_date);
+			$tracks[$i]['interval'] = $interval;
+			
+		};
 		
+		$date = ($i==0)?date("Y-m-d H:i:s"):$tracks[$i-1]['track_date'];
+		$track_date = $track['track_date'];
+		$tracks[$i]['elapsed_date_time'] = date_diff_f($track_date,$date);
 
 	};
 
