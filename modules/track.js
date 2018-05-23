@@ -69,7 +69,7 @@ angular.module('app-module', ['form-validator','bootstrap-modal','ui.bootstrap']
 			}).then(function mySuccess(response) {
 				
 				scope.barcode = '';
-				scope.document = angular.copy(response.data.document);
+				scope.doc = angular.copy(response.data.document);
 				scope.tracks = angular.copy(response.data.tracks);
 				
 				$('#track').load('html/track.html',function() {

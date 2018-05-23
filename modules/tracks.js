@@ -68,7 +68,8 @@ angular.module('app-module', ['form-validator','bootstrap-modal','ui.bootstrap',
 			}).then(function mySuccess(response) {
 				
 				// delete scope.document.id;
-				scope.tracks = response.data;				
+				scope.doc = angular.copy(response.data.document);
+				scope.tracks = response.data.tracks;				
 				
 				$('#track').load('html/tracks.html',function() {
 					$timeout(function() { $compile($('#track')[0])(scope); }, 100);

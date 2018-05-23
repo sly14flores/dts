@@ -25,7 +25,7 @@ foreach ($documents as $i => $document) {
 	$due_date = date("Y-m-d H:i:s",strtotime("+$days Days",strtotime($document_date)));
 	$documents[$i]['due_date'] = date("F j, Y h:i A",strtotime($due_date));
 	
-	if (strtotime($date)>=strtotime($due_date)) $documents[$i]['remaining_before_due'] = "Document has expired";
+	if (strtotime($date)>=strtotime($due_date)) $documents[$i]['remaining_before_due'] = "Document is past due";
 	else $documents[$i]['remaining_before_due'] = date_diff_f($date,$due_date);
 
 };

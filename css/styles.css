@@ -20,3 +20,10 @@
 .notifications-container-many {
 	height: 500px; overflow: auto;
 }
+
+/*
+** archive/incoming/outgoing/transact form
+*/
+.activity .row:not(:first-child) div {
+	margin-top: 10px;
+};

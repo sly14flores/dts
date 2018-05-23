@@ -8,6 +8,9 @@ session_start();
 
 $con = new pdo_db();
 
+// $sql = "SELECT documents.id, documents.origin office_origin, documents.barcode, documents.doc_name, documents.document_date, tracks.document_status, tracks.document_status_user, tracks.document_tracks_status, tracks.track_office, tracks.track_date, tracks.track_option, tracks.route_office, tracks.route_user, tracks.remarks, (SELECT document_types.document_type FROM document_types WHERE document_types.id = documents.doc_type) doc_type, (SELECT offices.office FROM offices WHERE offices.id = documents.origin) origin, (SELECT transactions.transaction FROM transactions WHERE transactions.id = documents.document_transaction_type) transaction_description, document_transaction_type FROM documents LEFT JOIN tracks ON documents.id = tracks.document_id {$filter} ORDER BY tracks.track_date DESC";
+// $originating = $con->getData($sql);
+
 $tracks = $con->getData("SELECT id, track_date, document_status ds, document_status, document_tracks_status, document_status_user, track_option, IFNULL(track_office,0) track_office, IFNULL(route_office,0) route_office, route_user, (SELECT CONCAT(users.fname, ' ', users.lname) FROM users WHERE users.id = tracks.document_status_user) staff FROM tracks WHERE document_id = ".$_POST['id']." ORDER BY tracks.id DESC");
 
 foreach ($tracks as $i => $track) {

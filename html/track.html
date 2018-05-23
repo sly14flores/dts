@@ -2,32 +2,46 @@
 	<div class="card border-0">
 		<div class="card-header border border-top-0 border-right-0 border-left-0 bg-success">
 			<div class="row">
-				<div class="col-md-2">Date</div>
-				<div class="col-md-4" style="margin-bottom: 10px;"><strong> {{document.document_date}} </strong></div>
-				<div class="col-md-2">Transaction</div>
-				<div class="col-md-4" style="margin-bottom: 10px;"><strong> {{document.document_transaction_type}} </strong></div>	
+				<div class="col-md-2" style="margin-bottom: 10px;">Date:</div>
+				<div class="col-md-4"><strong> {{doc.document_date_f}} </strong></div>
+				<div class="col-md-2">Transaction:</div>
+				<div class="col-md-4"><strong> {{doc.transaction_description}} </strong></div>	
 			</div>
 			<div class="row">
-				<div class="col-md-2">Document Type</div>
-				<div class="col-md-4" style="margin-bottom: 10px;"><strong> {{document.doc_type}} </strong></div>
-				<div class="col-md-2">Originating Office</div>
-				<div class="col-md-4" style="margin-bottom: 10px;"><strong> {{document.origin}} </strong></div>	
+				<div class="col-md-2" style="margin-bottom: 10px;">Document Type:</div>
+				<div class="col-md-4"><strong> {{doc.doc_type}} </strong></div>
+				<div class="col-md-2">Originating Office:</div>
+				<div class="col-md-4"><strong> {{doc.origin}} </strong></div>	
 			</div>
 			<div class="row">
-				<div class="col-md-2">Subject</div>
-				<div class="col-md-4" style="margin-bottom: 10px;"><strong> {{document.doc_name}} </strong></div>	
-				<div class="col-md-2">Barcode</div>
-				<div class="col-md-4" style="margin-bottom: 10px;"><strong> {{document.barcode}} </strong></div>	
+				<div class="col-md-2" style="margin-bottom: 10px;">Subject:</div>
+				<div class="col-md-4"><strong> {{doc.doc_name}} </strong></div>	
+				<div class="col-md-2">Barcode:</div>
+				<div class="col-md-4"><strong> {{doc.barcode}} </strong></div>	
+			</div>
+			<div class="row">
+				<div class="col-md-2" style="margin-bottom: 10px;">Elapsed Date/Time:</div>
+				<div class="col-md-4"><strong> {{doc.elapsed_date_time}} </strong></div>	
+				<div class="col-md-2">Due On:</div>
+				<div class="col-md-4"><strong> {{doc.due_date}} </strong></div>	
+			</div>
+			<div class="row">	
+				<div class="col-md-2" style="margin-bottom: 10px;">Remaining Date/Time before due:</div>
+				<div class="col-md-4"><strong> {{doc.remaining_before_due}} </strong></div>
 			</div>
 		</div>
 		<div class="card-body bg-success">
 			<div class="timeline-centered">
 				<article class="timeline-entry" ng-repeat="track in tracks">							
 					<div class="timeline-entry-inner">
-						<time class="timeline-time" datetime="" style="margin-left: -20px!important;"><span>{{track.track_time_f}}</span><span>{{track.track_date_f}}</span></time>
+						<time class="timeline-time" datetime="" style="margin-left: -35px!important;"><span>{{track.track_time_f}}</span><span>{{track.track_date_f}}</span></time>
 						<div class="timeline-icon bg-primary"><i class="fas fa-check"></i></div>
 						<div class="timeline-label">
 							<h2>{{track.status}}</h2>
+							<ul>
+								<li>Elapsed Date/Time: <strong>{{track.elapsed_date_time}}</strong></li>
+								<li ng-show="$index < (tracks.length-1)">Interval from previous track: <strong>{{track.interval}}</strong></li>
+							</ul>							
 						</div>
 					</div>
 				</article>

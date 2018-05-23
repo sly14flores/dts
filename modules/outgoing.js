@@ -16,6 +16,7 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 			
 			scope.activity = {};
 			
+			scope.outgoing = {};
 			scope.outgoings = [];
 			
 			scope.views.currentPage = 1;
@@ -110,12 +111,20 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 			
 		};
 		
+		self.refresh = function(scope) {
+			
+			self.tracks(scope,scope.outgoing);
+			
+		};
+		
 		self.tracks = function(scope,outgoing) {
 
 			scope.views.title = '';	
 			scope.views.search = true;
 		
-			scope.activity = angular.copy(outgoing);			
+			scope.activity = angular.copy(outgoing);
+			
+			scope.outgoing = angular.copy(outgoing);
 
 			scope.activity.next = {};
 			offices(scope);

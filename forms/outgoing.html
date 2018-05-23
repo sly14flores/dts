@@ -1,21 +1,35 @@
 <form name="formHolder.activity" novalidate autocomplete="off">
-<div class="row">
-	<div class="col-md-2">Date</div>
-	<div class="col-md-4" style="margin-bottom: 10px;"><strong>{{activity.document_date}}</strong></div>
-	<div class="col-md-2">Transaction</div>
-	<div class="col-md-4" style="margin-bottom: 10px;"><strong>{{activity.document_transaction_type}}</strong></div>	
-</div>
-<div class="row">
-	<div class="col-md-2">Document Type</div>
-	<div class="col-md-4" style="margin-bottom: 10px;"><strong>{{activity.doc_type}}</strong></div>
-	<div class="col-md-2">Originating Office</div>
-	<div class="col-md-4" style="margin-bottom: 10px;"><strong>{{activity.origin}}</strong></div>	
-</div>
-<div class="row">
-	<div class="col-md-2">Subject</div>
-	<div class="col-md-4" style="margin-bottom: 10px;"><strong>{{activity.doc_name}}</strong></div>	
-	<div class="col-md-2">Barcode</div>
-	<div class="col-md-4" style="margin-bottom: 10px;"><strong>{{activity.barcode}}</strong></div>	
+<button class="btn btn-secondary float-right" ng-click="app.refresh(this)" data-toggle="tooltip" data-placement="top" title="Refresh"><i class="icon icon-refresh"></i></button>
+<div class="clearfix"></div>
+<div class="activity">
+	<div class="row">
+		<div class="col-md-2">Date:</div>
+		<div class="col-md-4"><strong>{{activity.document_date}}</strong></div>
+		<div class="col-md-2">Transaction:</div>
+		<div class="col-md-4"><strong>{{activity.transaction_description}}</strong></div>	
+	</div>
+	<div class="row">
+		<div class="col-md-2">Document Type:</div>
+		<div class="col-md-4"><strong>{{activity.doc_type}}</strong></div>
+		<div class="col-md-2">Originating Office:</div>
+		<div class="col-md-4"><strong>{{activity.origin}}</strong></div>	
+	</div>
+	<div class="row">
+		<div class="col-md-2">Subject:</div>
+		<div class="col-md-4"><strong>{{activity.doc_name}}</strong></div>	
+		<div class="col-md-2">Barcode:</div>
+		<div class="col-md-4"><strong>{{activity.barcode}}</strong></div>	
+	</div>
+	<div class="row">
+		<div class="col-md-2">Elapsed Date/Time:</div>
+		<div class="col-md-4"><strong>{{activity.elapsed_date_time}}</strong></div>	
+		<div class="col-md-2">Due On:</div>
+		<div class="col-md-4"><strong>{{activity.due_date}}</strong></div>	
+	</div>
+	<div class="row">
+		<div class="col-md-2">Remaining Date/Time before due:</div>
+		<div class="col-md-4"><strong>{{activity.remaining_before_due}}</strong></div>
+	</div>
 </div>
 <hr>
 <div class="row">

@@ -16,7 +16,7 @@
 		<tbody>
 			<tr ng-repeat="o in filterData = (outgoings | filter:search) | pagination: currentPage:pageSize">
 				<td>{{o.barcode}}</td>
-				<td>{{o.document_transaction_type}}</td>
+				<td>{{o.transaction_description}}</td>
 				<td>{{o.doc_type}}</td>
 				<td>{{o.origin}}</td>
 				<td>{{o.doc_name}}</td>
