@@ -86,10 +86,8 @@ class pdo_db {
 					$fields .= array_keys($col)[0].", ";
 					$obj = $col[array_keys($col)[0]];
 					$table = array_keys($obj)[0];
-					$id_text = $obj[$table];
-					$id = array_keys($id_text)[0];
-					$text = $id_text[$id];
-					$q = "SELECT $id, $text FROM $table WHERE $id = ";
+					$props = $obj[$table];
+					$q = "SELECT ".implode(", ",$props)." FROM $table WHERE ".$props[0]." = ";
 					$objs[array_keys($col)[0]] = $q;
 				} else {
 					$fields .= $col.", ";
@@ -110,7 +108,7 @@ class pdo_db {
 		$sql = "SELECT $fields FROM ".$this->table."$filters";
 
 		$results = $this->getData($sql);
-		
+
 		foreach ($results as $i => $result) {
 			
 			foreach($result as $key => $value) {
