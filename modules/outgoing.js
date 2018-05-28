@@ -64,9 +64,9 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 		};
 
 		function validate(scope,form) {
-			
+
 			var controls = scope.formHolder[form].$$controls;
-			
+
 			angular.forEach(controls,function(elem,i) {
 
 				if (elem.$$attr.$attr.required) {					
@@ -119,24 +119,25 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 		
 		self.tracks = function(scope,outgoing) {
 
-			scope.views.title = '';	
-			scope.views.search = true;
+			scope.outgoing = angular.copy(outgoing);		
 		
-			scope.activity = angular.copy(outgoing);
-			
-			scope.outgoing = angular.copy(outgoing);
+			scope.views.title = '';	
+			scope.views.search = true;		
 
 			scope.activity.next = {};
 			offices(scope);
 
-			scope.staffs = [];	
+			scope.staffs = [];						
+			
+			scope.activity.show_action = outgoing.document.show_action;
 			
 			$http({
 			  method: 'POST',
 			  url: 'handlers/doc-activity.php',
-			  data: {id: outgoing.id}
+			  data: {id: outgoing.document.id}
 			}).then(function mySuccess(response) {
-
+				
+				scope.activity.document = response.data.document;
 				scope.activity.tracks = response.data.tracks;
 				scope.activity.files = response.data.files;
 				scope.activity.attachments = response.data.attachments;

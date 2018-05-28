@@ -14,7 +14,7 @@ $con = new pdo_db("tracks");
 
 $document_status = NULL;
 $document_tracks_status = "transaction";
-$track_office = $_POST['track_office'];
+$track_office = $_POST['document']['track_office'];
 $track_option = NULL;
 $route_office = NULL;
 $route_user = NULL;
@@ -30,7 +30,7 @@ $track_date = date("Y-m-d H:i:s");
 
 $staff = $con->getData("SELECT CONCAT(fname, ' ', lname) fullname FROM users WHERE id = ".$_SESSION['id']);
 
-$document_origin = $con->getData("SELECT origin FROM documents WHERE id = ".$_POST['id']);
+$document_origin = $con->getData("SELECT origin FROM documents WHERE id = ".$_POST['document']['id']);
 
 
 switch ($_POST['action']) {
@@ -41,17 +41,17 @@ switch ($_POST['action']) {
 		$track_office_name = $get_track_office[0]['office'];	
 	
 		$track_option = getOption($_POST['options']);
-		$route_office = $_POST['route_office'];
+		$route_office = $_POST['document']['route_office'];
 		
 		# liaisons
 		$liaisons = $con->getData("SELECT id FROM users WHERE div_id = ".$document_origin[0]['origin']." AND group_id IN ".getAssignmentIds($assignments['group'],1,"group"));
 		foreach ($liaisons as $liaison) {
 
 			$notifications[] = array(
-				"doc_id"=>$_POST['id'],
+				"doc_id"=>$_POST['document']['id'],
 				"user_id"=>$liaison['id'],
 				"notification_type"=>"outgoing",
-				"message"=>$_POST['doc_type']." with subject: <strong>".$_POST['doc_name']."</strong> was ".getOptionDescription($_POST['options'],$track_option)." at $track_office_name<br>by ".$staff[0]['fullname']."  on ".date("F j, Y h:i A",strtotime($track_date))
+				"message"=>$_POST['document']['doc_type']." with subject: <strong>".$_POST['document']['doc_name']."</strong> was ".getOptionDescription($_POST['options'],$track_option)." at $track_office_name<br>by ".$staff[0]['fullname']."  on ".date("F j, Y h:i A",strtotime($track_date))
 			);
 
 		};
@@ -61,10 +61,10 @@ switch ($_POST['action']) {
 		foreach ($aos as $ao) {
 
 			$notifications[] = array(
-				"doc_id"=>$_POST['id'],
+				"doc_id"=>$_POST['document']['id'],
 				"user_id"=>$ao['id'],
 				"notification_type"=>"transaction",
-				"message"=>$_POST['doc_type']." with subject: <strong>".$_POST['doc_name']."</strong> was ".getOptionDescription($_POST['options'],$track_option)." at $track_office_name<br>by ".$staff[0]['fullname']."  on ".date("F j, Y h:i A",strtotime($track_date))
+				"message"=>$_POST['document']['doc_type']." with subject: <strong>".$_POST['document']['doc_name']."</strong> was ".getOptionDescription($_POST['options'],$track_option)." at $track_office_name<br>by ".$staff[0]['fullname']."  on ".date("F j, Y h:i A",strtotime($track_date))
 			);
 
 		};		
@@ -118,7 +118,7 @@ switch ($_POST['action']) {
 		$document_tracks_status = "incoming";
 		$route_office = $_POST['next']['route_office']['id'];
 		$route_user = $_POST['next']['route_user']['id'];
-		$track_option = $_POST['track_option'];		
+		$track_option = $_POST['document']['track_option'];		
 
 		$pick_up_by = $con->getData("SELECT CONCAT(fname, ' ', lname) fullname FROM users WHERE id = $route_user");
 
@@ -127,10 +127,10 @@ switch ($_POST['action']) {
 		foreach ($liaisons as $liaison) {
 
 			$notifications[] = array(
-				"doc_id"=>$_POST['id'],
+				"doc_id"=>$_POST['document']['id'],
 				"user_id"=>$liaison['id'],
 				"notification_type"=>"incoming",
-				"message"=>$_POST['doc_type']." with subject: <strong>".$_POST['doc_name']."</strong> was picked up<br>by ".$pick_up_by[0]['fullname']." at $track_office_name on ".date("F j, Y h:i A",strtotime($track_date))
+				"message"=>$_POST['document']['doc_type']." with subject: <strong>".$_POST['document']['doc_name']."</strong> was picked up<br>by ".$pick_up_by[0]['fullname']." at $track_office_name on ".date("F j, Y h:i A",strtotime($track_date))
 			);
 
 		};
@@ -140,10 +140,10 @@ switch ($_POST['action']) {
 		foreach ($aos as $ao) {
 
 			$notifications[] = array(
-				"doc_id"=>$_POST['id'],
+				"doc_id"=>$_POST['document']['id'],
 				"user_id"=>$ao['id'],
 				"notification_type"=>"outgoing",
-				"message"=>$_POST['doc_type']." with subject: <strong>".$_POST['doc_name']."</strong> was picked up<br>by ".$pick_up_by[0]['fullname']." at $track_office_name on ".date("F j, Y h:i A",strtotime($track_date))
+				"message"=>$_POST['document']['doc_type']." with subject: <strong>".$_POST['document']['doc_name']."</strong> was picked up<br>by ".$pick_up_by[0]['fullname']." at $track_office_name on ".date("F j, Y h:i A",strtotime($track_date))
 			);
 
 		};
@@ -152,14 +152,14 @@ switch ($_POST['action']) {
 
 	case "File":
 		
-		$track_office = $_POST['track_office'];
+		$track_office = $_POST['document']['track_office'];
 		
 		$get_track_office = $con->getData("SELECT id, office FROM offices WHERE id = $track_office");
 		$track_office_name = $get_track_office[0]['office'];	
 
 		$document_status = "Filed";
 		$document_tracks_status = "filed";
-		$track_option = $_POST['track_option'];
+		$track_option = $_POST['document']['track_option'];
 
 		$file_by = $con->getData("SELECT CONCAT(fname, ' ', lname) fullname FROM users WHERE id = ".$_SESSION['id']);		
 		$file_office = $con->getData("SELECT id, office FROM offices WHERE id = ".$_SESSION['office']);
@@ -170,10 +170,10 @@ switch ($_POST['action']) {
 		foreach ($all_staffs as $staff) {
 
 			$notifications[] = array(
-				"doc_id"=>$_POST['id'],
+				"doc_id"=>$_POST['document']['id'],
 				"user_id"=>$staff['id'],
 				"notification_type"=>"incoming",
-				"message"=>$_POST['doc_type']." with subject: <strong>".$_POST['doc_name']."</strong> was filed <br>by ".$file_by[0]['fullname']." at $file_office_name on ".date("F j, Y h:i A",strtotime($track_date))
+				"message"=>$_POST['document']['doc_type']." with subject: <strong>".$_POST['document']['doc_name']."</strong> was filed <br>by ".$file_by[0]['fullname']." at $file_office_name on ".date("F j, Y h:i A",strtotime($track_date))
 			);
 
 		};		
@@ -183,7 +183,7 @@ switch ($_POST['action']) {
 };
 
 $track = array(
-	"document_id"=>$_POST['id'],
+	"document_id"=>$_POST['document']['id'],
 	"document_status"=>$document_status, # document status
 	"document_status_user"=>$_SESSION['id'],
 	"document_tracks_status"=>$document_tracks_status, # tracks status

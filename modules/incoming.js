@@ -28,6 +28,7 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 
 			scope.activity = {};
 			
+			scope.incoming = {};
 			scope.incomings = [];
 
 			scope.views.currentPage = 1;
@@ -145,8 +146,16 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 
 		};
 
+		self.refresh = function(scope) {
+			
+			self.receive(scope,scope.incoming);
+			
+		};		
+		
 		self.receive = function(scope,doc) {
 
+			scope.incoming = angular.copy(doc);		
+		
 			scope.views.title = '';
 			scope.views.search = true;
 			
@@ -166,9 +175,10 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 			$http({
 			  method: 'POST',
 			  url: 'handlers/doc-activity.php',
-			  data: {id: doc.id}
+			  data: {id: doc.document.id}
 			}).then(function mySuccess(response) {
 
+				scope.activity.document = response.data.document;
 				scope.activity.tracks = response.data.tracks;
 				scope.activity.files = response.data.files;
 				scope.activity.attachments = response.data.attachments;
@@ -194,7 +204,7 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 			
 			if (validate(scope,'activity')) return false;
 			
-			if (scope.receive.receive_barcode != scope.activity.barcode) {
+			if (scope.receive.receive_barcode != scope.activity.document.barcode) {
 				scope.views.error.barcode.show = true;
 				scope.views.error.barcode.msg = 'Barcode is incorrect';
 				return;				

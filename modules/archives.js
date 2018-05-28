@@ -1,4 +1,4 @@
-angular.module('app-module', ['form-validator','bootstrap-modal','notifications-module']).factory('app', function($http,$timeout,$compile,$window,validate,bootstrapModal) {
+angular.module('app-module', ['form-validator','bootstrap-modal','notifications-module','block-ui']).factory('app', function($http,$timeout,$compile,$window,validate,bootstrapModal,bui) {
 
 	function app() {
 
@@ -11,6 +11,7 @@ angular.module('app-module', ['form-validator','bootstrap-modal','notifications-
 
 			scope.activity = {};
 			
+			scope.archive = {};
 			scope.archives = [];	
 			
 			scope.views.currentPage = 1;			
@@ -51,12 +52,20 @@ angular.module('app-module', ['form-validator','bootstrap-modal','notifications-
 
 		};
 
-		self.view = function(scope,archive) {			
-
-			scope.views.title = '';
-			scope.views.search = true;			
+		self.refresh = function(scope) {
+			
+			self.view(scope,scope.archive);
+			
+		};
 		
-			scope.activity = angular.copy(archive);			
+		self.view = function(scope,archive) {			
+			
+			bui.show();
+			
+			scope.archive = angular.copy(archive);
+		
+			scope.views.title = '';
+			scope.views.search = true;
 
 			$http({
 			  method: 'POST',
@@ -64,13 +73,16 @@ angular.module('app-module', ['form-validator','bootstrap-modal','notifications-
 			  data: {id: archive.id}
 			}).then(function mySuccess(response) {
 
+				scope.activity.document = response.data.document;			
 				scope.activity.tracks = response.data.tracks;
 				scope.activity.files = response.data.files;
 				scope.activity.attachments = response.data.attachments;
+				
+				bui.hide();
 
 			}, function myError(response) {
 
-				//
+				bui.hide();
 				
 			});				
 

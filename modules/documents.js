@@ -40,6 +40,7 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 			
 			scope.activity = {};
 			
+			scope.document = {};	
 			scope.documents = [];
 			
 			scope.views.currentPage = 1; // for pagination
@@ -150,12 +151,20 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 			
 		};		
 
+		self.refresh = function(scope) {
+			
+			self.activity(scope,scope.document,false);
+			
+		};
+		
 		self.activity = function(scope,doc,form) {
 
+			bui.show();
+		
+			scope.document = angular.copy(doc);
+		
 			scope.views.title = '';		
 			scope.views.search = true;
-		
-			scope.activity = angular.copy(doc);
 
 			scope.activity.next = {};
 
@@ -167,16 +176,21 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 			$http({
 			  method: 'POST',
 			  url: 'handlers/doc-activity.php',
-			  data: {id: doc.id}
+			  data: {id: doc.document.id}
 			}).then(function mySuccess(response) {
-
+				
+				scope.activity.document = response.data.document;			
+			
 				scope.activity.tracks = response.data.tracks;
 				scope.activity.files = response.data.files;
 				scope.activity.attachments = response.data.attachments;
+				
+				bui.hide();
 
 			}, function myError(response) {
 				
 				//
+				bui.hide();
 				
 			});
 

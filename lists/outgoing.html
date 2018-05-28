@@ -24,7 +24,7 @@
 				<td>{{o.remarks}}</td>											
 				<td>{{o.document_date}}</td>
 				<td>
-					<button class="btn btn-info" ng-click="app.tracks(this,o)" data-toggle="tooltip" data-placement="top" title="View Tracks"><i class="icon icon-grid"></i></button>
+					<button class="btn btn-info" ng-click="app.tracks(this,{document: o})" data-toggle="tooltip" data-placement="top" title="View Tracks"><i class="icon icon-grid"></i></button>
 				</td>
 			</tr>
 		</tbody>

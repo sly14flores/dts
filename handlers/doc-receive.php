@@ -34,7 +34,7 @@ switch ($_POST['next']['opt']) {
 		$document_tracks_status = "transaction";
 
 		$track = array(
-			"document_id"=>$_POST['id'],
+			"document_id"=>$_POST['document']['id'],
 			"document_status"=>$document_status, # document status
 			"document_status_user"=>$_SESSION['id'],
 			"document_tracks_status"=>$document_tracks_status, # tracks status
@@ -49,11 +49,11 @@ switch ($_POST['next']['opt']) {
 		# notify
 		foreach ($liaisons as $liaison) {
 			$notifications[] = array(
-				"doc_id"=>$_POST['id'],
+				"doc_id"=>$_POST['document']['id'],
 				"user_id"=>$liaison['id'],
 				"track_id"=>intval($track_id),
 				"notification_type"=>"incoming",
-				"message"=>$_POST['doc_type']." with subject: <strong>".$_POST['doc_name']."</strong> was received at ".$office[0]['office']."<br>by ".$receive_by[0]['fullname']."  on ".date("F j, Y h:i A",strtotime($track_date))
+				"message"=>$_POST['document']['doc_type']." with subject: <strong>".$_POST['document']['doc_name']."</strong> was received at ".$office[0]['office']."<br>by ".$receive_by[0]['fullname']."  on ".date("F j, Y h:i A",strtotime($track_date))
 			);
 		};
 
@@ -65,7 +65,7 @@ switch ($_POST['next']['opt']) {
 		$document_tracks_status = "transaction";
 
 		$track = array(
-			"document_id"=>$_POST['id'],
+			"document_id"=>$_POST['document']['id'],
 			"document_status"=>$document_status, # document status
 			"document_status_user"=>$_SESSION['id'],
 			"document_tracks_status"=>$document_tracks_status, # tracks status
@@ -80,11 +80,11 @@ switch ($_POST['next']['opt']) {
 		# notify
 		foreach ($liaisons as $liaison) {
 			$notifications[] = array(
-				"doc_id"=>$_POST['id'],
+				"doc_id"=>$_POST['document']['id'],
 				"user_id"=>$liaison['id'],
 				"track_id"=>intval($track_id),
 				"notification_type"=>"incoming",
-				"message"=>$_POST['doc_type']." with subject: <strong>".$_POST['doc_name']."</strong> was received at ".$office[0]['office']."<br>by ".$receive_by[0]['fullname']."  on ".date("F j, Y h:i A",strtotime($track_date))
+				"message"=>$_POST['document']['doc_type']." with subject: <strong>".$_POST['document']['doc_name']."</strong> was received at ".$office[0]['office']."<br>by ".$receive_by[0]['fullname']."  on ".date("F j, Y h:i A",strtotime($track_date))
 			);
 		};		
 
@@ -93,7 +93,7 @@ switch ($_POST['next']['opt']) {
 		$preceding_track = $track_id;
 
 		$track = array(
-			"document_id"=>$_POST['id'],
+			"document_id"=>$_POST['document']['id'],
 			"document_status"=>$document_status, # document status
 			"document_status_user"=>$_SESSION['id'],
 			"document_tracks_status"=>$document_tracks_status, # tracks status
@@ -108,11 +108,11 @@ switch ($_POST['next']['opt']) {
 		# notify
 		foreach ($liaisons as $liaison) {
 			$notifications[] = array(
-				"doc_id"=>$_POST['id'],
+				"doc_id"=>$_POST['document']['id'],
 				"user_id"=>$liaison['id'],
 				"track_id"=>intval($track_id),
 				"notification_type"=>"incoming",
-				"message"=>$_POST['doc_type']." with subject: <strong>".$_POST['doc_name']."</strong> was filed <br>by ".$receive_by[0]['fullname']." at ".$office[0]['office']." on ".date("F j, Y h:i A",strtotime($track_date))
+				"message"=>$_POST['document']['doc_type']." with subject: <strong>".$_POST['document']['doc_name']."</strong> was filed <br>by ".$receive_by[0]['fullname']." at ".$office[0]['office']." on ".date("F j, Y h:i A",strtotime($track_date))
 			);
 		};		
 
