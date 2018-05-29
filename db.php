@@ -61,9 +61,11 @@ class pdo_db {
 		$filters = "";
 		
 		$i = 1;
-		foreach ($where as $p => $w) {			
-			if ($i == 1) $filters .= " WHERE $p = $w";
-			else $filters .= " AND $p = $w";
+		foreach ($where as $p => $w) {
+			$case = "=";
+			if (preg_match("/\%/mi",$w)) $case = "LIKE";
+			if ($i == 1) $filters .= " WHERE $p $case $w";
+			else $filters .= " AND $p $case $w";
 			++$i;
 		};
 		
@@ -99,9 +101,11 @@ class pdo_db {
 		$filters = "";
 		
 		$i = 1;
-		foreach ($where as $p => $w) {			
-			if ($i == 1) $filters .= " WHERE $p = $w";
-			else $filters .= " AND $p = $w";
+		foreach ($where as $p => $w) {
+			$case = "=";
+			if (preg_match("/\%/mi",$w)) $case = "LIKE";
+			if ($i == 1) $filters .= " WHERE $p $case $w";
+			else $filters .= " AND $p $case $w";
 			++$i;
 		};
 		
@@ -159,10 +163,8 @@ class pdo_db {
 					$fields .= array_keys($col)[0].", ";
 					$obj = $col[array_keys($col)[0]];
 					$table = array_keys($obj)[0];
-					$id_text = $obj[$table];
-					$id = array_keys($id_text)[0];
-					$text = $id_text[$id];
-					$q = "SELECT $id, $text FROM $table WHERE $id = ";
+					$props = $obj[$table];
+					$q = "SELECT ".implode(", ",$props)." FROM $table WHERE ".$props[0]." = ";
 					$objs[array_keys($col)[0]] = $q;
 				} else {
 					$fields .= $col.", ";

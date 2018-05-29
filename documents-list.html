@@ -179,54 +179,8 @@ require_once 'authentication.php';
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
-                            <div class="card-header bg-light">
-                                List of Documents
-                            </div>
-							<div class="card-body">
-								<div class = "row">
-									<table class="table table-striped">
-										<thead>
-											<tr>
-												<th>Subject</th>
-												<th>Barcode</th>
-												<th>Type</th>												
-												<th>Originating Office</th>
-												<th>Date</th>
-												<th>Transaction</th>
-												<th>Communication</th>
-												<th>Remarks</th>
-												<th>Actions</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr ng-repeat="dl in documents | filter:search">
-											<td>{{dl.doc_name}}</td>
-											<td>{{dl.barcode}}</td>
-											<td>{{dl.doc_type}}</td>											
-											<td>{{dl.origin}}</td>
-											<td>{{dl.document_date}}</td>
-											<td>{{dl.transaction}}</td>
-											<td>{{dl.communication}}</td>
-											<td>{{dl.remarks}}</td>
-											<td>
-												<button class="btn btn-primary" ng-click="app.view(this,dl)" data-toggle="tooltip" data-placement="top" title="View Details"><i class="icon icon-magnifier"></i></button>
-												<button class="btn btn-secondary" ng-click="app.delete(this,dl)"><i class="icon icon-trash"></i></button>
-											</td>
-											</tr>
-										</tbody>
-										<tfoot><!-- added pagination feature -->
-											<tr>
-												<td colspan="10" style="text-align: center;">
-													<div class="float-right"><ul uib-pagination direction-links="false" boundary-links="true" total-items="filterData.length" ng-model="currentPage" max-size="maxSize"></ul></div>
- 											    </td>
-											</tr>											
-										</tfoot>
-									</table>
-								</div>
-							</div>
-
-                            
-                            </div>
+						    <div class="card-header bg-light">{{views.title}}</div>
+							<div class="card-body" id="content"></div>
                         </div>
                     </div>
                 </div>
@@ -243,6 +197,8 @@ require_once 'authentication.php';
 
 <!-- dependencies -->
 <script src="vendor/bootbox/bootbox.min.js"></script>
+<script src="vendor/growl/jquery.bootstrap-growl.min.js"></script>
+<script src="vendor/blockui/jquery.blockUI.js"></script>
 
 <script src="angular/angular.min.js"></script>
 <script src="angular/angular-route.min.js"></script>
@@ -255,6 +211,8 @@ require_once 'authentication.php';
 <script src="modules/notifications.js"></script>
 <script src="modules/validate.js"></script>
 <script src="modules/window-open-post.js"></script>
+<script src="modules/growl.js"></script>
+<script src="modules/blockui.js"></script>
 <script src="modules/documents-list.js"></script>
 <!-- controller -->
 <script src="controllers/documents-list.js"></script>

@@ -1,0 +1,87 @@
+<form name="formHolder.activity" novalidate autocomplete="off">
+<button class="btn btn-secondary float-right" ng-click="app.refresh(this)" data-toggle="tooltip" data-placement="top" title="Refresh"><i class="icon icon-refresh"></i></button>
+<div class="clearfix"></div>
+<div class="activity">
+	<div class="row">
+		<div class="col-md-2">Date:</div>
+		<div class="col-md-4"><strong>{{activity.document.document_date}}</strong></div>
+		<div class="col-md-2">Transaction:</div>
+		<div class="col-md-4"><strong>{{activity.document.transaction_description}}</strong></div>	
+	</div>
+	<div class="row">
+		<div class="col-md-2">Document Type:</div>
+		<div class="col-md-4"><strong>{{activity.document.doc_type}}</strong></div>
+		<div class="col-md-2">Originating Office:</div>
+		<div class="col-md-4"><strong>{{activity.document.origin}}</strong></div>	
+	</div>
+	<div class="row">
+		<div class="col-md-2">Subject:</div>
+		<div class="col-md-4"><strong>{{activity.document.doc_name}}</strong></div>	
+		<div class="col-md-2">Barcode:</div>
+		<div class="col-md-4"><strong>{{activity.document.barcode}}</strong></div>	
+	</div>
+	<div class="row">
+		<div class="col-md-2">Elapsed Date/Time:</div>
+		<div class="col-md-4"><strong>{{activity.document.elapsed_date_time}}</strong></div>	
+		<div class="col-md-2">Due On:</div>
+		<div class="col-md-4"><strong>{{activity.document.due_date}}</strong></div>	
+	</div>
+	<div class="row">
+		<div class="col-md-2">Remaining Date/Time before due:</div>
+		<div class="col-md-4"><strong>{{activity.document.remaining_before_due}}</strong></div>
+	</div>
+</div>
+<hr>
+<div class="row">
+	<div class="col-md-4">
+		<h5>Main Document(s)</h5>
+		<table class="table table-bordered">
+			<thead>
+				<tr><th>#</th><th>File Type</th><th>Action</th></tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="af in activity.files">
+				<td>{{$index+1}}</td><td>{{af.type}}</td>
+				<td>
+					<button class="btn btn-primary" ng-click="app.preview(af)"><i class="icon icon-magnifier"></i></button>
+				</td>
+				</tr>
+			</tbody>
+		</table>
+		<h5>Attachment(s)</h5>
+		<table class="table table-bordered">
+			<thead>
+				<tr><th>#</th><th>File Type</th><th>Action</th></tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="aa in activity.attachments">
+				<td>{{$index+1}}</td><td>{{aa.type}}</td>
+				<td>
+					<button class="btn btn-primary" ng-click="app.preview(aa)"><i class="icon icon-magnifier"></i></button>				
+				</td>
+				</tr>
+			</tbody>
+		</table>		
+	</div>
+	<div class="col-md-8">
+		<h5>Tracks</h5>
+		<table class="table table-bordered">
+			<thead>
+				<tr><th>Status</th><th>Date</th><th>Time</th><th>By</th><th>Office</th></tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="at in activity.tracks"><td>{{at.document_status}}</td><td>{{at.date}}</td><td>{{at.time}}</td><td>{{at.staff}}</td><td>{{at.office}}</td></tr>
+			</tbody>
+		</table>		
+	</div>	
+</div>
+</form>
+<hr>
+<div class="row mt-4">
+	<div class="col-md-12">
+		<div class="float-right">
+			<button class="btn btn-secondary" ng-click="app.list(this)">Close</button>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+</div>

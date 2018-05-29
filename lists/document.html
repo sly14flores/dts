@@ -1,0 +1,40 @@
+<div class="row">
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Subject</th>
+				<th>Barcode</th>
+				<th>Type</th>												
+				<th>Originating Office</th>
+				<th>Date</th>
+				<th>Transaction</th>
+				<th>Communication</th>
+				<th>Remarks</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="dl in documents | filter:search">
+			<td>{{dl.doc_name}}</td>
+			<td>{{dl.barcode}}</td>
+			<td>{{dl.doc_type}}</td>											
+			<td>{{dl.origin}}</td>
+			<td>{{dl.document_date}}</td>
+			<td>{{dl.transaction}}</td>
+			<td>{{dl.communication}}</td>
+			<td>{{dl.remarks}}</td>
+			<td>
+				<button class="btn btn-primary" ng-click="app.view(this,{document: dl})" data-toggle="tooltip" data-placement="top" title="View Details"><i class="icon icon-magnifier"></i></button>
+				<button class="btn btn-secondary" ng-click="app.delete(this,dl)"><i class="icon icon-trash"></i></button>
+			</td>
+			</tr>
+		</tbody>
+		<tfoot><!-- added pagination feature -->
+			<tr>
+				<td colspan="10" style="text-align: center;">
+					<div class="float-right"><ul uib-pagination direction-links="false" boundary-links="true" total-items="filterData.length" ng-model="currentPage" max-size="maxSize"></ul></div>
+				</td>
+			</tr>											
+		</tfoot>
+	</table>
+</div>

@@ -1,4 +1,4 @@
-angular.module('app-module', ['form-validator','ui.bootstrap','bootstrap-modal','window-open-post','notifications-module']).factory('app', function($http,$timeout,$window,validate,bootstrapModal,printPost,bootstrapModal) {
+angular.module('app-module', ['form-validator','ui.bootstrap','bootstrap-modal','window-open-post','notifications-module','block-ui']).factory('app', function($http,$timeout,$window,$compile,validate,bootstrapModal,printPost,bootstrapModal,bui) {
 	
 	function app() {
 
@@ -10,7 +10,8 @@ angular.module('app-module', ['form-validator','ui.bootstrap','bootstrap-modal',
 			scope.views = {};
 
 			scope.activity = {};
-			
+
+			scope.document = {};			
 			scope.documents = [];	
 			
 			scope.views.currentPage = 1;
@@ -31,6 +32,9 @@ angular.module('app-module', ['form-validator','ui.bootstrap','bootstrap-modal',
 			
 			if (scope.$id > 2) scope = scope.$parent;
 			
+			scope.views.title = 'List of documents';
+			scope.views.search = false;			
+			
 			scope.currentPage = scope.views.currentPage;
 			scope.pageSize = 10;
 			scope.maxSize = 3;
@@ -49,37 +53,52 @@ angular.module('app-module', ['form-validator','ui.bootstrap','bootstrap-modal',
 
 				//
 
-			});				
+			});
+
+			$('#content').load('lists/document.html',function() {
+				$timeout(function() { $compile($('#content')[0])(scope); }, 500);
+			});			
 
 		};
 		
-		self.view = function(scope,document) {
+		self.refresh = function(scope) {
 			
-			title = '<strong>'+document.doc_name+'</strong> ('+document.doc_type+')';
+			self.view(scope,scope.document);
+			
+		};		
+		
+		self.view = function(scope,document) {
 
-			scope.activity = angular.copy(document);			
+			bui.show();
+
+			scope.document = angular.copy(document);			
+
+			scope.views.title = '';
+			scope.views.search = true;
 
 			$http({
 			  method: 'POST',
 			  url: 'handlers/doc-activity.php',
-			  data: {id: document.id}
+			  data: {id: document.document.id}
 			}).then(function mySuccess(response) {
 
+				scope.activity.document = response.data.document;			
+			
 				scope.activity.tracks = response.data.tracks;
 				scope.activity.files = response.data.files;
 				scope.activity.attachments = response.data.attachments;
 
+				bui.hide();
+				
 			}, function myError(response) {
 				
-				//
+				bui.hide();
 				
-			});			
+			});	
 
-			var onOk = function() {
-
-			};
-
-			bootstrapModal.box3(scope,title,'dialogs/document.html',onOk);			
+			$('#content').load('forms/document.html',function() {
+				$timeout(function() { $compile($('#content')[0])(scope); }, 500);
+			});
 
 		};
 
