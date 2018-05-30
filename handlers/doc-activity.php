@@ -9,7 +9,7 @@ session_start();
 
 $con = new pdo_db();
 
-$sql = "SELECT documents.id, documents.origin office_origin, documents.barcode, documents.doc_name, documents.document_date, tracks.document_status, tracks.document_status_user, tracks.document_tracks_status, tracks.track_office, tracks.track_date, tracks.track_option, tracks.route_office, tracks.route_user, tracks.remarks, (SELECT document_types.document_type FROM document_types WHERE document_types.id = documents.doc_type) doc_type, (SELECT offices.office FROM offices WHERE offices.id = documents.origin) origin, (SELECT transactions.transaction FROM transactions WHERE transactions.id = documents.document_transaction_type) transaction_description, document_transaction_type FROM documents LEFT JOIN tracks ON documents.id = tracks.document_id WHERE documents.id = ".$_POST['id'];
+$sql = "SELECT documents.id, documents.origin office_origin, documents.barcode, documents.doc_name, documents.document_date, tracks.document_status, tracks.document_status_user, tracks.document_tracks_status, tracks.track_office, tracks.track_date, tracks.track_option, tracks.route_office, tracks.route_user, tracks.remarks, (SELECT document_types.document_type FROM document_types WHERE document_types.id = documents.doc_type) doc_type, (SELECT offices.office FROM offices WHERE offices.id = documents.origin) origin, (SELECT CONCAT(transactions.transaction, ' (', transactions.days, ' days)') FROM transactions WHERE transactions.id = documents.document_transaction_type) transaction_description, document_transaction_type FROM documents LEFT JOIN tracks ON documents.id = tracks.document_id WHERE documents.id = ".$_POST['id'];
 $document = $con->getData($sql);
 
 # elapsed_date_time/due_date/remaining_before_due
@@ -24,7 +24,7 @@ $due_date = date("Y-m-d H:i:s",strtotime("+$days Days",strtotime($document_date)
 $document[0]['due_date'] = date("F j, Y h:i A",strtotime($due_date));
 
 if (strtotime($date)>=strtotime($due_date)) $document[0]['remaining_before_due'] = "Document is past due";
-else $document[0]['remaining_before_due'] = date_diff_f($date,$due_date);
+else $document[0]['remaining_before_due'] = date_diff_f($due_date,$date);
 #
 
 $tracks = $con->getData("SELECT id, track_date, document_status ds, document_status, document_tracks_status, document_status_user, track_option, IFNULL(track_office,0) track_office, IFNULL(route_office,0) route_office, route_user, (SELECT CONCAT(users.fname, ' ', users.lname) FROM users WHERE users.id = tracks.document_status_user) staff FROM tracks WHERE document_id = ".$_POST['id']." ORDER BY tracks.id DESC");

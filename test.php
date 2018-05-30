@@ -1,11 +1,10 @@
 <?php
 
-require_once 'db.php';
+require_once 'handlers/datetime.php';
 
-$con = new pdo_db("documents");
+$date1 = "2018-05-25 08:00:00";
+$date2 = date("Y-m-d H:i:s");
 
-$q = $con->getObj(array("id"=>"'%1%'"),["id","doc_name",array("origin"=>array("divisions"=>["id","division","shortname"]))]);
-
-var_dump($q);
+$diff = date_diff_f($date1,$date2);
 
 ?>
