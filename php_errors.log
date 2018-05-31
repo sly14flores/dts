@@ -1,0 +1,5 @@
+[31-May-2018 12:57:40 Asia/Manila] PHP Warning:  date_sub() expects parameter 1 to be DateTime, string given in C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\datetime.php on line 51
+[31-May-2018 12:57:40 Asia/Manila] PHP Stack trace:
+[31-May-2018 12:57:40 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\dts\test.php:0
+[31-May-2018 12:57:40 Asia/Manila] PHP   2. lessWeekends() C:\Users\sly\Desktop\UwAmp310\www\dts\test.php:8
+[31-May-2018 12:57:40 Asia/Manila] PHP   3. date_sub() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\datetime.php:51

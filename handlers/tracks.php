@@ -49,14 +49,16 @@ function tracks($con,$tracks) {
 			
 			$previous_track_date = $tracks[$i+1]['track_date'];
 			$track_date = $track['track_date'];
-			$interval = date_diff_f($previous_track_date,$track_date);
+			$interval = date_diff_f($previous_track_date,less_weekends_tracks($previous_track_date,$track_date));
 			$tracks[$i]['interval'] = $interval;
 			
 		};
 		
+		// less_weekends($date,date("Y-m-d H:i:s"));		
+		
 		$date = ($i==0)?date("Y-m-d H:i:s"):$tracks[$i-1]['track_date'];
 		$track_date = $track['track_date'];
-		$tracks[$i]['elapsed_date_time'] = date_diff_f($track_date,$date);
+		$tracks[$i]['elapsed_date_time'] = date_diff_f($track_date,less_weekends_tracks($track_date,$date));
 
 	};
 

@@ -7,21 +7,24 @@ require_once 'tracks.php';
 
 $con = new pdo_db("documents");
 
-$document = $con->getData("SELECT documents.id, CONCAT(documents.barcode, ' ', documents.doc_name) text, documents.barcode, documents.doc_name, (SELECT document_types.document_type FROM document_types WHERE document_types.id = documents.doc_type) doc_type, (SELECT offices.office FROM offices WHERE offices.id = documents.origin) origin, (SELECT CONCAT(transactions.transaction, ' (', transactions.days, ' days)') FROM transactions WHERE transactions.id = documents.document_transaction_type) transaction_description, document_transaction_type, DATE_FORMAT(documents.document_date, '%M %d, %Y') document_date_f, document_date FROM documents WHERE documents.id = ".$_POST['id']);
+$document = $con->getData("SELECT documents.id, CONCAT(documents.barcode, ' ', documents.doc_name) text, documents.barcode, documents.doc_name, (SELECT document_types.document_type FROM document_types WHERE document_types.id = documents.doc_type) doc_type, (SELECT offices.office FROM offices WHERE offices.id = documents.origin) origin, (SELECT CONCAT(transactions.transaction, ' (', transactions.days, ' working days)') FROM transactions WHERE transactions.id = documents.document_transaction_type) transaction_description, document_transaction_type, document_date FROM documents WHERE documents.id = ".$_POST['id']);
 $document = $document[0];
 
 $transaction = $con->getData("SELECT days FROM transactions WHERE id = ".$document['document_transaction_type']);
 $days = $transaction[0]['days'];
 
-$date = date("Y-m-d H:i:s");
 $document_date = $document['document_date'];
+
+$date = less_weekends($document_date,date("Y-m-d H:i:s"));
 $document['elapsed_date_time'] = date_diff_f($document_date,$date);
 
-$due_date = date("Y-m-d H:i:s",strtotime("+$days Days",strtotime($document_date)));
+$due_date = due_date($document_date,$days);
 $document['due_date'] = date("F j, Y h:i A",strtotime($due_date));
 
 if (strtotime($date)>=strtotime($due_date)) $document['remaining_before_due'] = "Document is past due";
 else $document['remaining_before_due'] = date_diff_f($due_date,$date);
+
+$document['document_date'] = date("F j, Y h:i A",strtotime($document['document_date']));
 
 # tracks
 
