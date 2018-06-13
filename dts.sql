@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 18, 2018 at 04:57 PM
+-- Generation Time: Jun 13, 2018 at 05:06 PM
 -- Server version: 5.7.11
 -- PHP Version: 7.0.3
 
@@ -189,6 +189,18 @@ INSERT INTO `documents` (`id`, `user_id`, `doc_name`, `barcode`, `origin`, `othe
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `documents_particulars`
+--
+
+CREATE TABLE `documents_particulars` (
+  `id` int(11) NOT NULL,
+  `document_id` int(11) DEFAULT NULL,
+  `particular_description` varchar(1000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `document_types`
 --
 
@@ -272,9 +284,17 @@ CREATE TABLE `notifications` (
 INSERT INTO `notifications` (`id`, `doc_id`, `track_id`, `user_id`, `office_id`, `notification_type`, `message`, `dismiss`, `system_log`, `last_modified`) VALUES
 (1, 1, 1, 9, NULL, 'outgoing', 'TRAVEL ORDER with subject: <strong>Training at Baguio City</strong> was received at PA<br>by Mary Ann Orofino  on May 17, 2018 01:31 PM', 0, '2018-05-17 13:31:53', NULL),
 (2, 1, 1, 6, NULL, 'transaction', 'Type: TRAVEL ORDER, Subject: <strong>Training at Baguio City</strong> Office: ICTD<br>Received on May 17, 2018 01:31 PM by Mary Ann Orofino', 0, '2018-05-17 13:31:53', NULL),
-(3, 1, 2, 9, NULL, 'outgoing', 'TRAVEL ORDER with subject: <strong>Training at Baguio City</strong> was approved at PA<br>by Jennifer Joan Ortega-Manguiat  on May 18, 2018 01:14 PM', 0, '2018-05-18 13:14:54', NULL),
-(4, 1, 2, 7, NULL, 'transaction', 'TRAVEL ORDER with subject: <strong>Training at Baguio City</strong> was approved at PA<br>by Jennifer Joan Ortega-Manguiat  on May 18, 2018 01:14 PM', 0, '2018-05-18 13:14:54', NULL),
-(5, 1, 2, 8, NULL, 'transaction', 'TRAVEL ORDER with subject: <strong>Training at Baguio City</strong> was approved at PA<br>by Jennifer Joan Ortega-Manguiat  on May 18, 2018 01:14 PM', 0, '2018-05-18 13:14:54', NULL);
+(3, 1, 2, 9, NULL, 'outgoing', 'TRAVEL ORDER with subject: <strong>Training at Baguio City</strong> was approved at PA<br>by Mary Ann Orofino  on May 28, 2018 03:15 PM', 0, '2018-05-28 15:15:49', NULL),
+(4, 1, 2, 7, NULL, 'transaction', 'TRAVEL ORDER with subject: <strong>Training at Baguio City</strong> was approved at PA<br>by Mary Ann Orofino  on May 28, 2018 03:15 PM', 0, '2018-05-28 15:15:49', NULL),
+(5, 1, 2, 8, NULL, 'transaction', 'TRAVEL ORDER with subject: <strong>Training at Baguio City</strong> was approved at PA<br>by Mary Ann Orofino  on May 28, 2018 03:15 PM', 0, '2018-05-28 15:15:49', NULL),
+(6, NULL, 3, 9, NULL, 'incoming', ' with subject: <strong></strong> is ready for pick up at PA<br>Date: May 28, 2018<br>Time: 03:16 PM', 0, '2018-05-28 15:16:08', NULL),
+(7, NULL, 3, 7, NULL, 'outgoing', ' with subject: <strong></strong> was marked ready for pick up by Mary Ann Orofino at PA<br>Date: May 28, 2018<br>Time: 03:16 PM', 0, '2018-05-28 15:16:08', NULL),
+(8, NULL, 3, 8, NULL, 'outgoing', ' with subject: <strong></strong> was marked ready for pick up by Mary Ann Orofino at PA<br>Date: May 28, 2018<br>Time: 03:16 PM', 0, '2018-05-28 15:16:08', NULL),
+(9, 1, 4, 9, NULL, 'incoming', 'TRAVEL ORDER with subject: <strong>Training at Baguio City</strong> was picked up<br>by Remeleth Dumaguin at PA on May 28, 2018 03:57 PM', 0, '2018-05-28 15:57:18', NULL),
+(10, 1, 4, 7, NULL, 'outgoing', 'TRAVEL ORDER with subject: <strong>Training at Baguio City</strong> was picked up<br>by Remeleth Dumaguin at PA on May 28, 2018 03:57 PM', 0, '2018-05-28 15:57:18', NULL),
+(11, 1, 4, 8, NULL, 'outgoing', 'TRAVEL ORDER with subject: <strong>Training at Baguio City</strong> was picked up<br>by Remeleth Dumaguin at PA on May 28, 2018 03:57 PM', 0, '2018-05-28 15:57:18', NULL),
+(12, 1, 5, 9, NULL, 'incoming', 'TRAVEL ORDER with subject: <strong>Training at Baguio City</strong> was received at ICTD<br>by Remeleth Dumaguin  on May 28, 2018 04:22 PM', 0, '2018-05-28 16:22:02', NULL),
+(13, 1, 6, 9, NULL, 'incoming', 'TRAVEL ORDER with subject: <strong>Training at Baguio City</strong> was filed <br>by Remeleth Dumaguin at ICTD on May 28, 2018 04:23 PM', 0, '2018-05-28 16:23:24', NULL);
 
 -- --------------------------------------------------------
 
@@ -361,7 +381,11 @@ CREATE TABLE `tracks` (
 
 INSERT INTO `tracks` (`id`, `document_id`, `document_status`, `document_status_user`, `document_tracks_status`, `track_option`, `track_office`, `track_date`, `route_office`, `route_user`, `preceding_track`, `remarks`, `system_log`) VALUES
 (1, 1, 'Received', 7, 'transaction', NULL, 2, '2018-05-17 13:31:53', NULL, NULL, 0, NULL, '2018-05-17 13:31:53'),
-(2, 1, NULL, 6, 'transaction', 4, 2, '2018-05-18 13:14:54', NULL, NULL, 1, '', '2018-05-18 13:14:54');
+(2, 1, NULL, 7, 'transaction', 4, 2, '2018-05-18 15:15:49', NULL, NULL, 1, '', '2018-05-28 15:15:49'),
+(3, 1, 'Forward', 7, 'for_pick_up', NULL, 2, '2018-05-21 15:16:08', 4, NULL, 2, '', '2018-05-28 15:16:08'),
+(4, 1, 'Release', 7, 'incoming', NULL, 2, '2018-05-28 15:57:18', 4, 9, 3, '', '2018-05-28 15:57:18'),
+(5, 1, 'Received', 9, 'transaction', NULL, 4, '2018-05-28 16:22:02', NULL, NULL, 4, NULL, '2018-05-28 16:22:02'),
+(6, 1, 'Filed', 9, 'filed', NULL, 2, '2018-05-28 16:23:24', NULL, NULL, 5, '', '2018-05-28 16:23:24');
 
 -- --------------------------------------------------------
 
@@ -464,6 +488,13 @@ ALTER TABLE `documents`
   ADD KEY `origin` (`origin`);
 
 --
+-- Indexes for table `documents_particulars`
+--
+ALTER TABLE `documents_particulars`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `document_id` (`document_id`);
+
+--
 -- Indexes for table `document_types`
 --
 ALTER TABLE `document_types`
@@ -554,7 +585,12 @@ ALTER TABLE `divisions`
 -- AUTO_INCREMENT for table `documents`
 --
 ALTER TABLE `documents`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `documents_particulars`
+--
+ALTER TABLE `documents_particulars`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `document_types`
 --
@@ -574,7 +610,7 @@ ALTER TABLE `groups`
 -- AUTO_INCREMENT for table `notifications`
 --
 ALTER TABLE `notifications`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `offices`
 --
@@ -589,7 +625,7 @@ ALTER TABLE `options`
 -- AUTO_INCREMENT for table `tracks`
 --
 ALTER TABLE `tracks`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `transactions`
 --
@@ -615,6 +651,12 @@ ALTER TABLE `attachments`
 --
 ALTER TABLE `divisions`
   ADD CONSTRAINT `divisions_ibfk_1` FOREIGN KEY (`dept_id`) REFERENCES `departments` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `documents_particulars`
+--
+ALTER TABLE `documents_particulars`
+  ADD CONSTRAINT `documents_particulars_ibfk_1` FOREIGN KEY (`document_id`) REFERENCES `documents` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `files`

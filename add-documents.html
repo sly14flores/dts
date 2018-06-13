@@ -240,7 +240,27 @@ require_once 'authentication.php';
                                     </div>
 								</div>
 								<div class="row mt-4">
-                                    <div class="col-md-6 ">
+									<div class="col-md-12">
+										<div class="card-header bg-light">Particulars <button class="btn btn-primary" ng-click="app.particulars.add(this)" ng-disabled="controls.btns.ok" ng-show="controls.ok">Add</button></div>
+										<table class="table">
+											<thead>
+												<tr><th style="width: 100px;">#</th><th>Description</th><th>Action</th></tr>
+											</thead>
+											<tbody>
+												<tr ng-repeat="p in doc.particulars.data">
+													<td>{{$index+1}}</td>
+													<td>
+														<input type="text" class="form-control" ng-class="{'is-invalid': formHolder.doc.particular_description{{$index}}.$touched && formHolder.doc.particular_description{{$index}}.$invalid}" name="particular_description{{$index}}" ng-model="p.particular_description" ng-disabled="p.disabled" required>
+														<div class="invalid-feedback">Description is required</div>
+													</td>
+													<td><button class="btn btn-link" ng-click="app.particulars.edit(this,p)"><i class="icon" ng-class="{'icon-pencil': p.disabled, 'icon-check': !p.disabled}"></i></button><button class="btn btn-link" ng-click="app.particulars.del(this,p)"><i class="icon icon-trash"></i></button></td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+								<div class="row mt-4">									
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="form-control-label">Remarks</label>
                                             <input type="text" class="form-control" name="remarks" ng-model="doc.remarks" ng-disabled="controls.btns.ok">

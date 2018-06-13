@@ -1,0 +1,35 @@
+CREATE TABLE `documents_particulars` (
+  `id` int(11) NOT NULL,
+  `document_id` int(11) DEFAULT NULL,
+  `particular_description` varchar(1000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `documents_particulars`
+--
+ALTER TABLE `documents_particulars`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `document_id` (`document_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `documents_particulars`
+--
+ALTER TABLE `documents_particulars`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `documents_particulars`
+--
+ALTER TABLE `documents_particulars`
+  ADD CONSTRAINT `documents_particulars_ibfk_1` FOREIGN KEY (`document_id`) REFERENCES `documents` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;

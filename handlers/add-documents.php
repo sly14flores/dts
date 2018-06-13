@@ -30,6 +30,9 @@ $_POST['doc_type'] = $_POST['doc_type']['id'];
 $_POST['communication'] = $_POST['communication']['id'];
 $_POST['document_transaction_type'] = $_POST['document_transaction_type']['id'];
 
+$particulars = array("data"=>$_POST['particulars']['data'],"dels"=>$_POST['particulars']['dels']);
+unset($_POST['particulars']);
+
 $uploads = array("files"=>$_POST['files'],"attachments"=>$_POST['attachments']);
 unset($_POST['files']);
 unset($_POST['attachments']);
@@ -126,6 +129,24 @@ if ($_POST['id']) { # update
 	echo json_encode(array("barcode"=>$barcode[0]['barcode'],"doc_type"=>$barcode[0]['doc_type']));
 
 }
+
+# particulars
+$con->table = "documents_particulars";
+foreach ($particulars['data'] as $particular) {
+
+	unset($particular['disabled']);
+	
+	if ($particular['id']) {
+		
+		
+	} else {
+
+		$particular['document_id'] = $id;
+		$insert = $con->insertData($particular);
+
+	};
+	
+};
 
 function uploadFiles($con,$uploads,$barcode,$id) {
 	
