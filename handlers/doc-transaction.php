@@ -40,7 +40,7 @@ switch ($_POST['action']) {
 		$get_track_office = $con->getData("SELECT id, office FROM offices WHERE id = $track_office");
 		$track_office_name = $get_track_office[0]['office'];	
 	
-		$track_option = getOption($_POST['options']);
+		// $track_option = getOption($_POST['options']);
 		$route_office = $_POST['document']['route_office'];
 		
 		# liaisons
@@ -79,7 +79,7 @@ switch ($_POST['action']) {
 		$document_status = "Forward";
 		$document_tracks_status = "for_pick_up";
 		$route_office = $_POST['next']['route_office']['id'];
-		$track_option = $_POST['track_option'];
+		// $track_option = $_POST['track_option'];
 
 		# liaisons
 		$liaisons = $con->getData("SELECT id FROM users WHERE div_id = $route_office AND group_id IN ".getAssignmentIds($assignments['group'],1,"group"));
@@ -118,7 +118,7 @@ switch ($_POST['action']) {
 		$document_tracks_status = "incoming";
 		$route_office = $_POST['next']['route_office']['id'];
 		$route_user = $_POST['next']['route_user']['id'];
-		$track_option = $_POST['document']['track_option'];		
+		// $track_option = $_POST['document']['track_option'];		
 
 		$pick_up_by = $con->getData("SELECT CONCAT(fname, ' ', lname) fullname FROM users WHERE id = $route_user");
 
@@ -159,7 +159,7 @@ switch ($_POST['action']) {
 
 		$document_status = "Filed";
 		$document_tracks_status = "filed";
-		$track_option = $_POST['document']['track_option'];
+		// $track_option = $_POST['document']['track_option'];
 
 		$file_by = $con->getData("SELECT CONCAT(fname, ' ', lname) fullname FROM users WHERE id = ".$_SESSION['id']);		
 		$file_office = $con->getData("SELECT id, office FROM offices WHERE id = ".$_SESSION['office']);
@@ -191,7 +191,6 @@ $track = array(
 	"track_date"=>$track_date,
 	"route_office"=>$route_office,
 	"route_user"=>$route_user,
-	"track_option"=>$track_option,
 	"remarks"=>$remarks,
 	"preceding_track"=>$preceding_track
 );
@@ -237,6 +236,27 @@ function getOptionDescription($options,$track_option) {
 
 $con->insertData($track);
 $track_id = $con->insertId;
+
+# options
+$con->table = "tracks_options";
+foreach ($_POST['options'] as $option) {
+	
+	if (isset($option['value'])) {
+
+		if ($option['value']) {
+
+			$track_option = array(
+				"track_id"=>$track_id,
+				"track_option"=>$option['id']
+			);
+			
+			$con->insertData($track_option);
+
+		};
+
+	};
+
+};
 
 # notify
 if (count($notifications)) {

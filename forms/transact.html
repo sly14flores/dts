@@ -101,7 +101,7 @@
 				<div class="row">
 					<div class="col-md-4" ng-repeat="opt in options" style="margin-bottom: 30px;">
 						<div class="toggle-switch" data-ts-color="primary">
-							<input id="{{opt.id}}{{$index}}" type="checkbox" hidden="hidden" ng-model="opt.value" ng-check="opt.value" ng-change="app.optionChosen(this,opt)">
+							<input id="{{opt.id}}{{$index}}" type="checkbox" hidden="hidden" ng-model="opt.value" ng-check="opt.value">
 							<label for="{{opt.id}}{{$index}}" class="ts-helper"></label>						
 							<label for="{{opt.id}}{{$index}}" class="ts-label"><span style="padding-left: 10px;">{{opt.choice}}</span></label>
 						</div>	
