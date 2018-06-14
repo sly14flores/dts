@@ -1,6 +1,0 @@
-[13-Jun-2018 17:00:18 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'particulars' in 'field list' in C:\Users\sly\Desktop\UwAmp310\www\dts\db.php:235
-Stack trace:
-#0 C:\Users\sly\Desktop\UwAmp310\www\dts\db.php(235): PDO->prepare('INSERT INTO doc...')
-#1 C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\add-documents.php(69): pdo_db->insertData(Array)
-#2 {main}
-  thrown in C:\Users\sly\Desktop\UwAmp310\www\dts\db.php on line 235

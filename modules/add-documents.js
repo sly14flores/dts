@@ -31,9 +31,6 @@ angular.module('app-module', ['form-validator','bootstrap-modal','jspdf-module',
 			
 			scope.doc = {};
 			scope.doc.id = 0;
-			scope.doc.particulars = {};
-			scope.doc.particulars.data = [];
-			scope.doc.particulars.dels = [];
 			scope.doc.files = [];
 			scope.doc.attachments = [];
 			
@@ -57,8 +54,7 @@ angular.module('app-module', ['form-validator','bootstrap-modal','jspdf-module',
 			}, function myError(response) {
 				
 		
-			});
-
+			});		
 			$http({
 				method: 'GET',
 				url: 'handlers/transactions.php'
@@ -70,7 +66,7 @@ angular.module('app-module', ['form-validator','bootstrap-modal','jspdf-module',
 				
 		
 			});		
-
+			
 			$http({
 				method: 'GET',
 				url: 'handlers/offices.php'
@@ -82,12 +78,12 @@ angular.module('app-module', ['form-validator','bootstrap-modal','jspdf-module',
 				
 		
 			});				
-
+			
 			$http({
 				method: 'GET',
 				url: 'handlers/doctype.php'
 			}).then(function mySuccess(response) {
-
+				
 				scope.document_types = angular.copy(response.data);
 					
 			}, function myError(response) {
@@ -107,9 +103,6 @@ angular.module('app-module', ['form-validator','bootstrap-modal','jspdf-module',
 			
 			scope.doc = {};
 			scope.doc.id = 0;
-			scope.doc.particulars = {};			
-			scope.doc.particulars.data = [];
-			scope.doc.particulars.dels = [];			
 			scope.doc.files = [];
 			scope.doc.attachments = [];			
 			
@@ -166,46 +159,6 @@ angular.module('app-module', ['form-validator','bootstrap-modal','jspdf-module',
 				});				
 				
 			});
-			
-		};
-		
-		self.particulars = {
-			
-			add: function(scope) {
-				
-				scope.doc.particulars.data.push({id:0, particular_description: '', disabled: false});
-				
-			},
-			
-			edit: function(scope,row) {
-
-				var index = scope.doc.particulars.data.indexOf(row);
-				scope.doc.particulars.data[index].disabled = !scope.doc.particulars.data[index].disabled;
-
-			},
-			
-			del: function(scope,row) {
-
-				if (row.id > 0) {
-					scope.doc.particulars.dels.push(row.id);
-				}			
-
-				var data = scope.doc.particulars.data;
-				var index = scope.doc.particulars.data.indexOf(row);
-				scope.doc.particulars.data = [];
-
-				angular.forEach(data, function(d,i) {
-					
-					if (index != i) {
-						
-						delete d['$$hashKey'];
-						scope.doc.particulars.data.push(d);
-						
-					};
-					
-				});
-			
-			}
 			
 		};
 		
