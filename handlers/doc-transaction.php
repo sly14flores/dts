@@ -15,7 +15,7 @@ $con = new pdo_db("tracks");
 $document_status = NULL;
 $document_tracks_status = "transaction";
 $track_office = $_POST['document']['track_office'];
-$track_option = NULL;
+// $track_option = NULL;
 $route_office = NULL;
 $route_user = NULL;
 $remarks = (isset($_POST['next']['remarks']))?$_POST['next']['remarks']:"";
@@ -39,8 +39,7 @@ switch ($_POST['action']) {
 	
 		$get_track_office = $con->getData("SELECT id, office FROM offices WHERE id = $track_office");
 		$track_office_name = $get_track_office[0]['office'];	
-	
-		// $track_option = getOption($_POST['options']);
+
 		$route_office = $_POST['document']['route_office'];
 		
 		# liaisons
@@ -51,7 +50,7 @@ switch ($_POST['action']) {
 				"doc_id"=>$_POST['document']['id'],
 				"user_id"=>$liaison['id'],
 				"notification_type"=>"outgoing",
-				"message"=>$_POST['document']['doc_type']." with subject: <strong>".$_POST['document']['doc_name']."</strong> was ".getOptionDescription($_POST['options'],$track_option)." at $track_office_name<br>by ".$staff[0]['fullname']."  on ".date("F j, Y h:i A",strtotime($track_date))
+				"message"=>$_POST['document']['doc_type']." with subject: <strong>".$_POST['document']['doc_name']."</strong> was ".getFlags($_POST['options'])." at $track_office_name<br>by ".$staff[0]['fullname']."  on ".date("F j, Y h:i A",strtotime($track_date))
 			);
 
 		};
@@ -64,7 +63,7 @@ switch ($_POST['action']) {
 				"doc_id"=>$_POST['document']['id'],
 				"user_id"=>$ao['id'],
 				"notification_type"=>"transaction",
-				"message"=>$_POST['document']['doc_type']." with subject: <strong>".$_POST['document']['doc_name']."</strong> was ".getOptionDescription($_POST['options'],$track_option)." at $track_office_name<br>by ".$staff[0]['fullname']."  on ".date("F j, Y h:i A",strtotime($track_date))
+				"message"=>$_POST['document']['doc_type']." with subject: <strong>".$_POST['document']['doc_name']."</strong> was ".getFlags($_POST['options'])." at $track_office_name<br>by ".$staff[0]['fullname']."  on ".date("F j, Y h:i A",strtotime($track_date))
 			);
 
 		};		
@@ -232,6 +231,12 @@ function getOptionDescription($options,$track_option) {
 
 	return $description;	
 
+};
+
+function getFlags($options) {
+	
+	
+	
 };
 
 $con->insertData($track);

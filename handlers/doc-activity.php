@@ -44,13 +44,22 @@ foreach ($tracks as $i => $track) {
 
 	$office = $track_office_name;
 
-	if ($track['track_option'] != NULL) {
-		$track_option = $con->getData("SELECT id, choice FROM options WHERE id = ".$track['track_option']);
-		$document_status_user = $con->getData("SELECT id, CONCAT(fname, ' ', lname) fullname FROM users WHERE id = ".$track['document_status_user']);
+	$track_options = $con->getData("SELECT * FROM tracks_options WHERE track_id = ".$track['id']);
+	if (count($track_options)) {
 		$status = "";
-		$pre_phrase = $con->getData("SELECT pre_phrase FROM options WHERE id = ".$track['track_option']);
-		if ($pre_phrase[0]['pre_phrase'] != NULL) $status .= $pre_phrase[0]['pre_phrase']." ";
-		$status .= $track_option[0]['choice'];
+		$document_status_user = $con->getData("SELECT id, CONCAT(fname, ' ', lname) fullname FROM users WHERE id = ".$track['document_status_user']);
+		$options = [];		
+		foreach ($track_options as $key => $track_option) {
+			$option = $con->getData("SELECT id, pre_phrase, choice FROM options WHERE id = ".$track_option['track_option']);
+			$options[] = $option[0];
+			if ($key == 0) {
+				$status .= $option[0]['pre_phrase']." ".$option[0]['choice'];
+				continue;
+			};
+			$second_pre = "";
+			if (($options[0]['pre_phrase']==null)&&($key==1)) $second_pre = "Flagged as ";
+			$status .= " / $second_pre".$option[0]['choice'];
+		};
 		$status .= " by ".$document_status_user[0]['fullname'];		
 	};
 

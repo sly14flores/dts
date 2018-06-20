@@ -18,11 +18,21 @@ function tracks($con,$tracks) {
 
 		$prepo = (isset($status_arr[$document_status]))?$status_arr[$document_status]:"at";
 
-		if ($track['track_option'] != NULL) {
+		$track_options = $con->getData("SELECT * FROM tracks_options WHERE track_id = ".$track['id']);
+		if (count($track_options)) {
 			$document_status = "";
-			$option = $con->getData("SELECT pre_phrase, description FROM options WHERE id = ".$track['track_option']);
-			$track_option = $con->getData("SELECT id, choice FROM options WHERE id = ".$track['track_option']);
-			$document_status .= ($option[0]['description']==NULL)?$track_option[0]['choice']:ucfirst($option[0]['description']);
+			$options = [];
+			foreach ($track_options as $key => $track_option) {
+				$option = $con->getData("SELECT id, pre_phrase, choice, description FROM options WHERE id = ".$track_option['track_option']);
+				$options[] = $option[0];
+				if ($key == 0) {
+					$document_status .= ucfirst($option[0]['description']);
+					continue;
+				};
+				$second_pre = "";
+				if (($options[0]['pre_phrase']==null)&&($key==1)) $second_pre = "Flagged as ";
+				$document_status .= " / $second_pre".$option[0]['choice'];
+			};
 		};
 
 		$tracks[$i]['track_date_f'] = date("(D) F j, Y",strtotime($track['track_date']));
