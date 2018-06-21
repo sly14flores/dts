@@ -101,7 +101,7 @@ switch ($_POST['action']) {
 				"doc_id"=>$_POST['id'],
 				"user_id"=>$ao['id'],
 				"notification_type"=>"outgoing",
-				"message"=>$_POST['doc_type']." with subject: <strong>".$_POST['document']['doc_name']T."</strong> was marked ready for pick up by ".$staff[0]['fullname']." at $track_office_name<br>Date: ".date("F j, Y",strtotime($track_date))."<br>Time: ".date("h:i A",strtotime($track_date))
+				"message"=>$_POST['doc_type']." with subject: <strong>".$_POST['document']['doc_name']."</strong> was marked ready for pick up by ".$staff[0]['fullname']." at $track_office_name<br>Date: ".date("F j, Y",strtotime($track_date))."<br>Time: ".date("h:i A",strtotime($track_date))
 			);
 
 		};	
