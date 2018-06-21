@@ -31,6 +31,12 @@ $document['document_date'] = date("F j, Y h:i A",strtotime($document['document_d
 $sql = "SELECT tracks.id, tracks.document_status, IFNULL(tracks.track_office,0) track_office, tracks.document_status_user, tracks.track_option, tracks.document_tracks_status, tracks.track_date, IFNULL(tracks.route_office,0) route_office, tracks.route_user, tracks.track_option FROM tracks LEFT JOIN documents ON tracks.document_id = documents.id WHERE documents.barcode = '".$_POST['barcode']."' ORDER BY id DESC";
 $tracks = $con->getData($sql);
 
+$last_track = $tracks[0];
+if ($last_track['document_status'] == "Filed") {
+	$document['due_date'] = "";
+	$document['remaining_before_due'] = "";
+};
+
 $tracks = tracks($con,$tracks);
 
 $response = array("document"=>$document,"tracks"=>$tracks);

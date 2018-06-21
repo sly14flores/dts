@@ -32,6 +32,12 @@ $sql = "SELECT tracks.id, tracks.document_status, IFNULL(tracks.track_office,0) 
 
 $tracks = $con->getData($sql);
 
+$last_track = $tracks[0];
+if ($last_track['document_status'] == "Filed") {
+	$document['due_date'] = "";
+	$document['remaining_before_due'] = "";
+};
+
 $tracks = tracks($con,$tracks);
 
 echo json_encode(array("document"=>$document,"tracks"=>$tracks));

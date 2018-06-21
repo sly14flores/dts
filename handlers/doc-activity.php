@@ -32,6 +32,12 @@ $document[0]['document_date'] = date("F j, Y h:i A",strtotime($document[0]['docu
 
 $tracks = $con->getData("SELECT id, track_date, document_status ds, document_status, document_tracks_status, document_status_user, track_option, IFNULL(track_office,0) track_office, IFNULL(route_office,0) route_office, route_user, (SELECT CONCAT(users.fname, ' ', users.lname) FROM users WHERE users.id = tracks.document_status_user) staff FROM tracks WHERE document_id = ".$_POST['id']." ORDER BY tracks.id DESC");
 
+$last_track = $tracks[0];
+if ($last_track['document_status'] == "Filed") {
+	$document[0]['due_date'] = "";
+	$document[0]['remaining_before_due'] = "";
+};
+
 foreach ($tracks as $i => $track) {
 
 	$status = $track['document_status'];
