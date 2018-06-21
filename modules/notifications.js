@@ -34,7 +34,7 @@ angular.module('notifications-module', ['ngSanitize']).directive('notifications'
 		templateUrl: 'html/notifications.html',
 		link: function(scope, element, attrs) {
 			
-			scope.notification = false;			
+			scope.notification = true;			
 			
 			scope.notifications = {};
 			scope.notifications.count = 0;
