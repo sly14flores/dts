@@ -4,7 +4,7 @@
 		<div ng-show="notifications.outgoing.length">
 			<div class="dropdown-header">Outgoing <strong>({{notifications.outgoing.length}})</strong></div>
 			<div class="dropdown-item" ng-repeat="n in notifications.outgoing">
-				<div class="alert alert-dismissible">
+				<div class="alert alert-dismissible" style="background-color: #ffe2e2;">
 					<p ng-bind-html="n.message" style="line-height: 175%;"></p>
 					<button type="button" class="close" data-dismiss="alert" aria-label="Close" ng-click="notificationAction(this,n)">
 						<span aria-hidden="true">×</span>
@@ -17,7 +17,7 @@
 		<div ng-show="notifications.transaction.length">
 			<div class="dropdown-header">For Action <strong>({{notifications.transaction.length}})</strong></div>
 			<div class="dropdown-item" ng-repeat="n in notifications.transaction">
-				<div class="alert alert-dismissible">
+				<div class="alert alert-dismissible" style="background-color: #ffe2e2;">
 					<p ng-bind-html="n.message" style="line-height: 175%;"></p>
 					<button type="button" class="close" data-dismiss="alert" aria-label="Close" ng-click="notificationAction(this,n)">
 						<span aria-hidden="true">×</span>
@@ -30,7 +30,7 @@
 		<div ng-show="notifications.incoming.length">
 			<div class="dropdown-header">Incoming <strong>({{notifications.incoming.length}})</strong></div>
 			<div class="dropdown-item" ng-repeat="n in notifications.incoming">
-				<div class="alert alert-dismissible">
+				<div class="alert alert-dismissible" style="background-color: #ffe2e2;">
 					<p ng-bind-html="n.message" style="line-height: 175%;"></p>
 					<button type="button" class="close" data-dismiss="alert" aria-label="Close" ng-click="notificationAction(this,n)">
 						<span aria-hidden="true">×</span>

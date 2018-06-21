@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 20, 2018 at 04:56 PM
+-- Generation Time: Jun 21, 2018 at 11:37 AM
 -- Server version: 5.7.11
 -- PHP Version: 7.0.3
 
@@ -184,7 +184,7 @@ CREATE TABLE `documents` (
 --
 
 INSERT INTO `documents` (`id`, `user_id`, `doc_name`, `barcode`, `origin`, `other_origin`, `document_date`, `document_transaction_type`, `doc_type`, `communication`, `remarks`) VALUES
-(1, 7, 'agasgd', 'OTH-06-2018-00001', 1, 'CSF', '2018-06-20 16:30:46', 1, 2, 1, NULL);
+(1, 7, 'Data Privacy Compliance', 'ICT-06-2018-00001', 4, NULL, '2018-06-21 10:40:52', 1, 3, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -220,6 +220,13 @@ CREATE TABLE `files` (
   `document_id` int(11) DEFAULT NULL,
   `file_name` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `files`
+--
+
+INSERT INTO `files` (`id`, `document_id`, `file_name`) VALUES
+(1, 1, 'ICT-06-2018-00001_0.pdf');
 
 -- --------------------------------------------------------
 
@@ -270,7 +277,19 @@ CREATE TABLE `notifications` (
 --
 
 INSERT INTO `notifications` (`id`, `doc_id`, `track_id`, `user_id`, `office_id`, `notification_type`, `message`, `dismiss`, `system_log`, `last_modified`) VALUES
-(1, 1, 1, 6, NULL, 'transaction', 'Type: LETTER, Subject: <strong>agasgd</strong> Office: Others<br>Received on June 20, 2018 04:30 PM by Mary Ann Orofino', 0, '2018-06-20 16:30:46', NULL);
+(1, 1, 1, 9, NULL, 'outgoing', 'TRAVEL ORDER with subject: <strong>Data Privacy Compliance</strong> was received at PA<br>by Mary Ann Orofino  on June 21, 2018 10:40 AM', 0, '2018-06-21 10:40:52', NULL),
+(2, 1, 1, 6, NULL, 'transaction', 'Type: TRAVEL ORDER, Subject: <strong>Data Privacy Compliance</strong> Office: ICTD<br>Received on June 21, 2018 10:40 AM by Mary Ann Orofino', 0, '2018-06-21 10:40:52', NULL),
+(3, 1, 2, 9, NULL, 'outgoing', 'TRAVEL ORDER with subject: <strong>Data Privacy Compliance</strong> was  APPROVED / Flagged as FOR FILE at PA<br>by Jennifer Joan Ortega-Manguiat  on June 21, 2018 10:43 AM', 0, '2018-06-21 10:43:12', NULL),
+(4, 1, 2, 7, NULL, 'transaction', 'TRAVEL ORDER with subject: <strong>Data Privacy Compliance</strong> was  APPROVED / Flagged as FOR FILE at PA<br>by Jennifer Joan Ortega-Manguiat  on June 21, 2018 10:43 AM', 0, '2018-06-21 10:43:12', NULL),
+(5, 1, 2, 8, NULL, 'transaction', 'TRAVEL ORDER with subject: <strong>Data Privacy Compliance</strong> was  APPROVED / Flagged as FOR FILE at PA<br>by Jennifer Joan Ortega-Manguiat  on June 21, 2018 10:43 AM', 0, '2018-06-21 10:43:12', NULL),
+(6, NULL, 3, 9, NULL, 'incoming', ' with subject: <strong></strong> is ready for pick up at PA<br>Date: June 21, 2018<br>Time: 10:44 AM', 0, '2018-06-21 10:44:53', NULL),
+(7, NULL, 3, 7, NULL, 'outgoing', ' with subject: <strong></strong> was marked ready for pick up by Jennifer Joan Ortega-Manguiat at PA<br>Date: June 21, 2018<br>Time: 10:44 AM', 0, '2018-06-21 10:44:53', NULL),
+(8, NULL, 3, 8, NULL, 'outgoing', ' with subject: <strong></strong> was marked ready for pick up by Jennifer Joan Ortega-Manguiat at PA<br>Date: June 21, 2018<br>Time: 10:44 AM', 0, '2018-06-21 10:44:53', NULL),
+(9, 1, 4, 9, NULL, 'incoming', 'TRAVEL ORDER with subject: <strong>Data Privacy Compliance</strong> was picked up<br>by Remeleth Dumaguin at PA on June 21, 2018 10:45 AM', 0, '2018-06-21 10:45:24', NULL),
+(10, 1, 4, 7, NULL, 'outgoing', 'TRAVEL ORDER with subject: <strong>Data Privacy Compliance</strong> was picked up<br>by Remeleth Dumaguin at PA on June 21, 2018 10:45 AM', 0, '2018-06-21 10:45:24', NULL),
+(11, 1, 4, 8, NULL, 'outgoing', 'TRAVEL ORDER with subject: <strong>Data Privacy Compliance</strong> was picked up<br>by Remeleth Dumaguin at PA on June 21, 2018 10:45 AM', 0, '2018-06-21 10:45:24', NULL),
+(12, 1, 5, 9, NULL, 'incoming', 'TRAVEL ORDER with subject: <strong>Data Privacy Compliance</strong> was received at ICTD<br>by Remeleth Dumaguin  on June 21, 2018 10:58 AM', 0, '2018-06-21 10:58:47', NULL),
+(13, 1, 6, 9, NULL, 'incoming', 'TRAVEL ORDER with subject: <strong>Data Privacy Compliance</strong> was filed <br>by Remeleth Dumaguin at ICTD on June 21, 2018 10:58 AM', 0, '2018-06-21 10:58:47', NULL);
 
 -- --------------------------------------------------------
 
@@ -355,7 +374,12 @@ CREATE TABLE `tracks` (
 --
 
 INSERT INTO `tracks` (`id`, `document_id`, `document_status`, `document_status_user`, `document_tracks_status`, `track_option`, `track_office`, `track_date`, `route_office`, `route_user`, `preceding_track`, `remarks`, `system_log`) VALUES
-(1, 1, 'Received', 7, 'transaction', NULL, 2, '2018-06-20 16:30:46', NULL, NULL, 0, NULL, '2018-06-20 16:30:46');
+(1, 1, 'Received', 7, 'transaction', NULL, 2, '2018-06-18 10:40:52', NULL, NULL, 0, NULL, '2018-06-21 10:40:52'),
+(2, 1, NULL, 6, 'transaction', NULL, 2, '2018-06-19 10:43:12', NULL, NULL, 1, '', '2018-06-21 10:43:12'),
+(3, 1, 'Forward', 6, 'for_pick_up', NULL, 2, '2018-06-19 10:44:53', 4, NULL, 2, '', '2018-06-21 10:44:53'),
+(4, 1, 'Release', 6, 'incoming', NULL, 2, '2018-06-19 13:00:24', 4, 9, 3, '', '2018-06-21 10:45:24'),
+(5, 1, 'Received', 9, 'transaction', NULL, 4, '2018-06-21 10:58:47', NULL, NULL, 4, NULL, '2018-06-21 10:58:47'),
+(6, 1, 'Filed', 9, 'filed', NULL, 4, '2018-06-21 10:58:47', NULL, NULL, 5, NULL, '2018-06-21 10:58:47');
 
 -- --------------------------------------------------------
 
@@ -369,6 +393,14 @@ CREATE TABLE `tracks_options` (
   `track_option` int(11) NOT NULL,
   `system_log` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tracks_options`
+--
+
+INSERT INTO `tracks_options` (`id`, `track_id`, `track_option`, `system_log`) VALUES
+(1, 2, 4, '2018-06-21 10:43:12'),
+(2, 2, 7, '2018-06-21 10:43:12');
 
 -- --------------------------------------------------------
 
@@ -419,10 +451,6 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `fname`, `mname`, `lname`, `position`, `uname`, `pw`, `employee_id`, `div_id`, `email_address`, `phone_number`, `group_id`, `system_accountability`) VALUES
 (1, 'Sylvester', 'Bulilan', 'Flores', 'Administrative Aide VI', 'sly', 'legend', '82156', 4, 'sly@christian.com.ph', '09179245040', 1, NULL),
-(2, 'Karl Aaron', 'Masancay', 'Castaneda', 'OJT', 'aaron', '54321', '', 4, 'aaron.casty02@yahoo.com', '9298902184', 1, NULL),
-(3, 'Renwil', 'Gatchallan', 'Flores', 'OJT', 'renn', 'renn', '', 4, '', '909090909', 1, NULL),
-(4, 'Alain', 'M.', 'Dayao II', 'OJT', 'alain', '123456789', '', 4, '', '9123456789', 1, NULL),
-(5, 'Mc Glenn', 'Gundran', 'Tangalin', 'OJT', 'glenn', 'glenn', '', 4, 'mcglenn.tangalin@lorma.edu', '09301598842', 1, NULL),
 (6, 'Jennifer Joan', NULL, 'Ortega-Manguiat', 'Provincial Administrator', 'pa', '123456', NULL, 2, NULL, NULL, 2, 1),
 (7, 'Mary Ann', 'Yan', 'Orofino', 'Administrative Aide IV', 'ann', '123456', '81018', 2, NULL, NULL, 3, NULL),
 (8, 'Ghenny Rose', NULL, 'Estipular', 'Administrative Aide VI', 'ghenny', '123456', '80005', 2, NULL, NULL, 3, NULL),
@@ -579,7 +607,7 @@ ALTER TABLE `document_types`
 -- AUTO_INCREMENT for table `files`
 --
 ALTER TABLE `files`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `groups`
 --
@@ -589,7 +617,7 @@ ALTER TABLE `groups`
 -- AUTO_INCREMENT for table `notifications`
 --
 ALTER TABLE `notifications`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `offices`
 --
@@ -604,7 +632,7 @@ ALTER TABLE `options`
 -- AUTO_INCREMENT for table `tracks`
 --
 ALTER TABLE `tracks`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `tracks_options`
 --
