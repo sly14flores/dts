@@ -3,6 +3,7 @@
 define('assignments', array(
 	"user"=>array(
 		array("id"=>1,"user"=>[6],"description"=>"Provincial Administrator"),
+		array("id"=>2,"user"=>[12],"description"=>"Assistant Provincial Administrator"),
 	),
 	"office"=>array(
 		array("id"=>1,"office"=>[2],"description"=>"Initial recepient of documents"),	
