@@ -258,6 +258,12 @@ angular.module('app-module', ['bootstrap-modal','ui.bootstrap','window-open-post
 
 		};
 		
+		self.preview = function(file) {
+
+			printPost.show('preview/index.php',file);
+			
+		};		
+		
 	};
 	
 	return new app();

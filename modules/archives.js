@@ -1,4 +1,4 @@
-angular.module('app-module', ['form-validator','bootstrap-modal','notifications-module','block-ui']).factory('app', function($http,$timeout,$compile,$window,validate,bootstrapModal,bui) {
+angular.module('app-module', ['form-validator','bootstrap-modal','window-open-post','notifications-module','block-ui']).factory('app', function($http,$timeout,$compile,$window,validate,bootstrapModal,printPost,bui) {
 
 	function app() {
 
@@ -91,6 +91,12 @@ angular.module('app-module', ['form-validator','bootstrap-modal','notifications-
 			});
 
 		};
+		
+		self.preview = function(file) {
+
+			printPost.show('preview/index.php',file);
+			
+		};			
 
 	};
 

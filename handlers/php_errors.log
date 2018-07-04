@@ -3135,3 +3135,18 @@ Stack trace:
 [03-Jul-2018 16:18:11 Asia/Manila] PHP Notice:  Undefined index: id in C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\profile-save.php on line 13
 [03-Jul-2018 16:18:11 Asia/Manila] PHP Stack trace:
 [03-Jul-2018 16:18:11 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\profile-save.php:0
+[04-Jul-2018 11:44:25 Asia/Manila] PHP Notice:  Undefined index: id in C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\doc-transaction.php on line 88
+[04-Jul-2018 11:44:25 Asia/Manila] PHP Stack trace:
+[04-Jul-2018 11:44:25 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\doc-transaction.php:0
+[04-Jul-2018 11:44:25 Asia/Manila] PHP Notice:  Undefined index: id in C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\doc-transaction.php on line 101
+[04-Jul-2018 11:44:25 Asia/Manila] PHP Stack trace:
+[04-Jul-2018 11:44:25 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\doc-transaction.php:0
+[04-Jul-2018 11:44:25 Asia/Manila] PHP Notice:  Undefined index: id in C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\doc-transaction.php on line 101
+[04-Jul-2018 11:44:25 Asia/Manila] PHP Stack trace:
+[04-Jul-2018 11:44:25 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\doc-transaction.php:0
+[04-Jul-2018 11:49:45 Asia/Manila] PHP Notice:  Undefined index: options in C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\doc-transaction.php on line 278
+[04-Jul-2018 11:49:45 Asia/Manila] PHP Stack trace:
+[04-Jul-2018 11:49:45 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\doc-transaction.php:0
+[04-Jul-2018 11:49:45 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\doc-transaction.php on line 278
+[04-Jul-2018 11:49:45 Asia/Manila] PHP Stack trace:
+[04-Jul-2018 11:49:45 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\dts\handlers\doc-transaction.php:0

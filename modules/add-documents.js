@@ -104,7 +104,7 @@ angular.module('app-module', ['form-validator','bootstrap-modal','jspdf-module',
 			scope.doc = {};
 			scope.doc.id = 0;
 			scope.doc.files = [];
-			scope.doc.attachments = [];			
+			scope.doc.attachments = [];
 			
 		};
 		
