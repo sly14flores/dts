@@ -30,6 +30,10 @@ $_POST['doc_type'] = $_POST['doc_type']['id'];
 $_POST['communication'] = $_POST['communication']['id'];
 $_POST['document_transaction_type'] = $_POST['document_transaction_type']['id'];
 
+$_POST['doc_action'] = ($_POST['for_approval'])?'for_approval':(($_POST['for_routing'])?'for_routing':NULL);
+unset($_POST['for_approval']);
+unset($_POST['for_routing']);
+
 $uploads = array("files"=>$_POST['files'],"attachments"=>$_POST['attachments']);
 unset($_POST['files']);
 unset($_POST['attachments']);

@@ -188,6 +188,7 @@ angular.module('app-module', ['form-validator','bootstrap-modal','ui.bootstrap',
 				if (scope.group.id == 0) {
 					scope.group = {};
 					scope.groups.id = 0;
+					scope.privileges = [];
 				};
 				scope.controls.btns.ok = true;
 				scope.controls.btns.cancel = true;					

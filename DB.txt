@@ -1,0 +1,1 @@
+ALTER TABLE `documents`  ADD `doc_action` VARCHAR(20) NULL  AFTER `communication`;

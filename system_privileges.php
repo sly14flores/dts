@@ -13,7 +13,8 @@ define('system_privileges', array(
 		"description"=>"Receive Document",
 		"privileges"=>array(
 			array("id"=>1,"description"=>"Show Receive Document","value"=>false),
-			array("id"=>2,"description"=>"Add Document","value"=>false),		
+			array("id"=>2,"description"=>"Add Document","value"=>false),
+			array("id"=>3,"description"=>"Initial recepient of documents","value"=>false),
 		),
 	),
 	array(
@@ -22,7 +23,7 @@ define('system_privileges', array(
 		"privileges"=>array(
 			array("id"=>1,"description"=>"Show Incoming Document","value"=>false),
 		),
-	),	
+	),
 	array(
 		"id"=>"transact",
 		"description"=>"Transact",

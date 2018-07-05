@@ -243,9 +243,28 @@ require_once 'authentication.php';
                                     <div class="col-md-6 ">
                                         <div class="form-group">
                                             <label class="form-control-label">Remarks</label>
-                                            <input type="text" class="form-control" name="remarks" ng-model="doc.remarks" ng-disabled="controls.btns.ok">
+											<textarea rows="10" class="form-control" name="remarks" ng-model="doc.remarks" ng-disabled="controls.btns.ok"></textarea>
+                                            <!-- <input type="text" class="form-control" name="remarks" ng-model="doc.remarks" ng-disabled="controls.btns.ok"> -->
 										</div>	
-                                    </div>								
+                                    </div>
+                                    <div class="col-md-6 ">
+                                        <div class="form-group">
+											<label class="form-control-label">Actions</label>
+											<hr>
+											<div class="toggle-switch" data-ts-color="info" style="margin-top: 20px;">
+												<label for="ts1" class="ts-label">For Approval</label>
+												<input id="ts1" type="checkbox" hidden="hidden" name="for_approval" ng-model="doc.for_approval" ng-checked="doc.for_approval" ng-change="app.actionChange(this,'for_approval')" ng-disabled="controls.btns.ok" ng-required="!doc.for_approval && !doc.for_routing">
+												<label for="ts1" class="ts-helper"></label>
+											</div>
+											<br>
+											<div class="toggle-switch" data-ts-color="info" style="margin-top: 20px;">
+												<label for="ts2" class="ts-label">For Routing</label>
+												<input id="ts2" type="checkbox" hidden="hidden" name="for_routing" ng-model="doc.for_routing" ng-checked="doc.for_routing" ng-change="app.actionChange(this,'for_routing')" ng-disabled="controls.btns.ok" ng-required="!doc.for_approval && !doc.for_routing">
+												<label for="ts2" class="ts-helper"></label>
+											</div>
+											<div class="alert alert-danger" style="margin-top: 15px;" ng-show="(formHolder.doc.for_approval.$touched && formHolder.doc.for_approval.$invalid) && (formHolder.doc.for_routing.$touched && formHolder.doc.for_routing.$invalid)">Action is required</div>
+										</div>	
+									</div>
 								</div>							
 								<div class="row">
 									<div class="col-md-12">

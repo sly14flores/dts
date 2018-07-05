@@ -31,6 +31,8 @@ angular.module('app-module', ['form-validator','bootstrap-modal','jspdf-module',
 			
 			scope.doc = {};
 			scope.doc.id = 0;
+			scope.for_approval = false;
+			scope.for_routing = false;
 			scope.doc.files = [];
 			scope.doc.attachments = [];
 			
@@ -96,13 +98,15 @@ angular.module('app-module', ['form-validator','bootstrap-modal','jspdf-module',
 		
 		self.add = function(scope) {
 			
-			if (!access.has(scope,scope.profile.group,scope.module.id,scope.module.privileges.add)) return;
+			if (!access.has(scope,scope.profile.group,scope.module.id,scope.module.privileges.add)) return;						
 			
 			scope.controls.btns.ok = false;
 			scope.controls.btns.cancel = false;
 			
 			scope.doc = {};
 			scope.doc.id = 0;
+			scope.for_approval = false;
+			scope.for_routing = false;
 			scope.doc.files = [];
 			scope.doc.attachments = [];
 			
@@ -114,15 +118,15 @@ angular.module('app-module', ['form-validator','bootstrap-modal','jspdf-module',
 			scope.controls.btns.cancel = true;
 			
 			validate.cancel(scope,'doc');
-			
-			$timeout(function() {
+
+			/* $timeout(function() {
 				if ($routeParams.option==undefined) scope.doc = {};				
-			},500);
+			},500); */
 			
 		};
 		
 		
-		self.save = function(scope) {		
+		self.save = function(scope) {
 		
 			uploadFiles.start(scope, function() {				
 
@@ -141,17 +145,16 @@ angular.module('app-module', ['form-validator','bootstrap-modal','jspdf-module',
 				  url: 'handlers/add-documents.php',
 				  data: scope.doc
 				}).then(function mySuccess(response) {
-					
+
 					scope.doc.barcode = response.data.barcode;
-					
+
 					barcode(response.data.barcode);
 
 					scope.controls.btns.ok = true;
 					scope.controls.btns.cancel = true;	
-					
+
 					bui.hide();
-					
-					
+
 				}, function myError(response) {
 					
 					bui.hide();
@@ -169,12 +172,14 @@ angular.module('app-module', ['form-validator','bootstrap-modal','jspdf-module',
 			  width: 1,
 			  height: 20,
 			  displayValue: true
-			});				
+			});
 
 		};
 		
 		self.print = function(scope) {
 
+			if (scope.doc.id == 0) return;
+			
 			var doc = new jsPDF({
 				orientation: 'portrait',
 				unit: 'pt',
@@ -247,7 +252,15 @@ angular.module('app-module', ['form-validator','bootstrap-modal','jspdf-module',
 			
 			$('#upload-attachments')[0].click();
 			
-		};		
+		};
+
+		self.actionChange = function(scope,a) {
+
+			var actions = {'for_routing': 'for_approval', 'for_approval': 'for_routing'};
+
+			if (scope.doc[a]) scope.doc[actions[a]] = false;
+			
+		};
 		
 	};
 	
