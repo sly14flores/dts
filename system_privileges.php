@@ -88,6 +88,13 @@ define('system_privileges', array(
 			array("id"=>3,"description"=>"Delete Item","value"=>false),
 		),
 	),
+	array(
+		"id"=>"notifications",
+		"description"=>"Notifications",
+		"privileges"=>array(
+			array("id"=>1,"description"=>"Enable Notifications","value"=>false),
+		)
+	),
 ));
 
 ?>

@@ -1,4 +1,4 @@
-angular.module('notifications-module', ['ngSanitize']).directive('notifications', function($interval,$timeout,$http) {	
+angular.module('notifications-module', ['ngSanitize']).directive('notifications', function($interval,$timeout,$http) {		
 	
 	function notifications(scope) {
 
@@ -32,25 +32,37 @@ angular.module('notifications-module', ['ngSanitize']).directive('notifications'
 	return {
 		restrict: 'A',
 		templateUrl: 'html/notifications.html',
-		link: function(scope, element, attrs) {
-			
-			scope.notification = true;			
-			
-			scope.notifications = {};
-			scope.notifications.count = 0;
-			
-			$timeout(function() { notifications(scope); 
+		link: function(scope, element, attrs) {	
 
-				if (scope.notification) {
+			$timeout(function() {
 
-					var notification = $interval(function() {
-						notifications(scope);
+				$http({
+				  method: 'POST',
+				  url: 'handlers/access.php',
+				  data: {group: scope.profile.group, mod: 'notifications', prop: 1}
+				}).then(function mySucces(response) {
+					
+					scope.notifications = {};
+					scope.notifications.count = 0;
 
-					},2000);
+					if (response.data.value) {
 
-				};			
+						var notification = $interval(function() {
+							
+							notifications(scope);
 
-			}, 500);			
+						},2000);
+
+					};		
+
+				},
+				function myError(response) {
+
+				
+				
+				});			
+		
+			}, 2000);				
 
 			scope.notificationAction = function(scope,notification) {
 				
