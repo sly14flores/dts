@@ -6,7 +6,6 @@ require_once '../db.php';
 require_once '../assignments.php';
 require_once 'folder-files.php';
 require_once 'notify.php';
-require_once 'get-access.php';
 
 $assignments = assignments;
 
@@ -78,7 +77,6 @@ if ($_POST['id']) { # update
 	# first track
 	if ( (isset($id)) && ($id) ) {
 
-		$office_is_initial = getAccess($con,'receive_document',3);
 		$initial_track_office = $con->getData("SELECT id, office FROM offices WHERE id IN ".getAssignmentIds($assignments['office'],1,"office"));
 		$track_office = (count($initial_track_office))?$initial_track_office[0]['id']:0;
 		$track_office_name = (count($initial_track_office))?$initial_track_office[0]['office']:"";
