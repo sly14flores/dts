@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 12, 2018 at 05:05 PM
+-- Generation Time: Jul 20, 2018 at 05:02 PM
 -- Server version: 5.7.11
 -- PHP Version: 7.0.3
 
@@ -185,7 +185,7 @@ CREATE TABLE `documents` (
 --
 
 INSERT INTO `documents` (`id`, `user_id`, `doc_name`, `barcode`, `origin`, `other_origin`, `document_date`, `document_transaction_type`, `doc_type`, `communication`, `doc_action`, `remarks`) VALUES
-(1, 1, 'Data Privacy Compliance', 'ICT-07-2018-00001', 4, NULL, '2018-07-05 16:26:09', 1, 3, 1, 'for_approval', NULL);
+(1, 7, 'Invitation', 'ICT-07-2018-00001', 4, NULL, '2018-07-19 13:46:14', 1, 2, 1, 'for_approval', NULL);
 
 -- --------------------------------------------------------
 
@@ -221,13 +221,6 @@ CREATE TABLE `files` (
   `document_id` int(11) DEFAULT NULL,
   `file_name` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `files`
---
-
-INSERT INTO `files` (`id`, `document_id`, `file_name`) VALUES
-(1, 1, 'ICT-07-2018-00001_0.pdf');
 
 -- --------------------------------------------------------
 
@@ -279,8 +272,8 @@ CREATE TABLE `notifications` (
 --
 
 INSERT INTO `notifications` (`id`, `doc_id`, `track_id`, `user_id`, `office_id`, `notification_type`, `message`, `dismiss`, `system_log`, `last_modified`) VALUES
-(1, 1, 1, 9, NULL, 'outgoing', 'TRAVEL ORDER with subject: <strong>Data Privacy Compliance</strong> was received at PA<br>by Sylvester Flores  on July 5, 2018 04:26 PM', 0, '2018-07-05 16:26:09', NULL),
-(2, 1, 1, 6, NULL, 'transaction', 'Type: TRAVEL ORDER, Subject: <strong>Data Privacy Compliance</strong> Office: ICTD<br>Received on July 5, 2018 04:26 PM by Sylvester Flores', 0, '2018-07-05 16:26:09', NULL);
+(1, 1, 1, 9, NULL, 'outgoing', 'LETTER with subject: <strong>Invitation</strong> was received at PA<br>by Mary Ann Orofino  on July 19, 2018 01:46 PM', 0, '2018-07-19 13:46:14', NULL),
+(2, 1, 1, 6, NULL, 'transaction', 'Type: LETTER, Subject: <strong>Invitation</strong> Office: ICTD<br>Received on July 19, 2018 01:46 PM by Mary Ann Orofino', 0, '2018-07-19 13:46:14', NULL);
 
 -- --------------------------------------------------------
 
@@ -367,7 +360,7 @@ CREATE TABLE `tracks` (
 --
 
 INSERT INTO `tracks` (`id`, `document_id`, `document_status`, `document_status_user`, `document_tracks_status`, `track_option`, `track_office`, `track_date`, `route_office`, `route_user`, `preceding_track`, `remarks`, `system_log`) VALUES
-(1, 1, 'Received', 1, 'transaction', NULL, 2, '2018-07-05 16:26:09', NULL, NULL, 0, NULL, '2018-07-05 16:26:09');
+(1, 1, 'Received', 7, 'transaction', NULL, 2, '2018-07-19 13:46:14', NULL, NULL, 0, NULL, '2018-07-19 13:46:14');
 
 -- --------------------------------------------------------
 
@@ -588,7 +581,7 @@ ALTER TABLE `document_types`
 -- AUTO_INCREMENT for table `files`
 --
 ALTER TABLE `files`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `groups`
 --
